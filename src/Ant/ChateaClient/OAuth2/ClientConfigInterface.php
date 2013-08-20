@@ -3,6 +3,9 @@ namespace Ant\ChateaClient\OAuth2;
 
 interface ClientConfigInterface
 {
+	const ACCEPT_JSON  = "application/json";
+	const ACCEPT_XML  = "application/xml";
+		
 	public function setClientId($clientId);	
 	public function getClientId();	
 	public function setClientSecret($clientSecret);	
@@ -11,8 +14,6 @@ interface ClientConfigInterface
 	public function getRedirectUri();	
 	public function setCredentialsInRequestBody($credentialsInRequestBody);
 	public function getCredentialsInRequestBody();
-	public function setUserId($user_id);
-	public function getUserId();
-	public function setPasswordId($password_id);
-	public function getPasswordId();
+	public function getAccept();
+	public function setAccept($header);
 }

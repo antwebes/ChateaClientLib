@@ -15,7 +15,7 @@ class TokenType
 	
 	public function __construct($tokenName){
 		if (!is_string($tokenName) || 0 >= strlen($tokenName)) {
-			throw new ContextException("tokenName needs to be a non-empty string");
+			throw new TokenException("TokenType: tokenName needs to be a non-empty string");
 		}
 		$this->tokenName = $tokenName;		
 	}
@@ -26,7 +26,7 @@ class TokenType
 	
 	public function setName($name) {
 		if (!is_string($tokenName) || 0 >= strlen($tokenName)) {
-			throw new ContextException("tokenName needs to be a non-empty string");
+			throw new TokenException("TokenType: tokenName needs to be a non-empty string");
 		}
 		$this->tokenName = $tokenName;		
 	}

@@ -20,30 +20,27 @@ class TokenRequest
         $this->chateaConfig = $chateaConfig;
     }
 	
-    public function withAuthorizationCode($authorizationCode)
-    {
-    	// FIXME: This function isn't implemented on server
-    	return $this->withPasswordCredentials();
-    }
+    public function withPasswordCredentials($username, $password){
+    	if (!is_string($username) || 0 >= strlen($username)) {
+    		throw new TokenRequestException("username must be a non-empty string");
+    	}
+    	
+    	if (!is_string($password) || 0 >= strlen($password)) {
+    		throw new TokenRequestException("password must be a non-empty string");
+    	}
 
-    public function withRefreshToken(RefreshToken $refreshToken)
-    {
-    	// FIXME: This function isn't implemented on server
-    	return $this->withPasswordCredentials();
-    }
-
-    public function withPasswordCredentials(){
     	$p = array (
-    			"username" => $this->clientConfig->getUserId(),
-    			"password" => $this->clientConfig->getPasswordId(),
+    			"username" => $username,
+    			"password" => $password,
     			"grant_type" => "password",
     			"client_id"=>$this->clientConfig->getClientId(),
     			"client_secret"=>$this->clientConfig->getClientSecret()
     	);    	
+    	
         if ($this->clientConfig->getCredentialsInRequestBody()) {
             // provide credentials in the POST body
             $request = $this->httpClient->post($this->chateaConfig->getTokenEndpoint())->addPostFields($p);
-        } else {
+        }else {
             $request = $this->httpClient->get($this->chateaConfig->getTokenEndpoint(),array(),
             			array('query' =>$p)
             		);            
@@ -51,18 +48,25 @@ class TokenRequest
         $request->addHeader('Accept','application/json');
         try {
             $response = $request->send();
-            // FIXME: what if no JSON?
             return TokenResponse::fromArray($response->json());
         } catch (ClientErrorResponseException $e) {
-        	throw new TokenException($e->getMessage(),$e->getCode());
-            // FIXME: if authorization code request fails? What should we do then?!
-            // whenever there is 4xx error, we return FALSE, if some other error
-            // occurs we just pass along the Exception...
-            return false;
+        	throw new TokenRequestException($e->getResponse()->getBody());
         }
     }
+    
+    public function withAuthorizationCode($authorizationCode)
+    {
+    	// FIXME: This function isn't implemented on server
+    	throw new TokenRequestException("this method not implemented yet");
+    }
+    
+    public function withRefreshToken(RefreshToken $refreshToken)
+    {
+    	// FIXME: This function isn't implemented on server
+    	throw new TokenRequestException("this method not implemented yet");
+    }    
     public function revokeToken (){
     	// FIXME: This function isn't implemented on server
-    	return null;
+    	throw new TokenRequestException("this method not implemented yet");
     }
 }

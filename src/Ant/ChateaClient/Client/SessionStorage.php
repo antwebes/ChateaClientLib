@@ -16,34 +16,36 @@ class SessionStorage implements StorageInterface
 
     public function getAccessToken($client_id)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
+        if (!isset($_SESSION['ant-chatea-client']['access_token'][$client_id])) {
             return false;
         }
-
-        $accessToken = unserialize($_SESSION['ant-chatea-client'][$client_id]['access_token']);
-
-        return $accessToken ?$accessToken: false;
+        $accessToken = null;
+        
+        $accessToken = unserialize($_SESSION['ant-chatea-client']['access_token'][$client_id]);
+        
+        
+        return $accessToken ? $accessToken: false;
 
     }
 
     public function setAccessToken($client_id, AccessToken $accessToken)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
-            $_SESSION['ant-chatea-client'][$client_id]['access_token'] = array();
+        if (!isset($_SESSION['ant-chatea-client']['access_token'])) {
+            $_SESSION['ant-chatea-client']['access_token'] = array();
         }
 
-        array_push($_SESSION['ant-chatea-client'][$client_id]['access_token'], serialize($accessToken));
+        $_SESSION['ant-chatea-client']['access_token'][$client_id] = serialize($accessToken);
 
         return true;
     }
 
     public function deleteAccessToken($client_id)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
+        if (!isset($_SESSION['ant-chatea-client']['access_token'][$client_id])) {
             return false;
         }
 
-        unset($_SESSION['ant-chatea-client'][$client_id]['access_token']);
+        unset($_SESSION['ant-chatea-client']['access_token'][$client_id	]);
            
         return true;
 
@@ -51,7 +53,7 @@ class SessionStorage implements StorageInterface
 
     public function getRefreshToken($client_id)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['refresh_token'])) {
+        if (!isset($_SESSION['ant-chatea-client']['refresh_token'][$client_id])) {
             return false;
         }
 
@@ -62,22 +64,22 @@ class SessionStorage implements StorageInterface
 
     public function setRefreshToken($client_id, RefreshToken $refreshToken)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['refresh_token'])) {
-            $_SESSION['ant-chatea-client'][$client_id]['refresh_token'] = array();
+        if (!isset($_SESSION['ant-chatea-client']['refresh_token'][$client_id])) {
+            $_SESSION['ant-chatea-client']['refresh_token'][$client_id] = array();
         }
 
-        array_push($_SESSION['ant-chatea-client'][$client_id]['refresh_token'], serialize($refreshToken));
+        array_push($_SESSION['ant-chatea-client']['refresh_token'][$client_id], serialize($refreshToken));
 
         return true;
     }
 
     public function deleteRefreshToken($client_id)
     {
-        if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
+        if (!isset($_SESSION['ant-chatea-client']['access_token'][$client_id][$client_id])) {
             return false;
         }
 
-        unset($_SESSION['ant-chatea-client'][$client_id]['access_token']);
+        unset($_SESSION['ant-chatea-client']['access_token'][$client_id]);
            
         return true;
     }

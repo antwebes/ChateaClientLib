@@ -2,6 +2,18 @@
 
 namespace Ant\ChateaClient\OAuth2;
 
+/**
+ * A Scope is a permission setting that specifies access to a users, 
+ * to non-public data.
+ * 
+ * Examples of scopes for the one APIs are:
+ * Read/Write API! Updates
+ * Read (Shared) API! Profiles
+ * Read API! Contacts
+ * 
+ * @author ant@antweb.es
+ *
+ */
 class Scope
 {
     private $name;
@@ -10,10 +22,10 @@ class Scope
     /**
      * 
      */
-    public function __construct($name, Scope $parentName = '')
+    public function __construct($name, Scope $parentName = null)
     {
     	if (!is_string($name)) {
-    		throw new TokenException("scope needs to be string");
+    		throw new TokenException("Scope: param 'name' needs to be string");
     	}   	
         $this->name = self::normalize($name);
         $this->parentName = $parentName;
@@ -41,7 +53,7 @@ class Scope
     	$scopeRegExp = sprintf('/^%s(?: %s)*$/', $scopeTokenRegExp, $scopeTokenRegExp);
     	$result = preg_match($scopeRegExp, $scope->getName());
     	if (1 !== $result) {
-    		throw new TokenException(sprintf("invalid scope '%s'", $scope->getName()));
+    		throw new TokenException(sprintf("Scope: invalid scope '%s'", $scope->getName()));
     	}
     }
     

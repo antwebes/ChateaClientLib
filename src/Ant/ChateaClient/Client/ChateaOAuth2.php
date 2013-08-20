@@ -11,7 +11,7 @@ use Ant\ChateaClient\OAuth2\AccessToken;
 use Ant\ChateaClient\OAuth2\RefreshToken;
 use Ant\ChateaClient\OAuth2\TokenResponse;
 use Ant\ChateaClient\OAuth2\Scope;
-
+use Ant\ChateaClient\OAuth2\TokenException;
 class ChateaOAuth2 extends  ChateaAuth {
 		
 	
@@ -19,45 +19,53 @@ class ChateaOAuth2 extends  ChateaAuth {
 	private  $chateaConfig;
 	
 	public function __construct(
-			ClientConfigInterface $client_config, 
-			ChateaConfigInterface $chatea_config = null)
+			ClientConfigInterface $clientConfig, 
+			ChateaConfigInterface $chateaConfig = null)
 	{
-		if(!$client_config){
-			throw ConfigException(sprintf("missing field client_config is '%s'", $client_config));
+		if(!$clientConfig){
+			throw ConfigException(sprintf("missing field client_config is '%s'", $clientConfig));
 		}
 		
 		$this->clientConfig = $clientConfig;
 		
-		if(!$chatea_config){
+		if(!$chateaConfig){
 			$this->chateaConfig = ChateaConfig::fromJSONFile('chatea_config.json');			
 		}
 		
 	}
 	
-	public function authenticate(){
+	public function authenticate($username, $password){
 		
-		$accesToken = $this->getAccessToken();
-		
-		if(!$accesToken){
+	    if (!is_string($username) || 0 >= strlen($username)) {
+    		throw new ChateaApiExceptionException("username must be a non-empty string");
+    	}
+    	
+    	if (!is_string($password) || 0 >= strlen($password)) {
+    		throw new ChateaApiExceptionException("password must be a non-empty string");
+    	}
+
+    	if($this->isAccessTokenExpired()){
 			$tokenRequest = new TokenRequest(
 					new Client($this->chateaConfig->getTokenEndpoint()), 
 					$this->clientConfig, 
 					$this->chateaConfig					
-		 	);
-			try{
-
-				$tokenResponse =  $tokenRequest->withRefreshToken($refreshToken);		
-				$this->saveInStore($tokenResponse);
+			);
 			
-			}catch (\Exception $e){
-				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " . 
+			try{
+				$tokenResponse =  $tokenRequest->withPasswordCredentials($username, $password);
+				$this->saveInStore($tokenResponse);
+									
+			}catch (TokenException $e){
+				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
 						$e->getMessage());
-			}
-						
-		}
-		
+			}catch (\Exception $e){
+				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
+						$e->getMessage());
+			}					
+    	}
 		return true;
 	}
+
 	public function refreshToken(RefreshToken $refreshToken) 
 	{
 		$tokenRequest = new TokenRequest(
@@ -76,6 +84,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 		}	
 		return true;		
 	}
+	
 	public function revokeToken() {
 	
 		$accesToken = $this->getAccessToken();
@@ -89,8 +98,8 @@ class ChateaOAuth2 extends  ChateaAuth {
 			try{
 
 				$tokenResponse =  $tokenRequest->withRefreshToken($refreshToken);		
-				//delete in store
-				
+
+				//delete in store				
 				$this->chateaConfig->getStorage()->deleteAccessToken(
 						$this->clientConfig->getClientId()
 				);
@@ -113,14 +122,15 @@ class ChateaOAuth2 extends  ChateaAuth {
 	 */
 	public function getAccessToken() {	
 		return $this->chateaConfig->getStorage()->getAccessToken(
-				$this->clientConfig->getClientId()
+					$this->clientConfig->getClientId()
 		);
 	}
 	/**
 	 * @param AccessToken $token
 	 * @throws ChateaAuthException
 	 */
-	public function setAccessToken(AccessToken $token) {
+	public function setAccessToken(AccessToken $token) 
+	{
 
 		if ($token == null) {
 			throw new ChateaAuthException('Could not nullable the token');
@@ -139,11 +149,13 @@ class ChateaOAuth2 extends  ChateaAuth {
 	 */
 	public function isAccessTokenExpired() 
 	{
-		return $this->getAccessToken()->hasExpired();	
+		
+		return $this->getAccessToken()?$this->getAccessToken()->hasExpired():true;	
 	}
 	
 	
-	private function saveInStore(TokenResponse $tokenResponse ){
+	private function saveInStore(TokenResponse $tokenResponse )
+	{
 		
 		$this->chateaConfig->getStorage()->setAccessToken(
 				$this->clientConfig->getClientId(),
@@ -155,10 +167,11 @@ class ChateaOAuth2 extends  ChateaAuth {
 				$tokenResponse->getRefreshToken()
 		);		
 	}
-	
-	public function createAuthUrl(Scope $scope){
-		throw new \Exception("NON FEITO PENDENTE PARA O LUNS");
-		return $this->chateaConfig->getServerEndpoint();
-		//    curl -v -H "Accept: application/json" -H "Content-type: application/json" -H "Authorization: Bearer $token" -X GET http://localhost/workspace/apiChatea/web/app_dev.php/api/channel/
+
+	public function getChateaConfig(){
+		return $this->chateaConfig;
+	}
+	public function getClientConfig(){
+		return $this->clientConfig;
 	}
 }

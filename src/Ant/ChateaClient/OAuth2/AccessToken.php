@@ -2,6 +2,18 @@
 
 namespace Ant\ChateaClient\OAuth2;
 
+/**
+ * An access token is an object that describes the security context of a 
+ * process or thread. The information in a token includes the identity and 
+ * privileges of the user account associated with the process or thread. 
+ * When a user logs on, the system verifies the user's password by comparing 
+ * it with information stored in a security database. 
+ * If the password is authenticated, the system produces an access token. 
+ * Every process executed on behalf of this user has a copy of this access token.
+ * 
+ * @author ant@anteweb.es
+ *
+ */
 class AccessToken extends Token
 {
     /** token_type VARCHAR(255) NOT NULL */
@@ -10,19 +22,16 @@ class AccessToken extends Token
     /** expires_in INTEGER DEFAULT NOT NULL */
     private $expiresIn;
 
-    public function __construct(array $data)
+    public function __construct($tokenValue, TokenType $tokenType, $expiresIn = null, Scope $scope = null,  $issueTime = null)
     {
-        parent::__construct($data);
 
-        foreach (array('token_type', 'access_token','expires_in') as $key) {
-            if (!array_key_exists($key, $data)) {
-                throw new TokenException(sprintf("missing field '%s'", $key));
-            }
-        }
-        $this->setValue($data['access_token']);
-        $this->setTokenType($data['token_type']);
-        $expiresIn = array_key_exists('expires_in', $data) ? $data['expires_in'] : null;        
-        $this->setExpiresIn($expiresIn);
+    	parent::__construct($tokenValue,$scope,$issueTime);
+        
+        $this->setTokenType($tokenType);
+        
+        //FIXME: is required param expires_in                
+        $this->setExpiresIn($expiresIn);        
+              
     }
 
     /**
@@ -33,7 +42,7 @@ class AccessToken extends Token
     public function setTokenType(TokenType $tokenType)
     {
         if (!$tokenType) {
-            throw new TokenException(sprintf("missing field tokenType with value '%s'", $tokenType));
+            throw new TokenException(sprintf("AccessToken: missing field tokenType with value '%s'", $tokenType));
         }
 
         $this->tokenType = $tokenType;

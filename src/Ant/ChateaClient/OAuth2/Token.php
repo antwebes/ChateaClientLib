@@ -2,6 +2,13 @@
 
 namespace Ant\ChateaClient\OAuth2;
 
+/**
+ * 
+ * A Token is a piece of data in base64, that is used in network 
+ * communications to identify a session, a series of related message exchanges. 
+ * 
+ * @author ant@antweb.es
+ */
 class Token
 {
 
@@ -14,30 +21,44 @@ class Token
     /** issue_time INTEGER NOT NULL */
     private $issueTime;
 
-    public function __construct(array $data)
+    
+    /**
+     * Create a new object of type Token 
+     * 
+     * @param string $tokenValue the string what represent data in base64
+     * @param Scope $scope A Scope is a permission setting that specifies access to a users, to non-public data.
+     * @param string $issueTime
+     */
+    public function __construct($tokenValue, Scope $scope = null,  $issueTime = null)
     {
-    	if (!is_string($data['token_value']) || 0 >= strlen($data['token_value'])) {
-                throw new TokenException(sprintf("missing field token_value is '%s'", $data['token_value']));            
-        }
-        $this->setValue($data['token_value']);        
-        $this->setScope($data['scope']?$data['scope']:null);
-        $this->setIssueTime($data['issue_time']?$data['issue_time']:time());
+
+    	$this->setValue($tokenValue);        
+
+        $this->setScope($scope);
+        
+        $issueTime = $issueTime !== null && is_numeric($issueTime)?$issueTime:time();
+        $this->setIssueTime($issueTime);        
     }
     
     /**
+     * Update de token value.
      * 
-     * @param string $token_value
-     * @throws TokenException
+     * @param string $token_value 
+     * 	the string what represent data in base64
+     * 
+     * @throws TokenException 
+     * 	This exception is running, if $token value is not a string or it's a empty string
      */
     public function setValue($token_value)
     {
         if (!is_string($token_value) || 0 >= strlen($token_value)) {
-            throw new TokenException("token_value needs to be a non-empty string");
+            throw new TokenException("Token: token_value needs to be a non-empty string");
         }
         $this->value = $token_value;
     }
 	/**
-	 * 
+	 * Retrive de token value
+	 *  
 	 * @return string
 	 */
     public function getValue()
@@ -46,10 +67,12 @@ class Token
     }
     
 	/**
+	 * Update de scope 
 	 * 
-	 * @param Scope $scope
+	 * @param Scope $scope 
+	 * 	
 	 */
-    public function setScope(Scope $scope)
+    public function setScope(Scope $scope = null)
     {
         if ($scope) {
         	Scope::validate($scope);        	 
@@ -75,7 +98,7 @@ class Token
     public function hasScope(Scope $scope)
     {
         if (!$scope) {
-            throw new TokenException(sprintf("missing field scope is '%s'", $scope));
+            throw new TokenException(sprintf("Token: missing field scope is '%s'", $scope));
         }
         
         Scope::validate($scope);
@@ -91,7 +114,7 @@ class Token
     public function setIssueTime($issueTime)
     {
         if (!is_numeric($issueTime) || 0 >= $issueTime) {
-            throw new TokenException("issue_time should be positive integer");
+            throw new TokenException("Token: issue_time should be positive integer");
         }
         $this->issueTime = (int) $issueTime;
 
@@ -103,5 +126,9 @@ class Token
     public function getIssueTime()
     {
         return $this->issueTime;
+    }
+    
+    public function __toString(){
+    	return $this->value;
     }
 }

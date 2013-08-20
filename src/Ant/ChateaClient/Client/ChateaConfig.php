@@ -1,6 +1,8 @@
 <?php
 namespace Ant\ChateaClient\Client;
+
 use Ant\ChateaClient\OAuth2\ChateaConfigInterface;
+use Ant\ChateaClient\OAuth2\ConfigException;
 
 class ChateaConfig implements ChateaConfigInterface {
 
@@ -26,10 +28,17 @@ class ChateaConfig implements ChateaConfigInterface {
 		$this->setStorage($clientStorage);
 				
 	}
-	public static function fromJSONFile($filename = 'chatea_config.json')
+	public static function createDefaultChateaConfig(){
+		return ChateaConfig::fromJSONFile();
+	}
+	public static function fromJSONFile($filename = "chatea_config.json")
 	{
-		if(!file_exists($filename)){
-			throw new ConfigException(sprintf("file '%s' not exist ", $filename));
+
+		if(!file_exists($filename) ){
+			$filename = __DIR__.'/'.$filename;
+			if(!file_exists($filename)){
+				throw new ConfigException(sprintf("file '%s' not exist ", $filename));
+			}
 		}
 		
 		$chateaConfig = new static(
@@ -53,7 +62,7 @@ class ChateaConfig implements ChateaConfigInterface {
 	}
 	
 	public function setServerEndPoind($serverEndPoind){
-		$this->validateEndpointUri($serverEndPoind);
+		$this->validateUris($serverEndPoind);
 		$this->server_endpoint = $serverEndPoind;		
 	}
 			
@@ -61,7 +70,7 @@ class ChateaConfig implements ChateaConfigInterface {
 		return $this->authorize_endpoint;
 	}
 	public function setAuthorizeEndpoint($authorizeEndpoint) {
-        $this->validateEndpointUri($authorizeEndpoint);
+        $this->validateUris($authorizeEndpoint);
         $this->authorize_endpoint = $authorizeEndpoint;
 
 	}
@@ -70,7 +79,7 @@ class ChateaConfig implements ChateaConfigInterface {
 
 	}
 	public function setTokenEndpoint($tokenEndpoint) {
-        $this->validateEndpointUri($tokenEndpoint);
+        $this->validateUris($tokenEndpoint);
         $this->token_endpoint = $tokenEndpoint;
 
 	}
@@ -79,7 +88,7 @@ class ChateaConfig implements ChateaConfigInterface {
 
 	}
 	public function setRevokeEndpoint($revokeEndpoint) {
-        $this->validateEndpointUri($authorizeEndpoint);
+        $this->validateUris($revokeEndpoint);
         $this->revoke_endpoint = $revokeEndpoint;
 
 	}

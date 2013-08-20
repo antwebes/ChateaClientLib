@@ -10,20 +10,14 @@ class RefreshToken extends Token
     /** expires_in INTEGER DEFAULT NULL */
     private $expiresIn;
     
-    public function __construct(array $data)
+    public function __construct($tokenValue, $expiresIn = null, Scope $scope = null,  $issueTime = null)
     {
-        parent::__construct($data);
 
-        foreach (array('refresh_token') as $key) {
-            if (!array_key_exists($key, $data)) {
-                throw new TokenException(sprintf("missing field '%s'", $key));
-            }
-        }
-
-        $this->setValue($data['refresh_token']);
+    	parent::__construct($tokenValue,$scope,$issueTime);
         
-        $expiresIn = array_key_exists('expires_in', $data) ? $data['expires_in'] : null;
-        $this->setExpiresIn($expiresIn);        
+        
+        //FIXME: is required param expires_in                
+        $this->setExpiresIn($expiresIn);          
     }
     
     /**
@@ -40,7 +34,7 @@ class RefreshToken extends Token
      * @param integer $expiresIin
      * @throws TokenException
      */
-    public function setExpiresIn($expiresIin){
+    public function setExpiresIn($expiresIn){
     	if (null !== $expiresIn) {
     		if (!is_numeric($expiresIn) || 0 >= $expiresIn) {
     			throw new TokenException("expires_in should be positive integer or null");

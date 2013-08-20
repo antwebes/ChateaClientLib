@@ -15,4 +15,5 @@ interface StorageInterface
     public function getRefreshToken($client_id);
     public function setRefreshToken($client_id, RefreshToken $refreshToken);    
     public function deleteRefreshToken($client_id);
+    
 }
