@@ -2,24 +2,28 @@
 namespace Ant\ChateaClient\Client;
 
 use Guzzle\Http\Client; 
-use fkooman\Guzzle\Plugin\BearerAuth\BearerAuth;
-use fkooman\Guzzle\Plugin\BearerAuth\Exception\BearerErrorResponseException;
 use Guzzle\Http\Exception\BadResponseException;
-
+use Ant\ChateaClient\OAuth2\ChateaConfigInterface;
+use Ant\ChateaClient\Client\StorageInterface;
 
 class ChateaApi
 {
 
 	private $chateaAut;
-	private $client; 
-	private $clientConfig;
+	private $httpClient;
+	private $accept_header; 
+	private $client_id;
 	private $username;
 	private $password;
-	
+	private $store;
+	private $bearerToken;
+	 
 	const URI_CHANNELS 						= 'api/channel/';
 	const URI_CREATE_CHANNEL 				= 'api/channel/';
 	const URI_DELETE_CHANNEL 				= 'api/channel/';
 	const URI_GET_CHANNEL 					= 'api/channel/';
+	const URI_PATCH_CHANNEL					= 'api/channel/';
+	const URI_PUT_CHANNEL 					= 'api/channel/';
 	const URI_GET_PORFILE 					= 'api/profile/';
 	const URI_PATCH_PORFILE					= 'api/profile/edit';
 	const URI_PUT_PORFILE					= 'api/profile/edit';
@@ -28,48 +32,41 @@ class ChateaApi
 	const URI_GET_USER_ME 					= 'api/user/me';
 	const URI_DELETE_USER 					= "api/user";
 	const URI_POST_REGISTER					= "register";  
+	const URI_POST_RESETTING_EMAIL 			= "resetting/send-email";
 	
-	public function __construct(ClientConfig $clientConfig, $username, $password){
-		if(!$clientConfig){
+	public function __construct($client_id, ChateaAuth $chateaAut,  StoreInterface $store = null, $accept_header = 'application/json')
+	{
+		if (!is_string($client_id) || 0 >= strlen($client_id)) {
+			throw new ConfigException(
+					"client_id must be a non-empty string or null");
+		}
+		
+		if(!$chateaAut){
 			throw new ChateaApiException(sprintf("missing field client_config is '%s'", $clientConfig));
 		}
-				
-		$this->clientConfig = $clientConfig;
-		
-		if (!is_string($username) || 0 >= strlen($username)) {
-			throw new ChateaApiExceptionException("username must be a non-empty string");
-		}
-		 
-		if (!is_string($password) || 0 >= strlen($password)) {
-			throw new ChateaApiExceptionException("password must be a non-empty string");
-		}
-		
-		$this->chateaAut = new ChateaOAuth2($clientConfig);
-		
-		$this->username = $username;
-		
-		$this->password = $password;
 
-		$this->client = new Client($this->getServerEndpoint());
+		$this->chateaAut = $chateaAut;
+		$this->client_id = $client_id;				
+		$this->store = $store;		
 		
-		try {			
-												
-			$this->authenticate();		
-					
-		}catch (\ChateaAuthException $e){
-			throw new ChateaApiException($e->getMessage());
-		}		
+		if(!$this->store){			
+			$this->store = SessionStorage::getInstance();
+		}
+		$this->accept_header = $accept_header;
+		$this->httpClient = new Client($this->getServerEndpoint());	
 	}
 	
 	/**
 	 * Retrieve the current session token. 
-	 * If the session requested caducadao new one.
 	 * 
 	 * @return string token value
 	 */
 	public function getBearerToken (){
-		 
-		return $this->chateaAut->getAccessToken()->getValue();
+
+		if($this->bearerToken === null){
+			throw new ChateaApiException('you are not auth');
+		}
+		return $this->bearerToken;
 	}
 	
 	/**
@@ -88,7 +85,7 @@ class ChateaApi
 	 * @return Guzzle\Http\Client
 	 */
 	protected function getClient(){
-		return $this->client;
+		return $this->httpClient;
 	}
 	
 	/**
@@ -97,16 +94,28 @@ class ChateaApi
 	 * @return string default header Accept for example: application/json
 	 */
 	protected function getHeaderAccept(){
-		return $this->clientConfig->getAccept();
+		return $this->accept_header;
 	}
 	
 	/**
 	 *	Responsible for obtaining authentication. 
+	 *
 	 *	If the session has expired, it make requests to the server for a 
 	 *	new autorizacón 
 	 */
-	private function authenticate(){		
-		$this->chateaAut->authenticate($this->username,$this->password);		
+	public function authenticate(){		
+
+		$accesTokenInStore = $this->store->getAccessToken($this->client_id);
+		
+		//TODO if it is not in store or it has expired  new session.
+		if(!$accesTokenInStore || $accesTokenInStore->hasExpired()){
+			$this->chateaAut = $this->chateaAut->authenticate();
+			//save in store
+			$this->store->setAccessToken($this->client_id, $this->chateaAut->getAccessToken());
+			$this->store->setRefreshToken($this->client_id, $this->chateaAut->getRefreshToken());
+			$this->bearerToken = $this->chateaAut->getAccessToken()->getValue();
+		}		
+		$this->bearerToken = $accesTokenInStore->getValue();
 	}
 		
 	/**
@@ -177,6 +186,57 @@ class ChateaApi
 		}					
 	}
 	
+	public function updateChannel($id, $name, $title = '', $description = ''){
+		if(!$id || !is_numeric($id) || is_null($id)){
+			throw new ChateaApiException('ChateaApi: '. sprintf("missing field 'id' is '%s'", $id));
+		}		
+		if (!is_string($name) || 0 >= strlen($name)) {
+			throw new ChateaApiException("name must be a non-empty string");
+		}		
+		
+		$this->authenticate();
+		
+		$headers = array('Accept'=>$this->getHeaderAccept(),
+				'Content-type'=>'application/json',
+				'Authorization'=> sprintf("Bearer %s", $this->getBearerToken()));
+		
+		
+		$data = array();
+		$request = null;
+		
+		if(!is_string($title) && 0 >= strlen($title) && is_string($description) && 0 >= strlen($description) ){
+			$data = array( 'channel'=>array(
+							'name'=>$name,
+							'title'=>$title,
+							'description'=>$description
+						)
+				);			
+			$request = $this->getClient()->put(ChateaApi::URI_PUT_CHANNEL.'/'.$id, $headers, $data);
+		}else{
+			$data = array( 'channel'=>array(
+					'name'=>$name
+					)
+				);			
+			if(!is_string($title) && 0 >= strlen($title)){
+				array_push($data['channel']['title'], $title);
+			}
+			if(!is_string($description) && 0 >= strlen($description)){
+				array_push($data['channel']['description'], $description);
+			}			
+			
+			$request = $this->getClient()->patch(ChateaApi::URI_PATCH_CHANNEL.'/'.$id, $headers, json_encode($data));
+		}		
+		
+		try {
+		
+			return $request->send()->getBody();
+				
+		} catch (BearerErrorResponseException $e) {
+			throw new ChateaApiException($e->getResponse()->getBody());
+		} catch (BadResponseException $e) {
+			throw new ChateaApiException($e->getResponse()->getBody());
+		}		
+	}
 	/**
 	 * Deletes a Channel entity.
 	 * 
@@ -268,7 +328,7 @@ class ChateaApi
     	$this->authenticate();
     	
     	if (!is_string($current_password) || 0 >= strlen($current_password)) {
-    		throw new ChateaApiExceptionException("current_password must be a non-empty string");
+    		throw new ChateaApiException("current_password must be a non-empty string");
     	}
     	
     	if (!is_string($new_password) || 0 >= strlen($new_password)) {
@@ -321,15 +381,15 @@ class ChateaApi
     public function editProfile($username, $email, $current_password){
 
     	if (!is_string($username) || 0 >= strlen($username)) {
-    		throw new ChateaApiExceptionException("username must be a non-empty string");
+    		throw new ChateaApiException("username must be a non-empty string");
     	}
 
     	if (!is_string($current_password) || 0 >= strlen($current_password)) {
-    		throw new ChateaApiExceptionException("email must be a non-empty string");
+    		throw new ChateaApiException("email must be a non-empty string");
     	}    	  
     	
     	if (!is_string($current_password) || 0 >= strlen($current_password)) {
-    		throw new ChateaApiExceptionException("current_passwor must be a non-empty string");
+    		throw new ChateaApiException("current_passwor must be a non-empty string");
     	}
 
     	$this->authenticate();
@@ -383,6 +443,7 @@ class ChateaApi
     }
     
     public function getWhoami(){
+    	
     	$this->authenticate();
     	 
     	$headers = array('Accept'=>$this->getHeaderAccept(),
@@ -427,19 +488,19 @@ class ChateaApi
     	}    	
     }
      
-    public static function register(ChateaConfig $config,  $username, $email,$new_password, $repeat_new_password){
+    public static function register(ChateaConfigInterface $config,  $username, $email,$new_password, $repeat_new_password){
     	if(!$config){
-    		throw new ChateaApiExceptionException("config must be a null");
+    		throw new ChateaApiException("config must be a null");
     	}
     	if (!is_string($username) || 0 >= strlen($username)) {
-    		throw new ChateaApiExceptionException("username must be a non-empty string");
+    		throw new ChateaApiException("username must be a non-empty string");
     	}
     	if (!is_string($email) || 0 >= strlen($email)) {
-    		throw new ChateaApiExceptionException("email must be a non-empty string");
+    		throw new ChateaApiException("email must be a non-empty string");
     	}    	 
     	if (!is_string($new_password) || 0 >= strlen($new_password)) {
     		throw new ChateaApiException("new_password must be a non-empty string");
-    	}
+    	} 
     	
     	if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
     		throw new ChateaApiException("repeat_new_password must be a non-empty string");
@@ -464,12 +525,8 @@ class ChateaApi
     	);
 
     	$client =  new Client($config->getServerEndpoint()); 	
-
     	$request = $client->post(self::URI_POST_REGISTER, $headers, $data);
-	
-    	try {
-    		ld($request->getUrl());
-    		    		
+    	try {    		   
     		return $request->send()->getBody();
     	} catch (BearerErrorResponseException $e) {
     		throw new ChateaApiException($e->getResponse()->getBody());
@@ -478,4 +535,34 @@ class ChateaApi
     	}    	
     }
 
+    
+    public static function requestResetpassword(ChateaConfigInterface $config, $username){
+    	
+    	if (!is_string($username) || 0 >= strlen($username)) {
+    		throw new ChateaApiException("username must be a non-empty string");
+    	}
+    	
+    	if(!$config){
+    		throw new ChateaApiException("config must be a null");
+    	}
+    	
+    	$headers = array('Accept'=>'application/json','Content-type'=>'application/json');
+    	
+    	$data = json_encode(array('username'=>$username));
+    	
+    	$client =  new Client($config->getServerEndpoint());
+    	
+    	$request = $client->post(self::URI_POST_RESETTING_EMAIL, $headers, $data);
+    	
+    	try {
+    		$reposne = $request->send();
+    		return $reposne->getBody();
+    		
+    	} catch (BearerErrorResponseException $e) {
+    		throw new ChateaApiException($e->getResponse()->getBody());
+    	} catch (BadResponseException $e) {
+    		throw new ChateaApiException($e->getResponse()->getBody());
+    	}
+    	    	
+    }
 }

@@ -5,9 +5,9 @@ namespace Ant\ChateaClient\OAuth2;
 class TokenResponse
 {
     private $accessToken;
-    private $tokenType;
-    private $expiresIn;
     private $refreshToken;
+    private $tokenType;
+    private $expiresIn;    
     private $scope;
 
     public function __construct(AccessToken $accessToken, RefreshToken $refreshToken, $expiresIn, Scope $scope = null )
@@ -31,10 +31,7 @@ class TokenResponse
             }
         }
         
-        $expires_in = null;
-        if (array_key_exists('expires_in', $data)) {
-        	$expires_in = $data['expires_in'];
-        }
+
         $scope = null;
         if (array_key_exists('scope', $data) && $data['scope'] !== null) {
         	$scope = new Scope($data['scope']);
@@ -48,13 +45,13 @@ class TokenResponse
         		new AccessToken(
         				$data['access_token'],
         				new TokenType($data['token_type']),
-        				$expires_in,
+        				$data['expires_in'],
         				$scope,
         				time()
         			
         		),
         		$tokenResponse,
-        		$expires_in,
+        		$data['expires_in'],
         		$scope
         	);
                

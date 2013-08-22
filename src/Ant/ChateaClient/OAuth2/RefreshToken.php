@@ -9,6 +9,8 @@ class RefreshToken extends Token
     
     /** expires_in INTEGER DEFAULT NULL */
     private $expiresIn;
+    /** expires_in INTEGER DEFAULT NOT NULL */
+    private $expires_at;
     
     public function __construct($tokenValue, $expiresIn = null, Scope $scope = null,  $issueTime = null)
     {
@@ -17,7 +19,9 @@ class RefreshToken extends Token
         
         
         //FIXME: is required param expires_in                
-        $this->setExpiresIn($expiresIn);          
+        $this->setExpiresIn($expiresIn);    
+        
+        $this->expires_at = $this->getIssueTime() + $this->getExpiresIn(); 
     }
     
     /**
@@ -50,5 +54,9 @@ class RefreshToken extends Token
      */
     public function hasExpired(){
     	return time() > ($this->getIssueTime() + $this->getExpiresIn());
+    }    
+
+    public function getExpiresAt(){
+    	return $this->expires_at;
     }    
 }

@@ -3,6 +3,7 @@ namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\OAuth2\ChateaConfigInterface;
 use Ant\ChateaClient\OAuth2\ConfigException;
+use Ant\ChateaClient\Client\StorageInterface;
 
 class ChateaConfig implements ChateaConfigInterface {
 
@@ -23,10 +24,7 @@ class ChateaConfig implements ChateaConfigInterface {
 		$this->setAuthorizeEndpoint($data['authorize_endpoint']);
 		$this->setTokenEndpoint($data['token_endpoint']);
 		$this->setRevokeEndpoint($data['revoke_endpoint']);
-		
-		$clientStorage = array_key_exists('storage', $data) ? $data['storage'] : new SessionStorage();
-		$this->setStorage($clientStorage);
-				
+						
 	}
 	public static function createDefaultChateaConfig(){
 		return ChateaConfig::fromJSONFile();

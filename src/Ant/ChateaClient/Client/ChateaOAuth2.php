@@ -15,11 +15,18 @@ use Ant\ChateaClient\OAuth2\TokenException;
 class ChateaOAuth2 extends  ChateaAuth {
 		
 	
-	private  $clientConfig;
-	private  $chateaConfig;
-	
+	private $clientConfig;
+	private $chateaConfig;
+	private $accesToken;
+	private $refreshToken;
+	private $expiresIn;
+	private $username;
+	private $password;
+	    
 	public function __construct(
 			ClientConfigInterface $clientConfig, 
+			$username, 
+			$password,
 			ChateaConfigInterface $chateaConfig = null)
 	{
 		if(!$clientConfig){
@@ -28,45 +35,54 @@ class ChateaOAuth2 extends  ChateaAuth {
 		
 		$this->clientConfig = $clientConfig;
 		
+		if (!is_string($username) || 0 >= strlen($username)) {
+			throw new ChateaApiExceptionException("username must be a non-empty string");
+		}
+		 
+		if (!is_string($password) || 0 >= strlen($password)) {
+			throw new ChateaApiExceptionException("password must be a non-empty string");
+		}
+		
+		$this->username = $username;
+		$this->password = $password;
+		
 		if(!$chateaConfig){
 			$this->chateaConfig = ChateaConfig::fromJSONFile('chatea_config.json');			
 		}
-		
 	}
 	
-	public function authenticate($username, $password){
+	public function authenticate(){
 		
-	    if (!is_string($username) || 0 >= strlen($username)) {
-    		throw new ChateaApiExceptionException("username must be a non-empty string");
-    	}
-    	
-    	if (!is_string($password) || 0 >= strlen($password)) {
-    		throw new ChateaApiExceptionException("password must be a non-empty string");
-    	}
 
-    	if($this->isAccessTokenExpired()){
-			$tokenRequest = new TokenRequest(
-					new Client($this->chateaConfig->getTokenEndpoint()), 
-					$this->clientConfig, 
-					$this->chateaConfig					
-			);
+		$tokenRequest = new TokenRequest(
+				new Client($this->chateaConfig->getTokenEndpoint()), 
+				$this->clientConfig, 
+				$this->chateaConfig					
+		);
+		
+		try{
 			
-			try{
-				$tokenResponse =  $tokenRequest->withPasswordCredentials($username, $password);
-				$this->saveInStore($tokenResponse);
-									
-			}catch (TokenException $e){
-				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
-						$e->getMessage());
-			}catch (\Exception $e){
-				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
-						$e->getMessage());
-			}					
-    	}
+			$tokenResponse =  $tokenRequest->withPasswordCredentials($this->username, $this->password);
+
+			$this->accesToken 	= $tokenResponse->getAccessToken();			
+			
+			$this->refreshToken = $tokenResponse->getRefreshToken();		
+
+			$this->expiresIn 	= $tokenResponse->getExpiresIn();
+			
+			return $this;
+			
+		}catch (TokenException $e){
+			throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
+					$e->getMessage());
+		}catch (\Exception $e){
+			throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
+					$e->getMessage());
+		}					
 		return true;
 	}
 
-	public function refreshToken(RefreshToken $refreshToken) 
+	public function updateToken() 
 	{
 		$tokenRequest = new TokenRequest(
 				new Client($this->chateaConfig->getTokenEndpoint()), 
@@ -74,9 +90,14 @@ class ChateaOAuth2 extends  ChateaAuth {
 				$this->chateaConfig					
 		);
 		try{
-		
-			$tokenResponse =  $tokenRequest->withRefreshToken($refreshToken);		
-			$this->saveInStore($tokenResponse);
+						
+			$tokenResponse =  $tokenRequest->withRefreshToken($this->refreshToken);		
+			
+			$this->accesToken 	= $tokenResponse->getAccessToken();
+			$this->refreshToken = $tokenResponse->getRefreshToken();
+			$this->expiresIn = time() + $tokenResponse->getExpiresIn();	
+					
+			return $this;			
 				
 		}catch (\Exception $e){
 			throw new ChateaAuthException("Error fetching OAuth2 access token, message: " .
@@ -91,83 +112,47 @@ class ChateaOAuth2 extends  ChateaAuth {
 		
 		if(!$accesToken){
 			$tokenRequest = new TokenRequest(
-					new Client($this->chateaConfig->getTokenEndpoint()), 
+				 
 					$this->clientConfig, 
 					$this->chateaConfig					
 		 	);
 			try{
 
-				$tokenResponse =  $tokenRequest->withRefreshToken($refreshToken);		
-
-				//delete in store				
-				$this->chateaConfig->getStorage()->deleteAccessToken(
-						$this->clientConfig->getClientId()
-				);
+				$client = new Client($this->chateaConfig->getRevokeEndpoint());
+				$response = $client->get('/')->send();
 				
-				$this->chateaConfig->getStorage()->deleteRefreshToken(
-						$this->clientConfig->getClientId()
-				);
-			
+				$this->accesToken = null;
+				$this->refreshToken = null;		
+				$this->expiresIn = time();
+				
+				return $this;
+				
 			}catch (\Exception $e){
 				throw new ChateaAuthException("Error fetching OAuth2 access token, message: " . 
 						$e->getMessage());
-			}
-						
+			}		
 		}
-		
-		return true;
 	}	
 	/**
 	 * @return AccessToken
 	 */
 	public function getAccessToken() {	
-		return $this->chateaConfig->getStorage()->getAccessToken(
-					$this->clientConfig->getClientId()
-		);
+		return $this->accesToken;
+	}
+	public function getRefreshToken(){
+		return $this->refreshToken;
 	}
 	/**
-	 * @param AccessToken $token
-	 * @throws ChateaAuthException
-	 */
-	public function setAccessToken(AccessToken $token) 
-	{
-
-		if ($token == null) {
-			throw new ChateaAuthException('Could not nullable the token');
-		}
-		
-		// Save in store
-		$this->chateaConfig->getStorage()->setAccessToken(
-				$this->clientConfig->getClientId(), 
-				$tokenResponse->getAccessToken()
-		);
-	}
-	
-	/**
-	 * Returns if the access_token is expired.
+	 * Returns true if the access_token is expired.
+	 * 
 	 * @return bool Returns True if the access_token is expired.
 	 */
 	public function isAccessTokenExpired() 
 	{
-		
-		return $this->getAccessToken()?$this->getAccessToken()->hasExpired():true;	
+		return time() > $this->expiresIn;	
 	}
 	
 	
-	private function saveInStore(TokenResponse $tokenResponse )
-	{
-		
-		$this->chateaConfig->getStorage()->setAccessToken(
-				$this->clientConfig->getClientId(),
-				$tokenResponse->getAccessToken()
-		);
-		
-		$this->chateaConfig->getStorage()->setRefreshToken(
-				$this->clientConfig->getClientId(),
-				$tokenResponse->getRefreshToken()
-		);		
-	}
-
 	public function getChateaConfig(){
 		return $this->chateaConfig;
 	}

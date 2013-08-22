@@ -45,7 +45,9 @@ class TokenRequest
             			array('query' =>$p)
             		);            
         }
+        
         $request->addHeader('Accept','application/json');
+        
         try {
             $response = $request->send();
             return TokenResponse::fromArray($response->json());
@@ -65,8 +67,4 @@ class TokenRequest
     	// FIXME: This function isn't implemented on server
     	throw new TokenRequestException("this method not implemented yet");
     }    
-    public function revokeToken (){
-    	// FIXME: This function isn't implemented on server
-    	throw new TokenRequestException("this method not implemented yet");
-    }
 }
