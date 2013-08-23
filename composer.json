@@ -1,12 +1,14 @@
 {
 	"require" : {
 		"fkooman/guzzle-bearer-auth-plugin" : "dev-master",
+		"phpunit/phpunit" : "3.7.*",
 		"guzzle/guzzle" : "~3.7",
 		"phpdocumentor/reflection-docblock" : "2.0.*@dev",
 		"raulfraile/ladybug" : "1.0.0-alpha4"
 	},
 	"autoload" : {
 		"psr-0" : {
+			"Ant\\Tests" : "tests/",
 			"Ant" : "src/"
 		}
 	}

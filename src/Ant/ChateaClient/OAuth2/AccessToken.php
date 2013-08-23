@@ -21,20 +21,21 @@ class AccessToken extends Token
 
     /** expires_in INTEGER DEFAULT NOT NULL */
     private $expiresIn;
-    /** expires_in INTEGER DEFAULT NOT NULL */
-    private $expires_at;
     
-    public function __construct($tokenValue, TokenType $tokenType, $expiresIn = null, Scope $scope = null,  $issueTime = null)
+    public function __construct($tokenValue, TokenType $tokenType = null, $expiresIn = 3600, $issueTime = null, Scope $scope = null)
     {
-
-    	parent::__construct($tokenValue,$scope,$issueTime);
+    	
+    	parent::__construct($tokenValue,$issueTime,$scope);
         
+    	if($tokenType === null){
+    		$tokenType = new TokenType(TokenType::BEARER);
+    	}
+    	
         $this->setTokenType($tokenType);
         
         //FIXME: is required param expires_in                
         $this->setExpiresIn($expiresIn);        
-              
-        $this->expires_at = $this->getIssueTime() + $this->getExpiresIn(); 
+
     }
 
     /**
@@ -85,14 +86,14 @@ class AccessToken extends Token
     }
     
     public function getExpiresAt(){
-    	return $this->expires_at;
-    }
+    	return $this->getExpiresIn()+ $this->getIssueTime();
+    } 
     /**
      * true if expired token.
      * 
      * @return boolean
      */
-    public function hasExpired(){    	    	
-    	return time() > $this->expires_at;
-    }
+    public function hasExpired(){
+    	return time() > $this->getExpiresAt();
+    }    
 }

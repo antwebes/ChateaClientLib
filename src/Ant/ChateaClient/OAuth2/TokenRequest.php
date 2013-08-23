@@ -10,11 +10,20 @@ class TokenRequest
     private $httpClient;
     private $clientConfig;
 	private $chateaConfig;
+	
     public function __construct(Client $client, 
     			ClientConfigInterface $clientConfig, 
     			ChateaConfigInterface $chateaConfig
 	){
-    	
+    	if(!$client){
+    		throw new TokenRequestException("client is not null");
+    	}
+    	if(!$clientConfig){
+    		throw new TokenRequestException("clientConfig is not null");
+    	}    	
+    	if(!$chateaConfig){
+    		throw new TokenRequestException("chateaConfig is not null");
+    	}    	
         $this->httpClient = $client;
         $this->clientConfig = $clientConfig;
         $this->chateaConfig = $chateaConfig;
@@ -36,6 +45,8 @@ class TokenRequest
     			"client_id"=>$this->clientConfig->getClientId(),
     			"client_secret"=>$this->clientConfig->getClientSecret()
     	);    	
+    	
+    	$request = null;
     	
         if ($this->clientConfig->getCredentialsInRequestBody()) {
             // provide credentials in the POST body

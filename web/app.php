@@ -46,13 +46,14 @@ try {
 
 //	echo "<br><br>". $api->getWhoami(). "<br><br>";
 	
-	
-// 	echo "<br><br>". $api->deleteUser(1). "<br><br>";
+  echo "<br><br>". $api->getProfile(). "<br><br>";
+ 	echo "<br><br>". $api->deleteUser(). "<br><br>";
 
 	
 //	echo "<br><br>". ChateaApi::register($chateaConfig, 'xabierAll2', 'xabier@none.com', '123456', '123456'). "<br><br>";
 	
-	echo "<br><br>". ChateaApi::requestResetpassword($chateaConfig, "xabierAll2");	
+//	echo "<br><br>". ChateaApi::requestResetpassword($chateaConfig, "xabierAll2");
+	
 }catch (\Exception $e){
 	echo $e->getMessage();
 }

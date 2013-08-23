@@ -30,7 +30,7 @@ class ChateaApi
 	const URI_PATCH_PORFILE_CHANGE_PASSWORD = 'api/profile/change-password';
 	const URI_GET_ALL_USERS 				= 'api/user/list';
 	const URI_GET_USER_ME 					= 'api/user/me';
-	const URI_DELETE_USER 					= "api/user";
+	const URI_DELETE_USER 					= "api/user/";
 	const URI_POST_REGISTER					= "register";  
 	const URI_POST_RESETTING_EMAIL 			= "resetting/send-email";
 	
@@ -106,8 +106,8 @@ class ChateaApi
 	public function authenticate(){		
 
 		$accesTokenInStore = $this->store->getAccessToken($this->client_id);
-		
-		//TODO if it is not in store or it has expired  new session.
+
+		//TODO if it is not in store and  it has expired  new session.
 		if(!$accesTokenInStore || $accesTokenInStore->hasExpired()){
 			$this->chateaAut = $this->chateaAut->authenticate();
 			//save in store
@@ -464,12 +464,9 @@ class ChateaApi
     } 
 
 
-    public function deleteUser($id){
+    public function deleteUser(){
 
-    	if(!$id || !is_numeric($id) || is_null($id)){
-    		throw new ChateaApiException('ChateaApi: '. sprintf("missing field 'id' is '%s'", $id));
-    	}    	
-    	
+   	
     	$this->authenticate();
     	
     	$headers = array('Accept'=>$this->getHeaderAccept(),
@@ -477,7 +474,7 @@ class ChateaApi
     	
     	
     	
-    	$request = $this->getClient()->delete(self::URI_DELETE_USER.'/'.$id, $headers);
+    	$request = $this->getClient()->delete(self::URI_DELETE_USER, $headers);
     	 
     	try {
     		return $request->send()->getBody();

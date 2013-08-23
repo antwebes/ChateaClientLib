@@ -9,19 +9,16 @@ class RefreshToken extends Token
     
     /** expires_in INTEGER DEFAULT NULL */
     private $expiresIn;
-    /** expires_in INTEGER DEFAULT NOT NULL */
-    private $expires_at;
+
     
-    public function __construct($tokenValue, $expiresIn = null, Scope $scope = null,  $issueTime = null)
+    public function __construct($tokenValue, $expiresIn = null, $issueTime = null, Scope $scope = null)
     {
 
-    	parent::__construct($tokenValue,$scope,$issueTime);
-        
+    	parent::__construct($tokenValue,$issueTime,$scope);
         
         //FIXME: is required param expires_in                
         $this->setExpiresIn($expiresIn);    
-        
-        $this->expires_at = $this->getIssueTime() + $this->getExpiresIn(); 
+                
     }
     
     /**
@@ -44,7 +41,7 @@ class RefreshToken extends Token
     			throw new TokenException("expires_in should be positive integer or null");
     		}
     		$expiresIn = (int) $expiresIn;
-    	}
+    	}    	
     	$this->expiresIn = $expiresIn;    	
     }
     
@@ -53,10 +50,10 @@ class RefreshToken extends Token
      * @return boolean
      */
     public function hasExpired(){
-    	return time() > ($this->getIssueTime() + $this->getExpiresIn());
+    	return time() > $this->getExpiresAt();
     }    
 
     public function getExpiresAt(){
-    	return $this->expires_at;
+    	return $this->getExpiresIn()+ $this->getIssueTime();
     }    
 }

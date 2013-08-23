@@ -11,7 +11,7 @@ class TokenType
 	 */
 	const BEARER = "Bearer";
 	
-	private $name;
+	private $tokenName;
 	
 	public function __construct($tokenName){
 		if (!is_string($tokenName) || 0 >= strlen($tokenName)) {
@@ -21,10 +21,10 @@ class TokenType
 	}
 
 	public function getName() {
-		return $this->name;
+		return $this->tokenName;
 	}
 	
-	public function setName($name) {
+	public function setName($tokenName) {
 		if (!is_string($tokenName) || 0 >= strlen($tokenName)) {
 			throw new TokenException("TokenType: tokenName needs to be a non-empty string");
 		}

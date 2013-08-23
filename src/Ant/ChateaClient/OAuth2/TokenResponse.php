@@ -38,7 +38,7 @@ class TokenResponse
         }
         $tokenResponse = null;        
         if (array_key_exists('refresh_token', $data)) {
-        	$tokenResponse = new RefreshToken($data['refresh_token']);
+        	$tokenResponse = new RefreshToken($data['refresh_token'],time(),$scope);
         }
                 
         $tokenResponse = new static(
@@ -46,15 +46,13 @@ class TokenResponse
         				$data['access_token'],
         				new TokenType($data['token_type']),
         				$data['expires_in'],
-        				$scope,
-        				time()
-        			
+        				time(),
+        				$scope        				
         		),
         		$tokenResponse,
         		$data['expires_in'],
         		$scope
         	);
-               
         
         return $tokenResponse;
     }

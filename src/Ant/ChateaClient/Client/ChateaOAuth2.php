@@ -95,7 +95,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 			
 			$this->accesToken 	= $tokenResponse->getAccessToken();
 			$this->refreshToken = $tokenResponse->getRefreshToken();
-			$this->expiresIn = time() + $tokenResponse->getExpiresIn();	
+			$this->expiresIn 	= $tokenResponse->getExpiresIn();	
 					
 			return $this;			
 				

@@ -17,18 +17,18 @@ namespace Ant\ChateaClient\OAuth2;
 class Scope
 {
     private $name;
-    private $parentName;
+    private $parent;
 
     /**
      * 
      */
-    public function __construct($name, Scope $parentName = null)
+    public function __construct($name, Scope $parent = null)
     {
-    	if (!is_string($name)) {
-    		throw new TokenException("Scope: param 'name' needs to be string");
+    	if (!is_string($name) || 0 >= strlen($name)) {
+    		throw new ScopeException("Scope: param 'name' needs to be string");
     	}   	
-        $this->name = self::normalize($name);
-        $this->parentName = $parentName;
+        $this->name = $this->normalize($name);
+        $this->parent = $parent;
     }
 
     /**
@@ -42,9 +42,9 @@ class Scope
     /**
      * @return Scope
      */
-    public function getParentName()
+    public function getParent()
     {
-        return $this->parentName;
+        return $this->parent;
     }
     
     public static function validate(Scope $scope)
@@ -53,13 +53,13 @@ class Scope
     	$scopeRegExp = sprintf('/^%s(?: %s)*$/', $scopeTokenRegExp, $scopeTokenRegExp);
     	$result = preg_match($scopeRegExp, $scope->getName());
     	if (1 !== $result) {
-    		throw new TokenException(sprintf("Scope: invalid scope '%s'", $scope->getName()));
+    		throw new ScopeException(sprintf("Scope: invalid scope '%s'", $scope->getName()));
     	}
     }
     
-    private static function normalize(Scope $scope)
+    private function normalize($scope_name)
     {
-    	$explodedScope = explode(" ", $scope->getName());
+    	$explodedScope = explode(" ", $scope_name);
     	sort($explodedScope, SORT_STRING);
     
     	return implode(" ", array_values(array_unique($explodedScope, SORT_STRING)));

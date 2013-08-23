@@ -26,18 +26,18 @@ class Token
      * Create a new object of type Token 
      * 
      * @param string $tokenValue the string what represent data in base64
-     * @param Scope $scope A Scope is a permission setting that specifies access to a users, to non-public data.
      * @param string $issueTime
+     * @param Scope $scope A Scope is a permission setting that specifies access to a users, to non-public data.
      */
-    public function __construct($tokenValue, Scope $scope = null,  $issueTime = null)
+    public function __construct($tokenValue, $issueTime = null, Scope $scope = null)
     {
 
     	$this->setValue($tokenValue);        
-
+    	
+    	$this->setIssueTime($issueTime);
+    	    	
         $this->setScope($scope);
-        
-        $issueTime = $issueTime !== null && is_numeric($issueTime)?$issueTime:time();
-        $this->setIssueTime($issueTime);        
+        		      
     }
     
     /**
@@ -113,11 +113,13 @@ class Token
      */
     public function setIssueTime($issueTime)
     {
-        if (!is_numeric($issueTime) || 0 >= $issueTime) {
-            throw new TokenException("Token: issue_time should be positive integer");
-        }
+    	if (null !== $issueTime) {
+    		if (!is_numeric($issueTime) || 0 >= $issueTime) {
+                throw new TokenException("issueTime should be positive integer or null");
+            }
+            $issueTime = (int) $issueTime;
+        } 
         $this->issueTime = (int) $issueTime;
-
     }
 	/**
 	 * 
