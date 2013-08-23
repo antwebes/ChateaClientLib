@@ -20,7 +20,7 @@ try {
 		
 	$api->authenticate();
 	
-  print ( "<br><br>".$api->getBearerToken() . "<br><br>");
+  	print ( "<br><br>".$api->getBearerToken() . "<br><br>");
 	
   
 // echo "<br><br>".$api->getAllChannels() ."<br><br>" ;

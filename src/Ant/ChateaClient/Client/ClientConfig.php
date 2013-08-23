@@ -16,15 +16,9 @@ class ClientConfig implements ClientConfigInterface {
 	private $redirectUri;
 	/* true: provide credentials client_id and secret in the POST body */
 	private $credentialsInRequestBody;
-	/* is required in Authorization for Resource Owner Password Credentials Grant (section-4.3.2)*/
-	private $userId;
-	/* is required in Authorization for Resource Owner Password Credentials Grant (section-4.3.2)*/
-	private $passwordId;
 	/*header Accept: only xmlor json */
 	private $accept;
-	
 
-	
 	/**
 	 * Create object ChateaConfig.   
 	 * 
@@ -48,23 +42,35 @@ class ClientConfig implements ClientConfigInterface {
 		$credentialsInRequestBody = array_key_exists(
 				'credentials_in_request_body', $data) ? $data['credentials_in_request_body']
 				: false;
-		
+
 		$this->setCredentialsInRequestBody($credentialsInRequestBody);
 
-		
-		$accept = array_key_exists('header-accept',$data)?$data['header-accept']:self::ACCEPT_JSON;
-		$this->setAccept($accept);
-		
+		if (array_key_exists('data_format', $data)) {			
+			$accept = $this
+					->setAccept(
+							self::getAcceptHeader(
+									$data['data_format']));
+		} else {
+			$this->setAccept(self::ACCEPT_JSON);
+		}
+
 	}
 
-	public static function fromJSONFile($filename) {
+	public static function fromJSONFile($filename = "client_secrets.json") {
+
 		if (!file_exists($filename)) {
-			throw new ConfigException(
-					sprintf("file '%s' not exist ", $filename));
+			//TODO check file in default directory		
+			$filename = getcwd() . DIRECTORY_SEPARATOR . 'app'
+					. DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR
+					. $filename;
+			if (!file_exists($filename)) {
+				throw new ConfigException(
+						sprintf("file '%s' not exist ", $filename));
+			}
 		}
-           
-		return new static(
-				json_decode(file_get_contents($filename), true));;
+
+		return new static(json_decode(file_get_contents($filename), true));
+		;
 	}
 	public static function fromArray(array $data) {
 
@@ -124,14 +130,15 @@ class ClientConfig implements ClientConfigInterface {
 					"ClientConfig: header must be a non-empty string or null");
 		}
 
-		if (!strcmp($header_accept, self::ACCEPT_JSON ) && !strcmp($header_accept,self::ACCEPT_XML )) {
+		if (!strcmp($header_accept, self::ACCEPT_JSON)
+				&& !strcmp($header_accept, self::ACCEPT_XML)) {
 			throw new ConfigException(
-				"ClientConfig: In this library version only is valid the header type json or xml");
-		}		
-		
+					"ClientConfig: In this library version only is valid the header type json or xml");
+		}
+
 		$this->accept = $header_accept;
-	}	
-	
+	}
+
 	private function validateUserData($userPass) {
 		if (1 !== preg_match(self::REGEXP_VSCHAR, $userPass)) {
 			throw new ConfigException(
@@ -152,5 +159,19 @@ class ClientConfig implements ClientConfigInterface {
 		}
 	}
 
+	public static function getAcceptHeader($name = "json"){
+		
+		if("JSON" !== strtoupper($name)  && "XML" !== strtoupper($name)){
+			throw new ConfigException(sprintf("field data format with value '%s' is not supported", $name));
+		}		
+		switch (strtoupper($name)){
+			case "JSON":
+				return self::ACCEPT_JSON;
+			case "XML":
+				return self::ACCEPT_XML;
+			default:
+				return self::ACCEPT_JSON;												
+		}
+	}
 
 }

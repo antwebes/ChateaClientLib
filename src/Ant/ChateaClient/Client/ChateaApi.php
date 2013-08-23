@@ -4,7 +4,9 @@ namespace Ant\ChateaClient\Client;
 use Guzzle\Http\Client; 
 use Guzzle\Http\Exception\BadResponseException;
 use Ant\ChateaClient\OAuth2\ChateaConfigInterface;
+use Ant\ChateaClient\OAuth2\ConfigException;
 use Ant\ChateaClient\Client\StorageInterface;
+
 
 class ChateaApi
 {
@@ -34,7 +36,9 @@ class ChateaApi
 	const URI_POST_REGISTER					= "register";  
 	const URI_POST_RESETTING_EMAIL 			= "resetting/send-email";
 	
-	public function __construct($client_id, ChateaAuth $chateaAut,  StoreInterface $store = null, $accept_header = 'application/json')
+	public function __construct($client_id, ChateaAuth $chateaAut,  
+				StorageInterface $store = null, 
+				$accept_header = 'application/json')
 	{
 		if (!is_string($client_id) || 0 >= strlen($client_id)) {
 			throw new ConfigException(
@@ -108,6 +112,7 @@ class ChateaApi
 		$accesTokenInStore = $this->store->getAccessToken($this->client_id);
 
 		//TODO if it is not in store and  it has expired  new session.
+		
 		if(!$accesTokenInStore || $accesTokenInStore->hasExpired()){
 			$this->chateaAut = $this->chateaAut->authenticate();
 			//save in store
@@ -115,7 +120,9 @@ class ChateaApi
 			$this->store->setRefreshToken($this->client_id, $this->chateaAut->getRefreshToken());
 			$this->bearerToken = $this->chateaAut->getAccessToken()->getValue();
 		}		
-		$this->bearerToken = $accesTokenInStore->getValue();
+		else{
+			$this->bearerToken = $accesTokenInStore->getValue();
+		}
 	}
 		
 	/**

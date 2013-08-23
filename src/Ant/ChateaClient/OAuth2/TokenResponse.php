@@ -11,11 +11,7 @@ class TokenResponse
     private $scope;
 
     public function __construct(AccessToken $accessToken, RefreshToken $refreshToken, $expiresIn, Scope $scope = null )
-    {
-    	if (!$accessToken) {
-    		throw new TokenResponseException(sprintf("missing field accessToken value is '%s'", $accessToken));
-    	}
-   	
+    {	    	    	
     	$this->setAccessToken($accessToken);
         $this->setTokenType($accessToken->getTokenType());
         $this->setExpiresIn($expiresIn);
@@ -38,7 +34,7 @@ class TokenResponse
         }
         $tokenResponse = null;        
         if (array_key_exists('refresh_token', $data)) {
-        	$tokenResponse = new RefreshToken($data['refresh_token'],time(),$scope);
+        	$tokenResponse = new RefreshToken($data['refresh_token'],$data['expires_in'],time(),$scope);
         }
                 
         $tokenResponse = new static(
@@ -108,6 +104,12 @@ class TokenResponse
      */
     public function setExpiresIn($expiresIn)
     {
+        if (null !== $expiresIn) {
+            if (!is_numeric($expiresIn) || 0 >= $expiresIn) {
+                throw new TokenResponseException("expires_in should be positive integer or null");
+            }
+            $expiresIn = (int) $expiresIn;
+        }
         $this->expiresIn = $expiresIn;
     }
 

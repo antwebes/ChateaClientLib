@@ -24,6 +24,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 	private $password;
 	    
 	public function __construct(
+			
 			ClientConfigInterface $clientConfig, 
 			$username, 
 			$password,
@@ -36,11 +37,11 @@ class ChateaOAuth2 extends  ChateaAuth {
 		$this->clientConfig = $clientConfig;
 		
 		if (!is_string($username) || 0 >= strlen($username)) {
-			throw new ChateaApiExceptionException("username must be a non-empty string");
+			throw new ChateaApiException("username must be a non-empty string");
 		}
 		 
 		if (!is_string($password) || 0 >= strlen($password)) {
-			throw new ChateaApiExceptionException("password must be a non-empty string");
+			throw new ChateaApiException("password must be a non-empty string");
 		}
 		
 		$this->username = $username;
@@ -54,11 +55,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 	public function authenticate(){
 		
 
-		$tokenRequest = new TokenRequest(
-				new Client($this->chateaConfig->getTokenEndpoint()), 
-				$this->clientConfig, 
-				$this->chateaConfig					
-		);
+		$tokenRequest = $this->getTokenRequest();
 		
 		try{
 			
@@ -84,11 +81,9 @@ class ChateaOAuth2 extends  ChateaAuth {
 
 	public function updateToken() 
 	{
-		$tokenRequest = new TokenRequest(
-				new Client($this->chateaConfig->getTokenEndpoint()), 
-				$this->clientConfig, 
-				$this->chateaConfig					
-		);
+		
+		$tokenRequest = $this->getTokenRequest();
+		
 		try{
 						
 			$tokenResponse =  $tokenRequest->withRefreshToken($this->refreshToken);		
@@ -111,11 +106,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 		$accesToken = $this->getAccessToken();
 		
 		if(!$accesToken){
-			$tokenRequest = new TokenRequest(
-				 
-					$this->clientConfig, 
-					$this->chateaConfig					
-		 	);
+			$tokenRequest = $this->getTokenRequest();
 			try{
 
 				$client = new Client($this->chateaConfig->getRevokeEndpoint());
@@ -152,7 +143,13 @@ class ChateaOAuth2 extends  ChateaAuth {
 		return time() > $this->expiresIn;	
 	}
 	
-	
+	protected function getTokenRequest(){
+		return new TokenRequest(
+				new Client($this->chateaConfig->getTokenEndpoint()), 
+				$this->clientConfig, 
+				$this->chateaConfig					
+		);
+	}
 	public function getChateaConfig(){
 		return $this->chateaConfig;
 	}

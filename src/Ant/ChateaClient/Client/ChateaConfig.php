@@ -33,7 +33,7 @@ class ChateaConfig implements ChateaConfigInterface {
 	{
 
 		if(!file_exists($filename) ){
-			$filename = __DIR__.'/'.$filename;
+			$filename = __DIR__.DIRECTORY_SEPARATOR.$filename;
 			if(!file_exists($filename)){
 				throw new ConfigException(sprintf("file '%s' not exist ", $filename));
 			}

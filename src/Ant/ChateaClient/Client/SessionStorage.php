@@ -17,6 +17,8 @@ class SessionStorage implements StorageInterface
             // no session currently exists, start a new one
             session_start();
         }
+        $_SESSION['ant-chatea-client'] = array();
+        unset($_SESSION['ant-chatea-client']);
     }
 	
     public static function getInstance()

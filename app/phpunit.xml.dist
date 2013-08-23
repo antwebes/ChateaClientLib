@@ -9,10 +9,9 @@
     convertWarningsToExceptions = "true"
     processIsolation            = "false"
     stopOnFailure               = "false"
-    syntaxCheck                 = "false">
-    
+    syntaxCheck                 = "false">        
     <testsuites>
-        <testsuite>
+        <testsuite name="chatea-client">
             <directory>../tests/Ant/ChateaClient/Tests</directory>
         </testsuite>
     </testsuites>

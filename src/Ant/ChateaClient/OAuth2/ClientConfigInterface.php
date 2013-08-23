@@ -16,4 +16,6 @@ interface ClientConfigInterface
 	public function getCredentialsInRequestBody();
 	public function getAccept();
 	public function setAccept($header);
+	
+	public static function getAcceptHeader($name = "json");
 }

@@ -86,6 +86,7 @@ class AccessToken extends Token
     }
     
     public function getExpiresAt(){
+    	
     	return $this->getExpiresIn()+ $this->getIssueTime();
     } 
     /**
