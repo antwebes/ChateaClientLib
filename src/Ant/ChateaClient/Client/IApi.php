@@ -4,6 +4,28 @@ namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\Http\IHttpClient;
 interface IApi
 {
+	const URI_CHANNELS_SHOW					= 'api/channel/';
+	const URI_CHANNEL_ADD	 				= 'api/channel/';
+	const URI_CHANNEL_UPDATE				= 'api/channel/';
+	const URI_CHANNEL_DEL	 				= 'api/channel/';
+	const URI_CHANNEL_SHOW	 				= 'api/channel/';		
+	//--------------------------------------------------------------------------
+	const URI_ME_FRIENDS_SHOW				= 'api/me/friends';
+	//--------------------------------------------------------------------------
+	const URI_FRIENDSHIPS_REQUEST_SHOW		= 'api/me/friends';
+	const URI_FRIENDSHIPS_PENDING			= 'api/me/friends/pending';
+	//--------------------------------------------------------------------------
+	const URI_GET_PORFILE 					= 'api/profile/';
+	const URI_PATCH_PORFILE					= 'api/profile/edit';
+	const URI_PUT_PORFILE					= 'api/profile/edit';
+	const URI_PATCH_PORFILE_CHANGE_PASSWORD = 'api/profile/change-password';
+	//--------------------------------------------------------------------------	
+	const URI_GET_ALL_USERS 				= 'api/user/list';
+	const URI_GET_USER_ME 					= 'api/user/me';
+	const URI_DELETE_USER 					= "api/user/";
+	//--------------------------------------------------------------------------	
+	const URI_REGISTER						= "register";
+	const URI_RESETTING_PASSWORD 			= "resetting/send-email";	
 
 	//GET /api/channel/ 
 	/**
@@ -37,7 +59,7 @@ interface IApi
 	/**
 	 * show a channel by id
 	 * 
-	 * @param unknown $id
+	 * @param number $id
 	 */
 	public function showChannel($id);	
 	// 	GET /api/me/friends

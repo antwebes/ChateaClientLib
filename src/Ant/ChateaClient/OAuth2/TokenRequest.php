@@ -1,9 +1,6 @@
 <?php
 namespace Ant\ChateaClient\OAuth2;
 
-use Guzzle\Http\Client;
-use Guzzle\Http\Message\Request;
-use Guzzle\Http\Exception\ClientErrorResponseException;
 use Ant\ChateaClient\Http\IHttpClient;
 use Ant\ChateaClient\OAuth2\Ant\ChateaClient\OAuth2;
 use Ant\ChateaClient\Http\Exception\HttpClientException;
@@ -11,25 +8,37 @@ use Ant\ChateaClient\Http\Exception\HttpClientException;
 class TokenRequest
 {
     private $httpClient;
-    private $clientConfig;
+    private $oauthClient;
 	
-    public function __construct(IOAuth2Client $oauthClient, IHttpClient $httpClient){
+    public function __construct(IOAuth2Client $oauthClient, IHttpClient $httpClient)
+    {
 
     	if(!$oauthClient){
     		throw new TokenRequestException("OAuth2Client is not null");
     	}    	
-    	if(!$client){
-    		throw new TokenRequestException("Client is not null");
-    	}    	
-    	if (!is_string($this->httpClient->getUrl()) || 0 >= strlen($this->httpClient->getUrl())) {
+    	if(!$httpClient){
+    		throw new TokenRequestException("HttpClient is not null");
+    	}    	    	
+    	if (!is_string($httpClient->getUrl()) || 0 >= strlen($httpClient->getUrl())) {
     		$this->httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
-    	}
-    	
-    	$this->clientConfig = $oauthClient;
-        $this->httpClient = $client;
+    	}    	
+    	$this->oauthClient = $oauthClient;
+        $this->httpClient = $httpClient;
     }
 
-    public function withAuthorizationCode($auth_code){
+    private function getTokenResponse($data)
+    {
+    	$this->httpClient->addPostData($data);
+    	 
+    	try {
+    		$data_json = $this->httpClient->send(true);
+    		return TokenResponse::fromArray($data_json);
+    	} catch (HttpClientException $e) {    		
+    		throw new TokenRequestException($e->getMessage());
+    	}    	
+    }
+    public function withAuthorizationCode($auth_code)
+    {
     	if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
     		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
     	}
@@ -42,17 +51,12 @@ class TokenRequest
     	$data = array (
     			"grant_type" => 'authorization_code',
     			"code" => $auth_code,    			
-    			"client_id"=>$this->clientConfig->getPublicId(),
-    			"client_secret"=>$this->clientConfig->getSecret(),
-    			"redirect_uri"=>$this->clientConfig->getRedirectUri()
+    			"client_id"=>$this->oauthClient->getPublicId(),
+    			"client_secret"=>$this->oauthClient->getSecret(),
+    			"redirect_uri"=>$this->oauthClient->getRedirectUri()
     	); 
 		
-    	try {
-			$data_json = $this->httpClient->send(true);
-			return TokenResponse::fromArray($data_json);
-		} catch (HttpClientException $e) {
-			throw new TokenRequestException($e->getMessage());
-		}
+		return $this->getTokenResponse($data);
 		
     }
     public function withUserCredentials($username, $password){
@@ -75,12 +79,8 @@ class TokenRequest
     			"client_id"=>$this->clientConfig->getPublicId(),
     			"client_secret"=>$this->clientConfig->getSecret()
     	);    	
-    	try {
-    		$data_json = $this->httpClient->send(true);
-    		return TokenResponse::fromArray($data_json);
-    	} catch (HttpClientException $e) {
-    		throw new TokenRequestException($e->getMessage());
-    	}
+    	
+		return $this->getTokenResponse($data);
     }
 
     public function withClientCredentials()
@@ -99,12 +99,8 @@ class TokenRequest
     			"client_secret"=>$this->clientConfig->getSecret(),
     			"redirect_uri"=>$this->clientConfig->getRedirectUri()
     	);
-    	try {
-    		$data_json = $this->httpClient->send(true);
-    		return TokenResponse::fromArray($data_json);
-    	} catch (HttpClientException $e) {
-    		throw new TokenRequestException($e->getMessage());
-    	}    	
+
+    	return $this->getTokenResponse($data);
     }
     public function withRefreshToken(RefreshToken $refreshToken)
     {
@@ -121,11 +117,7 @@ class TokenRequest
     			"client_id"=>$this->clientConfig->getPublicId(),
     			"client_secret"=>$this->clientConfig->getSecret()
     	);
-    	try {
-    		$data_json = $this->httpClient->send(true);
-    		return TokenResponse::fromArray($data_json);
-    	} catch (HttpClientException $e) {
-    		throw new TokenRequestException($e->getMessage());
-    	} 
+    	
+		return $this->getTokenResponse($data);
     } 
 }

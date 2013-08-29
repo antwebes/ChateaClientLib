@@ -12,9 +12,11 @@ $oauthClient = new OAuth2ClientAuthCode(
 		'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ',
 		'http://www.chateagratis.net/'
 		);
-$httpClient = new HttpClient();
+$httpClient = new HttpClient(HttpClient::TOKEN_ENDPOINT);
 try {
-	$tokenRquest = new TokenRequest($oauthClient, $httpClient)
+	$tokenRquest = new TokenRequest($oauthClient, $httpClient);
+	$tokenRquest->withAuthorizationCode('OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ');
+	echo $tokenRquest;
 	// autenticamos
 //	$auth = new ChateaOAuth2($clientConfig, 'xabier','xabier');
 	

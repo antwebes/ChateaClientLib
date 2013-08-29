@@ -1,37 +1,28 @@
 <?php
 namespace Ant\ChateaClient\Client;
 
-use Guzzle\Http\Client;
-use Ant\ChateaClient\Client\ChateaAuth;
-use Ant\ChateaClient\OAuth2\ConfigException;
 use Ant\ChateaClient\OAuth2\TokenRequest;
-use Ant\ChateaClient\OAuth2\ChateaConfigInterface;
-use Ant\ChateaClient\OAuth2\ClientConfigInterface;
 use Ant\ChateaClient\OAuth2\AccessToken;
 use Ant\ChateaClient\OAuth2\RefreshToken;
 use Ant\ChateaClient\OAuth2\TokenResponse;
-use Ant\ChateaClient\OAuth2\Scope;
 use Ant\ChateaClient\OAuth2\TokenException;
-class ChateaOAuth2 extends  ChateaAuth {
+use Ant\ChateaClient\OAuth2\Scope;
+use Ant\ChateaClient\Http\IHttpClient;
+
+class OAuth2 extends  IAuthentication 
+{
 		
 	
 	private $clientConfig;
-	private $chateaConfig;
+	private $httpClient;
 	private $accesToken;
 	private $refreshToken;
 	private $expiresIn;
-	private $username;
-	private $password;
 	    
-	public function __construct(
-			
-			ClientConfigInterface $clientConfig, 
-			$username, 
-			$password,
-			ChateaConfigInterface $chateaConfig = null)
+	protected function __construct(IOAuth2Client $oauthClient, IHttpClient $httpClient)
 	{
-		if(!$clientConfig){
-			throw ConfigException(sprintf("missing field client_config is '%s'", $clientConfig));
+		if(!$oauthClient){
+			throw ConfigException(sprintf("missing field client_config is '%s'", $oauthClient));
 		}
 		
 		$this->clientConfig = $clientConfig;
@@ -138,7 +129,7 @@ class ChateaOAuth2 extends  ChateaAuth {
 	 * 
 	 * @return bool Returns True if the access_token is expired.
 	 */
-	public function isAccessTokenExpired() 
+	public function isAuthenticationExpired() 
 	{
 		return time() > $this->expiresIn;	
 	}

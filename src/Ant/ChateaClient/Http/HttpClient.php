@@ -16,11 +16,12 @@ class HttpClient extends Client implements IHttpClient
 	public function __construct(
 				$baseUrl = '', 
 				$bearerToken = '',
+				$config = null,
 				$accept_header = 'application/json',  
 				$content_type_header = 'application/json'
 	){
 		
-	    if (!is_string($token_value) || 0 >= strlen($token_value)) {
+	    if (!is_string($baseUrl) || 0 >= strlen($baseUrl)) {
             $baseUrl = self::SERVER_ENDPOINT;
         }
         
@@ -43,15 +44,18 @@ class HttpClient extends Client implements IHttpClient
 	public function addGetData($data = null, $uri = null){	
 		$this->request = $this->createRequest("GET", $uri, null, array('query' =>$data), array() );
 	}
-	public function addPostData($data, $uri)
+	
+	public function addPostData($data = null, $uri = null)
 	{
 		
 		$this->request = $this->createRequest("POST",$uri,null,json_encode($data), array());
 	}
-	public function addDeleteData($postData= null, $uri = null)
+	
+	public function addDeleteData($data= null, $uri = null)
 	{
 		$this->request = $this->createRequest("DELETE",$uri,null,json_encode($data), array());		
 	}
+	
 	public function addPutData($putData = null, $uri = null)
 	{
 		$this->request = $this->createRequest("PUT",$uri,null,json_encode($data), array());		
@@ -68,14 +72,10 @@ class HttpClient extends Client implements IHttpClient
 	{
 		return $this->response;
 	}	
-	public function getAcceptHeader()
+	public function getHeaderAccept()
 	{
 		return $this->accept_header;
 	}
-	public function getAcceptHeader()
-	{
-		return $this->accept_header;
-	}	
 	public function getContentHeader()
 	{
 		return $this->content_type_header;	
@@ -104,9 +104,12 @@ class HttpClient extends Client implements IHttpClient
 		if(!empty($this->bearerToken)){
 			array_push($headers, array('Authorization'=> sprintf("Bearer %s", $this->bearerToken)));
 		}
+		if(null == $this->request){
+			$this->request = $this->get("/");
+		}
+		$this->request->addHeaders($headers);		
+		$this->response = parent::send($this->request);	
 		
-		$this->defaultHeaders = new Collection($headers);
-		$this->response = parent::send($this->request);				
 		return $this->response->getBody($json_format); 
 			
 	}	
