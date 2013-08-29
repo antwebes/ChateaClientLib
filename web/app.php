@@ -1,26 +1,28 @@
 <?php
+use Ant\ChateaClient\OAuth2\TokenRequest;
+use Ant\ChateaClient\OAuth2\OAuth2Client;
+use Ant\ChateaClient\OAuth2\OAuth2ClientAuthCode;
+use Ant\ChateaClient\Http\HttpClient;
 require __DIR__.'/../vendor/autoload.php';
-
-use Ant\ChateaClient\Client\ClientConfig;
-use Ant\ChateaClient\Client\ChateaOAuth2;
-use Ant\ChateaClient\Client\ChateaApi;
-use Ant\ChateaClient\Client\ChateaConfig;
-use Ant\ChateaClient\Client\SessionStorage;
-
-$clientConfig = ClientConfig::fromJSONFile(__DIR__.'/../app/config/client_secrets.json');
-$chateaConfig = ChateaConfig::createDefaultChateaConfig();
 //session_unset();
 
-
+$oauthClient = new OAuth2ClientAuthCode(
+		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
+		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w',
+		'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ',
+		'http://www.chateagratis.net/'
+		);
+$httpClient = new HttpClient();
 try {
+	$tokenRquest = new TokenRequest($oauthClient, $httpClient)
 	// autenticamos
-	$auth = new ChateaOAuth2($clientConfig, 'xabier','xabier');
+//	$auth = new ChateaOAuth2($clientConfig, 'xabier','xabier');
 	
-	$api = new ChateaApi($clientConfig->getClientId(), $auth);
+//	$api = new ChateaApi($clientConfig->getClientId(), $auth);
 		
-	$api->authenticate();
+//	$api->authenticate();
 	
-  	print ( "<br><br>".$api->getBearerToken() . "<br><br>");
+//  	print ( "<br><br>".$api->getBearerToken() . "<br><br>");
 	
   
 // echo "<br><br>".$api->getAllChannels() ."<br><br>" ;

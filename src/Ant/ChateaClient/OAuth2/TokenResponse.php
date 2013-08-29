@@ -19,6 +19,10 @@ class TokenResponse
         $this->setScope($scope);
     }
 
+    public function formJson(string $data)
+    {
+    	return new static($data);
+    }
     public static function fromArray(array $data)
     {
         foreach (array('access_token', 'token_type','refresh_token','expires_in') as $key) {

@@ -4,32 +4,62 @@ namespace Ant\ChateaClient\OAuth2;
 use Guzzle\Http\Client;
 use Guzzle\Http\Message\Request;
 use Guzzle\Http\Exception\ClientErrorResponseException;
+use Ant\ChateaClient\Http\IHttpClient;
+use Ant\ChateaClient\OAuth2\Ant\ChateaClient\OAuth2;
+use Ant\ChateaClient\Http\Exception\HttpClientException;
 
 class TokenRequest
 {
     private $httpClient;
     private $clientConfig;
-	private $chateaConfig;
 	
-    public function __construct(Client $client, 
-    			ClientConfigInterface $clientConfig, 
-    			ChateaConfigInterface $chateaConfig
-	){
+    public function __construct(IOAuth2Client $oauthClient, IHttpClient $httpClient){
+
+    	if(!$oauthClient){
+    		throw new TokenRequestException("OAuth2Client is not null");
+    	}    	
     	if(!$client){
-    		throw new TokenRequestException("client is not null");
+    		throw new TokenRequestException("Client is not null");
+    	}    	
+    	if (!is_string($this->httpClient->getUrl()) || 0 >= strlen($this->httpClient->getUrl())) {
+    		$this->httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
     	}
-    	if(!$clientConfig){
-    		throw new TokenRequestException("clientConfig is not null");
-    	}    	
-    	if(!$chateaConfig){
-    		throw new TokenRequestException("chateaConfig is not null");
-    	}    	
+    	
+    	$this->clientConfig = $oauthClient;
         $this->httpClient = $client;
-        $this->clientConfig = $clientConfig;
-        $this->chateaConfig = $chateaConfig;
     }
-	
-    public function withPasswordCredentials($username, $password){
+
+    public function withAuthorizationCode($auth_code){
+    	if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
+    		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
+    	}
+    	if (!is_string($this->oauthClient->getRedirectUri()) || 0 >= strlen($this->oauthClient->getRedirectUri())) {
+    		throw new TokenRequestException("The rediret uri in your OAuth2Client needs to be a non-empty string");
+    	} 
+    	if (!is_string($auth_code) || 0 >= strlen($auth_code)) {
+    		throw new TokenRequestException("The auth code needs to be a non-empty string");
+    	}    	   	    	
+    	$data = array (
+    			"grant_type" => 'authorization_code',
+    			"code" => $auth_code,    			
+    			"client_id"=>$this->clientConfig->getPublicId(),
+    			"client_secret"=>$this->clientConfig->getSecret(),
+    			"redirect_uri"=>$this->clientConfig->getRedirectUri()
+    	); 
+		
+    	try {
+			$data_json = $this->httpClient->send(true);
+			return TokenResponse::fromArray($data_json);
+		} catch (HttpClientException $e) {
+			throw new TokenRequestException($e->getMessage());
+		}
+		
+    }
+    public function withUserCredentials($username, $password){
+    	if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
+    		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
+    	}
+    	    	
     	if (!is_string($username) || 0 >= strlen($username)) {
     		throw new TokenRequestException("username must be a non-empty string");
     	}
@@ -38,44 +68,64 @@ class TokenRequest
     		throw new TokenRequestException("password must be a non-empty string");
     	}
 
-    	$p = array (
+    	$data = array (
     			"username" => $username,
     			"password" => $password,
     			"grant_type" => "password",
-    			"client_id"=>$this->clientConfig->getClientId(),
-    			"client_secret"=>$this->clientConfig->getClientSecret()
+    			"client_id"=>$this->clientConfig->getPublicId(),
+    			"client_secret"=>$this->clientConfig->getSecret()
     	);    	
-    	
-    	$request = null;
-    	
-        if ($this->clientConfig->getCredentialsInRequestBody()) {
-            // provide credentials in the POST body
-            $request = $this->httpClient->post($this->chateaConfig->getTokenEndpoint())->addPostFields($p);
-        }else {
-            $request = $this->httpClient->get($this->chateaConfig->getTokenEndpoint(),array(),
-            			array('query' =>$p)
-            		);            
-        }
-        
-        $request->addHeader('Accept','application/json');
-        
-        try {
-            $response = $request->send();
-            return TokenResponse::fromArray($response->json());
-        } catch (ClientErrorResponseException $e) {
-        	throw new TokenRequestException($e->getResponse()->getBody());
-        }
+    	try {
+    		$data_json = $this->httpClient->send(true);
+    		return TokenResponse::fromArray($data_json);
+    	} catch (HttpClientException $e) {
+    		throw new TokenRequestException($e->getMessage());
+    	}
     }
-    
-    public function withAuthorizationCode($authorizationCode)
+
+    public function withClientCredentials()
     {
-    	// FIXME: This function isn't implemented on server
-    	throw new TokenRequestException("this method not implemented yet");
+
+    	if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
+    		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
+    	}
+    	if (!is_string($this->oauthClient->getRedirectUri()) || 0 >= strlen($this->oauthClient->getRedirectUri())) {
+    		throw new TokenRequestException("The rediret uri in your OAuth2Client needs to be a non-empty string");
+    	} 
+    	
+    	$data = array (
+    			"grant_type" => "client_credentials",
+    			"client_id"=>$this->clientConfig->getPublicId(),
+    			"client_secret"=>$this->clientConfig->getSecret(),
+    			"redirect_uri"=>$this->clientConfig->getRedirectUri()
+    	);
+    	try {
+    		$data_json = $this->httpClient->send(true);
+    		return TokenResponse::fromArray($data_json);
+    	} catch (HttpClientException $e) {
+    		throw new TokenRequestException($e->getMessage());
+    	}    	
     }
-    
     public function withRefreshToken(RefreshToken $refreshToken)
     {
-    	// FIXME: This function isn't implemented on server
-    	throw new TokenRequestException("this method not implemented yet");
-    }    
+        if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
+    		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
+    	}
+		if(!$refreshToken){
+			throw new TokenRequestException("The refreshToken is not null");
+		}
+    	
+    	$data = array (
+    			"grant_type" => "refrest_token",
+    			'refrest_token'=>$refreshToken->getValue(),
+    			"client_id"=>$this->clientConfig->getPublicId(),
+    			"client_secret"=>$this->clientConfig->getSecret()
+    	);
+    	try {
+    		$data_json = $this->httpClient->send(true);
+    		return TokenResponse::fromArray($data_json);
+    	} catch (HttpClientException $e) {
+    		throw new TokenRequestException($e->getMessage());
+    	} 
+    } 
 }

@@ -32,8 +32,7 @@ class AccessToken extends Token
     	}
     	
         $this->setTokenType($tokenType);
-        
-        //FIXME: is required param expires_in                
+          
         $this->setExpiresIn($expiresIn);        
 
     }

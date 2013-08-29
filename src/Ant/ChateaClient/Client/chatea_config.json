@@ -1,6 +1,0 @@
-{
-    "server_endpoint":      "http://api.chateagratis.local/app_dev.php/",
-    "authorize_endpoint":   "http://api.chateagratis.local/app_dev.php/oauth/v2/auth",
-    "token_endpoint":       "http://api.chateagratis.local/app_dev.php/oauth/v2/token",
-    "revoke_endpoint":      "http://api.chateagratis.local/app_dev.php/oauth/v2/revoke"
-}
