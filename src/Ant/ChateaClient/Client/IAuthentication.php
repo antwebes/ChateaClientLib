@@ -13,6 +13,7 @@ interface IAuthentication
 	
 	public function getAccessToken();
 	public function getRefreshToken();	
+	public function getClientId();
 	public function isAuthenticationExpired();
 
 }

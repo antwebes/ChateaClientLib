@@ -3,19 +3,20 @@ namespace Ant\ChateaClient\Http;
 
 use Guzzle\Http\Client;
 use Ant\ChateaClient\Http\HttpClientException;
+use Ant\ChateaClient\OAuth2\AccessToken;
 
 class HttpClient extends Client implements IHttpClient
 {
 
 	private $request;
 	private $response;
-	private $bearerToken;	
+	private $accesToken;	
 	private $accept_header;
 	private $content_type_header;
 	 
 	public function __construct(
 				$baseUrl = '', 
-				$bearerToken = '',
+				AccessToken $accesToken = null,
 				$config = null,
 				$accept_header = 'application/json',  
 				$content_type_header = 'application/json'
@@ -34,7 +35,7 @@ class HttpClient extends Client implements IHttpClient
                         
         $this->request 	= null;
         $this->response = null;
-        $this->bearerToken = $bearerToken;
+        $this->accesToken = $accesToken;
         $this->accept_header = $accept_header;
         $this->content_type_header = $content_type_header;
         
@@ -81,11 +82,16 @@ class HttpClient extends Client implements IHttpClient
 		return $this->content_type_header;	
 	}
 	
-	public function addBearerToken($bearerToken){
-		if (!is_string($bearerToken) || 0 >= strlen($bearerToken)) {
-			throw new HttpClientException("BearerToken must be a non-empty string",$this);
-		}		
-		$this->$bearerToken = $bearerToken;
+	public function addAccesToken(AccessToken $accesToken)
+	{
+		if(null == $accesToken || !$accesToken){
+			throw new HttpClientException("AccessToken is not null",$this);
+		}
+		if (!is_string($accesToken->getValue()) || 0 >= strlen($accesToken->getValue())) {
+			throw new HttpClientException("AccessToken value must be a non-empty string",$this);
+		}
+	
+		$this->accesToken = $accesToken;
 	}	
 	public function setBaseUrl($url)
 	{
@@ -98,12 +104,18 @@ class HttpClient extends Client implements IHttpClient
 	{
 		$headers = array(
 				'Accept'=>$this->getHeaderAccept(),
-				'Content-type'=>$this->getContentHeader()
+				'Content-type'=>$this->getContentHeader(),
 		);
 				
-		if(!empty($this->bearerToken)){
-			array_push($headers, array('Authorization'=> sprintf("Bearer %s", $this->bearerToken)));
+		if($this->accesToken !== null){
+			
+			$headers['Authorization']= sprintf("%s %s", 
+						$this->accesToken->getTokenType()->getName(),
+						$this->accesToken->getValue()
+						);
+			ld($headers);
 		}
+		
 		if(null == $this->request){
 			$this->request = $this->get("/");
 		}

@@ -1,6 +1,8 @@
 <?php
 namespace Ant\ChateaClient\Http; 
 
+use Ant\ChateaClient\OAuth2\AccessToken;
+
 interface IHttpClient
 {
 	const SERVER_ENDPOINT 			= "http://api.chateagratis.local/app_dev.php/";
@@ -13,6 +15,7 @@ interface IHttpClient
 	public function addDeleteData($data= null, $uri = null);
 	public function addPutData($data = null, $uri = null);
 	public function addPatchData($data =  null, $uri = null);
+	public function addAccesToken(AccessToken $accesToken);
 	public function getHeaderAccept();
 	public function getRequest();
 	public function getResponse();

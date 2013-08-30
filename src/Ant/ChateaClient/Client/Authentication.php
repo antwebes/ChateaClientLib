@@ -41,6 +41,10 @@ abstract class Authentication implements IAuthentication
 		$this->expires_at = 0;
 	}
 	
+	public function getClientId()
+	{
+		return $this->$oauthClient->getPublicId();
+	}
 	/**
 	 * @return \Ant\ChateaClient\OAuth2\AccessToken
 	 */
@@ -54,7 +58,8 @@ abstract class Authentication implements IAuthentication
 		if(null === $accesToken){
 			throw new TokenException('AccesToken is not null');
 		}
-		$this->accesToken = $accesToken;
+		
+		$this->accesToken = $accesToken;		
 	}	
 	/**
 	 * 
@@ -108,7 +113,7 @@ abstract class Authentication implements IAuthentication
 						
 			$tokenResponse =  $tokenRequest->withRefreshToken($this->refreshToken);		
 			
-			$this->accesToken 	= $tokenResponse->getAccessToken();
+			$this->accesToken 	= $tokenResponse->getAccessToken();			
 			$this->refreshToken = $tokenResponse->getRefreshToken();
 			$this->expires_at 	= time() + $tokenResponse->getExpiresIn();	
 					

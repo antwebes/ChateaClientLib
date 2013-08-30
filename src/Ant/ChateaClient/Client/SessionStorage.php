@@ -5,7 +5,7 @@ use Ant\ChateaClient\OAuth2\AccessToken;
 use Ant\ChateaClient\OAuth2\RefreshToken;
 use Ant\ChateaClient\Client\StorageInterface;
 
-class SessionStorage implements StorageInterface {
+class SessionStorage implements IStorage {
 
 	private static $session;
 

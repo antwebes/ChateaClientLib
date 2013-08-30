@@ -21,7 +21,7 @@ class AuthClientCredentials extends Authentication
 		
 		try{
 						
-			$tokenResponse =  $tokenRequest->withClientCredentials();					
+			$tokenResponse =  $tokenRequest->withClientCredentials();								
 			$this->setAccessToken($tokenResponse->getAccessToken());
 			$this->setRefreshToken($tokenResponse->getRefreshToken());
 					

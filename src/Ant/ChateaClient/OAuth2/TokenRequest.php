@@ -29,15 +29,15 @@ class TokenRequest
     }
 
     private function getTokenResponse($data)
-    {
+    {    	
     	$this->httpClient->addPostData($data);
     	 
     	try {
-    		$data_json = $this->httpClient->send(true);  		
+    		$data_json = $this->httpClient->send(true);
+    		ld($data_json);  		
     		return TokenResponse::formJson($data_json);
-    	} catch (HttpClientException $e) {  
-    		
-    		throw new TokenRequestException($e->getMessage());
+    	} catch (HttpClientException $e) {      		
+    		throw new TokenRequestException($e->getMessage(),-1,$e);
     	}    	
     }
     public function withAuthorizationCode($auth_code)
@@ -92,17 +92,12 @@ class TokenRequest
     	if (!is_string($this->oauthClient->getSecret()) || 0 >= strlen($this->oauthClient->getSecret())) {
     		throw new TokenRequestException("The secret in your OAuth2Client needs to be a non-empty string");
     	}
-    	if (!is_string($this->oauthClient->getRedirectUri()) || 0 >= strlen($this->oauthClient->getRedirectUri())) {
-    		throw new TokenRequestException("The rediret uri in your OAuth2Client needs to be a non-empty string");
-    	} 
-    	
+    	    	
     	$data = array (
     			"grant_type" => "client_credentials",
     			"client_id"=>$this->oauthClient->getPublicId(),
-    			"client_secret"=>$this->oauthClient->getSecret(),
-    			"redirect_uri"=>$this->oauthClient->getRedirectUri()
-    	);
-
+    			"client_secret"=>$this->oauthClient->getSecret()    			
+    	);		
     	return $this->getTokenResponse($data);
     }
     public function withRefreshToken(RefreshToken $refreshToken)

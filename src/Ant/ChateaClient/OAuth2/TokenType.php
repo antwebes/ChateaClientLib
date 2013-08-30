@@ -17,7 +17,8 @@ class TokenType
 		if (!is_string($tokenName) || 0 >= strlen($tokenName)) {
 			throw new TokenException("TokenType: tokenName needs to be a non-empty string");
 		}
-		$this->tokenName = $tokenName;		
+		
+		$this->tokenName = $tokenName;
 	}
 
 	public function getName() {
@@ -33,6 +34,6 @@ class TokenType
 	public function __toString()
 	{
 		return json_encode(
-				array('TokenType'=>array('Name' 	=> $this->getName())),JSON_PRETTY_PRINT);
+				array('TokenType'=>array('Name' => $this->getName())),JSON_PRETTY_PRINT);
 	}	
 }

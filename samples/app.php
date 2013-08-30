@@ -9,27 +9,32 @@ use Ant\ChateaClient\Http\HttpClient;
 use Ant\ChateaClient\Http\HttpClientException;
 use Ant\ChateaClient\OAuth2\OAuth2ClientCredentials ;
 use Ant\ChateaClient\Client\AuthClientCredentials;
+use Ant\ChateaClient\Client\Api;
 //session_unset();
 
 $oauthClient = new OAuth2ClientCredentials(
 		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
-		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w',
-		'http://www.chateagratis.net'
+		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w'
 		);
 $validAuthCode =  'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ';
 $validRefresToken = 'Mjk2M2RiNWEwOGJhYzQ2Y2JmMzI1ODlhNjgxZjQ3YTQ0ZDk3MjRmMjcxMmUxODVlNWMyODkyMzc4OTExZWZhMg';
 $validUsername = 'apiuser';
 $validpassword = 'apiuser';
 
-	$httpClient = new HttpClient(HttpClient::TOKEN_ENDPOINT);
-	$auth = new AuthClientCredentials($oauthClient,$httpClient);
+	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
+	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
+	$auth = new AuthClientCredentials($oauthClient,$httpClientAuth);
 try {
 
-	$auth->authenticate();
+	$auth = $auth->authenticate();
+	echo "TOKEN<br><br>";
+	echo $auth->getAccessToken();
+	echo "<br><br>";
+	$httpClientApi->addAccesToken($auth->getAccessToken());
+	$api = new Api($httpClientApi);
+	$api->showChannels();
+		
 	
-	echo  $auth->getAccessToken()->getValue();
-	echo "<br/><br/>";
-	echo  $auth->getRefreshToken()->getValue();
 	// autenticamos
 //	$auth = new ChateaOAuth2($clientConfig, 'xabier','xabier');
 	

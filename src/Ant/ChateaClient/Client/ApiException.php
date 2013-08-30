@@ -2,6 +2,7 @@
 
 namespace Ant\ChateaClient\Client;
 
-class ChateaApiException extends \Exception{
+class ApiException extends \Exception
+{
 
 }
