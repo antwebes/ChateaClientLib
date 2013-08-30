@@ -1,9 +1,11 @@
 <?php
 namespace Ant\ChateaClient\OAuth2;
 
+use Ant\ChateaClient\OAuth2\TokenResponse;
+use Ant\ChateaClient\OAuth2\TokenException;
+use Ant\ChateaClient\OAuth2\TokenRequestException;
 use Ant\ChateaClient\Http\IHttpClient;
-use Ant\ChateaClient\OAuth2\Ant\ChateaClient\OAuth2;
-use Ant\ChateaClient\Http\Exception\HttpClientException;
+use Ant\ChateaClient\Http\HttpClientException;
 
 class TokenRequest
 {
@@ -31,9 +33,10 @@ class TokenRequest
     	$this->httpClient->addPostData($data);
     	 
     	try {
-    		$data_json = $this->httpClient->send(true);
-    		return TokenResponse::fromArray($data_json);
-    	} catch (HttpClientException $e) {    		
+    		$data_json = $this->httpClient->send(true);  		
+    		return TokenResponse::formJson($data_json);
+    	} catch (HttpClientException $e) {  
+    		
     		throw new TokenRequestException($e->getMessage());
     	}    	
     }
@@ -76,8 +79,8 @@ class TokenRequest
     			"username" => $username,
     			"password" => $password,
     			"grant_type" => "password",
-    			"client_id"=>$this->clientConfig->getPublicId(),
-    			"client_secret"=>$this->clientConfig->getSecret()
+    			"client_id"=>$this->oauthClient->getPublicId(),
+    			"client_secret"=>$this->oauthClient->getSecret()
     	);    	
     	
 		return $this->getTokenResponse($data);
@@ -95,9 +98,9 @@ class TokenRequest
     	
     	$data = array (
     			"grant_type" => "client_credentials",
-    			"client_id"=>$this->clientConfig->getPublicId(),
-    			"client_secret"=>$this->clientConfig->getSecret(),
-    			"redirect_uri"=>$this->clientConfig->getRedirectUri()
+    			"client_id"=>$this->oauthClient->getPublicId(),
+    			"client_secret"=>$this->oauthClient->getSecret(),
+    			"redirect_uri"=>$this->oauthClient->getRedirectUri()
     	);
 
     	return $this->getTokenResponse($data);
@@ -112,10 +115,10 @@ class TokenRequest
 		}
     	
     	$data = array (
-    			"grant_type" => "refrest_token",
-    			'refrest_token'=>$refreshToken->getValue(),
-    			"client_id"=>$this->clientConfig->getPublicId(),
-    			"client_secret"=>$this->clientConfig->getSecret()
+    			"grant_type" => "refresh_token",
+    			'refresh_token'=>$refreshToken->getValue(),
+    			"client_id"=>$this->oauthClient->getPublicId(),
+    			"client_secret"=>$this->oauthClient->getSecret()
     	);
     	
 		return $this->getTokenResponse($data);

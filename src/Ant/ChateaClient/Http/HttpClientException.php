@@ -1,5 +1,5 @@
 <?php
-namespace Ant\ChateaClient\Http\Exception;
+namespace Ant\ChateaClient\Http;
 
 use Ant\ChateaClient\Http\IHttpClient;
 
@@ -9,11 +9,11 @@ class HttpClientException extends \Exception
 	protected $responseMessage;
 	
 	public function __construct (
-			string $message = "", 
+			$message = null, 
 			IHttpClient $httpClient = null,  
-			string $responseMessage = '', 
-			int $code = 0, 
-			Exception $previous = NULL 
+			$responseMessage = null, 
+			$code = null, 
+			\Exception $previous = null 
 	){
 
 		$message .= '\n\t Response message: '.$responseMessage;	

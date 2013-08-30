@@ -1,8 +1,6 @@
 <?php
 namespace Ant\ChateaClient\OAuth2;
-
-use Ant\ChateaClient\Http\Exception\HttpClientException;
-
+							  
 class OAuth2Client implements IOAuth2Client
 {
 	private $client_id;
@@ -12,7 +10,7 @@ class OAuth2Client implements IOAuth2Client
 	public function __construct($client_id, $secret = '', $redirect_uri = '')
 	{
 		if (!is_string($client_id) || 0 >= strlen($client_id)) {
-			throw new HttpClientException("client_id needs to be a non-empty string");
+			throw new OAuth2ClientException("client_id needs to be a non-empty string",$this);
 		}
 		$this->client_id = $client_id;
 		$this->secret_id = $secret;

@@ -19,12 +19,17 @@ class TokenResponse
         $this->setScope($scope);
     }
 
-    public function formJson(string $data)
-    {
-    	return new static($data);
+    /**
+     * 
+     * @param String $data
+     * @return \Ant\ChateaClient\OAuth2\TokenResponse
+     */
+    public static function formJson($data)
+    {    	
+    	return self::fromArray(json_decode($data, true));
     }
     public static function fromArray(array $data)
-    {
+    {    	
         foreach (array('access_token', 'token_type','refresh_token','expires_in') as $key) {
             if (!array_key_exists($key, $data)) {
                 throw new TokenResponseException(sprintf("missing field '%s'", $key));
@@ -40,7 +45,6 @@ class TokenResponse
         if (array_key_exists('refresh_token', $data)) {
         	$tokenResponse = new RefreshToken($data['refresh_token'],$data['expires_in'],time(),$scope);
         }
-                
         $tokenResponse = new static(
         		new AccessToken(
         				$data['access_token'],
@@ -158,5 +162,21 @@ class TokenResponse
     public function getScope()
     {
         return $this->scope;
+    }
+    
+    public function __toString()
+    {
+    	return json_encode(
+    			array('TokenResponse'=>
+    				array(
+    					'AccessToken' 	=> $this->getAccessToken()->getValue(),
+    					'RefreshToken' 	=> $this->getRefreshToken()->getValue(),
+    					'TokenType' 	=> $this->getTokenType()->getName(),
+    					'Scope' 		=> $this->getScope()?$this->getScope()->getName():null,
+    					'expiresIn'		=> $this->getExpiresIn()	
+    				)    						    		
+    	),
+    	JSON_PRETTY_PRINT
+    	);	
     }
 }

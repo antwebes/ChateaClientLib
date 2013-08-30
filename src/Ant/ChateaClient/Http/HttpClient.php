@@ -1,8 +1,8 @@
 <?php
 namespace Ant\ChateaClient\Http;
+
 use Guzzle\Http\Client;
-use Guzzle\Common\Collection;
-use Ant\ChateaClient\Http\Exception\HttpClientException;
+use Ant\ChateaClient\Http\HttpClientException;
 
 class HttpClient extends Client implements IHttpClient
 {
@@ -108,7 +108,18 @@ class HttpClient extends Client implements IHttpClient
 			$this->request = $this->get("/");
 		}
 		$this->request->addHeaders($headers);		
-		$this->response = parent::send($this->request);	
+		
+		try {
+		$this->response = parent::send($this->request);
+		}catch (\Guzzle\Http\Exception\BadResponseException $ex){						
+			throw new HttpClientException(
+					"Error to send request in HttpClient: ".$ex->getMessage(),
+					$this,
+					$ex->getResponse()->getMessage()
+			);
+		}catch (\Exception $ex){
+			throw $ex;
+		}	
 		
 		return $this->response->getBody($json_format); 
 			

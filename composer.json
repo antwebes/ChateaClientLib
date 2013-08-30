@@ -1,6 +1,5 @@
 {
 	"require" : {
-		"fkooman/guzzle-bearer-auth-plugin" : "dev-master",
 		"phpunit/phpunit" : "3.7.*",
 		"guzzle/guzzle" : "~3.7",
 		"phpdocumentor/reflection-docblock" : "2.0.*@dev",

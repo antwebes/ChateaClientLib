@@ -30,5 +30,9 @@ class TokenType
 		}
 		$this->tokenName = $tokenName;		
 	}
-	
+	public function __toString()
+	{
+		return json_encode(
+				array('TokenType'=>array('Name' 	=> $this->getName())),JSON_PRETTY_PRINT);
+	}	
 }

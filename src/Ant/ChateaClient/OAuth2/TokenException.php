@@ -6,10 +6,10 @@ class TokenException extends \Exception
 	private $token;
 	
 	public function __construct (
-			string $message = "",
+			$message = "",
 			Token $token = null,
-			int $code = 0,
-			Exception $previous = NULL
+			$code = 0,
+			$previous = NULL
 	){
 	
 		if($token != null){

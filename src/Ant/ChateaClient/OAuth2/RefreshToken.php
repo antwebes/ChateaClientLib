@@ -13,12 +13,10 @@ class RefreshToken extends Token
     
     public function __construct($tokenValue, $expiresIn = null, $issueTime = null, Scope $scope = null)
     {
-
-    	parent::__construct($tokenValue,$issueTime,$scope);
-        
-        //FIXME: is required param expires_in                
-        $this->setExpiresIn($expiresIn);    
-                
+    	//FIXME: is required param expires_in
+    	$this->setExpiresIn($expiresIn);
+    	
+    	parent::__construct($tokenValue,$issueTime,$scope);                
     }
     
     /**
