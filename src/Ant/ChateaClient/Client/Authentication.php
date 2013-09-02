@@ -20,7 +20,6 @@ abstract class Authentication implements IAuthentication
 	private $httpClient;
 	private $accesToken;
 	private $refreshToken;
-	private $expires_at;
 	    
 	protected function __construct(IOAuth2Client $oauthClient, IHttpClient $httpClient)
 	{
@@ -36,9 +35,8 @@ abstract class Authentication implements IAuthentication
 		}		
 		$this->oauthClient = $oauthClient;
 		$this->httpClient = $httpClient;
-		$this->accesToken = new AccessToken('not-acces-token');
-		$this->refreshToken = new RefreshToken('not-refrest-token');
-		$this->expires_at = 0;
+		$this->accesToken = null;
+		$this->refreshToken = null;
 	}
 	
 	public function getClientId()
@@ -81,7 +79,7 @@ abstract class Authentication implements IAuthentication
 	 */
 	public function isAuthenticationExpired()
 	{
-		return $this->getAccessToken()->hasExpired();
+		return $this->getAccessToken()?$this->getAccessToken()->hasExpired():true;
 	}
 	/**
 	 * 
@@ -104,18 +102,20 @@ abstract class Authentication implements IAuthentication
 		
 	public abstract  function authenticate();
 
-	public function updateToken() 
+	public function updateToken(RefreshToken $refreshToken = null) 
 	{
 		
 		$tokenRequest = $this->getTokenRequest();
 		
 		try{
-						
+			if($refreshToken != null){
+				$this->refreshToken = $refreshToken;
+			}	
+					
 			$tokenResponse =  $tokenRequest->withRefreshToken($this->refreshToken);		
 			
 			$this->accesToken 	= $tokenResponse->getAccessToken();			
 			$this->refreshToken = $tokenResponse->getRefreshToken();
-			$this->expires_at 	= time() + $tokenResponse->getExpiresIn();	
 					
 			return $this;			
 				
@@ -138,7 +138,6 @@ abstract class Authentication implements IAuthentication
 				$response = $this->httpClient->send();				
 				$this->accesToken = new AccessToken('not-acces-token');
 				$this->refreshToken = new RefreshToken('not-refrest-token');
-				$this->expires_at = 0;
 				
 				return $this;
 				

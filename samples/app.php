@@ -9,57 +9,105 @@ use Ant\ChateaClient\Http\HttpClient;
 use Ant\ChateaClient\Http\HttpClientException;
 use Ant\ChateaClient\OAuth2\OAuth2ClientCredentials ;
 use Ant\ChateaClient\Client\AuthClientCredentials;
+use Ant\ChateaClient\Client\AuthUserCredentials;
 use Ant\ChateaClient\Client\Api;
+use Ant\ChateaClient\Client\SessionStorage;
+use Ant\ChateaClient\OAuth2\OAuth2ClientUserCredentials;
 //session_unset();
 
-$oauthClient = new OAuth2ClientCredentials(
+$oauthClient = new OAuth2ClientUserCredentials(
 		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
-		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w'
+		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w',
+		'apiuser',
+		'apiuser'
 		);
 $validAuthCode =  'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ';
 $validRefresToken = 'Mjk2M2RiNWEwOGJhYzQ2Y2JmMzI1ODlhNjgxZjQ3YTQ0ZDk3MjRmMjcxMmUxODVlNWMyODkyMzc4OTExZWZhMg';
 $validUsername = 'apiuser';
 $validpassword = 'apiuser';
 
+
 	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
 	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
-	$auth = new AuthClientCredentials($oauthClient,$httpClientAuth);
-try {
+	$auth = new AuthUserCredentials($oauthClient,$httpClientAuth);
+	try {
 
+	/*
+try {
+	$store = SessionStorage::getInstance();
+	
+	$accessToken = $auth->getAccessToken();
+	$refreshToken = $auth->getRefreshToken();
+	
+	if($auth->isAuthenticationExpired()){
+		$accessToken = $store->findAccessTokenByClientId($oauthClient);
+		if(!$accessToken || $accessToken->hasExpired()){
+			//TODO refresToken has expired.
+			$refresToken = $store->findRefreshTokenByClientId($oauthClient);
+			if(!$refreshToken || $refreshToken->hasExpired()){
+				//new session
+				$auth = $auth->authenticate();
+				$accessToken = $auth->getAccessToken();
+				$refreshToken = $auth->getRefreshToken();
+			}else {
+				// new session with refresToken
+				$auth = $auth->updateToken();
+				$accessToken = $auth->getAccessToken();
+				$refreshToken = $auth->getRefreshToken();				
+			}
+			//TODO: save in store			
+			$store->updateAccessToken($oauthClient, $accessToken);
+			$store->updateRefreshToken($oauthClient, $refreshToken);
+			
+		}//else acessToken in store
+	}//else acessToken not espired
+	*/
 	$auth = $auth->authenticate();
+	$accessToken = $auth->getAccessToken();
+	$refreshToken = $auth->getRefreshToken();
+	$httpClientApi->addAccesToken($accessToken);
+	
 	echo "TOKEN<br><br>";
-	echo $auth->getAccessToken();
+	echo $accessToken->getValue();
 	echo "<br><br>";
-	$httpClientApi->addAccesToken($auth->getAccessToken());
+	
 	$api = new Api($httpClientApi);
-	$api->showChannels();
-		
+	echo $api->whoami();
+    echo $api->showMeFriends();	
+
+//----------------------------------------------------------------------------//		
+//----------    CHANNELS      ------------------------------------------------//
+//----------------------------------------------------------------------------//
+//	echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
+
+// 	echo "<br><br>". $api->updateChannel(20, 'new chanel only name')."<br><br>";
+
+// 	echo "<br><br>". $api->showChannel(20). "<br><br>";
+
+  	 
+// 	echo "<br><br>". $api->delChannel(19). "<br><br>";
 	
-	// autenticamos
-//	$auth = new ChateaOAuth2($clientConfig, 'xabier','xabier');
-	
-//	$api = new ChateaApi($clientConfig->getClientId(), $auth);
-		
-//	$api->authenticate();
-	
-//  	print ( "<br><br>".$api->getBearerToken() . "<br><br>");
-	
+// 	echo $api->showChannels(); 
   
-// echo "<br><br>".$api->getAllChannels() ."<br><br>" ;
-	
-	
-//	echo "<br><br>". $api->createChannel("My fantastic channel".time(), "My fantasatic tile".time(), "My fantasatic descripcion".time())."<br><br>";
- 
-//  	echo "<br><br>". $api->updateChannel(12, 'new chanel name',"title name", "title dess")."<br><br>";
-    
-//	echo "<br><br>". $api->deleteChannel(12). "<br><br>";
-	
-  
-//	echo "<br><br>". $api->getChannel('5'). "<br><br>";
+//	echo "<br><br>". $api->showChannel('5'). "<br><br>";
 	
 //	echo "<br><br>". $api->getProfile(). "<br><br>";
 
  	
+//----------------------------------------------------------------------------//		
+//----------    CHANNELS      ------------------------------------------------//
+//----------------------------------------------------------------------------//
+	//echo $api->whoami();
+	//echo $api->showMeFriends();	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	echo "<br><br>". $api->changePassword('xabier',"xabier","xabier"). "<br><br>";
 
 //	echo "<br><br>". $api->editProfile("xabier","noimalk@no.com",'xabier'). "<br><br>";	 
@@ -76,5 +124,8 @@ try {
 //	echo "<br><br>". ChateaApi::requestResetpassword($chateaConfig, "xabierAll2");
 	
 }catch (HttpClientException $e){
+	echo "Response Error: <br/><br/>";
 	echo $e->getResponseMessage();	
+	echo "<br/><br/>Only Error:<br/><br/>";
+	echo $e->getErrorMensage();
 }

@@ -3,87 +3,94 @@
 namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\OAuth2\AccessToken;
 use Ant\ChateaClient\OAuth2\RefreshToken;
-use Ant\ChateaClient\Client\StorageInterface;
+use Ant\ChateaClient\OAuth2\IOAuth2Client;
+use Ant\ChateaClient\Client\IStorage;
 
 class SessionStorage implements IStorage {
 
 	private static $session;
 
 	private function __construct() {
-		if ("" === session_id()) {
+		if ("" === session_id() && self::$session === NULL) {
 			// no session currently exists, start a new one
-			session_start();
+			session_start();	
 		}
-		$_SESSION['ant-chatea-client'] = array();
-		unset($_SESSION['ant-chatea-client']);
 	}
 
-	public static function getInstance() {
-		if (!self::$session instanceof self) {
-			self::$session = new self;
-		}
-		return self::$session;
-	}
-	public function findAccessTokenByClientId($client_id) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
+  public static function getInstance() {
+        if (self::$session === NULl) {
+            self::$session = new SessionStorage();
+        }
+ 		
+        return self::$session;
+    }
+	public function findAccessTokenByClientId(IOAuth2Client $client) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token'])) {
 			return false;
 		}
-		return unserialize(
-				$_SESSION['ant-chatea-client'][$client_id]['access_token']);
-
+		
+		$accessToken = unserialize(
+				$_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token']);
+		
+		return $accessToken;
+		
 	}
 
-	public function addAccessToken($client_id, AccessToken $accessToken) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
-			$_SESSION['ant-chatea-client'][$client_id]['access_token'] = array();
+	public function addAccessToken(IOAuth2Client $client, AccessToken $accessToken) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token'])) {
+			$_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token'] = array();
 		}
-
-		$_SESSION['ant-chatea-client'][$client_id]['access_token'] = serialize(
-				$accessToken);
+		
+		$_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token'] = serialize(
+				$accessToken);		
 		return true;
 	}
-	public function updateAccessToken($client_id, $accessToken) {
-		return $this->addAccessToken($client_id, $accessToken);
+	
+	public function updateAccessToken(IOAuth2Client $client, AccessToken $accessToken) {
+		return $this->addAccessToken($client, $accessToken);
 	}
-	public function deleteAccessToken($client_id) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['access_token'])) {
+	
+	public function deleteAccessToken(IOAuth2Client $client) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token'])) {
 			return false;
 		}
 
-		unset($_SESSION['ant-chatea-client'][$client_id]['access_token']);
+		unset($_SESSION['ant-chatea-client'][$client->getPublicId()]['access_token']);
 
 		return true;
 
 	}
 
-	public function findRefreshTokenByClientId($client_id) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['refresh_token'])) {
+	public function findRefreshTokenByClientId(IOAuth2Client $client) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token'])) {
 			return false;
 		}
 
 		return unserialize(
-				$_SESSION['ant-chatea-client'][$client_id]['refresh_token']);
+				$_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token']);
 	}
 
-	public function addRefreshToken($client_id, RefreshToken $refreshToken) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['refresh_token'])) {
-			$_SESSION['ant-chatea-client'][$client_id]['refresh_token'] = array();
+	public function addRefreshToken(IOAuth2Client $client, RefreshToken $refreshToken) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token'])) {
+			$_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token'] = array();
 		}
 
-		$_SESSION['ant-chatea-client'][$client_id]['refresh_token'] = serialize(
+		$_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token'] = serialize(
 				$refreshToken);
 
 		return true;
 	}
-	public function updateRefreshToken($client_id, $refreshToken) {
-		return $this->addRefreshToken($client_id, $refreshToken);
+	
+	public function updateRefreshToken(IOAuth2Client $client, RefreshToken $refreshToken) {
+		return $this->addRefreshToken($client, $refreshToken);
 	}
-	public function deleteRefreshToken($client_id) {
-		if (!isset($_SESSION['ant-chatea-client'][$client_id]['refresh_token'])) {
+	
+	public function deleteRefreshToken(IOAuth2Client $client) {
+		if (!isset($_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token'])) {
 			return false;
 		}
 
-		unset($_SESSION['ant-chatea-client'][$client_id]['refresh_token']);
+		unset($_SESSION['ant-chatea-client'][$client->getPublicId()]['refresh_token']);
 
 		return true;
 	}

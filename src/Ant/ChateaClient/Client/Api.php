@@ -16,6 +16,14 @@ class Api implements IApi
 		$this->httClient = $httpClient;
 	}
 
+	private function httpClientSend()
+	{
+		try{
+			return $this->httClient->send(true);
+		}catch (HttpClientException $ex){
+			throw new ApiException($ex->getMessage());
+		}		
+	}
 	/**
 	 * List all the channels
 	 *
@@ -25,32 +33,82 @@ class Api implements IApi
 	 */		
 	public function showChannels() 
 	{
-		$this->httClient->addGetData('',IApi::URI_CHANNELS_SHOW);
-		try{
-			
-			return $this->httClient->send(true);
-		}catch (HttpClientException $ex){
-			throw new ApiException($ex->getMessage());
+		$this->httClient->addGet(IApi::URI_CHANNELS_SHOW);
+		return $this->httpClientSend();
+	}
+	/**
+	 * Create a channel
+	 * 
+	 * @param string $name
+	 * @param string $title
+	 * @param string $description
+	 * 
+	 */
+	public function addChanel($name, $title = '', $description = '') 
+	{
+	     if (!is_string($name) || 0 >= strlen($name)) {
+            throw new ApiException("ApiException::addChanel name field needs to be a non-empty string");
+        }
+		
+		$data = array(
+				'channel'=>array(
+						'name'=>$name
+				)
+		);
+		if(!empty($title)){
+			$data['channel']['title'] = $title;
 		}
-	}
-	public function addChanel($name, $title = '', $description = '') {
-		// TODO: Auto-generated method stub
+		if(!empty($title)){
+			$data['channel']['description'] = $description;
+		}	
+                
+        $this->httClient->addPost(IApi::URI_CHANNEL_ADD,$data);
+        return $this->httpClientSend();
 
 	}
-	public function updateChannel($id) {
-		// TODO: Auto-generated method stub
-
+	public function updateChannel($id, $name ,$title = '',$description = '') 
+	{
+		if (!is_numeric($id) || 0 >= $id) {
+			throw new TokenException("ApiException::updateChannel id field should be positive integer");
+		}		
+		if (!is_string($name) || 0 >= strlen($name)) {
+			throw new ApiException("ApiException::updateChannel name field needs to be a non-empty string");
+		}
+				
+		$data = array(
+				'channel'=>array(
+						'name'=>$name
+				)
+		);
+		if(!empty($title)){
+			$data['channel']['title'] = $title;
+		}
+		if(!empty($title)){
+			$data['channel']['description'] = $description;
+		}		
+		$this->httClient->addPatch(IApi::URI_CHANNEL_UPDATE.$id, $data);
+		return $this->httpClientSend();
 	}
-	public function delChannel($id) {
-		// TODO: Auto-generated method stub
-
+	public function delChannel($id) 
+	{
+		if (!is_numeric($id) || 0 >= $id) {
+			throw new TokenException("ApiException::updateChannel id field should be positive integer");
+		}		
+		$this->httClient->addDelete(IApi::URI_CHANNEL_DEL.$id);
+		return $this->httpClientSend();		
 	}
-	public function showChannel($id) {
-		// TODO: Auto-generated method stub
-
+	public function showChannel($id) 
+	{
+		if (!is_numeric($id) || 0 >= $id) {
+			throw new TokenException("ApiException::showChannel id field should be positive integer");
+		}
+		$this->httClient->addGet(IApi::URI_CHANNEL_SHOW.$id);
+		return $this->httpClientSend();
 	}
-	public function showMeFriends() {
-		// TODO: Auto-generated method stub
+	public function showMeFriends() 
+	{
+		$this->httClient->addGet(IApi::URI_ME_FRIENDS_SHOW);
+		return $this->httpClientSend();
 
 	}
 	public function showFriendshipsRequest($user_id) {
@@ -111,7 +169,8 @@ class Api implements IApi
 
 	}
 	public function whoami() {
-		// TODO: Auto-generated method stub
+		$this->httClient->addGet(IApi::URI_USER_SHOW);
+		return $this->httpClientSend();
 
 	}
 	public function showFriends($id) {

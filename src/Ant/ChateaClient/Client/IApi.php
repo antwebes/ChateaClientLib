@@ -11,18 +11,16 @@ interface IApi
 	const URI_CHANNEL_SHOW	 				= 'api/channel/';		
 	//--------------------------------------------------------------------------
 	const URI_ME_FRIENDS_SHOW				= 'api/me/friends';
+	const URI_ME_FRIENDSHIPS_REQUEST_SHOW	= 'api/me/friends';
+	const URI_ME_FRIENDSHIPS_PENDING		= 'api/me/friends/pending';
 	//--------------------------------------------------------------------------
-	const URI_FRIENDSHIPS_REQUEST_SHOW		= 'api/me/friends';
-	const URI_FRIENDSHIPS_PENDING			= 'api/me/friends/pending';
-	//--------------------------------------------------------------------------
-	const URI_GET_PORFILE 					= 'api/profile/';
-	const URI_PATCH_PORFILE					= 'api/profile/edit';
-	const URI_PUT_PORFILE					= 'api/profile/edit';
-	const URI_PATCH_PORFILE_CHANGE_PASSWORD = 'api/profile/change-password';
+	const URI_PORFILE_SHOW 					= 'api/profile/';
+	const URI_PORFILE_UPDATE				= 'api/profile/edit';
+	const URI_PORFILE_CHANGE_PASSWORD 		= 'api/profile/change-password';
 	//--------------------------------------------------------------------------	
-	const URI_GET_ALL_USERS 				= 'api/user/list';
-	const URI_GET_USER_ME 					= 'api/user/me';
-	const URI_DELETE_USER 					= "api/user/";
+	const URI_USERS_SHOW					= 'api/user/list';
+	const URI_USER_SHOW	 					= 'api/user/me';
+	const URI_USER_DEL 						= "api/user/";
 	//--------------------------------------------------------------------------	
 	const URI_REGISTER						= "register";
 	const URI_RESETTING_PASSWORD 			= "resetting/send-email";	
@@ -47,7 +45,7 @@ interface IApi
 	 * 
 	 * @param number $id
 	 */
-	public function updateChannel($id);
+	public function updateChannel($id, $name ,$title = '',$description = '');
 	// 	DELETE /api/channel/{id}
 	/**
 	 * Delete a channel

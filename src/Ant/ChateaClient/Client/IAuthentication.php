@@ -8,7 +8,7 @@ use Ant\ChateaClient\OAuth2\Scope;
 interface IAuthentication
 {
 	public function authenticate();
-	public function updateToken();
+	public function updateToken(RefreshToken $refreshToken = null);
 	public function revokeToken();
 	
 	public function getAccessToken();

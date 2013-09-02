@@ -30,8 +30,7 @@ class Token
      * @param Scope $scope A Scope is a permission setting that specifies access to a users, to non-public data.
      */
     public function __construct($tokenValue, $issueTime = null, Scope $scope = null)
-    {
-
+    {    	
     	$this->setValue($tokenValue);        
     	
     	$this->setIssueTime($issueTime);
@@ -111,15 +110,18 @@ class Token
      * @param integer $issueTime
      * @throws TokenException
      */
-    public function setIssueTime($issueTime)
+    public function setIssueTime($issueTime = null)
     {
+    	
     	if (null !== $issueTime) {
     		if (!is_numeric($issueTime) || 0 >= $issueTime) {
                 throw new TokenException("issueTime should be positive integer or null");
             }
-            $issueTime = (int) $issueTime;
-        } 
+            
+            $issueTime = (int) $issueTime;            
+        }   
         $this->issueTime = (int) $issueTime;
+        
     }
 	/**
 	 * 

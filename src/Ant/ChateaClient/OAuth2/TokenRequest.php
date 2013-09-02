@@ -30,11 +30,11 @@ class TokenRequest
 
     private function getTokenResponse($data)
     {    	
-    	$this->httpClient->addPostData($data);
+    	$this->httpClient->addPost(null,$data);
     	 
     	try {
     		$data_json = $this->httpClient->send(true);
-    		ld($data_json);  		
+    		print($data_json);  		
     		return TokenResponse::formJson($data_json);
     	} catch (HttpClientException $e) {      		
     		throw new TokenRequestException($e->getMessage(),-1,$e);

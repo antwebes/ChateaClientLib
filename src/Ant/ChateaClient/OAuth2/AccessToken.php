@@ -23,10 +23,8 @@ class AccessToken extends Token
     private $expiresIn;
     
     public function __construct($tokenValue, TokenType $tokenType = null, $expiresIn = 3600, $issueTime = null, Scope $scope = null)
-    {
-    	
-    	parent::__construct($tokenValue,$issueTime,$scope);
-        
+    {    
+    	parent::__construct($tokenValue,$issueTime,$scope);        
     	if($tokenType === null){
     		$tokenType = new TokenType(TokenType::BEARER);
     	}
@@ -93,7 +91,7 @@ class AccessToken extends Token
      * 
      * @return boolean
      */
-    public function hasExpired(){
+    public function hasExpired(){    	
     	return time() > $this->getExpiresAt();
     }    
 }

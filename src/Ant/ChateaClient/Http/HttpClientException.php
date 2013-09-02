@@ -7,13 +7,14 @@ class HttpClientException extends \Exception
 {
 	protected $httpClient;
 	protected $responseMessage;
-	
+	protected $errorMessage;
 	public function __construct (
 			$message = null, 
 			IHttpClient $httpClient = null,  
-			$responseMessage = null, 
-			$code = null, 
-			\Exception $previous = null 
+			$responseMessage = '',  
+			$errorMessage = '',
+			$code = 0, 
+			$previous = null 
 	){
 
 		$message .= '\n\t Response message: '.$responseMessage;	
@@ -22,6 +23,7 @@ class HttpClientException extends \Exception
 		}
 		$this->httpClient = $httpClient;
 		$this->responseMessage = $responseMessage;
+		$this->errorMessage = $errorMessage;
 		parent::__construct($message,$code,$previous);
 	}
 
@@ -33,5 +35,9 @@ class HttpClientException extends \Exception
 	public function getResponseMessage()
 	{
 		return $this->responseMessage;
+	}
+	public function getErrorMensage()
+	{
+		return $this->errorMessage;
 	}
 }
