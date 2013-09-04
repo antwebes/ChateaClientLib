@@ -28,6 +28,7 @@ class TokenResponse
     {    	
     	return self::fromArray(json_decode($data, true));
     }
+    
     public static function fromArray(array $data)
     {    	
         foreach (array('access_token', 'token_type','refresh_token','expires_in') as $key) {

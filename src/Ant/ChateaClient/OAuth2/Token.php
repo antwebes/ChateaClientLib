@@ -51,7 +51,7 @@ class Token
     public function setValue($token_value)
     {
         if (!is_string($token_value) || 0 >= strlen($token_value)) {
-            throw new TokenException("Token: token_value needs to be a non-empty string");
+            throw new TokenException("Token: token_value needs to be a non-empty string", $this);
         }
         $this->value = $token_value;
     }
@@ -115,7 +115,7 @@ class Token
     	
     	if (null !== $issueTime) {
     		if (!is_numeric($issueTime) || 0 >= $issueTime) {
-                throw new TokenException("issueTime should be positive integer or null");
+                throw new TokenException("issueTime should be positive integer or null", $this);
             }
             
             $issueTime = (int) $issueTime;            

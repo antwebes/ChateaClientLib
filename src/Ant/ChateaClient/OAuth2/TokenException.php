@@ -6,7 +6,7 @@ class TokenException extends \Exception
 
 	private $token;
 	
-	public function __construct($message = '', Token $token, $code = 0 , $previous= null)
+	public function __construct($message = '', Token $token = null, $code = 0 , $previous= null)
 	{
 		if($token !== null ){
 			$message = get_class($token).': '.$message;

@@ -1,8 +1,10 @@
 <?php
 
-namespace Ant\ChateaClient\OAuth2;
+namespace Ant\ChateaClient\Test\OAuth2;
 
-class TokenTypeTest extends \PHPUnit_Framework_TestCase 
+use Ant\ChateaClient\OAuth2\TokenType;
+
+class TokenTypeTest extends \PHPUnit_Framework_TestCase
 {
 	/**
 	 * @expectedException Ant\ChateaClient\OAuth2\TokenException
@@ -10,7 +12,7 @@ class TokenTypeTest extends \PHPUnit_Framework_TestCase
 	public function testValueIsNotString()
 	{
 		$tokenType = new TokenType(time());
-	
+
 	}
 	/**
 	 * @expectedException Ant\ChateaClient\OAuth2\TokenException
@@ -21,12 +23,12 @@ class TokenTypeTest extends \PHPUnit_Framework_TestCase
 	}
 	public function testGetValue()
 	{
-		$tokenTypeValue =  TokenType::BEARER;
+		$tokenTypeValue = TokenType::BEARER;
 		$tokenType = new TokenType($tokenTypeValue);
-			
+
 		$this->assertEquals($tokenTypeValue, $tokenType->getName());
-		
+
 		$tokenType->setName($tokenTypeValue);
 		$this->assertEquals($tokenTypeValue, $tokenType->getName());
-	}		
+	}
 }
