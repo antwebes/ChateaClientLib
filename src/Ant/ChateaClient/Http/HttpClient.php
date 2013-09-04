@@ -3,6 +3,8 @@
 namespace Ant\ChateaClient\Http;
 
 use Guzzle\Http\Client;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\BadResponseException;
 use Ant\ChateaClient\Http\HttpClientException;
 use Ant\ChateaClient\OAuth2\AccessToken;
 
@@ -11,13 +13,11 @@ class HttpClient extends Client implements IHttpClient {
 	private $response;
 	private $accesToken;
 	private $accept_header;
-	private $content_type_header;
+		
 	public function __construct(
 			$baseUrl = '', 
-			AccessToken $accesToken = null, 
-			$config = null, 
-			$accept_header = 'application/json', 
-			$content_type_header = 'application/json'
+			AccessToken $accesToken = null, 			
+			$accept_header = 'application/json'
 	) {
 		
 		if (! is_string ( $baseUrl ) || 0 >= strlen ( $baseUrl )) {
@@ -27,41 +27,88 @@ class HttpClient extends Client implements IHttpClient {
 		if (! is_string ( $accept_header ) || 0 >= strlen ( $accept_header )) {
 			$accept_header = 'application/json';
 		}
-		if (! is_string ( $content_type_header ) || 0 >= strlen ( $content_type_header )) {
-			$content_type_header = 'application/json';
-		}
-		
 		$this->request = null;
 		$this->response = null;
 		$this->accesToken = $accesToken;
 		$this->accept_header = $accept_header;
-		$this->content_type_header = $content_type_header;
+		parent::__construct ( $baseUrl, null );
+	}
+	
+	private function addRequest($method = 'GET', $uri = null, $data = null, $contentType = null)
+	{
+		$headers = null;
+		$options = array();
 		
-		parent::__construct ( $baseUrl, $config );
-	}
-	public function addGet($uri = null, $data = null) 
+		if($contentType){
+			
+			$headers = array('Content-Type'=>$contentType);
+			
+			if($contentType === 'application/json' && !self::isJson($data)){
+				$data = json_encode($data);
+			} 				
+		}
+		$this->request = $this->createRequest($method,$uri,$headers,$data,$options);
+	}	
+	/**
+	 * Add a POST file to the upload
+	 *
+	 * @param string $filename    Full path to the file. Do not include the @ symbol.
+	 * @param string $field       POST field to use (e.g. file). Used to reference content from the server.	 
+	 * @param string $contentType Optional Content-Type to add to the Content-Disposition.
+	 *                            Default behavior is to guess. Set to false to not specify.
+	 */
+	public function addPostFile($filename = null, $field = 'file', $contentType = null)
 	{
-		$this->request = $this->createRequest ( "GET", $uri, null, array (
-				'query' => self::prepareData ( $data, "GET" ) 
-		), array () );
+		if(!file_exists($filename)){
+			throw new HttpClientException("The file not existm put valid filename or path",$this);
+		}		
+		if($this->request === NULL){
+			$this->request = $this->createRequest("POST");
+		}
+		$this->request->addPostFile($field, $filename, $contentType);
 	}
-	public function addPost($uri = null, $data = null) 
+	/**
+	 * Add POST files to use in the upload
+	 *
+	 * @param array $files An array of POST fields => filenames where filename can be a string
+	 *
+	 */
+	public function addPostFiles(array $files)
 	{
-		$this->request = $this->createRequest ( "POST", $uri, null, self::prepareData ( $data ), array () );
+		foreach ($files as $key => $filename) {
+			 if (is_string($filename)) {
+				// TODO Convert non-associative array keys into 'file'
+				if (is_numeric($key)) {
+					$key = 'file';
+				}
+				$this->addPostFile($filename,$key, null);
+			} else {
+				$this->addPostFile($filename, null, null);
+			}
+		}		
 	}
-	public function addDelete($uri = null, $data = null) 
+
+	public function addGet($uri = null, $data = null)
 	{
-		$data = self::isJson ( $data ) ? $data : json_encode ( $data );
-		$this->request = $this->createRequest ( "DELETE", $uri, null, self::prepareData ( $data ), array () );
+		$this->addRequest ( "GET", $uri, array ('query' => $data ));
 	}
-	public function addPut($uri = null, $data = null) 
+	public function addPost($uri = null, $data = null, $contentType = null)
 	{
-		$this->request = $this->createRequest ( "PUT", $uri, null, self::prepareData ( $data ), array () );
-	}
-	public function addPatch($uri = null, $data = null) 
+		$this->addRequest ("POST", $uri,$data, $contentType);
+	}	
+	public function addDelete($uri = null, $data = null, $contentType = null)
 	{
-		$this->request = $this->createRequest ( "PATCH", $uri, null, self::prepareData ( $data ), array () );
+		$this->addRequest ("DELETE",$uri,$data, $contentType);
 	}
+	public function addPut($uri = null, $data = null, $contentType = null)
+	{
+		$this->addRequest ("PUT",$uri,$data, $contentType);		
+	}
+	public function addPatch($uri = null, $data = null, $contentType = null)
+	{
+		$this->addRequest ("PATCH",$uri,$data, $contentType);
+	}
+	
 	public function getRequest() 
 	{
 		return $this->request;
@@ -74,9 +121,9 @@ class HttpClient extends Client implements IHttpClient {
 	{
 		return $this->accept_header;
 	}
-	public function getContentHeader() 
+	public function gettHeaders() 
 	{
-		return $this->content_type_header;
+		return $this->request?$this->request->getHeaderLines():array();
 	}
 	public function addAccesToken(AccessToken $accesToken) 
 	{
@@ -89,41 +136,81 @@ class HttpClient extends Client implements IHttpClient {
 		
 		$this->accesToken = $accesToken;
 	}
-	public function setBaseUrl($url) {
+	public function setBaseUrl($url) 
+	{
 		parent::setBaseUrl ( $url );
 	}
-	public function getUrl() {
+	
+	public function getUrl() 
+	{
+		if($this->request !== null){
+			return $this->request->getUrl();
+		}
 		return $this->getBaseUrl ();
 	}
-	public function send($json_format = true) 
+	public function send($response_type = 'json') 
 	{
-		$headers = array (
-				'Accept' => $this->getHeaderAccept (),
-				'Content-type' => $this->getContentHeader () 
-		);
-		
+		$method = null;
+		$arguments = null;
+		if (null == $this->request) {
+			$this->addRequest();
+		}
+
+		switch ($response_type)
+		{		
+			case 'xml':
+				$this->accept_header = 'application/xml';
+				$method = 'xml';
+				$arguments = null;
+				break;
+			case 'json':
+				$this->accept_header = 'application/json';
+				$method = 'getBody';
+				$arguments = true;				
+				break;
+			case 'array':
+					$this->accept_header = 'application/json';
+					$method = 'json';										
+				break;					
+			default:
+				$this->accept_header = 'application/json';
+				$method = 'getBody';
+				$arguments = true;
+				ld("default");
+				break;						
+		}		
+				
+		$this->request->addHeader('Accept', $this->getHeaderAccept());		
 		if ($this->accesToken !== null) {
 			
-			$headers ['Authorization'] = sprintf ( "%s %s", $this->accesToken->getTokenType ()->getName (), $this->accesToken->getValue () );
-		}
-		
-		if (null == $this->request) {
-			$this->request = $this->get ( "/" );
-		}
-		$this->request->addHeaders ( $headers );
-		
+			$this->request->addHeader('Authorization', sprintf ( "%s %s", $this->accesToken->getTokenType ()->getName (), $this->accesToken->getValue ()));			
+		}		
 		try {
 			$this->response = parent::send ( $this->request );
-		} catch ( \Guzzle\Http\Exception\BadResponseException $ex ) {
-			
-			throw new HttpClientException ( "Error to send request in HttpClient: " . $ex->getMessage (), $this, $ex->getResponse ()->getMessage (), $ex->getResponse ()->getBody ( true ), $ex->getCode (), $ex );
-		} catch ( \Exception $ex ) {
-			throw $ex;
-		}
-		
-		return $this->response->getBody ( $json_format );
+		} catch (BadResponseException $ex ) {			
+			throw new HttpClientException ( 
+					"Error to send request in HttpClient: " . $ex->getMessage (), 
+					$this, 
+					$ex->getRequest(), 
+					$ex->getResponse (), 
+					$ex->getCode (), 
+					$ex 
+			);
+		} catch (ClientErrorResponseException $ex ){			
+			throw new HttpClientException ( 
+					"Error to send request in HttpClient: " . $ex->getMessage (), 
+					$this, 
+					$ex->getRequest(), 
+					$ex->getResponse (), 
+					$ex->getCode (), 
+					$ex 
+			);
+    	}     	
+    	return $this->response->$method($arguments);
 	}
-	private static function isJson($string) {
+	
+	private static function isJson($string) 
+	{
 		if (! is_string ( $string ) || 0 >= strlen ( $string )) 
 		{
 			return false;
@@ -131,11 +218,10 @@ class HttpClient extends Client implements IHttpClient {
 		json_decode ( $string );
 		return (json_last_error () == JSON_ERROR_NONE);
 	}
-	private static function prepareData($data, $method = '') {
-		if ("GET" === $method) {
-			return ($data !== null && ! self::isJson ( $data )) ? $data : json_encode($data);;
-		}else{
-			return self::isJson($data)?$data:json_encode($data);
-		}
+
+	public function getDefaultUserAgent()
+	{
+        return 'Chatea Client/1.0';
+            //. parent::getDefaultUserAgent();
 	}
 }

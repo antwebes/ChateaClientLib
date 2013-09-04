@@ -2,28 +2,37 @@
 namespace Ant\ChateaClient\Http;
 
 use Ant\ChateaClient\Http\IHttpClient;
+use Guzzle\Http\Message\Response;
+use Guzzle\Http\Message\RequestInterface;
 
-class HttpClientException extends \Exception 
+class HttpClientException extends \Guzzle\Http\Exception\BadResponseException 
 {
 	protected $httpClient;
-	protected $responseMessage;
-	protected $errorMessage;
+	protected $response;
+	protected $request; 
+	
 	public function __construct (
 			$message = null, 
 			IHttpClient $httpClient = null,  
-			$responseMessage = '',  
-			$errorMessage = '',
+			RequestInterface $request = null,  
+			Response $response = null,
 			$code = 0, 
 			$previous = null 
 	){
-
-		$message .= '\n\t Response message: '.$responseMessage;	
 		if($httpClient != null){
-			$message = get_class($httpClient).': '.$message;
+			$message = get_class($httpClient).':'.$message;
+		}
+		if ($request) {
+			$message .= " |------> 
+						Request message: ".$request->__toString();
+		}		
+		if($response){
+			$message .= " |------>
+						Response message: ".$response->__toString();
 		}
 		$this->httpClient = $httpClient;
-		$this->responseMessage = $responseMessage;
-		$this->errorMessage = $errorMessage;
+		$this->request = $request;
+		$this->response = $response;
 		parent::__construct($message,$code,$previous);
 	}
 
@@ -31,13 +40,12 @@ class HttpClientException extends \Exception
 	{
 		return $this->httpClient;
 	}
-	
-	public function getResponseMessage()
+	public function getResponse($only_error = true)
 	{
-		return $this->responseMessage;
+		return $only_error?$this->response?$this->response->getBody(true):null:$this->response->getMessage();
 	}
-	public function getErrorMensage()
+	public function getRequest()
 	{
-		return $this->errorMessage;
+		return $this->request;
 	}
 }

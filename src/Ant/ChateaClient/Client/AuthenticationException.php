@@ -13,7 +13,7 @@ class AuthenticationException extends \Exception
 			$previous = NULL
 	){
 	
-		if($auth != null){
+		if($auth !== NULL){
 			$message = get_class($auth).': '.$message;
 		}
 		$this->auth = $auth;

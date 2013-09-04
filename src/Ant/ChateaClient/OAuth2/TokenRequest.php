@@ -33,12 +33,11 @@ class TokenRequest
     	$this->httpClient->addPost(null,$data);
     	 
     	try {
-    		$data_json = $this->httpClient->send(true);
-    		print($data_json);  		
+    		$data_json = $this->httpClient->send(IHttpClient::SEND_RESPONSE_TYPE_JSON);
     		return TokenResponse::formJson($data_json);
     	} catch (HttpClientException $e) {      		
-    		throw new TokenRequestException($e->getMessage(),-1,$e);
-    	}    	
+    		throw new TokenRequestException($e->getMessage(),$e->getCode(),$e);
+    	}   	
     }
     public function withAuthorizationCode($auth_code)
     {

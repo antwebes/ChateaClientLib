@@ -9,8 +9,6 @@ class ChateaOAuth2Test extends \PHPUnit_Framework_TestCase
 	 */
 	public function testConstruct()
 	{
-		$chateaOAuth2 = new 
-			ChateaOAuth2(ClientConfig::fromJSONFile(),'','');
 		
 	}
 	

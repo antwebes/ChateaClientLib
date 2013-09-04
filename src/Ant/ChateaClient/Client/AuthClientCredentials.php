@@ -16,9 +16,8 @@ class AuthClientCredentials extends Authentication
 		parent::__construct($oauthClient, $httpClient);
 	}
 	public function authenticate()
-	{ 
+	{ 		
 		$tokenRequest = $this->getTokenRequest();
-		
 		try{
 						
 			$tokenResponse =  $tokenRequest->withClientCredentials();								
@@ -29,8 +28,7 @@ class AuthClientCredentials extends Authentication
 				
 		}catch (TokenRequestException $e){
 			throw new AuthenticationException("Error fetching OAuth2 update token, message: " .
-					$e->getMessage(), $this);
+					$e->getMessage(), $this, $e->getCode(),$e);
 		}	
-		return true;		 
 	}
 }

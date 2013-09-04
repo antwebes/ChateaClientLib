@@ -5,15 +5,17 @@ use Ant\ChateaClient\OAuth2\TokenRequest;
 use Ant\ChateaClient\OAuth2\RefreshToken;
 use Ant\ChateaClient\OAuth2\OAuth2Client;
 use Ant\ChateaClient\OAuth2\OAuth2ClientAuthCode;
+use Ant\ChateaClient\OAuth2\OAuth2ClientUserCredentials;
+use Ant\ChateaClient\OAuth2\OAuth2ClientCredentials ;
 use Ant\ChateaClient\Http\HttpClient;
 use Ant\ChateaClient\Http\HttpClientException;
-use Ant\ChateaClient\OAuth2\OAuth2ClientCredentials ;
+
 use Ant\ChateaClient\Client\AuthClientCredentials;
 use Ant\ChateaClient\Client\AuthUserCredentials;
 use Ant\ChateaClient\Client\Api;
+use Ant\ChateaClient\Client\ApiException;
 use Ant\ChateaClient\Client\SessionStorage;
-use Ant\ChateaClient\OAuth2\OAuth2ClientUserCredentials;
-//session_unset();
+use Ant\ChateaClient\Client\IApi;
 
 $oauthClient = new OAuth2ClientUserCredentials(
 		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
@@ -30,10 +32,9 @@ $validpassword = 'apiuser';
 	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
 	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
 	$auth = new AuthUserCredentials($oauthClient,$httpClientAuth);
-	try {
 
-	/*
 try {
+	
 	$store = SessionStorage::getInstance();
 	
 	$accessToken = $auth->getAccessToken();
@@ -41,7 +42,7 @@ try {
 	
 	if($auth->isAuthenticationExpired()){
 		$accessToken = $store->findAccessTokenByClientId($oauthClient);
-		if(!$accessToken || $accessToken->hasExpired()){
+		if(!$accessToken || $accessToken->hasExpired()){			
 			//TODO refresToken has expired.
 			$refresToken = $store->findRefreshTokenByClientId($oauthClient);
 			if(!$refreshToken || $refreshToken->hasExpired()){
@@ -61,71 +62,80 @@ try {
 			
 		}//else acessToken in store
 	}//else acessToken not espired
-	*/
-	$auth = $auth->authenticate();
-	$accessToken = $auth->getAccessToken();
-	$refreshToken = $auth->getRefreshToken();
+
+	
 	$httpClientApi->addAccesToken($accessToken);
 	
-	echo "TOKEN<br><br>";
+	echo "<br>TOKEN<br>";
 	echo $accessToken->getValue();
 	echo "<br><br>";
-	
 	$api = new Api($httpClientApi);
-	echo $api->whoami();
-    echo $api->showMeFriends();	
+
 
 //----------------------------------------------------------------------------//		
 //----------    CHANNELS      ------------------------------------------------//
 //----------------------------------------------------------------------------//
-//	echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
+//		echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
+// 		echo $api->updateChannel(20, 'new chanel only name');
+// 		echo $api->showChannel(20);
+// 		echo $api->delChannel(5);	
+//	  	echo $api->showChannels();   
+//		echo $api->showChannel('5');
+	
 
-// 	echo "<br><br>". $api->updateChannel(20, 'new chanel only name')."<br><br>";
+//		echo $api->showMeFriends();	
+//     	echo $api->showFriendshipsRequest();
+//     	echo $api->showFriendshipsPending();
+//		echo $api->delFriendship(9);
+//		echo $api->addMeFirend(6);	
+//		echo $api->showFriendshipsRequest();
 
-// 	echo "<br><br>". $api->showChannel(20). "<br><br>";
+	
+// 	echo $api->addPhoto("concierto","/home/ant3/concierto.jpeg");
+// 	echo $api->showPhoto(1);
+// 	echo $api->delPhoto(1);
+	
+// 	echo $api->addThread('xabierTest','Subject','<script>alert("holas");</script>');
+// 	echo $api->showThreadsInbox();
+// 	echo $api->showThreadsSent();
+// 	echo $api->addThreadMessage(5,'<script>alert("holas");</script>');
+// 	echo $api->showThread(6);	
+//	echo $api->delThread(6);
 
-  	 
-// 	echo "<br><br>". $api->delChannel(19). "<br><br>";
-	
-// 	echo $api->showChannels(); 
-  
-//	echo "<br><br>". $api->showChannel('5'). "<br><br>";
-	
-//	echo "<br><br>". $api->getProfile(). "<br><br>";
 
- 	
-//----------------------------------------------------------------------------//		
-//----------    CHANNELS      ------------------------------------------------//
-//----------------------------------------------------------------------------//
-	//echo $api->whoami();
-	//echo $api->showMeFriends();	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	echo "<br><br>". $api->changePassword('xabier',"xabier","xabier"). "<br><br>";
+//	echo $api->showMeVotes();
+//	echo $api->addVote(9, 10);
+//	echo $api->delVote(11);
 
-//	echo "<br><br>". $api->editProfile("xabier","noimalk@no.com",'xabier'). "<br><br>";	 
+	
+	
+//	echo $api->updateProfile('apiuser', 'apiuser@api.com', 'apiuser');
+// 	echo $api->showProfile();
+// 	echo "<br/>new Pasword<br/>";	
+// 	echo $api->changePassword('apiuser','newapiuser','newapiuser');	
+// 	echo "<br/>new Pasword2<br/>";
+// 	echo $api->changePassword('newapiuser','apiuser','apiuser');
 
-// 	echo "<br><br>". $api->getAllUser(). "<br><br>";
 
-//	echo "<br><br>". $api->getWhoami(). "<br><br>";
+//	echo "<br><br>". $api->enableUser(10). "<br><br>";	
+//	echo "<br><br>". $api->disableUser(7). "<br><br>";
+//	echo "<br><br>". $api->delUser(7). "<br><br>";	
+
+
+	echo "<br><br>". $api->whoami(). "<br><br>";
 	
-//   echo "<br><br>". $api->getProfile(). "<br><br>";
-//   echo "<br><br>". $api->deleteUser(). "<br><br>";
+   echo "<br><br>". $api->showProfile(). "<br><br>";
+
 	
-//	echo "<br><br>". ChateaApi::register($chateaConfig, 'xabierAll2', 'xabier@none.com', '123456', '123456'). "<br><br>";
 	
-//	echo "<br><br>". ChateaApi::requestResetpassword($chateaConfig, "xabierAll2");
+//	echo Api::register(new HttpClient(), 'username', 'email@eamil.com', 'new_password', 'new_password');
+//	echo Api::requestResetpassword(new HttpClient(), 'xabierAll');
 	
 }catch (HttpClientException $e){
-	echo "Response Error: <br/><br/>";
-	echo $e->getResponseMessage();	
-	echo "<br/><br/>Only Error:<br/><br/>";
-	echo $e->getErrorMensage();
+	echo "<br><br><br>";
+	echo "HttpClientException Message: <br/><br/>";
+	echo $e->getResponse(true);	
+}catch (ApiException $ex){
+	echo "API Error Error: <br/><br/>";
+	echo $e->getMessage();
 }
