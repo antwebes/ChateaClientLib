@@ -23,6 +23,7 @@ class TokenTypeTest extends \PHPUnit_Framework_TestCase
 	}
 	public function testGetValue()
 	{
+				
 		$tokenTypeValue = TokenType::BEARER;
 		$tokenType = new TokenType($tokenTypeValue);
 

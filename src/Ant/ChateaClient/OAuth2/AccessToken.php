@@ -92,6 +92,6 @@ class AccessToken extends Token
      * @return boolean
      */
     public function hasExpired(){    	
-    	return time() > $this->getExpiresAt();
+    	return $this->getExpiresAt() < time();
     }    
 }

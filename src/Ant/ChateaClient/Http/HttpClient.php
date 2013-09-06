@@ -24,14 +24,20 @@ class HttpClient extends Client implements IHttpClient {
 			$baseUrl = self::SERVER_ENDPOINT;
 		}
 		
+		parent::__construct ( $baseUrl, null );
+		
 		if (! is_string ( $accept_header ) || 0 >= strlen ( $accept_header )) {
 			$accept_header = 'application/json';
 		}
+		$this->accept_header = $accept_header;
+		$this->defaultHeaders->add('Accept',$this->accept_header);
+		
 		$this->request = null;
 		$this->response = null;
-		$this->accesToken = $accesToken;
-		$this->accept_header = $accept_header;
-		parent::__construct ( $baseUrl, null );
+		
+		if($accesToken !== null){
+			$this->addAccesToken($accesToken);
+		}		
 	}
 	
 	private function addRequest($method = 'GET', $uri = null, $data = null, $contentType = null)
@@ -123,7 +129,7 @@ class HttpClient extends Client implements IHttpClient {
 	}
 	public function gettHeaders() 
 	{
-		return $this->request?$this->request->getHeaderLines():array();
+		return $this->request?$this->request->getHeaderLines():$this->defaultHeaders;
 	}
 	public function addAccesToken(AccessToken $accesToken) 
 	{
@@ -133,8 +139,9 @@ class HttpClient extends Client implements IHttpClient {
 		if (! is_string ( $accesToken->getValue () ) || 0 >= strlen ( $accesToken->getValue () )) {
 			throw new HttpClientException ( "AccessToken value must be a non-empty string", $this );
 		}
-		
 		$this->accesToken = $accesToken;
+		//FIXME you this has to be:   type =  $this->accesToken->getTokenType ()->getName ()				
+		$this->defaultHeaders->add('Authorization', sprintf ( "Bearer %s", $accesToken->getValue () ));		
 	}
 	public function setBaseUrl($url) 
 	{
@@ -152,9 +159,6 @@ class HttpClient extends Client implements IHttpClient {
 	{
 		$method = null;
 		$arguments = null;
-		if (null == $this->request) {
-			$this->addRequest();
-		}
 
 		switch ($response_type)
 		{		
@@ -179,12 +183,9 @@ class HttpClient extends Client implements IHttpClient {
 				ld("default");
 				break;						
 		}		
+		
 				
-		$this->request->addHeader('Accept', $this->getHeaderAccept());		
-		if ($this->accesToken !== null) {
-			
-			$this->request->addHeader('Authorization', sprintf ( "%s %s", $this->accesToken->getTokenType ()->getName (), $this->accesToken->getValue ()));			
-		}		
+		
 		try {
 			$this->response = parent::send ( $this->request );
 		} catch (BadResponseException $ex ) {			
@@ -205,7 +206,8 @@ class HttpClient extends Client implements IHttpClient {
 					$ex->getCode (), 
 					$ex 
 			);
-    	}     	
+    	}
+    	ld($this->request->getMethod().'::'.$this->getUrl());
     	return $this->response->$method($arguments);
 	}
 	
@@ -217,11 +219,5 @@ class HttpClient extends Client implements IHttpClient {
 		}
 		json_decode ( $string );
 		return (json_last_error () == JSON_ERROR_NONE);
-	}
-
-	public function getDefaultUserAgent()
-	{
-        return 'Chatea Client/1.0';
-            //. parent::getDefaultUserAgent();
 	}
 }

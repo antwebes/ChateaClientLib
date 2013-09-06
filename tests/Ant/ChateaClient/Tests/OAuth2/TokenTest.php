@@ -21,7 +21,9 @@ class TokenTest extends \PHPUnit_Framework_TestCase {
 	{
 		$token = new Token ( '' );
 	}
-	public function testGetValue() {
+	public function testGetValue() 
+	{		
+		
 		$tokenValue = "MGQ3OGEzNTQzNTdhOTE5YjJjNWU4MTljYWI1ZDNkN2U5YzI5NDdlNDk5NmUzOTZmMzkyMTgyNGIyYzc0ODlmYQ";
 		$token = new Token ( $tokenValue );
 		

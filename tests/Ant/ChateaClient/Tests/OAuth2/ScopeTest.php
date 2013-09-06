@@ -11,6 +11,7 @@ class ScopeTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function testValueIsNotString()
 	{
+		
 		$scope = new Scope(time());
 
 	}

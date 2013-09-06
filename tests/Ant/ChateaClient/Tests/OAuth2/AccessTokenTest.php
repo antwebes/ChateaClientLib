@@ -10,7 +10,7 @@ use Ant\ChateaClient\OAuth2\Scope;
 class AccessTokenTest extends \PHPUnit_Framework_TestCase 
 {
 	public function testTokenTypeIsNotNull() 
-	{
+	{		
 		$refreshToken = new AccessToken ( 'MGQ3OGEzNTQzNTdhOTE5YjJjNWU4MTljYWI1ZDNkN2U5YzI5NDdlNDk5NmUzOTZmMzkyMTgyNGIyYzc0ODlmYQ' );
 		
 		try {

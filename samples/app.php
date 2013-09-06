@@ -17,11 +17,10 @@ use Ant\ChateaClient\Client\ApiException;
 use Ant\ChateaClient\Client\SessionStorage;
 use Ant\ChateaClient\Client\IApi;
 
-$oauthClient = new OAuth2ClientUserCredentials(
+
+$oauthClient = new OAuth2ClientCredentials(
 		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
-		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w',
-		'apiuser',
-		'apiuser'
+		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w'
 		);
 $validAuthCode =  'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ';
 $validRefresToken = 'Mjk2M2RiNWEwOGJhYzQ2Y2JmMzI1ODlhNjgxZjQ3YTQ0ZDk3MjRmMjcxMmUxODVlNWMyODkyMzc4OTExZWZhMg';
@@ -31,7 +30,7 @@ $validpassword = 'apiuser';
 
 	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
 	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
-	$auth = new AuthUserCredentials($oauthClient,$httpClientAuth);
+	$auth = new AuthClientCredentials($oauthClient,$httpClientAuth);
 
 try {
 	
@@ -69,20 +68,24 @@ try {
 	echo "<br>TOKEN<br>";
 	echo $accessToken->getValue();
 	echo "<br><br>";
+	
 	$api = new Api($httpClientApi);
 
 
 //----------------------------------------------------------------------------//		
 //----------    CHANNELS      ------------------------------------------------//
 //----------------------------------------------------------------------------//
-//		echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
-// 		echo $api->updateChannel(20, 'new chanel only name');
-// 		echo $api->showChannel(20);
-// 		echo $api->delChannel(5);	
-//	  	echo $api->showChannels();   
-//		echo $api->showChannel('5');
+//	  	echo $api->showChannels();
+		echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
+// 		echo $api->updateChannel(21, 'new chanel 26');
+// 		echo $api->showChannel(21);
+// 		echo $api->delChannel(20);	
+//		echo $api->showChannel('21');
 	
-
+//----------------------------------------------------------------------------//
+//----------		Friends	    -----------------------------------------------//
+//----------------------------------------------------------------------------//
+		
 //		echo $api->showMeFriends();	
 //     	echo $api->showFriendshipsRequest();
 //     	echo $api->showFriendshipsPending();
@@ -90,7 +93,10 @@ try {
 //		echo $api->addMeFirend(6);	
 //		echo $api->showFriendshipsRequest();
 
-	
+//----------------------------------------------------------------------------//
+//----------		PHOTO      -----------------------------------------------//
+//----------------------------------------------------------------------------//
+
 // 	echo $api->addPhoto("concierto","/home/ant3/concierto.jpeg");
 // 	echo $api->showPhoto(1);
 // 	echo $api->delPhoto(1);
@@ -122,9 +128,9 @@ try {
 //	echo "<br><br>". $api->delUser(7). "<br><br>";	
 
 
-	echo "<br><br>". $api->whoami(). "<br><br>";
+//   echo "<br><br>". $api->whoami(). "<br><br>";
 	
-   echo "<br><br>". $api->showProfile(). "<br><br>";
+//   echo "<br><br>". $api->showProfile(). "<br><br>";
 
 	
 	

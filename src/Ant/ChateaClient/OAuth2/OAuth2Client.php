@@ -14,6 +14,10 @@ class OAuth2Client implements IOAuth2Client
 		}
 		$this->client_id = $client_id;
 		$this->secret_id = $secret;
+		if(!empty($redirect_uri) && !self::isValidUrl($redirect_uri))
+		{	
+			throw new OAuth2ClientException("redirect_uri needs to be a valid uri ",$this);
+		}
 		$this->redirect_uri = $redirect_uri;
 	}
 	
@@ -28,5 +32,9 @@ class OAuth2Client implements IOAuth2Client
 	public function getRedirectUri()
 	{
 		return $this->redirect_uri;	
+	}
+	private static function isValidUrl($url)
+	{
+		return preg_match('/^(http:\/\/|https:\/\/|ftp:\/\/|ftps:\/\/|)?[a-z0-9_\-]+[a-z0-9_\-\.]+\.[a-z]{2,4}(\/+[a-z0-9_\.\-\/]*)?$/i',$url);
 	}
 }
