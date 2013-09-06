@@ -27,4 +27,5 @@ interface IHttpClient
 	public function send($response_type = 'json');
 	public function setBaseUrl($url);
 	public function getUrl();
+	public static function parseRouting($uri, $params = null);
 }

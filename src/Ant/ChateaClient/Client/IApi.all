@@ -4,21 +4,9 @@ namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\Http\IHttpClient;
 interface IApi
 {
-	const URI_CHANNELS_SHOW						= 'api/channels';
-	const URI_CHANNEL_ADD	 					= 'api/channels';
-	const URI_CHANNEL_UPDATE					= 'api/channels';
-	const URI_CHANNEL_DEL	 					= 'api/channels';
-	const URI_CHANNEL_SHOW	 					= 'api/channels';		
-	const URI_CHANNEL_FANS_SHOW					= 'api/channels/%d/fans';
-	
+
 	//--------------------------------------------------------------------------
-	const URI_ME_FRIENDS_SHOW					= 'api/me/friends';
-	const URI_ME_FRIEND_ADD						= 'api/me/friends';
-	const URI_ME_FRIENDSHIPS_PENDING_SHOW   	= 'api/me/friends/pending';
-	const URI_ME_FRIENDSHIPS_REQUEST_SHOW		= 'api/me/friends/requests';
-	const URI_ME_FRIENDSHIPS_ACCEPTS			= 'api/me/friends/requests/';
-	const URI_ME_FRIENDSHIPS_DECLINE			= 'api/me/friends/requests/';
-	const URI_ME_FRIENDSHIPS_DEL				= 'api/me/friends/';
+
 	//--------------------------------------------------------------------------
 	const URI_ME_PHOTO_ADD						= 'api/me/photo';
 	const URI_ME_PHOTO_SHOW						= 'api/me/photo/';
@@ -34,76 +22,11 @@ interface IApi
 	const URI_ME_VOTE_SHOW						= 'api/me/vote';
 	const URI_ME_VOTE_DEL						= 'api/me/vote/';
 	const URI_ME_VOTE_ADD						= 'api/me/vote';
-	//--------------------------------------------------------------------------
-	const URI_PORFILE_SHOW 						= 'api/profile/';	
-	const URI_PORFILE_UPDATE					= 'api/profile/';
-	const URI_PORFILE_CHANGE_PASSWORD 			= 'api/profile/change-password';
 	//--------------------------------------------------------------------------	
-	const URI_ME_SHOW	 						= 'api/me/';
-	const URI_ME_DEL							= 'api/me/';	
-	const URI_USER_DISABLE						= 'user/%d/disable';
-	const URI_USER_ENABLE						= 'user/%d/enable';
-	const URI_USER_FRIENDS_SHOW					= 'api/users/%d/friends';
-	const URI_USERS_SHOW						= 'api/user/list';
-	const URI_USER_DEL 							= "user/";
-	
-	//--------------------------------------------------------------------------	
-	const URI_REGISTER							= "register";
-	const URI_RESETTING_PASSWORD 				= "resetting/send-email";	
 
 
-	//GET /api/channels/{id}/fans
-
-	//POST	/api/me/channel/{id}/fan		
-
-	//DELETE /api/me/channel/{id}/fan
 
 
-	// 	GET /api/me/friends
-	/**
-	 * returns the friends of the loged in user
-	 */
-	public function showMeFriends();
-	//POST /api/me/friends
-	/**
-	 * sends a friendship request to a given user
-	 *
-	 * @param number $user_id
-	 */
-	 public function addMeFirend($user_id);	
-	// 	GET /api/me/friends/pending
-	/**
-	 * returns the friendships request the loged in user sended that are pending froor acceptance
-	 */		
-	 public function showFriendshipsPending();	
-	// 	GET /api/me/friends/requests 
-	/**
-	 * returns the friendship requests sended the loged in user pending to be accepted
-	 * 
-	 * @param number $user_id
-	 */
-	public function showFriendshipsRequest ();
-	// 	PUT /api/me/friends/requests/{id}
-	/**
-	 * accepts a friendship request
-	 * 
-	 * @param number $id
-	 */
-	public function acceptsFriendshipRequest($id);
-	// 	DELETE /api/me/friends/requests/{id}
-	/**
-	 * Decline a friendship request
-	 * 
-	 * @param number $i
-	 */
-	public function declineFriendshipRequest($id);
-	// 	DELETE /api/me/friends/{id} 
-	/**
-	 * Deletes a friendship
-	 * 
-	 * @param number $id
-	 */
-	public function delFriendship($id = 0);
 	// 	POST /api/photo
 	/**
 	 * create a photo
@@ -202,25 +125,6 @@ interface IApi
 	 * @param number $id photo id
 	 */
 	public function delVote($id);
-	// 	GET /api/profile/
-	/**
-	 * Show a profile of an user
-	 */
-	 public function showProfile();
-	// 	PUT|PATCH /api/profile/
-	/**
-	 * Update a profile of an user
-	 */
-	public function updateProfile($username, $email, $current_password);
-	// 	PATCH /api/profile/change-password 
-	/**
-	 * Change user password
-	 * 
-	 * @param string $current_password
-	 * @param string $new_password
-	 * @param String $repeat_new_password
-	 */
-	public function changePassword($current_password, $new_password, $repeat_new_password);
 	// 	DELETE /api/user/
 	/**
 	 * Delete my user
@@ -235,7 +139,7 @@ interface IApi
 	/**
 	 * Get the user of session
 	 */
-	public function whoami();
+	public function whoami()
 	//DELETE /api/me/
 	/**
 	 * Delete my user
@@ -248,44 +152,6 @@ interface IApi
 	 * @param number $id
 	 */	
 	public function showFriends($id);
-	// 	PATCH  /user/{id}disable 
-	/**
-	 * disable an user by id
-	 * 
-	 * @param number $id
-	 */
-	public function disableUser($id);
-	// 	PATCH  /user/{id}/enable
-	/**
-	 * Enable an user by id CONFIGURE ANOTTATION @SECURE because mandatory redirect to login
-	 * 
-	 * @param number $id
-	 */
-	public function enableUser($id);
-	// 	DELETE  /user/{id}
-	/**
-	 * delete an user
-	 * 
-	 * @param number $id
-	 */
-	public function delUser($id);	
-	// 	POST /register
-	/**
-	 *  create a user
-	 *
-	 * @param IHttpClient $httpClient
-	 * @param string $username
-	 * @param string $email
-	 * @param string $new_password
-	 * @param string $repeat_new_password
-	 */
-	 public static function register(IHttpClient $httpClient,  $username, $email,$new_password, $repeat_new_password);
-	 // 	POST /resetting/send-email
-	/**
-	* Request reset user password, in the request is mandatory send username or email (dont work from nelmio api)
-	 *
-	 * @param IHttpClient $httpClient
-	 * @param string $username
-	 */
-	 public static function requestResetpassword(IHttpClient $httpClient, $username);	
+
+
 }

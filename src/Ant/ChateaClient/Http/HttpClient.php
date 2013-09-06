@@ -39,7 +39,26 @@ class HttpClient extends Client implements IHttpClient {
 			$this->addAccesToken($accesToken);
 		}		
 	}
-	
+	public static function parseRouting($uri, $params = null)
+	{		
+		if(empty($params)){
+			return $uri;
+		}
+		
+		$pattern = '/{\w+}/';
+		
+		if(is_array($params)){
+			$leng = count($params);
+
+			if(preg_match_all('/({\w+})/',$uri) !== $leng)
+			{
+				throw new HttpClientException('HttpClientException::parseRouting() ERROR: The params number does not match with the path');
+			}			
+			$pattern = array_fill(0, $leng, "/{\w+}/");
+		}
+		
+		return preg_replace($pattern, $params, $uri,1);
+	}	
 	private function addRequest($method = 'GET', $uri = null, $data = null, $contentType = null)
 	{
 		$headers = null;
@@ -153,7 +172,7 @@ class HttpClient extends Client implements IHttpClient {
 		if($this->request !== null){
 			return $this->request->getUrl();
 		}
-		return $this->getBaseUrl ();
+		return $this->getBaseUrl();
 	}
 	public function send($response_type = 'json') 
 	{
@@ -184,8 +203,6 @@ class HttpClient extends Client implements IHttpClient {
 				break;						
 		}		
 		
-				
-		
 		try {
 			$this->response = parent::send ( $this->request );
 		} catch (BadResponseException $ex ) {			
@@ -206,8 +223,7 @@ class HttpClient extends Client implements IHttpClient {
 					$ex->getCode (), 
 					$ex 
 			);
-    	}
-    	ld($this->request->getMethod().'::'.$this->getUrl());
+    	}    	
     	return $this->response->$method($arguments);
 	}
 	
@@ -219,5 +235,5 @@ class HttpClient extends Client implements IHttpClient {
 		}
 		json_decode ( $string );
 		return (json_last_error () == JSON_ERROR_NONE);
-	}
+	}	
 }

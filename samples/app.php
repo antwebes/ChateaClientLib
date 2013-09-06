@@ -12,17 +12,22 @@ use Ant\ChateaClient\Http\HttpClientException;
 
 use Ant\ChateaClient\Client\AuthClientCredentials;
 use Ant\ChateaClient\Client\AuthUserCredentials;
+use Ant\ChateaClient\Client\AuthAuthCode;
 use Ant\ChateaClient\Client\Api;
 use Ant\ChateaClient\Client\ApiException;
 use Ant\ChateaClient\Client\SessionStorage;
 use Ant\ChateaClient\Client\IApi;
 
+SessionStorage::destruct();
 
-$oauthClient = new OAuth2ClientCredentials(
+$oauthClient = new OAuth2ClientAuthCode(
 		'2_63gig21vk9gc0kowgwwwgkcoo0g84kww00c4400gsc0k8oo4ks',
-		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w'
+		'202mykfu3ilckggkwosgkoo8g40w4wws0k0kooo488wo048k0w',
+		'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ',
+		'http://www.chateagratis.net/'
 		);
-$validAuthCode =  'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ';
+
+$validAuthCode =    'OTgxMTIwNzIwODc4OGJhMjNmZDEyM2I4NDhiNmQyOTk4MjU3YzdkNjM5NDI5MjE0MzJiMWM2ODYxNWFjNDAzOQ';
 $validRefresToken = 'Mjk2M2RiNWEwOGJhYzQ2Y2JmMzI1ODlhNjgxZjQ3YTQ0ZDk3MjRmMjcxMmUxODVlNWMyODkyMzc4OTExZWZhMg';
 $validUsername = 'apiuser';
 $validpassword = 'apiuser';
@@ -30,12 +35,11 @@ $validpassword = 'apiuser';
 
 	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
 	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
-	$auth = new AuthClientCredentials($oauthClient,$httpClientAuth);
+	$auth = new AuthAuthCode($oauthClient,$httpClientAuth);
 
 try {
 	
-	$store = SessionStorage::getInstance();
-	
+	$store = SessionStorage::getInstance();	
 	$accessToken = $auth->getAccessToken();
 	$refreshToken = $auth->getRefreshToken();
 	
@@ -69,21 +73,44 @@ try {
 	echo $accessToken->getValue();
 	echo "<br><br>";
 	
+		
+//----------------------------------------------------------------------------//
+//-			    Basic test ROUTING NOT APPROVAL BY J   						 -//
+//----------------------------------------------------------------------------//
+	
+// 	echo $httpClientApi::parseRouting("api/channels");
+// 	echo "<br/>";
+// 	echo $httpClientApi::parseRouting("api/channels/{id}",12);
+// 	echo "<br/>";
+// 	echo $httpClientApi::parseRouting("api/users/{id}/channels",12);
+// 	echo "<br/>";
+// 	echo $httpClientApi::parseRouting("api/users/{user_id}/channels/{channel_id}/fans",array(12,14));	
+// 	echo "<br/>";
+// 	echo $httpClientApi::parseRouting("api/users/{user_id}/channels/{channel_id}/fan/{fan_id}",array(12,14));	
+	
 	$api = new Api($httpClientApi);
 
+
+//	echo Api::register(new HttpClient(), 'username', 'email@eamil.com', 'new_password', 'new_password');
+//	echo Api::requestResetpassword(new HttpClient(), 'xabierAll');
+		
 
 //----------------------------------------------------------------------------//		
 //----------    CHANNELS      ------------------------------------------------//
 //----------------------------------------------------------------------------//
 //	  	echo $api->showChannels();
-		echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
-// 		echo $api->updateChannel(21, 'new chanel 26');
+//		echo $api->addChanel("Xabier Channels_".time(), "new chanel title");	
+//		echo $api->updateChannel(34, 'new chanel 26');
 // 		echo $api->showChannel(21);
-// 		echo $api->delChannel(20);	
-//		echo $api->showChannel('21');
+// 		echo $api->delChannel(34);
+//		echo $api->showChannelFans(6);		
+//		echo $api->showUserChannels('2');
+//		echo $api->showUserChannelsFan(10);
+//		echo $api->addUserChannelFan(6,2);
+//		echo $api->delUserChannelFan(6,2);
 	
 //----------------------------------------------------------------------------//
-//----------		Friends	    -----------------------------------------------//
+//----------		Friends	    ----------------------------------------------//
 //----------------------------------------------------------------------------//
 		
 //		echo $api->showMeFriends();	
@@ -134,13 +161,18 @@ try {
 
 	
 	
-//	echo Api::register(new HttpClient(), 'username', 'email@eamil.com', 'new_password', 'new_password');
-//	echo Api::requestResetpassword(new HttpClient(), 'xabierAll');
-	
+
+
+echo "<br/><br/>URL<br/><br/>";
+echo $httpClientApi->getUrl();
+echo "<br/><br/>";
 }catch (HttpClientException $e){
 	echo "<br><br><br>";
-	echo "HttpClientException Message: <br/><br/>";
-	echo $e->getResponse(true);	
+	echo "HttpClientException Only Response Message: <br/><br/>";
+	echo $e->getResponse(true);
+	echo "<br><br><br>";
+	echo "HttpClientException Full Message: <br/><br/>";
+	echo $e->getMessage();		
 }catch (ApiException $ex){
 	echo "API Error Error: <br/><br/>";
 	echo $e->getMessage();

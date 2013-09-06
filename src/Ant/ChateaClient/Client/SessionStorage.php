@@ -16,7 +16,16 @@ class SessionStorage implements IStorage {
 			session_start();	
 		}
 	}
+  public static function destruct()
+  {
+    
+  	if ("" !== session_id() && self::$session !== NULl) {
+		  	self::$session = NULL;
+		  	session_destroy();
+		  	session_unset ();
+        }
 
+  }
   public static function getInstance() {
         if (self::$session === NULl) {
             self::$session = new SessionStorage();
