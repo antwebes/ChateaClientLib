@@ -11,7 +11,9 @@
 	],
 	"keywords" : [
 		"chatea",
-		"chateagratis, api"
+		"chateagratis",
+		"library",
+		"api"
 	],
 	"homepage" : "https://github.com/antwebes/chateaClient",
 	"license" : [
