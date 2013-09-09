@@ -1,5 +1,5 @@
 {
-	"name" : "antwebes/chatea-client-library",
+	"name" : "antwebes/chatea-client-lib",
 	"description" : "Library that makes it easy to use API of api.chatea.net",
 	"type" : "library",
 	"authors" : [{
