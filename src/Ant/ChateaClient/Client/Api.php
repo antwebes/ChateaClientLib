@@ -439,7 +439,564 @@ class Api implements IApi
 
 
 /******************************************************************************/
+/*			  			FRIENDSHIP METHODS    	   					  		  */
+/******************************************************************************/	
+	
+// 	GET api/users/{id}/friends
+	/**
+	 * returns the friends of user
+	 */
+	 public function showFriends($user_id)
+	 {
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDS_SHOW,$user_id));
+	 	return $this->httpClientSend();	 	
+	 }
+//	 POST api/users/{id}/friends
+	 /**
+	 * sends a friendship request to a given user
+	 *
+	 * @param number $user_id
+	 * @param number $friend_id
+	 */
+	 public function addFirend($user_id,$friend_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::addFirend user_id field should be positive integer");
+	 	}
+	 	if (!is_numeric($friend_id) || 0 >= $friend_id) {
+	 		throw new ApiException(
+	 				"ApiException::addFirend user_id field should be positive integer");
+	 	}	 	
+	 	$this->httClient->addPost(
+	 			self::parseRouting(IApi::URI_USER_FRIEND_ADD,$user_id), 
+	 			array('user_id' => $friend_id)
+	 	);
+	 	return $this->httpClientSend();	 	
+	 }
+// 	 GET api/users/{id}/friends/pending
+	 /**
+	 * returns the friends that they are pending accept by an user
+	 */
+	 public function showFriendshipsPending($user_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::showFriendshipsPending user_id field should be positive integer");
+	 	}
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_PENDING_SHOW,$user_id));
+	 	return $this->httpClientSend(); 	
+	 }
+// 	 GET api/users/{id}/friends/requests
+	 /**
+	 * returns the requests friendships that one user doesn't have accepted
+	 *
+	 * @param number $user_id
+	 */
+	 public function showFriendshipsRequest ($user_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::showFriendshipsRequest user_id field should be positive integer");
+	 	}	 	
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_REQUEST_SHOW,$user_id));
+	 	return $this->httpClientSend();	 	
+	 }
+// 	 PUT /api/users/{id}/friends/requests/{user_accept_id}
+	 /**
+	 * accepts a friendship request
+	 *
+	 * @param number $user_id
+	 * @param number $user_accept_id
+	 */
+	 public function addFriendshipRequest($user_id,$user_accept_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::addFriendshipRequest user_id field should be positive integer");
+	 	}
+	 	if (!is_numeric($user_accept_id) || 0 >= $user_accept_id) {
+	 		throw new ApiException(
+	 				"ApiException::addFriendshipRequest user_accept_id field should be positive integer");
+	 	}	 
+	 		
+	 	$this->httClient->addPut(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_ACCEPTS,array($user_id,$user_accept_id)));
+	 	return $this->httpClientSend();	 	
+	 }
+// 	 DELETE /api/users/{id}/friends/requests/{user_decline_id}
+	 /**
+	 * Decline a friendship request
+	 *
+	 * @param number $user_id
+	 * @param number $user_decline_id
+	 */
+	 public function delFriendshipRequest($user_id,$user_decline_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::delFriendshipRequest user_id field should be positive integer");
+	 	}
+	 	if (!is_numeric($user_decline_id) || 0 >= $user_decline_id) {
+	 		throw new ApiException(
+	 				"ApiException::delFriendshipRequest user_decline_id field should be positive integer");
+	 	}
+	 		 	
+	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DECLINE, array($user_id,$user_decline_id)));
+	 	return $this->httpClientSend();	 	
+	 }
+// 	  DELETE api/users/{id}/friends/{user_delete_id}
+	 /**
+	 * Deletes a friendship
+	 *
+	 * @param number $user_id
+	 * @param number $user_delete_id
+	 */
+	 public function delFriend($user_id, $user_delete_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::delFriend user_id field should be positive integer");
+	 	}
+	 	
+	 	if (!is_numeric($user_delete_id) || 0 >= $user_delete_id) {
+	 		throw new ApiException(
+	 				"ApiException::delFriend user_delete_id field should be positive integer");
+	 	}	 	
+	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DEL, array($user_id, $user_delete_id)));
+	 	return $this->httpClientSend();	 	
+	 }
+
 /******************************************************************************/
+/*			  				ME METHODS	    	   					  		  */
+/******************************************************************************/
+// 	 GET /api/me
+	
+	/**
+	 * Get my user of session
+	 */
+	public function whoami()
+	{
+		$this->httClient->addGet(IApi::URI_ME_SHOW);
+		return $this->httpClientSend();		
+	}
+	/**
+	 * Get my user of session
+	 */	
+	public function showMe()
+	{
+		return $this->whoami();
+	}	  
+//	  DELETE /api/me/
+   /**
+	* Delete my user
+	*/
+	public function delMe()
+	{
+		$this->httClient->addDelete(IApi::URI_ME_DEL);
+		return $this->httpClientSend();		
+	}
+	
+/******************************************************************************/
+/*			  				PHOTO METHODS    	   					  		  */
+/******************************************************************************/
+	 
+//	GET /api/photo/{id}
+  /**
+	* Show a photo
+	*
+	* @param number $photo_id
+	*/
+	public function showPhoto($photo_id)
+	{
+		if (!is_numeric($photo_id) || 0 >= $photo_id) {
+			throw new ApiException(
+					"ApiException::showPhoto photo_id field should be positive integer");
+		}		
+		$this->httClient->addGet(self::parseRouting(IApi::URI_PHOTO_SHOW,$photo_id));
+		return $this->httpClientSend();		
+	}
+// 	  GET /api/photo/{id}/votes
+	/**
+	 * Show a vote of a photo
+	 *
+	 * @param number $photo_id
+	 */
+	public function showPhotoVotes($photo_id)
+	{
+		if (!is_numeric($photo_id) || 0 >= $photo_id) {
+			throw new ApiException(
+					"ApiException::showPhotoVotes photo_id field should be positive integer");
+		}
+		$this->httClient->addGet(self::parseRouting(IApi::URI_PHOTO_VOTES_SHOW,$photo_id));
+		return $this->httpClientSend();		
+	}
+// 	  GET /api/user/{id}/photos
+	/**
+	 * List all photos of an user
+	 *
+	 * @param number $user_id
+	 */
+	public function showPhotos($user_id)
+	{
+		if (!is_numeric($user_id) || 0 >= $user_id) {
+			throw new ApiException(
+					"ApiException::showPhotos user_id field should be positive integer");
+		}
+		$this->httClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_SHOW,$photo_id));
+		return $this->httpClientSend();		
+	}
+// 	  POST /api/users/{id}/photo
+	/**
+	 * Create a photo
+	 *  
+	 * @param number $user_id
+     * @param string $imageTile 
+	 * @param string $imageFile
+	 */
+	 public function addPhoto($user_id, $imageTile, $imageFile)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::addPhoto user_id field should be positive integer");
+	 	}	 	
+	 	if (!is_string($imageTile) || 0 >= strlen($imageTile)) {
+	 		throw new ApiException(
+	 				"ApiException::addPhoto imageTile field needs to be a non-empty string");
+	 	}
+	 	if (!file_exists($imageFile)) {
+	 		throw new ApiException(
+	 				sprintf("ApiException::addPhoto imageFile: '%s'  not exists",
+	 						$imageFile));
+	 	}
+	 	$this->httClient->addPost(
+	 			self::parseRouting(self::URI_USER_PHOTO_ADD,$user_id), 
+	 			array('title' => $imageTile)
+	 	);	 	
+	 	
+	 	$this->httClient->addPostFile(imageFile,'image');
+	 	
+	 	return $this->httpClientSend();			
+	 }
+// 	  GET /api/users/{id}/vote
+	/**
+	 * Show all votes of an user
+	 *
+	 * @param number $user_id
+	 */
+	public function showUserVotes($user_id)
+	{
+		if (!is_numeric($user_id) || 0 >= $user_id) {
+			throw new ApiException(
+					"ApiException::addPhoto user_id field should be positive integer");
+		}		
+		$this->httClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_SHOW,$photo_id));
+		return $this->httpClientSend();		
+	}
+// 	  POST /api/users/{id}/vote	
+	  /**
+	  * Create a vote
+	  *
+	  * @param number $user_id
+	  * @param number $photo_id
+	  * @param number $core
+	   */
+	public function addPhotoVote($user_id,$photo_id,$core)
+	{
+		if (!is_numeric($user_id) || 0 >= $user_id) {
+			throw new ApiException(
+					"ApiException::addPhoto user_id field should be positive integer");
+		}		
+		if (!is_numeric($photo_id) || 0 >= $photo_id) {
+			throw new ApiException(
+					"ApiException::addPhoto photo_id field should be positive integer");
+		}
+		if (!is_numeric($core) || 0 >= $core) {
+			throw new ApiException(
+					"ApiException::addPhoto core field should be positive integer");
+		}
+				
+		$data = array('vote'=>array('photo'=>$photo_id,'score>'=>$core));
+		 
+		$this->httClient->addPost(
+				self::parseRouting(self::URI_USER_PHOTO_VOTES_ADD,$user_id),
+				$data
+		);		
+		return $this->httpClientSend();		
+	}
+// 	  DELETE /api/users/{id}/vote/{photo_id}
+  /**
+	* Delete a vote
+	* @param number $user_id
+	* @param number $photo_id
+	*/
+	public function delPhotoVote($user_id, $photo_id)
+	{
+		if (!is_numeric($user_id) || 0 >= $user_id) {
+			throw new ApiException(
+					"ApiException::delPhotoVote user_id field should be positive integer");
+		}
+		if (!is_numeric($photo_id) || 0 >= $photo_id) {
+			throw new ApiException(
+					"ApiException::delPhotoVote photo_id field should be positive integer");
+		}
+		$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_DEL,array($user_id, $photo_id)));
+		return $this->httpClientSend();
+		
+	}
+// 	  DELETE /api/users/{user_id}/photo/{photo_id}
+  /**
+    * Delete a photo
+    * @param number $user_id
+	* @param number $photo_id
+    */
+	public function delPhoto($user_id,$photo_id)
+	{
+		if (!is_numeric($user_id) || 0 >= $user_id) {
+			throw new ApiException(
+					"ApiException::delPhoto user_id field should be positive integer");
+		}
+		if (!is_numeric($photo_id) || 0 >= $photo_id) {
+			throw new ApiException(
+					"ApiException::delPhoto photo_id field should be positive integer");
+		}
+		$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_DEL,array($user_id, $photo_id)));
+		return $this->httpClientSend();		
+	}	
 
+	
+/******************************************************************************/
+/*			  				THREADS METHODS    	   					  		  */
+/******************************************************************************/
+//       POST /api/users/{id}/threads
+	/**
+	 *
+	 * Creates a thread
+	 *
+	 * @param number $user_id
+	 * @param string $recipient
+	 * @param string $subject
+	 * @param string $body
+	 */
+	 public function addThread($user_id, $recipient, $subject, $body)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::addThread user_id field should be positive integer");
+	 	}
+	 		 	
+	 	if (!is_string($recipient) || 0 >= strlen($recipient)) {
+	 		throw new ApiException(
+	 				"ApiException::addThread recipient field needs to be a non-empty string");
+	 	}
+	 	if (!is_string($subject) || 0 >= strlen($subject)) {
+	 		throw new ApiException(
+	 				"ApiException::addThread subject field needs to be a non-empty string");
+	 	}
+	 	if (!is_string($body) || 0 >= strlen($body)) {
+	 		throw new ApiException(
+	 				"ApiException::addThread body field needs to be a non-empty string");
+	 	}
+	 	
+	 	$data = array(
+	 			'message' => array('recipient' => $recipient,
+	 					'subject' => $subject, 'body' => $body));
+	 	
+	 	$this->httClient->addPost(
+	 			self::parseRouting(IAPI::URI_THREAD_ADD,$user_id), 
+	 			$data
+	 	);
+	 	
+	 	return $this->httpClientSend();	 	
+	 }
+//       GET /api/users/{id}/threads/inbox
+	/**
+	* Lists threads with messages had been sent by one user
+	 *
+	 * @param number $user_id
+	 */
+	 public function showThreadsInbox($user_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::showThreadsInbox user_id field should be positive integer");
+	 	}
 
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_INBOX_SHOW,$user_id));
+	 	
+	 	return $this->httpClientSend();	 		 	
+	 }
+//       GET /api/users/{id}/threads/sent
+	 /**
+	 * Messages list in inbox one user.
+	 *
+	 * @param number $user_id
+	 */
+	 public function showThreadsSent($user_id)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::showThreadsSent user_id field should be positive integer");
+	 	}
+	 	
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_SENT_SHOW,$user_id));
+	 	 
+	 	return $this->httpClientSend();	 	
+	 }
+//       GET /api/threads/{thread_id}
+	 /**
+	 * The messages list a given thread
+	 *
+	 * @param number $thread_id
+	 */
+	 public function showThread($thread_id)
+	 {
+	 	if (!is_numeric($thread_id) || 0 >= $thread_id) {
+	 		throw new ApiException(
+	 				"ApiException::showThread thread_id field should be positive integer");
+	 	}
+	 	 
+	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_SHOW,$showThread));
+	 	
+	 	return $this->httpClientSend();	 	
+	 }
+//       POST /api/users/{id}/threads/{thread_id}
+	 /**
+	 * Replies a message to a given thread
+	 *
+	 * @param number $user_id
+	 * @param number $thread_id
+	 * @param string $body
+	 */
+	 public function addThreadMessage($user_id,$thread_id,$body)
+	 {
+	 	if (!is_numeric($user_id) || 0 >= $user_id) {
+	 		throw new ApiException(
+	 				"ApiException::addThreadMessage user_id field should be positive integer");
+	 	}
+	 	
+	 	if (!is_string($thread_id) || 0 >= strlen($thread_id)) {
+	 		throw new ApiException(
+	 				"ApiException::addThreadMessage thread_id field needs to be a non-empty string");
+	 	}
+
+	 	if (!is_string($body) || 0 >= strlen($body)) {
+	 		throw new ApiException(
+	 				"ApiException::addThreadMessage body field needs to be a non-empty string");
+	 	}
+	 	 
+	 	$data = array('message' => array('subject' => $subject, 'body' => $body));
+	 	 
+	 	$this->httClient->addPost(
+	 			self::parseRouting(IApi::URI_THREAD_MESSAGE_ADD,array($user_id,$thread_id)),
+	 			$data
+	 	);
+	 	 
+	 	return $this->httpClientSend();	 	
+	 }
+//		DELETE /api/threads/{thread_id}
+	 /**
+	 * Deletes a thread
+	 *
+	 * @param number $thread_id
+	 */
+	 public function delThread($thread_id)
+	 {
+	 	if (!is_string($thread_id) || 0 >= strlen($thread_id)) {
+	 		throw new ApiException(
+	 				"ApiException::delThread thread_id field needs to be a non-empty string");
+	 	}	
+
+	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_THREAD_DEL,$thread_id));	 	
+	 	return $this->httpClientSend();	 	
+	 }
+
+/******************************************************************************/
+/*			  				USER METHODS    	   					  		  */
+/******************************************************************************/
+// 		GET /api/users
+	 /**
+	  * Get all the users
+	  */
+	  public function who()
+	  {
+	  	$this->httClient->addGet(IAPi::URI_USER_SHOW);
+	  	return $this->httpClientSend();	  		
+	  }
+	  /**
+	   * Get all the users
+	   */	  
+	  public function showUsers()
+	  {
+	  	return $this->who();
+	  }
+// 		GET /api/users/{id}
+	 /**
+	 * Get the user
+	  * @param number $user_id
+	  */
+	  public function showUser($user_id)
+	  {
+	  	if (!is_numeric($user_id) || 0 >= $user_id) {
+	  		throw new ApiException(
+	  				"ApiException::showUser user_id field should be positive integer");
+	  	}	  	
+	  	$this->httClient->addGet(self::parseRouting(IAPi::URI_USER_SHOW,$user_id));
+	  	return $this->httpClientSend();	  	
+	  }
+// 		GET /api/users/{id}/blocked
+	  /**
+	  * Get blocked users of the session user
+	  * @param number $user_id
+	  */
+	  public function showUsersBlocked($user_id)
+	  {
+	  	if (!is_numeric($user_id) || 0 >= $user_id) {
+	  		throw new ApiException(
+	  				"ApiException::showUsersBlocked user_id field should be positive integer");
+	  	}
+	  	$this->httClient->addGet(self::parseRouting(IAPi::URI_USERS_BLOCKED_SHOW,$user_id));
+	  	return $this->httpClientSend();	  	
+	  }
+// 		POST /api/users/{id}/blocked
+	  /**
+	  * Blocks the given user for the session user
+	  *
+	  * @param number $user_id
+	  * @param number $user_blocked_id
+	  */
+	  public function addUserBlocked($user_id,$user_blocked_id)
+	  {
+	  	if (!is_numeric($user_id) || 0 >= $user_id) {
+	  		throw new ApiException(
+	  				"ApiException::addUserBlocked user_id field should be positive integer");
+	  	}
+	  	if (!is_numeric($user_blocked_id) || 0 >= $user_blocked_id) {
+	  		throw new ApiException(
+	  				"ApiException::addUserBlocked user_id field should be positive integer");
+	  	}
+	  		  	
+	  	$this->httClient->addPost(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,$user_id),array('user_id'=>$user_blocked_id));
+	  	return $this->httpClientSend();	  	
+	  }
+//		DELETE /api/users/{user_id}/blocked/{blocked_user_id}
+	  /**
+	  * Unblocks the given user for the session user
+	  *
+	  * @param number $user_id
+	  * @param number $user_blocked_id
+	  */
+	  public function delUserBlocked($user_id,$user_blocked_id)
+	  {
+	  	if (!is_numeric($user_id) || 0 >= $user_id) {
+	  		throw new ApiException(
+	  				"ApiException::addUserBlocked user_id field should be positive integer");
+	  	}
+	  	if (!is_numeric($user_blocked_id) || 0 >= $user_blocked_id) {
+	  		throw new ApiException(
+	  				"ApiException::addUserBlocked user_id field should be positive integer");
+	  	}
+	  	
+	  	$this->httClient->addDelete(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,array('user_id'=>$user_blocked_id)));
+	  	return $this->httpClientSend();	  	
+	  }
 }
