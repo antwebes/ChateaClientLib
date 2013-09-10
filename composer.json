@@ -27,7 +27,5 @@
 		"psr-0" : {
 			"Ant" : "src/"
 		}
-	},
-	"target-dir" : "Ant/PhotoRestBundle",
-	"minimum-stability" : "dev"
+	}
 }
