@@ -15,9 +15,9 @@ class HttpClient extends Client implements IHttpClient {
 	private $accept_header;
 		
 	public function __construct(
-			$baseUrl = '', 
-			AccessToken $accesToken = null, 			
-			$accept_header = 'application/json'
+			$baseUrl = '', 					
+			$accept_header = 'application/json',
+			AccessToken $accesToken = null
 	) {
 		
 		if (! is_string ( $baseUrl ) || 0 >= strlen ( $baseUrl )) {
@@ -182,27 +182,25 @@ class HttpClient extends Client implements IHttpClient {
 		switch ($response_type)
 		{		
 			case 'xml':
-				$this->accept_header = 'application/xml';
+				$this->accept_header = $this->accept_header.',application/xml';
 				$method = 'xml';
 				$arguments = null;
 				break;
 			case 'json':
-				$this->accept_header = 'application/json';
+				$this->accept_header = $this->accept_header.',application/json';
 				$method = 'getBody';
 				$arguments = true;				
 				break;
 			case 'array':
-					$this->accept_header = 'application/json';
+					$this->accept_header = $this->accept_header.',application/json';
 					$method = 'json';										
 				break;					
 			default:
-				$this->accept_header = 'application/json';
 				$method = 'getBody';
 				$arguments = true;
-				ld("default");
 				break;						
 		}		
-		
+		$this->request->addHeader('Accept',$this->accept_header);
 		try {
 			$this->response = parent::send ( $this->request );
 		} catch (BadResponseException $ex ) {			
