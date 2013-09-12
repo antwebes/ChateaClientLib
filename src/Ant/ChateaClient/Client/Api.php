@@ -2,8 +2,10 @@
 namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\Http\IHttpClient;
 use Ant\ChateaClient\Http\HttpClient;
+use Ant\ChateaClient\Http\HttpClientException;
 use Ant\ChateaClient\Client\IApi;
 use Ant\ChateaClient\Client\ApiException;
+
 
 /**
  * This class represent the one chat API, this is single abstraction 
@@ -114,7 +116,7 @@ class Api implements IApi
 		try {
 			return $httpClient->send();
 		} catch (HttpClientException $ex) {
-			throw new ApiException($ex->getMessage());
+			throw new ApiException($ex->getMessage(),$this->httClient,$ex->getCode(),$ex);
 		}
 	}
 	

@@ -8,7 +8,7 @@ class OAuth2ClientUserCredentials extends OAuth2Client
 	private $username;
 	private $password;
 	
-	public function __construct($client_id, $secret, $username, $password)
+	public function __construct($client_id, $secret, $username, $password, $redirect_uri = '')
 	{
 		if (!is_string($client_id) || 0 >= strlen($client_id)) {
 			throw new OAuth2ClientException("client_id needs to be a non-empty string", $this);

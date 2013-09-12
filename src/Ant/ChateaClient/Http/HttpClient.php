@@ -112,7 +112,7 @@ class HttpClient extends Client implements IHttpClient {
 			}
 		}		
 	}
-
+	
 	public function addGet($uri = null, $data = null)
 	{
 		$this->addRequest ( "GET", $uri, array ('query' => $data ));
@@ -141,6 +141,10 @@ class HttpClient extends Client implements IHttpClient {
 	public function getResponse() 
 	{
 		return $this->response;
+	}
+	public function getResponseStatusCode()
+	{
+		return $this->response?->getStatusCode();
 	}
 	public function getHeaderAccept() 
 	{
@@ -204,6 +208,7 @@ class HttpClient extends Client implements IHttpClient {
 		try {
 			$this->response = parent::send ( $this->request );
 		} catch (BadResponseException $ex ) {			
+			
 			throw new HttpClientException ( 
 					"Error to send request in HttpClient: " . $ex->getMessage (), 
 					$this, 
@@ -212,7 +217,8 @@ class HttpClient extends Client implements IHttpClient {
 					$ex->getCode (), 
 					$ex 
 			);
-		} catch (ClientErrorResponseException $ex ){			
+		} catch (ClientErrorResponseException $ex ){	
+					
 			throw new HttpClientException ( 
 					"Error to send request in HttpClient: " . $ex->getMessage (), 
 					$this, 
