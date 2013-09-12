@@ -20,15 +20,10 @@ class HttpClientException extends \Guzzle\Http\Exception\BadResponseException
 			$previous = null 
 	){
 		if($httpClient != null){
-			$message = get_class($httpClient).':'.$message;
-		}
-		if ($request) {
-			$message .= " |------> 
-						Request message: ".$request->__toString();
-		}		
+			$message = ' ['.get_class($httpClient).'] '.$message;
+		}	
 		if($response){
-			$message .= " |------>
-						Response message: ".$response->__toString();
+			$message .= " [Response message] ".$response->__toString();
 		}
 		$this->httpClient = $httpClient;
 		$this->request = $request;
@@ -40,12 +35,24 @@ class HttpClientException extends \Guzzle\Http\Exception\BadResponseException
 	{
 		return $this->httpClient;
 	}
-	public function getResponse($only_error = true)
+	public function getResponse()
 	{
-		return $only_error?$this->response?$this->response->getBody(true):null:$this->response->getMessage();
+		return $this->response;
 	}
 	public function getRequest()
 	{
 		return $this->request;
+	}
+	public function getStatusCode()
+	{
+		return $this->response?$this->response->getStatusCode():null;
+	}
+	public function getServerError()
+	{
+		return $this->response?$this->response->getBody(true):null;
+	}
+	public function getHeaders()
+	{
+		return $this->response?$this->response->getHeaders()->toArray():null;
 	}
 }

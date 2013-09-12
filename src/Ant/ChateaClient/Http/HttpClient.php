@@ -13,7 +13,7 @@ class HttpClient extends Client implements IHttpClient {
 	private $response;
 	private $accesToken;
 	private $accept_header;
-		
+	private $server_error; 	
 	public function __construct(
 			$baseUrl = '', 					
 			$accept_header = 'application/json',
@@ -34,6 +34,7 @@ class HttpClient extends Client implements IHttpClient {
 		
 		$this->request = null;
 		$this->response = null;
+		$this->server_error = null;
 		
 		if($accesToken !== null){
 			$this->addAccesToken($accesToken);
@@ -142,10 +143,6 @@ class HttpClient extends Client implements IHttpClient {
 	{
 		return $this->response;
 	}
-	public function getResponseStatusCode()
-	{
-		return $this->response?->getStatusCode();
-	}
 	public function getHeaderAccept() 
 	{
 		return $this->accept_header;
@@ -154,6 +151,19 @@ class HttpClient extends Client implements IHttpClient {
 	{
 		return $this->request?$this->request->getHeaderLines():$this->defaultHeaders;
 	}
+	public function setBaseUrl($url)
+	{
+		parent::setBaseUrl ( $url );
+	}
+	
+	public function getUrl()
+	{
+		if($this->request !== null){
+			return $this->request->getUrl();
+		}
+		return $this->getBaseUrl();
+	}
+	
 	public function addAccesToken(AccessToken $accesToken) 
 	{
 		if (null == $accesToken || ! $accesToken) {
@@ -166,18 +176,7 @@ class HttpClient extends Client implements IHttpClient {
 		//FIXME you this has to be:   type =  $this->accesToken->getTokenType ()->getName ()				
 		$this->defaultHeaders->add('Authorization', sprintf ( "Bearer %s", $accesToken->getValue () ));		
 	}
-	public function setBaseUrl($url) 
-	{
-		parent::setBaseUrl ( $url );
-	}
-	
-	public function getUrl() 
-	{
-		if($this->request !== null){
-			return $this->request->getUrl();
-		}
-		return $this->getBaseUrl();
-	}
+
 	public function send($response_type = 'json') 
 	{
 		$method = null;
@@ -208,7 +207,7 @@ class HttpClient extends Client implements IHttpClient {
 		try {
 			$this->response = parent::send ( $this->request );
 		} catch (BadResponseException $ex ) {			
-			
+			$this->server_error = $ex->getResponse ()->getBody(true);
 			throw new HttpClientException ( 
 					"Error to send request in HttpClient: " . $ex->getMessage (), 
 					$this, 
@@ -218,7 +217,7 @@ class HttpClient extends Client implements IHttpClient {
 					$ex 
 			);
 		} catch (ClientErrorResponseException $ex ){	
-					
+			$this->server_error = $ex->getResponse ()->getBody(true);
 			throw new HttpClientException ( 
 					"Error to send request in HttpClient: " . $ex->getMessage (), 
 					$this, 

@@ -50,7 +50,7 @@ class Api implements IApi
 		try {
 			return $this->httClient->send($response_type);
 		} catch (HttpClientException $ex) {
-			throw new ApiException($ex->getMessage());
+			throw new ApiException($ex->getMessage(),$ex,$ex->getCode(),$ex);
 		}
 	}
 	
@@ -115,8 +115,8 @@ class Api implements IApi
 	
 		try {
 			return $httpClient->send();
-		} catch (HttpClientException $ex) {
-			throw new ApiException($ex->getMessage(),$this->httClient,$ex->getCode(),$ex);
+		} catch (HttpClientException $ex) {			
+			throw new ApiException($ex->getMessage(),$ex,$ex->getCode(),$ex);
 		}
 	}
 	
@@ -149,7 +149,7 @@ class Api implements IApi
 		try {
 			return $httpClient->send();
 		} catch (HttpClientException $ex) {
-			throw new ApiException($ex->getMessage());
+			throw new ApiException($ex->getMessage(),$ex,$ex->getCode(),$ex);
 		}
 	}
 			

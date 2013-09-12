@@ -34,9 +34,10 @@ $validpassword = 'apiuser';
 
 
 	$httpClientAuth = new HttpClient(HttpClient::TOKEN_ENDPOINT);
-	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
+	
 	$auth = new AuthAuthCode($oauthClient,$httpClientAuth);
-
+	
+	$httpClientApi = new HttpClient(HttpClient::SERVER_ENDPOINT);
 try {
 	
 	$store = SessionStorage::getInstance();	

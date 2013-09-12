@@ -1,23 +1,33 @@
 <?php
 
 namespace Ant\ChateaClient\Client;
-use Ant\ChateaClient\Http\IHttpClient;
+use Ant\ChateaClient\Http\HttpClientException;
 
 class ApiException extends \Exception
 {
-	private $httpClient;
+	private $httpClientException;
 	
-	public function __construct ($message = '', IHttpClient $httpClient = null, $code = 0, $previous = null)
+	public function __construct ($message = '', HttpClientException $httpClientException = null, $code = 0, $previous = null)
 	{
-		if($httpClient != null){
-			$this->httpClient = $httpClient;
-		}
+		$this->httpClientException = $httpClientException;		
 		parent::__construct($message,$code,$previous);
 	}
 	
-	public function getHttpClient()
+	public function getHttpException()
 	{
-		return $this->httpClient;	
+		return $this->httpClientException;	
 	}
-	public function status code
+	public function getStatusCode()
+	{
+		return $this->httpClientException? $this->httpClientException->getStatusCode():'null';
+	}
+	public function getServerError()
+	{
+		return $this->httpClientException? $this->httpClientException->getServerError():'null';
+	}	
+	
+	public function __toString()
+	{
+		return $this->getMessage();
+	}
 }
