@@ -21,9 +21,7 @@ class TokenRequest
     	if(!$httpClient){
     		throw new TokenRequestException("HttpClient is not null");
     	}    	    	
-    	if (!is_string($httpClient->getUrl()) || 0 >= strlen($httpClient->getUrl())) {
-    		$this->httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
-    	}    	
+ 	
     	$this->oauthClient = $oauthClient;
         $this->httpClient = $httpClient;
     }

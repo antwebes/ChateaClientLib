@@ -46,9 +46,9 @@ abstract class Authentication implements IAuthentication
 	/**
 	 * @return \Ant\ChateaClient\OAuth2\AccessToken
 	 */
-	public function getAccessToken() 
+	public function getAccessToken($asString = false) 
 	{
-		return $this->accesToken;
+		return $asString && $this->accesToken?$this->accesToken->getValue():$this->accesToken;
 	}
 	
 	protected function setAccessToken(AccessToken $accesToken)
@@ -63,9 +63,9 @@ abstract class Authentication implements IAuthentication
 	 * 
 	 * @return \Ant\ChateaClient\OAuth2\RefreshToken
 	 */
-	public function getRefreshToken()
+	public function getRefreshToken($asString = false)
 	{
-		return $this->refreshToken;
+		return $asString && $this->refreshToken ? $this->refreshToken->getValue(): $this->refreshToken;
 	}
 	protected function setRefreshToken(RefreshToken $refreshToken)
 	{
