@@ -34,7 +34,7 @@ class AuthUserCredentials extends Authentication
 			$this->setAccessToken($tokenResponse->getAccessToken());
 			$this->setRefreshToken($tokenResponse->getRefreshToken());
 					
-			return $this;			
+			return $tokenResponse;			
 				
 		}catch (TokenRequestException $e){
 			throw new AuthenticationException("Error fetching OAuth2 update token, message: " .

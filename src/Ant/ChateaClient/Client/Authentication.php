@@ -41,7 +41,7 @@ abstract class Authentication implements IAuthentication
 	
 	public function getClientId()
 	{
-		return $this->$oauthClient->getPublicId();
+		return $this->oauthClient->getPublicId();
 	}
 	/**
 	 * @return \Ant\ChateaClient\OAuth2\AccessToken
