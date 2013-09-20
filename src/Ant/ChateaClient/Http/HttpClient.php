@@ -19,11 +19,7 @@ class HttpClient extends Client implements IHttpClient {
 			$accept_header = 'application/json',
 			AccessToken $accesToken = null
 	) {
-		
-		if (! is_string ( $baseUrl ) || 0 >= strlen ( $baseUrl )) {
-			$baseUrl = self::SERVER_ENDPOINT;
-		}
-		
+				
 		parent::__construct ( $baseUrl, null );
 		
 		if (! is_string ( $accept_header ) || 0 >= strlen ( $accept_header )) {

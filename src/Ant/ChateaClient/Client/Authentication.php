@@ -35,6 +35,7 @@ abstract class Authentication implements IAuthentication
 		}		
 		$this->oauthClient = $oauthClient;
 		$this->httpClient = $httpClient;
+		$this->httpClient->setBaseUrl(IHttpClient::SERVER_ENDPOINT);
 		$this->accesToken = null;
 		$this->refreshToken = null;
 	}
@@ -104,7 +105,7 @@ abstract class Authentication implements IAuthentication
 
 	public function updateToken(RefreshToken $refreshToken = null) 
 	{
-		
+
 		$tokenRequest = $this->getTokenRequest();
 		
 		try{

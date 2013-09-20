@@ -8,15 +8,15 @@ class TokenResponse
     private $refreshToken;
     private $tokenType;
     private $expiresIn;    
-    private $scope;
+    private $scopes;
 
-    public function __construct(AccessToken $accessToken, RefreshToken $refreshToken, $expiresIn, Scope $scope = null )
+    public function __construct(AccessToken $accessToken, RefreshToken $refreshToken, $expiresIn, array $scopes = array() )
     {	    	    	
     	$this->setAccessToken($accessToken);
         $this->setTokenType($accessToken->getTokenType());
         $this->setExpiresIn($expiresIn);
         $this->setRefreshToken($refreshToken);
-        $this->setScope($scope);
+        $this->setScope($scopes);
     }
 
     /**
@@ -79,9 +79,9 @@ class TokenResponse
      * 
      * @return AccessToken
      */
-    public function getAccessToken()
+    public function getAccessToken($asString = false)
     {
-        return $this->accessToken;
+        return $asString&& $this->accessToken?$this->accessToken->getValue():$this->accessToken;
     }
 
     /**
@@ -101,9 +101,9 @@ class TokenResponse
      * 
      * @return TokenType
      */
-    public function getTokenType()
+    public function getTokenType($asString = false)
     {
-        return $this->tokenType;
+        return $asString&& $this->tokenType?$this->tokenType->getName():$this->tokenType;
     }
 
     /**
@@ -143,26 +143,30 @@ class TokenResponse
      * 
      * @return RefreshToken
      */
-    public function getRefreshToken()
+    public function getRefreshToken($asString = false)
     {
-        return $this->refreshToken;
+        return $this->refreshToken && $asString ? $this->refreshToken->getValue():$this->refreshToken;
     }
 
     /**
      * 
      * @param Scope $scope
      */
-    public function setScope(Scope $scope = null)
+    public function setScope(array $scopes = null)
     {
-        $this->scope = $scope;
+        $this->scopes = $scope;
     }
 
     /**
      * @return Scope
      */
-    public function getScope()
+    public function getScope($asString = false)
     {
-        return $this->scope;
+        if($asString && is_array($this->scopes))
+        {
+        	return json_encode($this->scopes,JSON_PRETTY_PRINT);
+        }
+        return $this->scopes;
     }
     
     public function __toString()
@@ -170,10 +174,10 @@ class TokenResponse
     	return json_encode(
     			array('TokenResponse'=>
     				array(
-    					'AccessToken' 	=> $this->getAccessToken()->getValue(),
-    					'RefreshToken' 	=> $this->getRefreshToken()->getValue(),
-    					'TokenType' 	=> $this->getTokenType()->getName(),
-    					'Scope' 		=> $this->getScope()?$this->getScope()->getName():null,
+    					'AccessToken' 	=> $this->getAccessToken(true),
+    					'RefreshToken' 	=> $this->getRefreshToken(true),
+    					'TokenType' 	=> $this->getTokenType(true),
+    					'Scope' 		=> $this->getScope(true),
     					'expiresIn'		=> $this->getExpiresIn()	
     				)    						    		
     	),

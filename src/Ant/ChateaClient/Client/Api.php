@@ -24,7 +24,7 @@ use Ant\ChateaClient\Client\ApiException;
 class Api implements IApi 
 {
 
-	private $httClient;
+	private $httpClient;
 
 	/**
 	 * Create a ne API objet 
@@ -36,7 +36,8 @@ class Api implements IApi
 		if (null === $httpClient) {
 			$client = new HttpClient(IHttpClient::SERVER_ENDPOINT);
 		}
-		$this->httClient = $httpClient;
+		$this->httpClient = $httpClient;
+		$this->httpClient->setBaseUrl(IHttpClient::SERVER_ENDPOINT);
 	}
 
 	/**
@@ -48,7 +49,7 @@ class Api implements IApi
 	 */
 	private function httpClientSend($response_type = 'json') {
 		try {
-			return $this->httClient->send($response_type);
+			return $this->httpClient->send($response_type);
 		} catch (HttpClientException $ex) {
 			throw new ApiException($ex->getMessage(),$ex,$ex->getCode(),$ex);
 		}
@@ -162,7 +163,7 @@ class Api implements IApi
 	 */
 	 public function showProfile()
 	 {
-	 	$this->httClient->addGet(IApi::URI_PORFILE_SHOW);
+	 	$this->httpClient->addGet(IApi::URI_PORFILE_SHOW);
 	 	return $this->httpClientSend();	 	
 	 }
 
@@ -201,7 +202,7 @@ class Api implements IApi
 				'profile' => array('username' => $username, 'email' => $email,
 						'current_password' => $current_password));
 
-		$this->httClient->addPatch(IApi::URI_PORFILE_UPDATE, $data);
+		$this->httpClient->addPatch(IApi::URI_PORFILE_UPDATE, $data);
 		return $this->httpClientSend();
 	}
 // 	PATCH /api/profile/change-password
@@ -245,7 +246,7 @@ class Api implements IApi
 						'plainPassword' => array('first' => $new_password,
 								'second' => $repeat_new_password)));
 		
-		$this->httClient->addPatch(IApi::URI_PORFILE_CHANGE_PASSWORD, $data);
+		$this->httpClient->addPatch(IApi::URI_PORFILE_CHANGE_PASSWORD, $data);
 		return $this->httpClientSend();
 	}
 	 	
@@ -258,7 +259,7 @@ class Api implements IApi
 	 */
 	 public function showChannels()
 	 {
-	 	$this->httClient->addGet(IApi::URI_CHANNELS_SHOW);
+	 	$this->httpClient->addGet(IApi::URI_CHANNELS_SHOW);
 	 	return $this->httpClientSend();	 	
 	 }
 	 // 	POST /api/channels/
@@ -284,7 +285,7 @@ class Api implements IApi
 	 		$data['channel']['description'] = $description;
 	 	}
 	 	
-	 	$this->httClient->addPost(parseRouting(IApi::URI_CHANNEL_ADD), $data);
+	 	$this->httpClient->addPost(parseRouting(IApi::URI_CHANNEL_ADD), $data);
 	 	return $this->httpClientSend();	 	
 	 }
 	 // 	PATCH|PUT /api/channels/{id}
@@ -316,7 +317,7 @@ class Api implements IApi
 	 		$data['channel']['description'] = $description;
 	 	}
 	 	
-	 	$this->httClient->addPatch(self::parseRouting(IApi::URI_CHANNEL_UPDATE,$channel_id),$data);
+	 	$this->httpClient->addPatch(self::parseRouting(IApi::URI_CHANNEL_UPDATE,$channel_id),$data);
 	 	
 	 	return $this->httpClientSend();	 	
 	 }
@@ -332,7 +333,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::updateChannel channel_id field should be positive integer");
 	 	}
-	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_CHANNEL_UPDATE,$channel_id));
+	 	$this->httpClient->addDelete(self::parseRouting(IApi::URI_CHANNEL_UPDATE,$channel_id));
 	 	return $this->httpClientSend();	 	
 	 }
 	 // 	GET /api/channels/{id}
@@ -347,7 +348,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::showChannel channel_id field should be positive integer");
 	 	}
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_CHANNEL_SHOW, $channel_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_CHANNEL_SHOW, $channel_id));
 	 	return $this->httpClientSend();	 	
 	 }
 	 // 	GET /api/channels/{id}/fans
@@ -362,7 +363,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::showChannelFans channel_id field should be positive integer");
 	 	}
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_CHANNEL_FANS_SHOW,$channel_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_CHANNEL_FANS_SHOW,$channel_id));
 	 	return $this->httpClientSend();	 	
 	 }
 	 //	GET /api/users/{id}/channels
@@ -378,7 +379,7 @@ class Api implements IApi
 	  throw new ApiException(
 	  		"ApiException::showChannelsByUser user_id field should be positive integer");
 	 	}
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_CHANNELS_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_CHANNELS_SHOW,$user_id));
 	 	 	return $this->httpClientSend();
 	 }	 
 	 //	GET /api/users/{id}/channelsFan
@@ -393,7 +394,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::showChannelsFan user_id field should be positive integer");
 	 	}
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_SHOW,$user_id));
 	 	return $this->httpClientSend();	 	
 	 }
 	 //	POST /api/users/{user_id}/channels/{channel_id}/fans
@@ -413,7 +414,7 @@ class Api implements IApi
 	 				"ApiException::addChannelFan user_id field should be positive integer");
 	 	}
 	 	
-	 	$this->httClient->addPost(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_ADD,array($user_id,$channel_id)));
+	 	$this->httpClient->addPost(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_ADD,array($user_id,$channel_id)));
 	 	return $this->httpClientSend();
 	 		 	
 	 }
@@ -435,7 +436,7 @@ class Api implements IApi
 	 				"ApiException::addChannelFan user_id field should be positive integer");
 	 	}
 	 	 
-	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_ADD,array($user_id,$channel_id)));
+	 	$this->httpClient->addDelete(self::parseRouting(IApi::URI_USER_CHANNEL_FAN_ADD,array($user_id,$channel_id)));
 	 	return $this->httpClientSend();	 	
 	 }
 
@@ -450,7 +451,7 @@ class Api implements IApi
 	 */
 	 public function showFriends($user_id)
 	 {
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDS_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDS_SHOW,$user_id));
 	 	return $this->httpClientSend();	 	
 	 }
 //	 POST api/users/{id}/friends
@@ -470,7 +471,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::addFirend user_id field should be positive integer");
 	 	}	 	
-	 	$this->httClient->addPost(
+	 	$this->httpClient->addPost(
 	 			self::parseRouting(IApi::URI_USER_FRIEND_ADD,$user_id), 
 	 			array('user_id' => $friend_id)
 	 	);
@@ -486,7 +487,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::showFriendshipsPending user_id field should be positive integer");
 	 	}
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_PENDING_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_PENDING_SHOW,$user_id));
 	 	return $this->httpClientSend(); 	
 	 }
 // 	 GET api/users/{id}/friends/requests
@@ -501,7 +502,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::showFriendshipsRequest user_id field should be positive integer");
 	 	}	 	
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_REQUEST_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_REQUEST_SHOW,$user_id));
 	 	return $this->httpClientSend();	 	
 	 }
 // 	 PUT /api/users/{id}/friends/requests/{user_accept_id}
@@ -522,7 +523,7 @@ class Api implements IApi
 	 				"ApiException::addFriendshipRequest user_accept_id field should be positive integer");
 	 	}	 
 	 		
-	 	$this->httClient->addPut(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_ACCEPTS,array($user_id,$user_accept_id)));
+	 	$this->httpClient->addPut(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_ACCEPTS,array($user_id,$user_accept_id)));
 	 	return $this->httpClientSend();	 	
 	 }
 // 	 DELETE /api/users/{id}/friends/requests/{user_decline_id}
@@ -543,7 +544,7 @@ class Api implements IApi
 	 				"ApiException::delFriendshipRequest user_decline_id field should be positive integer");
 	 	}
 	 		 	
-	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DECLINE, array($user_id,$user_decline_id)));
+	 	$this->httpClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DECLINE, array($user_id,$user_decline_id)));
 	 	return $this->httpClientSend();	 	
 	 }
 // 	  DELETE api/users/{id}/friends/{user_delete_id}
@@ -564,7 +565,7 @@ class Api implements IApi
 	 		throw new ApiException(
 	 				"ApiException::delFriend user_delete_id field should be positive integer");
 	 	}	 	
-	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DEL, array($user_id, $user_delete_id)));
+	 	$this->httpClient->addDelete(self::parseRouting(IApi::URI_USER_FRIENDSHIPS_DEL, array($user_id, $user_delete_id)));
 	 	return $this->httpClientSend();	 	
 	 }
 
@@ -578,7 +579,7 @@ class Api implements IApi
 	 */
 	public function whoami()
 	{
-		$this->httClient->addGet(IApi::URI_ME_SHOW);
+		$this->httpClient->addGet(IApi::URI_ME_SHOW);
 		return $this->httpClientSend();		
 	}
 	/**
@@ -594,7 +595,7 @@ class Api implements IApi
 	*/
 	public function delMe()
 	{
-		$this->httClient->addDelete(IApi::URI_ME_DEL);
+		$this->httpClient->addDelete(IApi::URI_ME_DEL);
 		return $this->httpClientSend();		
 	}
 	
@@ -614,7 +615,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::showPhoto photo_id field should be positive integer");
 		}		
-		$this->httClient->addGet(self::parseRouting(IApi::URI_PHOTO_SHOW,$photo_id));
+		$this->httpClient->addGet(self::parseRouting(IApi::URI_PHOTO_SHOW,$photo_id));
 		return $this->httpClientSend();		
 	}
 // 	  GET /api/photo/{id}/votes
@@ -629,7 +630,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::showPhotoVotes photo_id field should be positive integer");
 		}
-		$this->httClient->addGet(self::parseRouting(IApi::URI_PHOTO_VOTES_SHOW,$photo_id));
+		$this->httpClient->addGet(self::parseRouting(IApi::URI_PHOTO_VOTES_SHOW,$photo_id));
 		return $this->httpClientSend();		
 	}
 // 	  GET /api/user/{id}/photos
@@ -644,7 +645,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::showPhotos user_id field should be positive integer");
 		}
-		$this->httClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_SHOW,$photo_id));
+		$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_SHOW,$photo_id));
 		return $this->httpClientSend();		
 	}
 // 	  POST /api/users/{id}/photo
@@ -670,12 +671,12 @@ class Api implements IApi
 	 				sprintf("ApiException::addPhoto imageFile: '%s'  not exists",
 	 						$imageFile));
 	 	}
-	 	$this->httClient->addPost(
+	 	$this->httpClient->addPost(
 	 			self::parseRouting(self::URI_USER_PHOTO_ADD,$user_id), 
 	 			array('title' => $imageTile)
 	 	);	 	
 	 	
-	 	$this->httClient->addPostFile(imageFile,'image');
+	 	$this->httpClient->addPostFile(imageFile,'image');
 	 	
 	 	return $this->httpClientSend();			
 	 }
@@ -691,7 +692,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::addPhoto user_id field should be positive integer");
 		}		
-		$this->httClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_SHOW,$photo_id));
+		$this->httpClient->addGet(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_SHOW,$photo_id));
 		return $this->httpClientSend();		
 	}
 // 	  POST /api/users/{id}/vote	
@@ -719,7 +720,7 @@ class Api implements IApi
 				
 		$data = array('vote'=>array('photo'=>$photo_id,'score>'=>$core));
 		 
-		$this->httClient->addPost(
+		$this->httpClient->addPost(
 				self::parseRouting(self::URI_USER_PHOTO_VOTES_ADD,$user_id),
 				$data
 		);		
@@ -741,7 +742,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::delPhotoVote photo_id field should be positive integer");
 		}
-		$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_DEL,array($user_id, $photo_id)));
+		$this->httpClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_VOTES_DEL,array($user_id, $photo_id)));
 		return $this->httpClientSend();
 		
 	}
@@ -761,7 +762,7 @@ class Api implements IApi
 			throw new ApiException(
 					"ApiException::delPhoto photo_id field should be positive integer");
 		}
-		$this->httClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_DEL,array($user_id, $photo_id)));
+		$this->httpClient->addDelete(self::parseRouting(IApi::URI_USER_PHOTO_DEL,array($user_id, $photo_id)));
 		return $this->httpClientSend();		
 	}	
 
@@ -803,7 +804,7 @@ class Api implements IApi
 	 			'message' => array('recipient' => $recipient,
 	 					'subject' => $subject, 'body' => $body));
 	 	
-	 	$this->httClient->addPost(
+	 	$this->httpClient->addPost(
 	 			self::parseRouting(IAPI::URI_THREAD_ADD,$user_id), 
 	 			$data
 	 	);
@@ -823,7 +824,7 @@ class Api implements IApi
 	 				"ApiException::showThreadsInbox user_id field should be positive integer");
 	 	}
 
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_INBOX_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_THREAD_INBOX_SHOW,$user_id));
 	 	
 	 	return $this->httpClientSend();	 		 	
 	 }
@@ -840,7 +841,7 @@ class Api implements IApi
 	 				"ApiException::showThreadsSent user_id field should be positive integer");
 	 	}
 	 	
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_SENT_SHOW,$user_id));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_THREAD_SENT_SHOW,$user_id));
 	 	 
 	 	return $this->httpClientSend();	 	
 	 }
@@ -857,7 +858,7 @@ class Api implements IApi
 	 				"ApiException::showThread thread_id field should be positive integer");
 	 	}
 	 	 
-	 	$this->httClient->addGet(self::parseRouting(IApi::URI_THREAD_SHOW,$showThread));
+	 	$this->httpClient->addGet(self::parseRouting(IApi::URI_THREAD_SHOW,$showThread));
 	 	
 	 	return $this->httpClientSend();	 	
 	 }
@@ -888,7 +889,7 @@ class Api implements IApi
 	 	 
 	 	$data = array('message' => array('subject' => $subject, 'body' => $body));
 	 	 
-	 	$this->httClient->addPost(
+	 	$this->httpClient->addPost(
 	 			self::parseRouting(IApi::URI_THREAD_MESSAGE_ADD,array($user_id,$thread_id)),
 	 			$data
 	 	);
@@ -908,7 +909,7 @@ class Api implements IApi
 	 				"ApiException::delThread thread_id field needs to be a non-empty string");
 	 	}	
 
-	 	$this->httClient->addDelete(self::parseRouting(IApi::URI_THREAD_DEL,$thread_id));	 	
+	 	$this->httpClient->addDelete(self::parseRouting(IApi::URI_THREAD_DEL,$thread_id));	 	
 	 	return $this->httpClientSend();	 	
 	 }
 
@@ -921,7 +922,7 @@ class Api implements IApi
 	  */
 	  public function who()
 	  {
-	  	$this->httClient->addGet(IAPi::URI_USER_SHOW);
+	  	$this->httpClient->addGet(IAPi::URI_USER_SHOW);
 	  	return $this->httpClientSend();	  		
 	  }
 	  /**
@@ -942,7 +943,7 @@ class Api implements IApi
 	  		throw new ApiException(
 	  				"ApiException::showUser user_id field should be positive integer");
 	  	}	  	
-	  	$this->httClient->addGet(self::parseRouting(IAPi::URI_USER_SHOW,$user_id));
+	  	$this->httpClient->addGet(self::parseRouting(IAPi::URI_USER_SHOW,$user_id));
 	  	return $this->httpClientSend();	  	
 	  }
 // 		GET /api/users/{id}/blocked
@@ -956,7 +957,7 @@ class Api implements IApi
 	  		throw new ApiException(
 	  				"ApiException::showUsersBlocked user_id field should be positive integer");
 	  	}
-	  	$this->httClient->addGet(self::parseRouting(IAPi::URI_USERS_BLOCKED_SHOW,$user_id));
+	  	$this->httpClient->addGet(self::parseRouting(IAPi::URI_USERS_BLOCKED_SHOW,$user_id));
 	  	return $this->httpClientSend();	  	
 	  }
 // 		POST /api/users/{id}/blocked
@@ -977,7 +978,7 @@ class Api implements IApi
 	  				"ApiException::addUserBlocked user_id field should be positive integer");
 	  	}
 	  		  	
-	  	$this->httClient->addPost(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,$user_id),array('user_id'=>$user_blocked_id));
+	  	$this->httpClient->addPost(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,$user_id),array('user_id'=>$user_blocked_id));
 	  	return $this->httpClientSend();	  	
 	  }
 //		DELETE /api/users/{user_id}/blocked/{blocked_user_id}
@@ -998,7 +999,7 @@ class Api implements IApi
 	  				"ApiException::addUserBlocked user_id field should be positive integer");
 	  	}
 	  	
-	  	$this->httClient->addDelete(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,array('user_id'=>$user_blocked_id)));
+	  	$this->httpClient->addDelete(self::parseRouting(IAPi::URI_USERS_BLOCKED_ADD,array('user_id'=>$user_blocked_id)));
 	  	return $this->httpClientSend();	  	
 	  }
 }
