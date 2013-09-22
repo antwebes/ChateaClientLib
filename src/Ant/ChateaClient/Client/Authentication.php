@@ -30,12 +30,10 @@ abstract class Authentication implements IAuthentication
 		if(!$httpClient){
 			throw ConfigException("OAuth2Client missing field, it is not null");
 		}
-		if (!is_string($httpClient->getUrl()) || 0 >= strlen($httpClient->getUrl())) {
-			$this->httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
-		}		
+
 		$this->oauthClient = $oauthClient;
 		$this->httpClient = $httpClient;
-		$this->httpClient->setBaseUrl(IHttpClient::SERVER_ENDPOINT);
+        $this->httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
 		$this->accesToken = null;
 		$this->refreshToken = null;
 	}

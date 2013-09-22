@@ -80,7 +80,7 @@ class Api implements IApi
 	{
 	
 		if ($httpClient == null) {
-			throw new ApiException("httpclient is not null");
+			throw new ApiException("httpClient is not null");
 		}
 		if (!is_string($username) || 0 >= strlen($username)) {
 			throw new ApiException("username must be a non-empty string");
