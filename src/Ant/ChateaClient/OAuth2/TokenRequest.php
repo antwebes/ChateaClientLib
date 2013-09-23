@@ -115,4 +115,37 @@ class TokenRequest
     	
 		return $this->getTokenResponse($data);
     } 
+    
+
+    public static function updateWithRefreshToken(IHttpClient $httpClient, $client_id, $secret, $refreshToken)
+    {
+        if($httpClient === null){
+            throw new TokenRequestException("The httpClient is not null");
+        }
+        if (!is_string($client_id) || 0 >= strlen($client_id) ){
+            throw new TokenRequestException("The client_id needs to be a non-empty string");
+        }        
+        if (!is_string($secret) || 0 >= strlen($secret) ){
+            throw new TokenRequestException("The secret needs to be a non-empty string");
+        } 
+        if($refreshToken === null){
+            throw new TokenRequestException("The refreshToken is not null");
+        }
+        
+    	$data = array (
+    			"grant_type" => "refresh_token",
+    			'refresh_token'=>$refreshToken,
+    			"client_id"=>$client_id,
+    			"client_secret"=>$secret
+    	);
+    	
+        $httpClient->addPost(null,$data);
+        
+        try {
+            $data_json = $httpClient->send(IHttpClient::SEND_RESPONSE_TYPE_JSON);
+            return TokenResponse::formJson($data_json);
+        } catch (HttpClientException $e) {
+            throw new TokenRequestException($e->getMessage(),$e->getCode(),$e);
+        }        
+    }
 }

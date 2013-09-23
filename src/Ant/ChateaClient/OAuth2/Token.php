@@ -2,6 +2,7 @@
 
 namespace Ant\ChateaClient\OAuth2;
 
+use Symfony\Component\Validator\Constraints\Collection;
 /**
  * 
  * A Token is a piece of data in base64, that is used in network 
@@ -16,7 +17,7 @@ class Token
     private $value;
 
     /** scope VARCHAR(255) NOT NULL */
-    private $scope;
+    private $scopes;
 
     /** issue_time INTEGER NOT NULL */
     private $issueTime;
@@ -27,15 +28,15 @@ class Token
      * 
      * @param string $tokenValue the string what represent data in base64
      * @param string $issueTime
-     * @param Scope $scope A Scope is a permission setting that specifies access to a users, to non-public data.
+     * @param array $scope A Scope is a permission setting that specifies access to a users, to non-public data.
      */
-    public function __construct($tokenValue, $issueTime = null, Scope $scope = null)
+    public function __construct($tokenValue, $issueTime = null, array $scopes = array())
     {    	
     	$this->setValue($tokenValue);        
     	
     	$this->setIssueTime($issueTime);
     	    	
-        $this->setScope($scope);
+        $this->setScope($scopes);
         		      
     }
     
@@ -71,22 +72,28 @@ class Token
 	 * @param Scope $scope 
 	 * 	
 	 */
-    public function setScope(Scope $scope = null)
+    public function setScope(array $scopes = array())
     {
-        if ($scope) {
-        	Scope::validate($scope);        	 
+        if ($scopes) {
+            foreach ($scopes as $scope){
+        	   Scope::validate($scope);   
+            }     	 
         }        
         
-        $this->scope = $scope;
+        $this->scopes = $scopes;
     }
 
     /**
      * 
-     * @return Scope
+     * @return Collection of Scope
      */
-    public function getScope()
+    public function getScope($asString = false)
     {
-        return $this->scope;
+        if($asString && is_array($this->scopes))
+        {
+        	return json_encode($this->scopes,JSON_PRETTY_PRINT);
+        }
+        return $this->scopes;
     }
 	/**
 	 * 
@@ -102,7 +109,7 @@ class Token
         
         Scope::validate($scope);
         
-        return $this->scope === $scope;
+        return array_search($scope, $this->scope) === true;
     }
 
     /**

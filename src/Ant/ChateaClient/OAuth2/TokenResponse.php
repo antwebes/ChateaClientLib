@@ -16,7 +16,7 @@ class TokenResponse
         $this->setTokenType($accessToken->getTokenType());
         $this->setExpiresIn($expiresIn);
         $this->setRefreshToken($refreshToken);
-        $this->setScope($scopes);
+        $this->setScopes($scopes);
     }
 
     /**
@@ -38,13 +38,13 @@ class TokenResponse
         }
         
 
-        $scope = null;
-        if (array_key_exists('scope', $data) && $data['scope'] !== null) {
-        	$scope = new Scope($data['scope']);
+        $scopes = array();
+        if (array_key_exists('scopes', $data) && $data['scopes'] !== null) {
+        	$scopes = $data['scopes'];
         }
         $tokenResponse = null;        
         if (array_key_exists('refresh_token', $data)) {
-        	$tokenResponse = new RefreshToken($data['refresh_token'],$data['expires_in'],time(),$scope);
+        	$tokenResponse = new RefreshToken($data['refresh_token'],$data['expires_in'],time(),$scopes);
         }
         $tokenResponse = new static(
         		new AccessToken(
@@ -52,11 +52,11 @@ class TokenResponse
         				new TokenType($data['token_type']),
         				$data['expires_in'],
         				time(),
-        				$scope        				
+        				$scopes        				
         		),
         		$tokenResponse,
         		$data['expires_in'],
-        		$scope
+        		$scopes
         	);
         
         return $tokenResponse;
@@ -150,13 +150,20 @@ class TokenResponse
 
     /**
      * 
-     * @param Scope $scope
+     * @param Collection $scope
      */
-    public function setScope(array $scopes = null)
+    public function setScopes(array $scopes = null)
     {
-        $this->scopes = $scope;
+        $this->scopes = $scopes;
     }
-
+    /**
+     *
+     * @param Scope $scope
+     */    
+    public function setScope(Scope $scope = null)
+    {
+    	$scope ? array_push($this->scopes, $scope): null;
+    }
     /**
      * @return Scope
      */

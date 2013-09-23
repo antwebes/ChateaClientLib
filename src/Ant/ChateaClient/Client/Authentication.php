@@ -101,6 +101,7 @@ abstract class Authentication implements IAuthentication
 		
 	public abstract  function authenticate();
 
+	
 	public function updateToken(RefreshToken $refreshToken = null) 
 	{
 
@@ -124,8 +125,37 @@ abstract class Authentication implements IAuthentication
 		}	
 		return true;		
 	}
-	
-	public function revokeToken() {
+	public static function updateWithRefreshToken(IHttpClient $httpClient, $client_id, $secret, $refreshToken)
+	{
+	    if($httpClient === null){
+	        throw new AuthenticationException("The httpClient is not null");
+	    }
+	    if (!is_string($client_id) || 0 >= strlen($client_id) ){
+	        throw new AuthenticationException("The client_id needs to be a non-empty string");
+	    }
+	    if (!is_string($secret) || 0 >= strlen($secret) ){
+	        throw new AuthenticationException("The secret needs to be a non-empty string");
+	    }
+	    if($refreshToken === null){
+	        throw new AuthenticationException("The refreshToken is not null");
+	    }
+	    	    
+	    $httpClient->setBaseUrl(IHttpClient::TOKEN_ENDPOINT);
+
+	   
+	    try{
+	    
+	        $tokenResponse =  TokenRequest::updateWithRefreshToken($httpClient, $client_id, $secret, $refreshToken);	        	
+	        return $tokenResponse;
+	    
+	    }catch (TokenRequestException $e){
+	        throw new AuthenticationException("Error fetching OAuth2 update token, message: " .
+	            $e->getMessage(), null, $e->getCode(),$e);
+	    }
+	    	    
+	}
+	public function revokeToken() 
+	{
 	
 		$accesToken = $this->getAccessToken();
 		
