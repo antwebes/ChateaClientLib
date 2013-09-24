@@ -11,7 +11,7 @@ interface IHttpClient
 	const SERVER_ENDPOINT 			= "http://api.chateagratis.local/app_dev.php/";
 	const TOKEN_ENDPOINT 			= "http://api.chateagratis.local/app_dev.php/oauth/v2/token";
 	const AUTHORIZE_ENDPOINT		= "http://api.chateagratis.local/app_dev.php/oauth/v2/auth";
-	const REVOKE_ENDPOINT			= "http://api.chateagratis.local/app_dev.php/oauth/v2/revoke";
+	const REVOKE_ENDPOINT			= "http://api.chateagratis.local/app_dev.php/api/oauth/v2/revoke";
 					
 	public function addGet($uri = null, $data = null);
 	public function addPost($uri = null, $data = null, $contentType = null);
