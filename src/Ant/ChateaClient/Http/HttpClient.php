@@ -14,7 +14,7 @@ class HttpClient extends Client implements IHttpClient {
 	private $accesToken;
 	private $accept_header;
 	private $server_error; 	
-	public function __construct(
+	public function __construct(                
 			$baseUrl = '', 					
 			$accept_header = 'application/json',
 			AccessToken $accesToken = null
@@ -30,8 +30,7 @@ class HttpClient extends Client implements IHttpClient {
 		
 		$this->request = null;
 		$this->response = null;
-		$this->server_error = null;
-		
+		$this->server_error = null;		
 		if($accesToken !== null){
 			$this->addAccesToken($accesToken);
 		}		
@@ -161,7 +160,7 @@ class HttpClient extends Client implements IHttpClient {
 	}
 	
 	public function addAccesToken(AccessToken $accesToken) 
-	{
+	{ld($accesToken);
 		if (null == $accesToken || ! $accesToken) {
 			throw new HttpClientException ( "AccessToken is not null", $this );
 		}

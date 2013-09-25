@@ -72,7 +72,7 @@ class Token
 	 * @param Scope $scope 
 	 * 	
 	 */
-    public function setScope(array $scopes = array())
+    public function setScopes(array $scopes = array())
     {
         if ($scopes) {
             foreach ($scopes as $scope){
@@ -87,7 +87,7 @@ class Token
      * 
      * @return Collection of Scope
      */
-    public function getScope($asString = false)
+    public function getScopes($asString = false)
     {
         if($asString && is_array($this->scopes))
         {
@@ -109,7 +109,7 @@ class Token
         
         Scope::validate($scope);
         
-        return array_search($scope, $this->scope) === true;
+        return array_search($scope, $this->scopes) === true;
     }
 
     /**
@@ -141,5 +141,9 @@ class Token
     
     public function __toString(){
     	return $this->value;
+    }
+    public function asString()
+    {
+        return $this->value;
     }
 }

@@ -22,9 +22,11 @@ class AccessToken extends Token
     /** expires_in INTEGER DEFAULT NOT NULL */
     private $expiresIn;
     
-    public function __construct($tokenValue, TokenType $tokenType = null, $expiresIn = 3600, $issueTime = null, array $scopes = array())
+    public function __construct($tokenValue = '', TokenType $tokenType = null, $expiresIn = 3600, $issueTime = null, array $scopes = array())
     {    
-    	parent::__construct($tokenValue,$issueTime,$scopes);        
+         
+        parent::__construct($tokenValue,$issueTime,$scopes);
+        
     	if($tokenType === null){
     		$tokenType = new TokenType(TokenType::BEARER);
     	}
