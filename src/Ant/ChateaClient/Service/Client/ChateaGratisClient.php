@@ -22,7 +22,7 @@ class ChateaGratisClient extends Client
     public static function factory($config = array())
     {
         // Provide a hash of default client configuration options
-        $default = array('base_url' => 'https://api.chateagratis.local/app_dev.php/','token_format'=>'Bearer','Accept'=>'application/json', 'environment'=>'prod');
+        $default = array('base_url' => 'http://api.chateagratis.local/app_dev.php/','token_format'=>'Bearer','Accept'=>'application/json', 'environment'=>'prod');
 
         $required = array(
             'base_url',

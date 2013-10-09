@@ -23,6 +23,17 @@ class GetChannelsIterator  extends  ResourceIterator
      */
     protected function sendRequest()
     {
-        // TODO: Implement sendRequest() method.
+        // If a next token is set, then add it to the command
+        if ($this->nextToken) {
+            $this->command->set('page', $this->nextToken);
+        }
+
+        // Execute the command and parse the result
+        $result = $this->command->execute();
+
+        // Parse the next token
+        $this->nextToken = isset($result['page']) ? $result['page'] : false;
+
+        return $result['users'];
     }
 }

@@ -2,28 +2,78 @@
     "operations": {
         "GetChannels":{
             "httpMethod": "GET",
-            "uri": "api/channels",
+            "uri": "api/channels/{id}",
             "summary": "List all the channels",
             "responseClass": "ChannelCollection",
-            "responseType" :"model",
-            "responseNotes": "return a Channel Collection",
-            "parameters":{
-                "page":{
-                    "type": "integer",
-                    "default": 1,
+            "parameters": {
+                "page": {
                     "location": "uri",
-                    "description": "Collection page"
+                    "description": "number of position at collection",
+                    "required": false,
+                    "default": 1
+                }
+            }
+        },
+        "GetChannel":{
+            "httpMethod": "GET",
+            "uri": "api/channels/{id}",
+            "summary": "Show a channel by id",
+            "responseClass": "Channel",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channel to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "AddChannel": {
+            "httpMethod": "POST",
+                "uri": "api/channels",
+            "summary": "Creates a new Channel",
+            "parameters": {
+                    "name":{
+                        "location": "json",
+                        "type": "string"
+                    },
+                    "title":{
+                        "location": "json",
+                        "type": "string"
+                    },
+                    "description":{
+                        "location": "json",
+                        "type": "string"
+                    }
+                }
+            },
+            "errorResponses":{
+                "name":{
+                    "location": "json",
+                    "type": "string"
+                },
+                "code":{
+                    "location": "json",
+                    "type": "integer"
                 }
             }
         }
     },
     "models":{
-        "Links":{
+        "Link":{
             "type": "array",
             "properties": {
                 "items":{
                     "location": "json",
                     "type": "string"
+                }
+            }
+
+        },
+        "Links":{
+            "type": "array",
+            "properties": {
+                "items":{
+                    "$ref": "Link"
                 }
             }
         },
@@ -47,6 +97,22 @@
                     "type": "string",
                     "required": true,
                     "description": "the name of channel"
+                },
+                "title":{
+                    "location" : "json",
+                    "type": "string",
+                    "description": "The title of channel"
+                },
+                "description":{
+                    "location" : "json",
+                    "type": "string",
+                    "description": "The title of channel"
+                },
+                "_links":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "Links"
+                    }
                 }
             }
         },"ChannelCollection":{
