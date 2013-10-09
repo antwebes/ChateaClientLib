@@ -1,5 +1,23 @@
 {
+    "name" : "antwebes/ChateaClientLib",
+    "description" : "Library that makes it easy to use API of api.chatea.net",
+    "version" : "0.1.0",
+    "type" : "library",
+    "authors" : [{
+        "name" : "Xabier Fernández Rodríguez AS jjbier",
+        "email" : "jjbier@gmail.com",
+        "homepage" : "https://github.com/antwebes",
+        "role" : "Developer"
+    }],
+    "keywords" : ["chateagratis","library","api"],
+    "homepage" : "https://github.com/antwebes/ChateaClient",
+    "license" : "MIT",
     "require": {
-	"guzzle/guzzle" : "~3.7"
+	    "guzzle/guzzle" : "~3.7",
+        "raulfraile/ladybug": "~1.0",
+        "monolog/monolog": "1.6.0"
+    },
+    "autoload": {
+        "psr-0": {"Ant": "src/"}
     }
 }

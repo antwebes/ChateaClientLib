@@ -1,0 +1,84 @@
+{
+    "name": "api.chateagratis.net",
+    "apiVersion": "1.0.0",
+    "baseUrl": "https://api.chateagratis.local/",
+    "_description": "Chatea Gratis API",
+    "operations": {
+        "description": "Operations of the chateagratis web service",
+        "GetChannels":{
+            "httpMethod": "GET",
+            "uri": "api/channels/",
+            "summary": "List all the channels",
+            "responseClass": "ChannellCollection"
+        }
+    },
+    "models":{
+        "Links":{
+            "type": "array",
+            "properties": {
+                "items":{
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "Channel": {
+            "type": "object",
+            "properties": {
+                "id":{
+                    "location" : "json",
+                    "type": "integer",
+                    "required": true,
+                    "description": "primary key"
+                },
+                "name":{
+                    "location" : "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the name of channel"
+                },
+                "url":{
+                    "location" : "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the name of channel"
+                }
+            }
+        },"ChannellCollection":{
+            "type": "object",
+            "properties": {
+                "total":{
+                    "location" : "json",
+                    "type": "integer",
+                    "required": true,
+                    "description": "total elements in collection"
+                },
+                "page":{
+                    "location" : "json",
+                    "type": "integer",
+                    "required": true,
+                    "description": "get page at collection"
+                },
+                "limit":{
+                    "location" : "json",
+                    "type": "integer",
+                    "required": true,
+                    "description": "number of elements for page"
+                },
+                "_links":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "Links"
+                    }
+                },
+                "resources":{
+                    "type": "array",
+                    "items": {
+                        "$ref": "Channel"
+                    }
+                }
+
+            }
+        }
+    }
+}
