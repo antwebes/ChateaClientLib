@@ -13,6 +13,7 @@ use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use Ant\Guzzle\Plugin\OAuth2Plugin;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
+
 /**
  * A ChateaGratis API client
  */

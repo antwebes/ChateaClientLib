@@ -2,21 +2,21 @@
     "operations": {
         "GetChannels": {
             "httpMethod": "GET",
-            "uri": "api/channels/{id}",
+            "uri": "/api/channels",
             "summary": "List all the channels",
             "responseClass": "ChannelCollection",
             "parameters": {
                 "page": {
-                    "location": "uri",
-                    "description": "number of position at collection",
-                    "required": false,
-                    "default": 1
+                    "type": "integer",
+                    "location": "query",
+                    "default": 1,
+                    "description": "number of position at collection"
                 }
             }
         },
         "GetChannel": {
             "httpMethod": "GET",
-            "uri": "api/channels/{id}",
+            "uri": "/api/channels/{id}",
             "summary": "Show a channel by id",
             "responseClass": "Channel",
             "parameters": {
@@ -27,91 +27,113 @@
                 }
             }
         },
+        "UpdateChannel":{
+            "httpMethod": "PUT",
+            "uri": "/api/channels/{id}"
+        },
         "AddChannel": {
             "httpMethod": "POST",
-            "uri": "api/channels",
-            "summary": "Creates a new Channel",
+            "uri": "/api/channels",
+            "summary": "Creates a new Product",
+            "responseClass": "Channel",
             "parameters": {
-                "name": {
+                "channel": {
+                    "type": "object",
+                    "required": true,
                     "location": "json",
-                    "type": "string"
-                },
-                "title": {
-                    "location": "json",
-                    "type": "string"
-                },
-                "description": {
-                    "location": "json",
-                    "type": "string"
+                    "properties": {
+                        "name": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "the name of channel"
+                        },
+                        "title": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "The title of channel"
+                        },
+                        "description": {
+                            "location": "json",
+                            "type": "string",
+                            "description": "The description of channel"
+                        }
+                    }
                 }
-            }
-        },
-        "errorResponses": {
-            "name": {
-                "location": "json",
-                "type": "string"
-            },
-            "code": {
-                "location": "json",
-                "type": "integer"
             }
         }
     },
     "models": {
-        "Link": {
-            "type": "array",
+        "Links": {
+            "type": "object",
+            "location": "json",
             "properties": {
-                "items": {
+                "slef": {
+                    "type": "object",
                     "location": "json",
-                    "type": "string"
+                    "properties": {
+                        "href":{
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                },
+                "fans": {
+                    "type": "object",
+                    "location": "json",
+                    "properties": {
+                        "href":{
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                },
+                "creator": {
+                    "type": "object",
+                    "location": "json",
+                    "properties": {
+                        "href":{
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
                 }
             }
-
         },
-        "Links": {
-            "type": "array",
+        "ChannelType":{
+            "type": "object",
             "properties": {
-                "items": {
-                    "$ref": "Link"
+                "name": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "the name of channel"
                 }
             }
         },
         "Channel": {
             "type": "object",
             "properties": {
-                "id": {
-                    "location": "json",
-                    "type": "integer",
-                    "required": true,
-                    "description": "primary key"
-                },
                 "name": {
                     "location": "json",
                     "type": "string",
-                    "required": true,
-                    "description": "the name of channel"
-                },
-                "url": {
-                    "location": "json",
-                    "type": "string",
-                    "required": true,
                     "description": "the name of channel"
                 },
                 "title": {
                     "location": "json",
                     "type": "string",
-                    "description": "The title of channel"
+                    "description": "the name of channel"
                 },
                 "description": {
                     "location": "json",
                     "type": "string",
-                    "description": "The title of channel"
+                    "description": "the name of channel"
+                },
+                "channel_type":{
+                    "$ref": "ChannelType"
                 },
                 "_links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Links"
-                    }
+                    "$ref": "Links"
                 }
             }
         },
@@ -121,26 +143,20 @@
                 "total": {
                     "location": "json",
                     "type": "integer",
-                    "required": true,
                     "description": "total elements in collection"
                 },
                 "page": {
                     "location": "json",
                     "type": "integer",
-                    "required": true,
                     "description": "get page at collection"
                 },
                 "limit": {
                     "location": "json",
                     "type": "integer",
-                    "required": true,
                     "description": "number of elements for page"
                 },
                 "_links": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Links"
-                    }
+                    "$ref": "Links"
                 },
                 "resources": {
                     "type": "array",

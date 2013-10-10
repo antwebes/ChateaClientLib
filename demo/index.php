@@ -13,6 +13,7 @@ $client = ChateaGratisClient::factory(
 );
 
 
+
 //$client = ChateaGratisClient::factory(array('access_token' => 'OTk5MmI0MDk3NGFiMTM4NTBlMzk5OWZlYWM4N2Q5NTlhYTZlOTgwNzUzYmVjYzcxOTI5OGZmZTM2MTQ1MDI4OQ'));
 
 //get Command
@@ -26,27 +27,26 @@ $client = ChateaGratisClient::factory(
 
 try{
 
-    //$model = $client->getChannel(array('id'=>1));
-
-    //$newChannel = $client->CreateChannel(array('name'=>'new Channel','title'=>'new channel','description'=>'new channel'));
-
-    $command = $client->getCommand('AddChannel');
-    ld($command);
-    $command->setName("New Channel");
-    $response = $client->execute($command);
-
-    ldd($response);
-    /*
-    $iterator = $client->getIterator('GetChannels');
+    $iterator = $client->getIterator('GetChannels',array('page'=>1),array('limit'=>0,'page_size'=>30));
     ld($iterator);
-    foreach ($iterator as $channel) {
-        echo $channel['name'] . ' title  ' . $channel['title'] . PHP_EOL;
+
+    foreach ($iterator as $item) {
+        ld("in foreach->".$item);
+        echo $item['name'] . ' title ' . $item['title'] . PHP_EOL;
     }
+
+    $ChannelModel = $client->getChannels();
+
+    //ld($ChannelModel->get('resources'));
+    //ld($iterator);
+    /*
+    -OK-
+    $model = $client->addChannel(array('channel'=>array("name"=>"new".time(),"title"=>"new title","description"=>"description")));
+    echo ($model->get('name'));
     */
+
 }catch (BadResponseException $ex){
     ld ($ex->getRequest()->getParams());
     echo "<br>ERROR:<br>";
     echo ($ex->getResponse()->getBody(true));
 }
-
-

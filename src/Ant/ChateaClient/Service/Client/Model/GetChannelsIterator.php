@@ -2,8 +2,8 @@
 /**
  * Created by Ant-WEB S.L.
  * User: Xabier Fernández Rodríguez <jjbier@gmail.com>
- * Date: 9/10/13
- * Time: 18:33
+ * Date: 10/10/13
+ * Time: 16:57
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,9 +13,8 @@ namespace Ant\ChateaClient\Service\Client\Model;
 
 use Guzzle\Service\Resource\ResourceIterator;
 
-class GetChannelsIterator  extends  ResourceIterator
+class GetChannelsIterator extends ResourceIterator
 {
-
     /**
      * Send a request to retrieve the next page of results. Hook for subclasses to implement.
      *
@@ -23,17 +22,8 @@ class GetChannelsIterator  extends  ResourceIterator
      */
     protected function sendRequest()
     {
-        // If a next token is set, then add it to the command
-        if ($this->nextToken) {
-            $this->command->set('page', $this->nextToken);
-        }
-
         // Execute the command and parse the result
         $result = $this->command->execute();
-
-        // Parse the next token
-        $this->nextToken = isset($result['page']) ? $result['page'] : false;
-
-        return $result['users'];
+        ld($result['resources']);
     }
 }
