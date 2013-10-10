@@ -1,0 +1,10 @@
+{
+    "name": "api.chateagratis.net",
+    "apiVersion": ["fobos", "1.0.0"],
+    "baseUrl":  "http://api.chateagratis.local/app_dev.php",
+    "_description": "Chatea Gratis API",
+    "includes":[
+        "channels.json"
+    ]
+
+}

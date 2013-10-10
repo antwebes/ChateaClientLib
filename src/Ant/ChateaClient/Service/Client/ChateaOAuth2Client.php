@@ -1,36 +1,29 @@
 <?php
 /**
- * Created by Javier Fernández Rodríguez
- * User: jjbier@gmail.com
- * Date: 9/10/13
- * Time: 9:49
+ * Created by JetBrains PhpStorm.
+ * User: xabier
+ * Date: 10/10/13
+ * Time: 23:31
  * To change this template use File | Settings | File Templates.
  */
+
 namespace Ant\ChateaClient\Service\Client;
 
-use Guzzle\Common\Collection;
-use Guzzle\Service\Client;
-use Guzzle\Service\Description\ServiceDescription;
-use Ant\Guzzle\Plugin\OAuth2Plugin;
-use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
-/**
- * A ChateaGratis API client
- */
-class ChateaGratisClient extends Client
+class ChateaOAuth2Client extends Client
 {
-
     public static function factory($config = array())
     {
         // Provide a hash of default client configuration options
-        $default = array('token_format'=>'Bearer','Accept'=>'application/json', 'environment'=>'prod');
-
+        $default = array('Accept'=>'application/json', 'environment'=>'prod',"grant_type"=>"password");
         $required = array(
-            'token_format',
-            'access_token',
             'Accept',
-            'environment'
+            'environment',
+            "grant_type",
+            'client_id',
+            'secret'
         );
+
         // use certificate of system and disable checks SSL
         if($config['environment'] == 'dev' ){
             $config['ssl.certificate_authority'] = 'system';
@@ -42,12 +35,9 @@ class ChateaGratisClient extends Client
         // Create a new ChateaGratis client
         $client = new self($config->get('base_url'), $config);
 
-
         // Set the service description
-        $client->setDescription(ServiceDescription::factory(__DIR__.'/descriptions/api-services.json'));
+        $client->setDescription(ServiceDescription::factory(__DIR__.'/descriptions/api-auth-services.json'));
 
-        // Ensure that the Oauth2Plugin is attached to the client
-        $client->addSubscriber(new OAuth2Plugin($config->toArray()));
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
         return $client;
     }

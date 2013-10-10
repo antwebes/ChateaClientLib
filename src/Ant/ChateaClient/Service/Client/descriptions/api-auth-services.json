@@ -1,0 +1,64 @@
+{
+    "name": "api.chateagratis.net",
+    "apiVersion": ["fobos", "1.0.0"],
+    "baseUrl":  "http://api.chateagratis.local/app_dev.php",
+    "_description": "Chatea Gratis Client Auth API",
+    "operations": {
+        "GetClientUserCredentials":{
+            "httpMethod": "GET",
+            "uri": "/oauth/v2/token",
+            "summary": "Auth client with user and password",
+            "responseClass": "ChannelCollection",
+            "parameters": {
+                "username":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the username"
+                },
+                "password":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the password"
+                }
+            }
+        }
+    },
+    "models": {
+        "TokenResponse":{
+            "type": "object",
+            "location": "json",
+            "properties": {
+                "access_token": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "the access_token"
+                },
+                "token_type": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "the token_type"
+                },
+                "refresh_token": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "the refresh_token"
+                },
+                "expires_in": {
+                    "location": "json",
+                    "type": "integer",
+                    "description": "the expires_in"
+                },
+                "scope": {
+                    "type": "array",
+                    "description": "the expires_in",
+                    "items":{
+                        "location": "json",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

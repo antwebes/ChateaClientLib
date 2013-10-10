@@ -2,7 +2,7 @@
     "operations": {
         "GetChannels": {
             "httpMethod": "GET",
-            "uri": "/api/channels",
+            "uri": "api/channels",
             "summary": "List all the channels",
             "responseClass": "ChannelCollection",
             "parameters": {
@@ -16,7 +16,7 @@
         },
         "GetChannel": {
             "httpMethod": "GET",
-            "uri": "/api/channels/{id}",
+            "uri": "api/channels/{id}",
             "summary": "Show a channel by id",
             "responseClass": "Channel",
             "parameters": {
@@ -27,14 +27,10 @@
                 }
             }
         },
-        "UpdateChannel":{
-            "httpMethod": "PUT",
-            "uri": "/api/channels/{id}"
-        },
-        "AddChannel": {
+        "SetChannel": {
             "httpMethod": "POST",
-            "uri": "/api/channels",
-            "summary": "Creates a new Product",
+            "uri": "api/channels",
+            "summary": "Creates a new Channel",
             "responseClass": "Channel",
             "parameters": {
                 "channel": {
@@ -51,7 +47,6 @@
                         "title": {
                             "location": "json",
                             "type": "string",
-                            "required": true,
                             "description": "The title of channel"
                         },
                         "description": {
@@ -62,9 +57,142 @@
                     }
                 }
             }
+        },
+        "UpdateChannel":{
+            "httpMethod": "PATCH",
+            "uri": "api/channels/{id}",
+            "summary": "Update a channel by id",
+            "responseClass": "Channel",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channel to retrieve by ID",
+                    "required": true
+                },
+                "channel": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "name": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "the name of channel"
+                        },
+                        "title": {
+                            "location": "json",
+                            "type": "string",
+                            "description": "The title of channel"
+                        },
+                        "description": {
+                            "location": "json",
+                            "type": "string",
+                            "description": "The description of channel"
+                        }
+                    }
+                }
+            }
+        },
+        "DeleteChannel":{
+            "httpMethod": "DELETE",
+            "uri": "api/channels/{id}",
+            "summary": "Delete a channel by id",
+            "responseType": "string",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channel to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "GetChannelFans":{
+            "httpMethod": "GET",
+            "uri": "api/channels/{id}/fans",
+            "summary": "Show all fans a channel",
+            "responseClass": "Channel",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channels fans to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "GetChannelsType":{
+            "httpMethod": "GET",
+            "uri": "api/channelstype",
+            "summary": "List all the channels type",
+            "responseClass": "ChannelType"
+        },
+        "GetChannelsCreatedByUser":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/channels",
+            "summary": "Show channels of an user",
+            "responseClass": "ChannelCollection",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channels fans to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "GetFavoritesChannelsByUser":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/channelsFan",
+            "summary": "Show all channels fan of an user",
+            "responseClass": "ChannelCollection",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Channels fans to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "SetChannelFan":{
+            "httpMethod": "POST",
+            "uri": "api/users/{user_id}/channels/{channel_id}/fans",
+            "summary": "Make user a channel fan",
+            "responseType": "string",
+            "parameters": {
+                "user_id": {
+                    "location": "uri",
+                    "description": "User Id",
+                    "required": true
+                },
+                "channel_id": {
+                    "location": "uri",
+                    "description": "Channel Id",
+                    "required": true
+                }
+            }
+        },
+        "DeleteChannelFan":{
+            "httpMethod": "DELETE",
+            "uri": "api/users/{user_id}/channels/{channel_id}/fans",
+            "summary": "Remove user as a channel fan",
+            "responseType": "string",
+            "parameters": {
+                "user_id": {
+                    "location": "uri",
+                    "description": "User Id",
+                    "required": true
+                },
+                "channel_id": {
+                    "location": "uri",
+                    "description": "Channel Id",
+                    "required": true
+                }
+            }
         }
     },
     "models": {
+        "Message":{
+            "type": "string"
+        },
         "Links": {
             "type": "object",
             "location": "json",
