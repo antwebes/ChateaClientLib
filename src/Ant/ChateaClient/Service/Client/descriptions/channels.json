@@ -176,9 +176,6 @@
             "summary": "Remove user as a channel fan",
             "responseType": "string",
             "responseNotes": "return ok if channel is deleted, or one error if channel is not owner",
-            "errorResponses":{
-
-            }
             "parameters": {
                 "user_id": {
                     "location": "uri",
