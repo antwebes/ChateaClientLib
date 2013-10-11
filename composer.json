@@ -1,8 +1,7 @@
 {
-
     "name" : "antwebes/chatea-client-lib",
     "description" : "Library that makes it easy to use API of api.chatea.net",
-    "version" : "0.1.0",
+    "version" : "0.2.0",
     "type" : "library",
     "authors" : [{
         "name" : "Xabier Fernández Rodríguez AS jjbier",
@@ -22,5 +21,6 @@
     },
     "autoload": {
         "psr-0": {"Ant": "src/"}
-    }
+    },
+    "minimum-stability": "dev"
 }
