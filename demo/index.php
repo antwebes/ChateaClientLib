@@ -1,15 +1,21 @@
 <?php
-require __DIR__.'/../vendor/autoload.php';
+/**
+ * Created by Ant-WEB S.L.
+ * User: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 11/10/13
+ * Time: 11:32
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+?>
 
-use Ant\ChateaClient\Service\Client\ChateaOAuth2Client;
-use Guzzle\Http\Exception\BadResponseException;
-
-
-
-$client = ChateaOAuth2Client::factory(
-        array(
-            'client_id'=>'1_1rqwnvdprfq8c0socws0ogco4c08goko0o80cocko0kkos84co',
-            'secret'=>'4cvsrxs9s12ccs804wgk8k84ocoog4g4ooswwwkk8c4go0g4go',
-            'environment'=>'dev'
-    )
-);
+<h2> Samples use this library</h2>
+<ul>
+    <li>
+        <a href="channels-demo.php">Channels Demo</a>
+    </li>
+    <li>
+        <a href="auth-demo.php">OAuth2 Demo</a>
+    </li>
+</ul>

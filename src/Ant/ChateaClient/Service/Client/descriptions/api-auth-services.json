@@ -1,15 +1,33 @@
 {
     "name": "api.chateagratis.net",
     "apiVersion": ["fobos", "1.0.0"],
-    "baseUrl":  "http://api.chateagratis.local/app_dev.php",
+    "baseUrl":  "http://api.chateagratis.local/app_dev.php/",
     "_description": "Chatea Gratis Client Auth API",
     "operations": {
-        "GetClientUserCredentials":{
-            "httpMethod": "GET",
-            "uri": "/oauth/v2/token",
+        "withUserCredentials":{
+            "httpMethod": "POST",
+            "responseClass": "TokenResponse",
+            "uri": "oauth/v2/token",
             "summary": "Auth client with user and password",
-            "responseClass": "ChannelCollection",
             "parameters": {
+                "grant_type":{
+                    "location": "json",
+                    "type": "string",
+                    "default": "password",
+                    "description": "the grant_type"
+                },
+                "client_id":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the client_id"
+                },
+                "client_secret":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the secret"
+                },
                 "username":{
                     "location": "json",
                     "type": "string",
@@ -23,40 +41,132 @@
                     "description": "the password"
                 }
             }
+        },
+        "withAuthorizationCode":{
+            "httpMethod": "POST",
+            "uri": "oauth/v2/token",
+            "responseClass": "TokenResponse",
+            "summary": "Auth client with Authorization Code",
+            "parameters": {
+                "grant_type":{
+                    "location": "json",
+                    "type": "string",
+                    "default": "authorization_code",
+                    "description": "the grant_type"
+                },
+                "client_id":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the client_id"
+                },
+                "client_secret":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the secret"
+                },
+                "redirect_uri":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "redirect_uri"
+                },
+                "code":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the auth_code"
+                }
+            }
+        },
+        "withClientCredentials":{
+            "httpMethod": "POST",
+            "uri": "oauth/v2/token",
+            "responseClass": "TokenResponse",
+            "summary": "Auth client with Authorization Code",
+            "parameters": {
+                "grant_type":{
+                    "location": "json",
+                    "type": "string",
+                    "default": "client_credentials",
+                    "description": "the grant_type"
+                },
+                "client_id":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the client_id"
+                },
+                "client_secret":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the secret"
+                }
+            }
+        },
+        "withRefreshToken":{
+            "httpMethod": "POST",
+            "uri": "oauth/v2/token",
+            "responseClass": "TokenResponse",
+            "summary": "Auth client with Authorization Code",
+            "parameters": {
+                "grant_type":{
+                    "location": "json",
+                    "type": "string",
+                    "default": "refresh_token",
+                    "description": "the grant_type"
+                },
+                "client_id":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the client_id"
+                },
+                "client_secret":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the secret"
+                },
+                "refresh_token":{
+                    "location": "json",
+                    "type": "string",
+                    "required": true,
+                    "description": "the refresh_token"
+                }
+            }
         }
     },
     "models": {
         "TokenResponse":{
             "type": "object",
-            "location": "json",
             "properties": {
                 "access_token": {
-                    "location": "json",
                     "type": "string",
+                    "location": "json",
                     "description": "the access_token"
                 },
-                "token_type": {
-                    "location": "json",
-                    "type": "string",
-                    "description": "the token_type"
-                },
-                "refresh_token": {
-                    "location": "json",
-                    "type": "string",
-                    "description": "the refresh_token"
-                },
                 "expires_in": {
+                    "type": "string",
                     "location": "json",
-                    "type": "integer",
                     "description": "the expires_in"
                 },
+                "token_type": {
+                    "type": "string",
+                    "location": "json",
+                    "description": "the token_type"
+                },
                 "scope": {
-                    "type": "array",
-                    "description": "the expires_in",
-                    "items":{
-                        "location": "json",
-                        "type": "string"
-                    }
+                    "type": "string",
+                    "location": "json",
+                    "description": "the scopes array , separator"
+                },
+                "refresh_token": {
+                    "type": "integer",
+                    "location": "json",
+                    "description": "the refresh_token"
                 }
             }
         }

@@ -9,19 +9,21 @@
 
 namespace Ant\ChateaClient\Service\Client;
 
+use Guzzle\Common\Collection;
+use Guzzle\Service\Client;
+use Guzzle\Service\Description\ServiceDescription;
+use Ant\Guzzle\Plugin\QueryPluging;
+use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaOAuth2Client extends Client
 {
     public static function factory($config = array())
     {
         // Provide a hash of default client configuration options
-        $default = array('Accept'=>'application/json', 'environment'=>'prod',"grant_type"=>"password");
+        $default = array('Accept'=>'application/json', 'environment'=>'prod');
         $required = array(
             'Accept',
-            'environment',
-            "grant_type",
-            'client_id',
-            'secret'
+            'environment'
         );
 
         // use certificate of system and disable checks SSL
