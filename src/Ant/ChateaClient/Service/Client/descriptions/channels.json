@@ -122,9 +122,9 @@
         },
         "GetChannelsType":{
             "httpMethod": "GET",
-            "uri": "api/channelstype",
+            "uri": "/api/channelstype",
             "summary": "List all the channels type",
-            "responseClass": "ChannelType"
+            "responseClass": "ChannelTypeCollection"
         },
         "GetChannelsCreatedByUser":{
             "httpMethod": "GET",
@@ -193,42 +193,6 @@
         "Message":{
             "type": "string"
         },
-        "Links": {
-            "type": "object",
-            "location": "json",
-            "properties": {
-                "slef": {
-                    "type": "object",
-                    "location": "json",
-                    "properties": {
-                        "href":{
-                            "type": "string",
-                            "location": "json"
-                        }
-                    }
-                },
-                "fans": {
-                    "type": "object",
-                    "location": "json",
-                    "properties": {
-                        "href":{
-                            "type": "string",
-                            "location": "json"
-                        }
-                    }
-                },
-                "creator": {
-                    "type": "object",
-                    "location": "json",
-                    "properties": {
-                        "href":{
-                            "type": "string",
-                            "location": "json"
-                        }
-                    }
-                }
-            }
-        },
         "ChannelType":{
             "type": "object",
             "properties": {
@@ -236,6 +200,18 @@
                     "location": "json",
                     "type": "string",
                     "description": "the name of channel"
+                },
+                "_links": {
+                    "channels": {
+                        "type": "object",
+                        "location": "json",
+                        "properties": {
+                            "href":{
+                                "type": "string",
+                                "location": "json"
+                            }
+                        }
+                    }
                 }
             }
         },
@@ -261,7 +237,78 @@
                     "$ref": "ChannelType"
                 },
                 "_links": {
-                    "$ref": "Links"
+                    "type": "object",
+                    "location": "json",
+                    "properties": {
+                        "slef": {
+                            "type": "object",
+                            "location": "json",
+                            "properties": {
+                                "href":{
+                                    "type": "string",
+                                    "location": "json"
+                                }
+                            }
+                        },
+                        "fans": {
+                            "type": "object",
+                            "location": "json",
+                            "properties": {
+                                "href":{
+                                    "type": "string",
+                                    "location": "json"
+                                }
+                            }
+                        },
+                        "creator": {
+                            "type": "object",
+                            "location": "json",
+                            "properties": {
+                                "href":{
+                                    "type": "string",
+                                    "location": "json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "ChannelTypeCollection":{
+            "type": "object",
+            "properties": {
+                "total": {
+                    "location": "json",
+                    "type": "integer",
+                    "description": "total elements in collection"
+                },
+                "page": {
+                    "location": "json",
+                    "type": "integer",
+                    "description": "get page at collection"
+                },
+                "limit": {
+                    "location": "json",
+                    "type": "integer",
+                    "description": "number of elements for page"
+                },
+                "_links": {
+                    "slef": {
+                        "type": "object",
+                        "location": "json",
+                        "properties": {
+                            "href":{
+                                "type": "string",
+                                "location": "json"
+                            }
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ChannelType"
+                    }
                 }
             }
         },
@@ -292,7 +339,6 @@
                         "$ref": "Channel"
                     }
                 }
-
             }
         }
     }

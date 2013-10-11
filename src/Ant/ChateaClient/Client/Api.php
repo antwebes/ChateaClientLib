@@ -185,7 +185,7 @@ class Api implements IApi
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannels', array('id' => $channel_id));
+        $command = $this->client->getCommand('GetChannel', array('id' => $channel_id));
 
         return $command->execute();
     }
@@ -248,7 +248,6 @@ class Api implements IApi
     {
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('GetChannelsType');
-
         return $command->execute();
     }
 

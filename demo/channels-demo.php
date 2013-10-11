@@ -7,7 +7,7 @@ use Ant\ChateaClient\Client\Api;
 
 
 $client = ChateaGratisClient::factory(
-    array('access_token' => 'OTk5MmI0MDk3NGFiMTM4NTBlMzk5OWZlYWM4N2Q5NTlhYTZlOTgwNzUzYmVjYzcxOTI5OGZmZTM2MTQ1MDI4OQ',
+    array('access_token' => 'access-token-demo',
           'environment'=>'dev'
     )
 );
