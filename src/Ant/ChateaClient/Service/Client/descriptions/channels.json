@@ -18,7 +18,7 @@
             "httpMethod": "GET",
             "uri": "api/channels/{id}",
             "summary": "Show a channel by id",
-            "responseClass": "Channel",
+            "responseClass": "  Channel",
             "parameters": {
                 "id": {
                     "location": "uri",
@@ -175,6 +175,10 @@
             "uri": "api/users/{user_id}/channels/{channel_id}/fans",
             "summary": "Remove user as a channel fan",
             "responseType": "string",
+            "responseNotes": "return ok if channel is deleted, or one error if channel is not owner",
+            "errorResponses":{
+
+            }
             "parameters": {
                 "user_id": {
                     "location": "uri",
