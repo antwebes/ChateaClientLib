@@ -21,6 +21,5 @@
     },
     "autoload": {
         "psr-0": {"Ant": "src/"}
-    },
-    "minimum-stability": "dev"
+    }
 }
