@@ -10,7 +10,7 @@
         "role" : "Developer"
     }],
     "keywords" : ["chateagratis","library","api"],
-    "homepage" : "https://github.com/antwebes/ChateaClient",
+    "homepage" : "https://github.com/antwebes/ChateaClientLib",
     "license" : "MIT",
     "require": {
 	    "guzzle/guzzle" : "~3.7",
@@ -21,6 +21,5 @@
     },
     "autoload": {
         "psr-0": {"Ant": "src/"}
-    },
-    "minimum-stability": "dev"
+    }
 }

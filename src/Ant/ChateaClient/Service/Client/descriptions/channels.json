@@ -164,6 +164,7 @@
             "httpMethod": "DELETE",
             "uri": "api/users/{user_id}/channels/{channel_id}/fans",
             "summary": "Remove user as a channel fan",
+            "responseNotes": "return ok if channel is deleted, or one error if channel is not owner",
             "parameters": {
                 "user_id": {
                     "location": "uri",
