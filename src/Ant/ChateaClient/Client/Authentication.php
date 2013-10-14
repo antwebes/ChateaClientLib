@@ -12,6 +12,8 @@
 namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\Service\Client\ChateaOAuth2Client;
+use Guzzle\Http\Exception\BadResponseException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
 
 class Authentication
 {
@@ -82,8 +84,13 @@ class Authentication
         $command = $this->client->getCommand('withUserCredentials',
             array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'username'=>$username,'password'=>$password)
         );
-
-        return $command->execute();
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
 
     }
 
@@ -102,7 +109,13 @@ class Authentication
             array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'redirect_uri'=>$redirect_uri,'code'=>$auth_code)
         );
 
-        return  $command->execute();
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
     }
 
     public function withClientCredentials()
@@ -112,7 +125,13 @@ class Authentication
             array('client_id'=>$this->client_id,'client_secret'=>$this->secret)
         );
 
-        return $command->execute();
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
     }
 
     public function withRefreshToken($refresh_token)
@@ -126,6 +145,12 @@ class Authentication
             array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'refresh_token'=>$refresh_token)
         );
 
-        return $command->execute();
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
     }
 }

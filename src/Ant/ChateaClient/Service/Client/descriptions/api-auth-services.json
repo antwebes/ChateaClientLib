@@ -161,10 +161,10 @@
                 "scope": {
                     "type": "string",
                     "location": "json",
-                    "description": "the scopes array , separator"
+                    "description": "the scopes array use ',' as separator"
                 },
                 "refresh_token": {
-                    "type": "integer",
+                    "type": "string",
                     "location": "json",
                     "description": "the refresh_token"
                 }
