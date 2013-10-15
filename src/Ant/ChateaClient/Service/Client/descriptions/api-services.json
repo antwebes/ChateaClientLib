@@ -4,7 +4,8 @@
     "baseUrl":  "http://api.chateagratis.local/app_dev.php",
     "_description": "Chatea Gratis API",
     "includes":[
-        "channels.json"
+        "channels.json",
+        "me.json"
     ]
 
 }

@@ -10,6 +10,12 @@
                     "location": "query",
                     "default": 1,
                     "description": "number of position at collection"
+                },
+                "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "default": 1,
+                    "description": "filter collection byh criteria"
                 }
             }
         },

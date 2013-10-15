@@ -171,11 +171,23 @@ class Api implements IApi
     /*				  				  CHANNEL METHODS    	   					  */
     /******************************************************************************/
 
-    public function showChannels($page = 1, $filter = '')
+    public function showChannels($page = 1, array $filter = null)
     {
 
+        $filterHash = '';
+        foreach ($filter as $key=>$value) {
+
+            $filterHash .= $key .'='. $value;
+
+            if($value != end($filter))
+            {
+                $filterHash .= ',';
+            }
+        }
+        $filter = 'filter='.$filterHash;
+
         //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannels');
+        $command = $this->client->getCommand('GetChannels',array('page'=>$page,'filter'=>$filter));
 
         try{
             return $command->execute();

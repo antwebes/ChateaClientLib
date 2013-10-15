@@ -1,0 +1,17 @@
+{
+    "operations": {
+        "GetUsers": {
+            "httpMethod": "GET",
+            "uri": "api/users",
+            "summary": "List all users",
+            "parameters": {
+                "page": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 1,
+                    "description": "number of position at collection"
+                }
+            }
+        }
+    }
+}

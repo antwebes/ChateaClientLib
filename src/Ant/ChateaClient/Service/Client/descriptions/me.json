@@ -1,0 +1,9 @@
+{
+    "operations": {
+        "Whoami": {
+            "httpMethod": "GET",
+            "uri": "api/me",
+            "summary": "Print the user name associated with the current effective user"
+        }
+    }
+}
