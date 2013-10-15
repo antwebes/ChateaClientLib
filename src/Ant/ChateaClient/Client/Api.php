@@ -89,28 +89,26 @@ class Api implements IApi
     /**
      * Show a profile of an user
      */
-    public function showProfile()
+    public function showAccount()
     {
-        throw new Exception("This method do not implemented yet");
+        $command = $this->client->getCommand('ShowAccount');
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-// 	 PUT|PATCH /api/profile/
-    /**
-     * Update a profile of an user
-     *
-     * @param string $username the new username
-     *
-     * @param string $email the new email
-     *
-     * @param String $current_password the password of user in session.
-     *    if you will change password use: @link #changePassword
-     *
-     * @throws InvalidArgumentException
-     *        The exception that is thrown when
-     *        $username, $email, $current_password is not valid string
 
-     */
-    public function updateProfile($username, $email, $current_password)
+    public function updateAccount($username, $email, $current_password)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException(
@@ -125,7 +123,20 @@ class Api implements IApi
                 "ApiException::updateProfile current_password field needs to be a non-empty string");
         }
 
-        throw new InvalidArgumentException("This method do not implemented yet");
+        $command = $this->client->getCommand('UpdateAccount',array('profile'=>array('username'=>$username,'email'=>$email,'current_password'=>$current_password)));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
     /**
@@ -192,11 +203,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -213,11 +227,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -228,16 +245,19 @@ class Api implements IApi
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('SetChannel', array('channel' => array("name" => $name, "title" => $title, "description" => $description)));
+        $command = $this->client->getCommand('AddChannel', array('channel' => array("name" => $name, "title" => $title, "description" => $description)));
 
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -258,11 +278,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
 
     }
@@ -280,11 +303,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -301,11 +327,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -317,11 +346,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -338,11 +370,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -358,11 +393,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -383,11 +421,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
 
     }
@@ -409,11 +450,14 @@ class Api implements IApi
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }catch(CurlException $ex){
-            throw new ApiException($ex->getMessage(), 404, $ex);
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
         }
     }
 
@@ -422,20 +466,86 @@ class Api implements IApi
      */
     public function showFriends($user_id)
     {
-        // TODO: Implement showFriends() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "ShowFriends user_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('ShowFriends',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * sends a friendship request to a given user
-     *
-     * @param number $user_id
-     * @param number $friend_id
-     */
     public function addFriends($user_id, $friend_id)
     {
-        // TODO: Implement addFriends() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addFriends user_id field should be positive integer");
+        }
+
+        if (!is_numeric($friend_id) || 0 >= $friend_id) {
+            throw new InvalidArgumentException(
+                "addFriends friend_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('AddFriends',array('id'=>$user_id,'user_id'=>$friend_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
+
+    public function delFriend($user_id, $user_delete_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "delFriend user_id field should be positive integer");
+        }
+
+        if (!is_numeric($user_delete_id) || 0 >= $user_delete_id) {
+            throw new InvalidArgumentException(
+                "delFriend user_delete_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('DeleteFriends',array('id'=>$user_id,'user_delete_id'=>$user_delete_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
+    }
     /**
      * returns the friends that they are pending accept by an user
      */
@@ -476,23 +586,26 @@ class Api implements IApi
         // TODO: Implement delFriendshipRequest() method.
     }
 
-    /**
-     * Deletes a friendship
-     *
-     * @param number $user_id
-     * @param number $user_delete_id
-     */
-    public function delFriend($user_id, $user_delete_id)
-    {
-        // TODO: Implement delFriend() method.
-    }
 
     /**
      * Get my user of session
      */
     public function whoami()
     {
-        // TODO: Implement whoami() method.
+        $command = $this->client->getCommand('Whoami');
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
     /**
@@ -500,7 +613,20 @@ class Api implements IApi
      */
     public function delMe()
     {
-        // TODO: Implement delMe() method.
+        $command = $this->client->getCommand('DelMe');
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
     /**
@@ -656,59 +782,226 @@ class Api implements IApi
     /**
      * Get all the users
      */
-    public function who()
+    public function who($page = 1)
     {
-        // TODO: Implement who() method.
+        $command = $this->client->getCommand('Who',array('page'=>$page));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * Get the user
-     * @param number $user_id
-     */
     public function showUser($user_id)
     {
-        // TODO: Implement showUser() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showUser user_id field should be positive integer",404);
+        }
+
+        $command = $this->client->getCommand('ShowUser',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * Get blocked users of the session user
-     * @param number $user_id
-     */
+
     public function showUsersBlocked($user_id)
     {
-        // TODO: Implement showUsersBlocked() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showUsersBlocked user_id field should be positive integer",404);
+        }
+
+        $command = $this->client->getCommand('showUsersBlocked',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * Blocks the given user for the session user
-     *
-     * @param number $user_id
-     * @param number $user_blocked_id
-     */
     public function addUserBlocked($user_id, $user_blocked_id)
     {
-        // TODO: Implement addUserBlocked() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addUserBlocked user_id field should be positive integer",404);
+        }
+
+        if (!is_numeric($user_blocked_id) || 0 >= $user_blocked_id) {
+            throw new InvalidArgumentException(
+                "addUserBlocked user_blocked_id field should be positive integer",404);
+        }
+
+        $command = $this->client->getCommand('AddUserBlocked',array('id'=>$user_id,'user_id'=>$user_blocked_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * Unblocks the given user for the session user
-     *
-     * @param number $user_id
-     * @param number $user_blocked_id
-     */
+
     public function delUserBlocked($user_id, $user_blocked_id)
     {
-        // TODO: Implement delUserBlocked() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "DeleteUserBlocked user_id field should be positive integer",404);
+        }
+
+        if (!is_numeric($user_blocked_id) || 0 >= $user_blocked_id) {
+            throw new InvalidArgumentException(
+                "DeleteUserBlocked user_blocked_id field should be positive integer",404);
+        }
+
+        $command = $this->client->getCommand('DeleteUserBlocked',array('user_id'=>$user_id,'blocked_user_id'=>$user_blocked_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
+    }
+
+    public function showUserProfile($user_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "ShowUserProfile user_id field should be positive integer",404);
+        }
+
+        $command = $this->client->getCommand('ShowUserProfile',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
     /**
-     * Show a profile
-     *
      * @param $user_id
+     * @param $about
+     * @param $sexualOrientation {"heterosexual", "homosexual", "bisexual"}
      * @return mixed
+     * @throws ApiException
+     * @throws \InvalidArgumentException
      */
-    public function showUserProfile($user_id)
+    public function addUserProfile($user_id, $about, $sexualOrientation)
     {
-        // TODO: Implement showUserProfile() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addUserProfile user_id field should be positive integer",404);
+        }
+        if (!is_string($about) || 0 >= strlen($about)) {
+            throw new InvalidArgumentException(
+                "about must be a non-empty string", 404);
+        }
+        if (!is_string($sexualOrientation) || 0 >= strlen($sexualOrientation)) {
+            throw new InvalidArgumentException(
+                "sexualOrientation must be a non-empty string", 404);
+        }
+
+        $command = $this->client->getCommand('AddUserProfile',array('id'=>$user_id,'social_profile'=>array('about'=>$about,'sexualOrientation'=>$sexualOrientation)));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
+    }
+
+    /**
+     * @param $user_id
+     * @param $about
+     * @param $sexualOrientation {"heterosexual", "homosexual", "bisexual"}
+     * @return mixed
+     * @throws ApiException
+     * @throws \InvalidArgumentException
+     */
+    public function updateUserProfile($user_id, $about, $sexualOrientation)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addUserProfile user_id field should be positive integer",404);
+        }
+        if (!is_string($about) || 0 >= strlen($about)) {
+            throw new InvalidArgumentException(
+                "about must be a non-empty string", 404);
+        }
+        if (!is_string($sexualOrientation) || 0 >= strlen($sexualOrientation)) {
+            throw new InvalidArgumentException(
+                "sexualOrientation must be a non-empty string", 404);
+        }
+
+        $command = $this->client->getCommand('UpdateUserProfile',array('id'=>$user_id,'social_profile'=>array('about'=>$about,'sexualOrientation'=>$sexualOrientation)));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 }

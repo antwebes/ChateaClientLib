@@ -16,6 +16,18 @@
         <a href="channels-demo.php">Channels Demo</a>
     </li>
     <li>
+        <a href="me-demo.php">Me Demo</a>
+    </li>
+    <li>
+        <a href="users-demo.php">Users Demo</a>
+    </li>
+    <li>
+        <a href="profile-demo.php">Profile Demos</a>
+    </li>
+    <li>
+        <a href="friendship-demo.php">Friendship Demos</a>
+    </li>
+    <li>
         <a href="auth-demo.php">OAuth2 Demo</a>
     </li>
 </ul>

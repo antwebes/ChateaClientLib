@@ -5,7 +5,10 @@
     "_description": "Chatea Gratis API",
     "includes":[
         "channels.json",
-        "me.json"
+        "me.json",
+        "users.json",
+        "profile.json",
+        "friendship.json"
     ]
 
 }

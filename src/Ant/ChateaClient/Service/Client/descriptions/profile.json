@@ -1,0 +1,38 @@
+{
+    "operations": {
+        "ShowAccount": {
+            "httpMethod": "GET",
+            "uri": "api/account/",
+            "summary": "Show a profile of an user"
+        },
+        "UpdateAccount":{
+            "httpMethod": "PATCH",
+            "uri": "api/account",
+            "summary": "Update a profile of an user",
+            "parameters": {
+                "profile": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "username": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "email": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "current_password": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

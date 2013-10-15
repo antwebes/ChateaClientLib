@@ -31,7 +31,7 @@
                 }
             }
         },
-        "SetChannel": {
+        "AddChannel": {
             "httpMethod": "POST",
             "uri": "api/channels",
             "summary": "Creates a new Channel",
@@ -122,7 +122,7 @@
         },
         "GetChannelsType":{
             "httpMethod": "GET",
-            "uri": "/api/channelstype",
+            "uri": "api/channelstype",
             "summary": "List all the channels type"
         },
         "GetChannelsCreatedByUser":{

@@ -1,6 +1,6 @@
 {
     "operations": {
-        "GetUsers": {
+        "Who": {
             "httpMethod": "GET",
             "uri": "api/users",
             "summary": "List all users",
@@ -10,6 +10,138 @@
                     "location": "query",
                     "default": 1,
                     "description": "number of position at collection"
+                }
+            }
+        },
+        "ShowUser": {
+            "httpMethod": "GET",
+            "uri": "api/users/{id}",
+            "summary": "Show a user by id",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "showUsersBlocked": {
+            "httpMethod": "GET",
+            "uri": "/api/users/{id}/blocked",
+            "summary": "Get blocked users of the session user",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "AddUserBlocked": {
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/blocked",
+            "summary": "Get blocked users of the session user",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                },
+                "user_id": {
+                    "location": "json",
+                    "description": "User to bloked by ID",
+                    "required": true
+                }
+            }
+        },
+        "DeleteUserBlocked": {
+            "httpMethod": "DELETE",
+            "uri": "api/users/{user_id}/blocked/{blocked_user_id}",
+            "summary": "unblocks the given user for the session user",
+            "parameters": {
+                "user_id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                },
+                "blocked_user_id": {
+                    "location": "uri",
+                    "description": "User to bloked by ID",
+                    "required": true
+                }
+            }
+        },
+        "ShowUserProfile": {
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/profiles",
+            "summary": "show a profile",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "AddUserProfile": {
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/profiles",
+            "summary": "show a profile",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to add profile by ID",
+                    "required": true
+                },
+                "social_profile": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "about": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "the about in profile"
+                        },
+                        "sexualOrientation": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "The sexualOrientation"
+                        }
+                    }
+                }
+            }
+        },
+        "UpdateUserProfile": {
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/profiles",
+            "summary": "show a profile",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to add profile by ID",
+                    "required": true
+                },
+                "social_profile": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "about": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "the about in profile"
+                        },
+                        "sexualOrientation": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true,
+                            "description": "The sexualOrientation"
+                        }
+                    }
                 }
             }
         }

@@ -1,0 +1,68 @@
+{
+    "operations": {
+        "ShowFriends": {
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/friends",
+            "summary": "return my friends",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true,
+                    "description": "Show a ShowFriends by user id"
+                }
+            }
+        },
+        "AddFriends": {
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/friends",
+            "summary": "return my friends",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                },
+                "user_id": {
+                    "type": "integer",
+                    "location": "json",
+                    "require": true
+                }
+            }
+        },
+        "DeleteFriends": {
+            "httpMethod": "DELETE",
+            "uri": "api/users/{id}/friends/{user_delete_id}",
+            "summary": "Deletes a friendship",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                },
+                "user_delete_id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                }
+            }
+        },
+        "ShowFriendshipsPending":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/friends/pending",
+            "summary": "returns the friendships request the loged in user sended that are pending for acceptance",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                }
+            }
+        }
+    }
+}
+
+
+
+
+

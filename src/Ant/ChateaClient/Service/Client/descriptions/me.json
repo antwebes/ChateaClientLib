@@ -4,6 +4,11 @@
             "httpMethod": "GET",
             "uri": "api/me",
             "summary": "Print the user name associated with the current effective user"
+        },
+        "DelMe": {
+            "httpMethod": "DELETE",
+            "uri": "api/me",
+            "summary": "delete me user"
         }
     }
 }

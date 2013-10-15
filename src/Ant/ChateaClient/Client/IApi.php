@@ -38,12 +38,12 @@ interface IApi
 	 /**
 	  * Show a profile of an user
 	 */
-	 public function showProfile();
+	 public function showAccount();
 
 	 /**
 	  * Update a profile of an user
 	  */
-	 public function updateProfile($username, $email, $current_password);
+	 public function updateAccount($username, $email, $current_password);
 
 	 /**
 	  * Change user password
@@ -305,7 +305,7 @@ interface IApi
 		/**
 		 * Get all the users
 		 */
-		 public function who();
+    public function who($page = 1);
 		/**
 		 * Get the user
 		 * @param number $user_id

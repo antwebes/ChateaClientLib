@@ -20,21 +20,21 @@ $rediret = 'http://www.chateagratis.net';
 
 try{
     // withUserCredentials
-    echo $authentication->withUserCredentials($username,$password);
+    print_r ( $authentication->withUserCredentials($username,$password) );
     echo "<br><br><br>";
 
     // withAuthorizationCode
-    echo $authentication->withAuthorizationCode($authCode,$rediret);
+    print_r( $authentication->withAuthorizationCode($authCode,$rediret));
     echo "<br><br><br>";
 
 
     //withClientCredentials
-    echo $authentication->withClientCredentials();
+    print_r(  $authentication->withClientCredentials() );
     $model = $authentication->withClientCredentials();
     echo "<br><br><br>";
 
     //withRefreshToken
-    echo $authentication->withRefreshToken($model['refresh_token']);
+    print_r(  $authentication->withRefreshToken($model['refresh_token']) );
     echo "<br><br><br>";
 
 }catch (Exception $ex){
