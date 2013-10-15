@@ -551,17 +551,50 @@ class Api implements IApi
      */
     public function showFriendshipsPending($user_id)
     {
-        // TODO: Implement showFriendshipsPending() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showFriendshipsPending user_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('ShowFriendshipsPending',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
-    /**
-     * returns the requests friendships that one user doesn't have accepted
-     *
-     * @param number $user_id
-     */
     public function showFriendshipsRequest($user_id)
     {
-        // TODO: Implement showFriendshipsRequest() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showFriendshipsRequest user_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('ShowFriendshipsRequest',array('id'=>$user_id));
+
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(ClientErrorResponseException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }catch(CurlException $ex){
+            $code = $ex->getResponse()->getStatusCode();
+            throw new ApiException($ex->getResponse()->getBody(), $code, $ex);
+        }
     }
 
     /**

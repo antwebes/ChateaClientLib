@@ -58,6 +58,18 @@
                     "require": true
                 }
             }
+        },
+        "ShowFriendshipsRequest":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/friends/requests",
+            "summary": "returns the friendship requests sended the loged in user pending to be accepted",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                }
+            }
         }
     }
 }
