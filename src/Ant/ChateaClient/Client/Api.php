@@ -1,5 +1,6 @@
 <?php
 namespace Ant\ChateaClient\Client;
+use Guzzle\Http\Exception\CurlException;
 use InvalidArgumentException;
 use Exception;
 use Guzzle\Http\Exception\BadResponseException;
@@ -182,6 +183,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
 
@@ -201,6 +204,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
 
@@ -212,11 +217,14 @@ class Api implements IApi
 
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('SetChannel', array('channel' => array("name" => $name, "title" => $title, "description" => $description)));
+
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
@@ -241,6 +249,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
 
     }
@@ -261,6 +271,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
 
@@ -280,6 +292,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
 
@@ -287,11 +301,14 @@ class Api implements IApi
     {
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('GetChannelsType');
+
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
@@ -312,6 +329,8 @@ class Api implements IApi
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }
 
@@ -324,7 +343,15 @@ class Api implements IApi
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('GetFavoritesChannelsByUser',array('id'=>$user_id));
 
-        return $command->execute();
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }
     }
 
     public function addUserChannelFan($channel_id, $user_id)
@@ -346,6 +373,8 @@ class Api implements IApi
         }catch (BadResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }
 
@@ -370,6 +399,8 @@ class Api implements IApi
         }catch (BadResponseException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new ApiException($ex->getMessage(), 404, $ex);
+        }catch(CurlException $ex){
             throw new ApiException($ex->getMessage(), 404, $ex);
         }
     }

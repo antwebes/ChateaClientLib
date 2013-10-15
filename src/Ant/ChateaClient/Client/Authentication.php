@@ -14,6 +14,7 @@ namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\Service\Client\ChateaOAuth2Client;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\CurlException;
 
 class Authentication
 {
@@ -65,12 +66,7 @@ class Authentication
         return $this->secret;
     }
 
-    /**
-     * @param $username
-     * @param $password
-     * @throws InvalidArgumentException
-     * @return \Guzzle\Service\Resource\Model
-     */
+
     public function withUserCredentials($username, $password)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
@@ -84,11 +80,14 @@ class Authentication
         $command = $this->client->getCommand('withUserCredentials',
             array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'username'=>$username,'password'=>$password)
         );
+
         try{
             return $command->execute();
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
 
@@ -115,6 +114,8 @@ class Authentication
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
     }
 
@@ -130,6 +131,8 @@ class Authentication
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
     }
@@ -150,6 +153,8 @@ class Authentication
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
     }
