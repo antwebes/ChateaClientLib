@@ -13,22 +13,20 @@ interface IApi
 	/**
 	 *  create a user
 	 *
-	 * @param ClientInterface $client
 	 * @param string $username
 	 * @param string $email
 	 * @param string $new_password
 	 * @param string $repeat_new_password
 	 */
-	 public static function register(ClientInterface $client,  $username, $email,$new_password, $repeat_new_password);
+	 public function register($username, $email,$new_password, $repeat_new_password);
 
 
 	/**
 	* Request reset user password, in the request is mandatory send username or email (dont work from nelmio api)
 	 *
-	 * @param ClientInterface $client
 	 * @param string $username
 	 */
-	 public static function requestResetpassword(ClientInterface $client, $username);
+	 public function forgotPassword($username);
 	 	
 
 /******************************************************************************/

@@ -2,12 +2,12 @@
     "operations": {
         "ShowAccount": {
             "httpMethod": "GET",
-            "uri": "api/account/",
+            "uri": "/api/account/",
             "summary": "Show a profile of an user"
         },
-        "UpdateAccount":{
+        "UpdateAccount": {
             "httpMethod": "PATCH",
-            "uri": "api/account",
+            "uri": "/api/account",
             "summary": "Update a profile of an user",
             "parameters": {
                 "profile": {
@@ -33,6 +33,46 @@
                     }
                 }
             }
+        },
+        "ChangePassword": {
+            "httpMethod": "PATCH",
+            "uri": "/api/account/change-password",
+            "summary": "Change user password",
+            "parameters": {
+                "change_password": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "current_password": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "plainPassword": {
+                            "type": "object",
+                            "required": true,
+                            "location": "json",
+                            "properties": {
+                                "first": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "second": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
+
+
+

@@ -10,9 +10,7 @@
 namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
-use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
-use Ant\Guzzle\Plugin\QueryPluging;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaOAuth2Client extends Client
@@ -20,27 +18,45 @@ class ChateaOAuth2Client extends Client
     public static function factory($config = array())
     {
         // Provide a hash of default client configuration options
-        $default = array('Accept'=>'application/json', 'environment'=>'prod');
+        $default = array(
+            'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
+            'Accept'=>'application/json',
+            'environment'=>'prod',
+            'scheme' => 'https',
+            'version'=>'',
+            'subdomain'=>'api',
+            'service-description-name' => Client::NAME_SERVICE_AUTH
+        );
         $required = array(
+            'base_url',
+            'scheme',
+            'subdomain',
             'Accept',
             'environment'
         );
 
-        // use certificate of system and disable checks SSL
-        if($config['environment'] == 'dev' ){
-            $config['ssl.certificate_authority'] = 'system';
-            $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
-        }
         // Merge in default settings and validate the config
         $config = Collection::fromConfig($config, $default, $required);
 
-        // Create a new ChateaGratis client
-        $client = new self($config->get('base_url'), $config);
 
-        // Set the service description
-        $client->setDescription(ServiceDescription::factory(__DIR__.'/descriptions/api-auth-services.json'));
+        if($config['environment'] == 'dev' ){
+
+            $config['base_url'] = $config['base_url'] . '/app_dev.php';
+            $config['scheme'] = 'http';
+            $config['ssl.certificate_authority'] = 'system';
+            $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
+        }
+
+
+        // Create a new ChateaOAuth2 client
+        $client = new self($config->get('base_url'),
+            $config->get('scheme'),
+            $config->get('subdomain'),
+            $config
+        );
 
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
+
         return $client;
     }
 }

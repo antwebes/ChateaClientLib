@@ -1,14 +1,74 @@
 {
     "name": "api.chateagratis.net",
     "apiVersion": ["fobos", "1.0.0"],
-    "baseUrl":  "http://api.chateagratis.local/app_dev.php",
     "_description": "Chatea Gratis API",
+    "operations": {
+        "Register": {
+            "httpMethod": "POST",
+            "uri": "/register",
+            "summary": "Creates a new User",
+            "parameters": {
+                "user_registration": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "email": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "username": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "plainPassword": {
+                            "type": "object",
+                            "required": true,
+                            "location": "json",
+                            "properties": {
+                                "first": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "second": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "RequestResetPassword":{
+            "httpMethod": "POST",
+            "uri": "resetting/send-email",
+            "summary": "Request reset user password, in the request is mandatory send username or email",
+            "parameters": {
+            "email": {
+                "location": "json",
+                "type": "string"
+                },
+                "username": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        }
+    },
     "includes":[
         "channels.json",
         "me.json",
         "users.json",
         "profile.json",
-        "friendship.json"
+        "friendship.json",
+        "photo.json",
+        "reports.json",
+        "thread.json"
     ]
 
 }

@@ -1,12 +1,11 @@
 {
     "name": "api.chateagratis.net",
     "apiVersion": ["fobos", "1.0.0"],
-    "baseUrl":  "http://api.chateagratis.local/app_dev.php/",
     "_description": "Chatea Gratis Client Auth API",
     "operations": {
         "withUserCredentials":{
             "httpMethod": "POST",
-            "uri": "oauth/v2/token",
+            "uri": "/oauth/v2/token",
             "summary": "Auth client with user and password",
             "parameters": {
                 "grant_type":{
@@ -43,7 +42,7 @@
         },
         "withAuthorizationCode":{
             "httpMethod": "POST",
-            "uri": "oauth/v2/token",
+            "uri": "/oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{
@@ -80,7 +79,7 @@
         },
         "withClientCredentials":{
             "httpMethod": "POST",
-            "uri": "oauth/v2/token",
+            "uri": "/oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{
@@ -105,7 +104,7 @@
         },
         "withRefreshToken":{
             "httpMethod": "POST",
-            "uri": "oauth/v2/token",
+            "uri": "/oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{

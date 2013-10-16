@@ -19,6 +19,7 @@ use Ant\Guzzle\Plugin\Token\MacToken;
 
 class OAuth2Plugin implements EventSubscriberInterface
 {
+    private $config;
 
     public function __construct($config)
     {
@@ -30,6 +31,11 @@ class OAuth2Plugin implements EventSubscriberInterface
             ), array(
                 'consumer_key', 'consumer_secret', 'version', 'token_type',
             ));
+    }
+
+    public function updateAccessToken($acces_token)
+    {
+        $this->config['access_token'] = $acces_token;
     }
     /**
      * Returns an array of event names this subscriber wants to listen to.
