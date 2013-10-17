@@ -15,7 +15,7 @@ $api = new Api($client);
 try{
 
     // forgotPassword send email
-    $message = $api->forgotPassword("alex2");
+    $message = $api->forgotPassword("alex2@chateagratis.net");
     echo $message;
 
 }catch (ApiException $ex){

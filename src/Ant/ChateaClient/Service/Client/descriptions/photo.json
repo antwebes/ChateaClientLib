@@ -1,7 +1,100 @@
 {
     "operations": {
         "AddReportPhoto": {
+            "httpMethod": "POST",
+            "uri": "/api/photos/{id}/report",
+            "summary": "Reports the given user",
+            "parameters": {
+                "id":{
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "reason":{
+                    "type": "string",
+                    "required": true,
+                    "location": "json"
+                }
+            }
+         },
+        "DeletePhoto":{
+            "httpMethod": "DELETE",
+            "uri": "/api/photos/{photo_id}",
+            "summary": "Delete a photo",
+            "parameters": {
+                "photo_id":{
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "AddAlbum":{
+            "httpMethod": "POST",
+            "uri": "/api/users/{id}/albums",
+            "summary": "Create an album",
+            "parameters": {
+                "id":{
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "ant_photo_album":{
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "parameters":{
+                        "title":{
+                            "type": "string",
+                            "required": true,
+                            "location": "json"
+                        },
+                        "description":{
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                }
+            }
+        },
+        "AddPhoto":{
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/photo",
+            "summary": "create a photo",
+            "parameters": {
+                "id":{
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "ant_photo":{
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "parameters":{
+                        "title":{
+                            "type": "string",
+                            "required": true,
+                            "location": "json"
+                        },
+                        "image":{
+                            "type": "object",
+                            "required": true,
+                            "location": "postFile"
 
+                        }
+                    }
+                }
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+

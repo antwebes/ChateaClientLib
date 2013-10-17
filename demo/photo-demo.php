@@ -13,15 +13,10 @@ $client = ChateaGratisClient::factory(
 $api = new Api($client);
 
 try{
-    echo " Get whoami <br>";
 
-    print_r($api->whoami());
-    echo "<br/><br/><br/>";
+    $out = $api->addPhoto(1,'ant-photo','/home/ant3/ant.png');
 
-    echo " del me <br>";
-    print_r($api->delMe());
-    echo "<br/><br/><br/>";
-
+    print_r($out);
 
 }catch (ApiException $ex){
     echo "<br>ERROR:<br>";

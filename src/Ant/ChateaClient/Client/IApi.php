@@ -195,7 +195,14 @@ interface IApi
 	  
 /******************************************************************************/
 /*			  				PHOTO METHODS    	   					  		  */
-/******************************************************************************/	  
+/******************************************************************************/
+
+    /**
+     * Delete a photo
+     * @param number $photo_id
+     */
+    public function delPhoto($photo_id);
+
     /**
 	  * Show a photo
 	  *  
@@ -238,16 +245,10 @@ interface IApi
 	  public function addPhotoVote($user_id,$photo_id,$core);	  
 	  /**
 	   * Delete a vote
-	   * @param number $user_id
 	   * @param number $photo_id
 	   */
-      public function delPhotoVote($user_id, $photo_id);
-      /**
-       * Delete a photo
-       * @param number $user_id
-       * @param number $photo_id
-       */      
-      public function delPhoto($user_id,$photo_id);		
+      public function delPhotoVote($photo_id);
+
 
       
 /******************************************************************************/
