@@ -23,6 +23,9 @@ try{
     print_r($api->updateAccount('alex','alex@demo.com','alex'));
     echo "<br/><br/><br/>";
 
+    echo " Change password<br>";
+    print_r($api->changePassword('alex','alex_new','alex_new'));
+            $api->changePassword('alex_new','alex','alex');
 }catch (ApiException $ex){
     echo "<br>ERROR:<br>";
     echo ($ex->getMessage());

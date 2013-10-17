@@ -6,7 +6,7 @@
             "summary": "Show a profile of an user"
         },
         "UpdateAccount": {
-            "httpMethod": "PATCH",
+            "httpMethod": "PUT",
             "uri": "/api/account",
             "summary": "Update a profile of an user",
             "parameters": {

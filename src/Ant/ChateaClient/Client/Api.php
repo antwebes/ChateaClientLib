@@ -16,12 +16,11 @@ use InvalidArgumentException;
  * for all API methods.
  *
  * This class cannot connect with server,
- * this responsibility it is class that implement IHttpClient for example HttpClient
+ * this responsibility it is class that implement ClientInterface for example ChateaGratisClient
  *
  * @author Xabier Fernández Rodríguez in Ant-Web S.L.
  *
- * @see Ant\ChateaClient\Http\IHttpClient;
- * @see Ant\ChateaClient\Http\HttpClient;
+ * @see Ant\ChateaClient\Service\Client\ChateaGratisClient;
  * @see Ant\ChateaClient\Client\IApi;
  * @see Ant\ChateaClient\Client\ApiException;
  */
@@ -41,9 +40,42 @@ class Api
         $this->client = $client;
     }
 
+    /**
+     * Execute the command in server
+     *
+     * @param CommandInterface $command
+     * @return mixed
+     * @throws ApiException
+     */
+    private function executeCommand(CommandInterface $command)
+    {
+        try {
+            return $command->execute();
+        }
+        catch (ClientErrorResponseException $cerEx) {
+            throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
+        }catch (BadResponseException $brEx) {
+            throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);
+        }catch (CurlException $curlEx) {
+            throw new ApiException($curlEx->getMessage(), $curlEx->getCode(), $curlEx);
+        }catch (Exception $ex){
+            throw new ApiException($ex->getMessage(), $ex->getCode(), $ex);
+        }
+    }
+
+
+    /**
+     * Register one user at server
+     *
+     * @param $username the unique name of user
+     * @param $email the unique email for user
+     * @param $new_password the user password
+     * @param $repeat_new_password repeat thr password
+     * @return array
+     * @throws \InvalidArgumentException
+     */
     public function register($username, $email, $new_password, $repeat_new_password)
     {
-
 
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -81,25 +113,17 @@ class Api
         );
 
         return $this->executeCommand($command);
-
     }
 
-    private function executeCommand(CommandInterface $command)
-    {
-        try {
-            return $command->execute();
-        }
-        catch (ClientErrorResponseException $cerEx) {
-            throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
-        }catch (BadResponseException $brEx) {
-            throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);
-        }catch (CurlException $curlEx) {
-            throw new ApiException($curlEx->getMessage(), $curlEx->getCode(), $curlEx);
-        }catch (Exception $ex){
-            throw new ApiException($ex->getMessage(), $ex->getCode(), $ex);
-        }
-    }
-
+    /**
+     *
+     * Request reset user password, in the request is mandatory send username or email
+     * send email with new password.
+     *
+     * @param $username_or_email the user email or username
+     * @return messages ok
+     * @throws \InvalidArgumentException
+     */
     public function forgotPassword($username_or_email)
     {
 
@@ -120,7 +144,6 @@ class Api
     /******************************************************************************/
     /*				  				  PROFILE METHODS    	   					  */
     /******************************************************************************/
-
     /**
      * Show a profile of an user
      */
@@ -130,6 +153,16 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     *
+     * Update a profile of an user
+     *
+     * @param $username your user name | new user name
+     * @param $email your email | new email
+     * @param $current_password  your password
+     * @return array with you data updated
+     * @throws \InvalidArgumentException
+     */
     public function updateAccount($username, $email, $current_password)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
@@ -249,6 +282,16 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Create un new Channel
+     *
+     * @param $name the unique name of channel
+     * @param string $title the title of channel
+     * @param string $description the description of channel
+     * @param string $channel_type the type pof channel , this type only set availables
+     * @return array
+     * @throws \InvalidArgumentException
+     */
     public function addChanel($name, $title = '', $description = '', $channel_type = '')
     {
         if (!is_string($name) || 0 >= strlen($name)) {
@@ -624,11 +667,10 @@ class Api
             throw new InvalidArgumentException("addPhoto '.$imageFile.' not exist or It do not read");
         }
 
-        /* @var $command \Guzzle\Service\Command\OperationCommand */
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'AddPhoto',
-            array('id' => $user_id,'ant_photo'=>array('title'=>$imageTile)));
-
+            array('id' => $user_id,'ant_photo'=>array('title'=>$imageTile,'image'=>$imageFile)));
 
         return $this->executeCommand($command);
     }
@@ -720,9 +762,19 @@ class Api
     /**
      * Get all the users
      */
-    public function who($page = 1)
+    public function who($limit = 1, $offset = 0)
     {
-        $command = $this->client->getCommand('Who', array('page' => $page));
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showChannels() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showChannels() $offset must be a positive number,  min 0 ");
+        }
+
+        $command = $this->client->getCommand('Who', array('limit' => $limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -739,14 +791,23 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function showUsersBlocked($user_id)
+    public function showUsersBlocked($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "showUsersBlocked user_id field should be positive integer", 404);
         }
 
-        $command = $this->client->getCommand('showUsersBlocked', array('id' => $user_id));
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showChannels() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showChannels() $offset must be a positive number,  min 0 ");
+        }
+
+        $command = $this->client->getCommand('showUsersBlocked', array('id' => $user_id,'limit' => $limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -861,6 +922,5 @@ class Api
     {
         throw new \Exception("TThis method is not supported yet");
     }
-
 
 }

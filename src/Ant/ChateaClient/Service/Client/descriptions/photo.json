@@ -76,13 +76,12 @@
                             "type": "string",
                             "required": true,
                             "location": "json"
-                        },
-                        "image":{
-                            "type": "object",
-                            "required": true,
-                            "location": "postFile"
-
                         }
+                    },
+                    "image":{
+                        "type": "object",
+                        "required": true,
+                        "location": "postFile"
                     }
                 }
             }
