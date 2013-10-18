@@ -14,10 +14,13 @@ $client = ChateaGratisClient::factory(
 $api = new Api($client);
 
 try{
-    // Sing up
-    $newUserDate = $api->register("xabier","xabier@gmail.com",'12345678','12345678');
-    echo $newUserDate;
+    $key = time();
+    echo "<h3>Login up</h3>";
+    ld($api->register("xabier_".$key,"xabier_".$key."@gmail.com",'12345678','12345678','api.chateagratis.local'));
 
+
+    echo "<h3>Forgot password | send email</h3>";
+    ld($api->forgotPassword("alex3@chateagratis.net"));
 
 }catch (ApiException $ex){
     echo "<br>ERROR:<br>";

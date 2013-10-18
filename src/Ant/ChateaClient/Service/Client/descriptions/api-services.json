@@ -5,7 +5,7 @@
     "operations": {
         "Register": {
             "httpMethod": "POST",
-            "uri": "/register",
+            "uri": "api/register",
             "summary": "Creates a new User",
             "parameters": {
                 "user_registration": {
@@ -39,6 +39,11 @@
                                     "required": true
                                 }
                             }
+                        },
+                        "affiliate":{
+                                "location": "json",
+                                "type": "string",
+                                "required": true
                         }
                     }
                 }
@@ -49,10 +54,6 @@
             "uri": "resetting/send-email",
             "summary": "Request reset user password, in the request is mandatory send username or email",
             "parameters": {
-            "email": {
-                "location": "json",
-                "type": "string"
-                },
                 "username": {
                     "location": "json",
                     "type": "string"

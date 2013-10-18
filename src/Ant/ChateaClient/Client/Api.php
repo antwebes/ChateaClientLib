@@ -4,15 +4,16 @@ namespace Ant\ChateaClient\Client;
 use Ant\ChateaClient\Client\IApi;
 use Ant\ChateaClient\Service\Client\ChateaGratisClient;
 use Exception;
+use InvalidArgumentException;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
-use InvalidArgumentException;
+
 
 
 /**
- * This class represent the one chat API, this is single abstraction
+ * This class represent the chateagratis API's, this is single abstraction
  * for all API methods.
  *
  * This class cannot connect with server,
@@ -30,9 +31,9 @@ class Api
     private $client;
 
     /**
-     * Create a ne API objet
+     * Create a new API object
      *
-     * @param ChateaGratisClient $client the Httclient send request to api and response in json format
+     * @param ChateaGratisClient $client The http client liable to request server commands
      *
      */
     public function __construct(ChateaGratisClient $client)
@@ -44,8 +45,10 @@ class Api
      * Execute the command in server
      *
      * @param CommandInterface $command
-     * @return mixed
-     * @throws ApiException
+     *
+     * @return array|string return a collection of data or a message.
+     *
+     * @throws ApiException This exception is thrown if server send one error
      */
     private function executeCommand(CommandInterface $command)
     {
@@ -63,105 +66,34 @@ class Api
         }
     }
 
-
-    /**
-     * Register one user at server
-     *
-     * @param $username the unique name of user
-     * @param $email the unique email for user
-     * @param $new_password the user password
-     * @param $repeat_new_password repeat thr password
-     * @return array
-     * @throws \InvalidArgumentException
-     */
-    public function register($username, $email, $new_password, $repeat_new_password)
-    {
-
-        if (!is_string($username) || 0 >= strlen($username)) {
-            throw new InvalidArgumentException("username must be a non-empty string");
-        }
-        if (!is_string($email) || 0 >= strlen($email)) {
-            throw new InvalidArgumentException("email must be a non-empty string");
-        }
-        if (!is_string($new_password) || 0 >= strlen($new_password)) {
-            throw new InvalidArgumentException("new_password must be a non-empty string");
-        }
-
-        if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "repeat_new_password must be a non-empty string");
-        }
-
-        if (strcmp($new_password, $repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "the new_password and repeat_new_password isn't equals");
-        }
-
-        $command = $this->client->getCommand(
-            "Register",
-            array(
-                'user_registration' =>
-                array(
-                    'email' => $email,
-                    'username' => $username,
-                    'plainPassword' => array(
-                        'first' => $new_password,
-                        'second' => $repeat_new_password
-                    )
-                )
-            )
-        );
-
-        return $this->executeCommand($command);
-    }
-
-    /**
-     *
-     * Request reset user password, in the request is mandatory send username or email
-     * send email with new password.
-     *
-     * @param $username_or_email the user email or username
-     * @return messages ok
-     * @throws \InvalidArgumentException
-     */
-    public function forgotPassword($username_or_email)
-    {
-
-        if (!is_string($username_or_email) || 0 >= strlen($username_or_email)) {
-            throw new InvalidArgumentException("username_or_email must be a non-empty string");
-        }
-
-        if (strstr($username_or_email, '@')) {
-            $command = $this->client->getCommand("RequestResetPassword", array('email' => $username_or_email));
-        } else {
-            $command = $this->client->getCommand("RequestResetPassword", array('username' => $username_or_email));
-        }
-
-
-        return $this->executeCommand($command);
-    }
-
     /******************************************************************************/
     /*				  				  PROFILE METHODS    	   					  */
     /******************************************************************************/
-    /**
-     * Show a profile of an user
-     */
-    public function showAccount()
-    {
-        $command = $this->client->getCommand('ShowAccount');
-        return $this->executeCommand($command);
-    }
 
     /**
-     *
      * Update a profile of an user
      *
-     * @param $username your user name | new user name
-     * @param $email your email | new email
-     * @param $current_password  your password
+     * @param $username your user name | the new username
+     *
+     * @param $email your email | the new user email
+     *
+     * @param $current_password  your password. This method can not change your password for this use @link #changePassword
+     *
      * @return array with you data updated
-     * @throws \InvalidArgumentException
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->updateAccount('xabier','xabier@antweb.es','mySecretPassword');
+     *      //ouput
+     *      array(
+     *          'id' => '1',
+     *          'username' => 'xabier',
+     *          'email' => 'xabier@antweb.es',
+     *          );
      */
     public function updateAccount($username, $email, $current_password)
     {
@@ -192,11 +124,53 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function changePassword(
-        $current_password,
-        $new_password,
-        $repeat_new_password
-    ) {
+    /**
+     * Show a profile of an user
+     *
+     * @return array with you profile data
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->showAccount();
+     *      //ouput
+     *      array(
+     *          'id' => '2',
+     *          'username' => 'me user',
+     *          'email' => 'me@antweb.es',
+     *          );
+     */
+    public function showAccount()
+    {
+        $command = $this->client->getCommand('ShowAccount');
+        return $this->executeCommand($command);
+    }
+
+    /**
+     *
+     * Change user password
+     *
+     * @param $current_password your actual password
+     *
+     * @param $new_password your new password
+     *
+     * @param $repeat_new_password repeat your new password
+     *
+     * @return string message ok message if your password have been changed
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
+     *      //ouput message
+     *      Password changed sucessfully
+     *
+     */
+    public function changePassword($current_password,$new_password,$repeat_new_password) {
         if (!is_string($current_password) || 0 >= strlen($current_password)) {
             throw new InvalidArgumentException(
                 "ApiException::changePassword() current_password must be a non-empty string");
@@ -229,9 +203,115 @@ class Api
                 )
             )
         );
+        return $this->executeCommand($command);
+    }
+
+
+    /**
+     * Register new user at server
+     *
+     * @param $username The name of user. This is unique for user
+     *
+     * @param $email The email for user. This is unique for user
+     *
+     * @param $new_password The user password
+     *
+     * @param $repeat_new_password Repeat the password
+     *
+     * @param $affiliate_host The name of your server, where you make send request.
+     *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
+     *
+     * @return array
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->register('new user name','new_password','repeat_new_password','your hosts name');
+     *
+     *      <h3>Ouput<h3>
+     *
+     *      array{
+     *
+     *      }
+     */
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host)
+    {
+
+        if (!is_string($username) || 0 >= strlen($username)) {
+            throw new InvalidArgumentException("username must be a non-empty string");
+        }
+        if (!is_string($email) || 0 >= strlen($email)) {
+            throw new InvalidArgumentException("email must be a non-empty string");
+        }
+        if (!is_string($new_password) || 0 >= strlen($new_password)) {
+            throw new InvalidArgumentException("new_password must be a non-empty string");
+        }
+
+        if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "repeat_new_password must be a non-empty string");
+        }
+
+        if (strcmp($new_password, $repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "the new_password and repeat_new_password is not equals");
+        }
+
+        $command = $this->client->getCommand(
+            "Register",
+            array(
+                'user_registration' =>
+                array(
+                    'email' => $email,
+                    'username' => $username,
+                    'plainPassword' => array(
+                        'first' => $new_password,
+                        'second' => $repeat_new_password
+                    ),
+                    'affiliate'=>$affiliate_host
+                )
+            )
+        );
 
         return $this->executeCommand($command);
     }
+
+    /**
+     *
+     * Request reset the user password. The server send email with new password,
+     * this this request is only once for day.
+     *
+     * @param $username_or_email The user email or username
+     *
+     * @return string message ok message if your new password have been sent
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->forgotPassword('you_user_name');
+     *      $your_api_instance->forgotPassword('you_email@antwebs.es');
+     *
+     *      <h3>Ouput<h3>
+     *
+     */
+    public function forgotPassword($username_or_email)
+    {
+
+        if (!is_string($username_or_email) || 0 >= strlen($username_or_email)) {
+            throw new InvalidArgumentException("username_or_email must be a non-empty string");
+        }
+
+        $command = $this->client->getCommand("RequestResetPassword", array('username' => $username_or_email));
+
+        return $this->executeCommand($command);
+    }
+
 
     /******************************************************************************/
     /*				  				  CHANNEL METHODS    	   					  */
@@ -241,13 +321,24 @@ class Api
      * List all channels register in Server
      *
      * @param int $limit  number of items to retrieve at most
+     *
      * @param int $offset The distance (displacement) from the start of a data
+     *
      * @param array $filter Associative array with format filter_name =>value_name
+     *
      * @return array|Collection Associative array with channels data
-     * @throws \InvalidArgumentException This exception is thrown if any parameter is incorrect
-     * @Guzzle\Http\Exception\BadResponseException This exception is thrown for errors in the parameters of  the request, for example, apply a filter that does not exist.
-     * @throws \Guzzle\Http\Exception\ClientErrorResponseException This exception is thrown for errors in the server or we have errors in the parameters of  the request
-     * @throws \Guzzle\Http\Exception\CurlException This exception is thrown if there is error in the request, for example wrong or server url fallen
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      Get first twenty channels what type is love
+     *      $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
+     *
+     *      <h3>Ouput</h3>
+     *
      */
     public function showChannels($limit = 25, $offset = 0, array $filter = null)
     {
@@ -285,12 +376,28 @@ class Api
     /**
      * Create un new Channel
      *
-     * @param $name the unique name of channel
-     * @param string $title the title of channel
-     * @param string $description the description of channel
-     * @param string $channel_type the type pof channel , this type only set availables
-     * @return array
-     * @throws \InvalidArgumentException
+     * @param string $name The name of channel this is unique
+     *
+     * @param string $title The title of channel
+     *
+     * @param string $description The long description of channel
+     *
+     * @param string $channel_type The type pof channel, This value have a subset available in  server,
+     *  you can view the channels type with command @link #showChannelsTypes()
+     *
+     * @return array|Collection Associative array with new channel
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *          $your_api_instance->addChanel('new channel name','API - Channel Name',
+     *                                        'This is channel about loves, friends and others', 'love');
+     *
+     *          <h3>Ouput</h3>
+     *
      */
     public function addChanel($name, $title = '', $description = '', $channel_type = '')
     {
@@ -309,6 +416,26 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     *
+     * Update a channel
+     *
+     * @param $channel_id Channel to update by ID
+     *
+     * @param $name The new name of channel, if you would like  update this field.
+     *
+     * @param string $title The new title of channel, if you would like  update this field.
+     *
+     * @param string $description The new description, of channel if you would like  update this field.
+     *
+     * @param string $channel_type The type, of channel if you would like  update this field.
+     *
+     * @return array|Collection Associative array with updated channel
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
     public function updateChannel($channel_id, $name, $title = '', $description = '', $channel_type = '')
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
@@ -333,6 +460,18 @@ class Api
 
     }
 
+    /**
+     * Delete channel
+     *
+     * @param $channel_id Channel to update by ID
+     *
+     * @return string The message ok, if channel has been deleted
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     */
     public function delChannel($channel_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
@@ -346,6 +485,17 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Get channel
+     *
+     * @param $channel_id  Channel to retrieve by ID
+     *
+     * @return array|Collection Associative array with channel data
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
     public function showChannel($channel_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
@@ -359,6 +509,17 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Get fans (users) the channel
+     *
+     * @param $channel_id Channel to retrieve fans
+     *
+     * @return array|Collection Associative array with users that are fans a channel
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
     public function showChannelFans($channel_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
@@ -372,6 +533,13 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Get Channles types
+     *
+     * @return array|Collection
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
     public function showChannelsTypes()
     {
         //@var $command Guzzle\Service\Command\AbstractCommand
@@ -380,6 +548,18 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     *
+     * Show channels created for the user
+     *
+     * @param $user_id User id  to retrieve channel
+     *
+     * @return array|Collection
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
     public function showUserChannels($user_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -393,6 +573,18 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show channels favorites one user
+     *
+     * @param $user_id  User id  to retrieve fans channels
+     *
+     * @return array|Collection
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     */
     public function showUserChannelsFan($user_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -405,6 +597,13 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     *
+     * @param $channel_id
+     * @param $user_id
+     * @return array|string
+     * @throws \InvalidArgumentException
+     */
     public function addUserChannelFan($channel_id, $user_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
@@ -670,7 +869,7 @@ class Api
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'AddPhoto',
-            array('id' => $user_id,'ant_photo'=>array('title'=>$imageTile,'image'=>$imageFile)));
+            array('id' => $user_id,'ant_photo'=>array('title'=>$imageTile,'files'=>array($imageFile))));
 
         return $this->executeCommand($command);
     }

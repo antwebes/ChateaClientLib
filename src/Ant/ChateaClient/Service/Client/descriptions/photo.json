@@ -78,10 +78,17 @@
                             "location": "json"
                         }
                     },
-                    "image":{
-                        "type": "object",
-                        "required": true,
-                        "location": "postFile"
+                    "files":{
+                        "type": "array",
+                        "required": false,
+                        "location": "postFile",
+                        "sentAs":"image"
+
+                    },
+                    "filename":{
+                        "location": "postFile",
+                        "type" : "string",
+                        "required" :"true"
                     }
                 }
             }

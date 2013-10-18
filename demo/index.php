@@ -13,10 +13,19 @@
 <h2> Samples use this library</h2>
 <ul>
     <li>
-        <a href="register.php">Register one user</a>
+        <a href="profile.php">Profile</a>
+        <ul>
+            <li>Show a profile of one user</li>
+            <li>Update a profile of one user</li>
+            <li>Update a Password one user</li>
+        </ul>
     </li>
     <li>
-        <a href="forgotPassword.php">ForgotPassword </a>
+        <a href="login-up-forgotPassword.php">Login up & Forgot password</a>
+        <ul>
+            <li>Login up</li>
+            <li>Forgot password</li>
+        </ul>
     </li>
     <li>
         <a href="channels-demo.php">Channels</a>
@@ -26,9 +35,6 @@
     </li>
     <li>
         <a href="users-demo.php">Users</a>
-    </li>
-    <li>
-        <a href="profile-demo.php">Profile</a>
     </li>
     <li>
         <a href="friendship-demo.php">Friendship</a>
