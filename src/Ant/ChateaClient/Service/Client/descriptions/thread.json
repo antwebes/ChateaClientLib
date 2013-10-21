@@ -1,5 +1,121 @@
 {
     "operations": {
-
+        "AddThread":{
+            "httpMethod": "POST",
+            "uri": "/api/users/{id}/threads",
+            "summary": "Creates a new threads",
+            "parameters": {
+                "message": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "recipient":{
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "subject":{
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "body":{
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
+        "GetThreadInbox": {
+            "httpMethod": "GET",
+            "uri": "/api/users/{id}/threads/inbox",
+            "summary": "Lists threads with messages sent to the logged in user",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Thread to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "GetThreadSent": {
+            "httpMethod": "GET",
+            "uri": "/api/users/{id}/threads/sent",
+            "summary": "Lists threads with messages sent by the logged in user",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Thread to retrieve by ID",
+                    "required": true
+                }
+            }
+        },
+        "GetThreadMessages": {
+            "httpMethod": "GET",
+            "uri": "/api/users/{id}/threads/{thread_id}",
+            "summary": "Lists the messages of a given thread",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User ID",
+                    "required": true
+                },
+                "thread_id": {
+                    "location": "uri",
+                    "description": "Thread ID",
+                    "required": true
+                }
+            }
+        },
+        "AddThreadMessages": {
+            "httpMethod": "POST",
+            "uri": "/api/users/{id}/threads/{thread_id}",
+            "summary": "Replies a message to a given thread",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User ID",
+                    "required": true
+                },
+                "thread_id": {
+                    "location": "uri",
+                    "description": "Thread ID",
+                    "required": true
+                },
+                "message": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "parameters": {
+                        "body":{
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
+        "DeleteThread":{
+            "httpMethod": "DELETE",
+            "uri": "/api/users/{id}/threads/{thread_id}",
+            "summary": "Deletes a thread",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User ID",
+                    "required": true
+                },
+                "thread_id": {
+                    "location": "uri",
+                    "description": "Thread ID",
+                    "required": true
+                }
+            }
+        }
     }
 }
+

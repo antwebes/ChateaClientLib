@@ -924,39 +924,96 @@ class Api
 
     }
 
-    /**********************************************************************************************************************/
+    /******************************************************************************/
+    /*				  				  THREAD METHODS    	   					  */
+    /******************************************************************************/
 
-    public function addThread($user_id, $recipient, $subject, $body)
+    public function addThread($recipient, $subject, $body)
     {
-        // TODO: Implement addThread() method.
+
+        if (!is_string($recipient) || 0 >= strlen($recipient)) {
+            throw new InvalidArgumentException("addThread recipient field needs to be a non-empty string");
+        }
+
+        if (!is_string($subject) || 0 >= strlen($subject)) {
+            throw new InvalidArgumentException("addThread subject field needs to be a non-empty string");
+        }
+
+        if (!is_string($body) || 0 >= strlen($body)) {
+            throw new InvalidArgumentException("addThread body field needs to be a non-empty string");
+        }
+
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand(
+            'AddThread',
+            array('message'=>array('recipient'=>$recipient,'subject'=>$subject,'body'=>$body)));
+
+        return $this->executeCommand($command);
     }
 
     public function showThreadsInbox($user_id)
     {
-        // TODO: Implement showThreadsInbox() method.
+
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showThreadsInbox user_id field should be positive integer");
+        }
+
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand(
+            'GetThreadInbox',
+            array('id'=>$user_id));
+
+        return $this->executeCommand($command);
     }
 
     public function showThreadsSent($user_id)
     {
-        // TODO: Implement showThreadsSent() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "showThreadsSent user_id field should be positive integer");
+        }
+
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand(
+            'GetThreadSent',
+            array('id'=>$user_id));
+
+        return $this->executeCommand($command);
     }
+
+    public function addThreadMessage($user_id, $thread_id, $body)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addThreadMessage user_id field should be positive integer");
+        }
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand(
+            'GetThreadMessages',
+            array('id'=>$user_id));
+
+        return $this->executeCommand($command);
+    }
+
+
+
+
 
     public function showThread($thread_id)
     {
         // TODO: Implement showThread() method.
     }
 
-    public function addThreadMessage($user_id, $thread_id, $body)
-    {
-        // TODO: Implement addThreadMessage() method.
-    }
 
     public function delThread($thread_id)
     {
         // TODO: Implement delThread() method.
     }
 
-    /**********************************************************************************************************************/
+    /******************************************************************************/
+    /*				  				  USERS METHODS       	   					  */
+    /******************************************************************************/
 
     /**
      * Get all the users
