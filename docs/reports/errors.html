@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Ant.html">\Ant</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                    <i class="icon-list-alt"></i>&#160;Errors
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                    <i class="icon-list-alt"></i>&#160;Markers
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+
+            <ul class="side-nav nav nav-list">
+                <li class="nav-header">Navigation</li>
+                                                                            <li><a href="#ChateaClient/Client/AuthenticationException.php"><i class="icon-file"></i> ChateaClient/Client/AuthenticationException.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Client/IApi.php"><i class="icon-file"></i> ChateaClient/Client/IApi.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Client/Authentication.php"><i class="icon-file"></i> ChateaClient/Client/Authentication.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Client/Api.php"><i class="icon-file"></i> ChateaClient/Client/Api.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Client/ApiException.php"><i class="icon-file"></i> ChateaClient/Client/ApiException.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Service/Client/Client.php"><i class="icon-file"></i> ChateaClient/Service/Client/Client.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Service/Client/ChateaGratisClient.php"><i class="icon-file"></i> ChateaClient/Service/Client/ChateaGratisClient.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Service/Client/ClientInterface.php"><i class="icon-file"></i> ChateaClient/Service/Client/ClientInterface.php</a></li>
+                                                                                                    <li><a href="#ChateaClient/Service/Client/ChateaOAuth2Client.php"><i class="icon-file"></i> ChateaClient/Service/Client/ChateaOAuth2Client.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/OAuth2Plugin.php"><i class="icon-file"></i> Guzzle/Plugin/OAuth2Plugin.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/AcceptHeaderPluging.php"><i class="icon-file"></i> Guzzle/Plugin/AcceptHeaderPluging.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/Token/BearerToken.php"><i class="icon-file"></i> Guzzle/Plugin/Token/BearerToken.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/Token/AccessToken.php"><i class="icon-file"></i> Guzzle/Plugin/Token/AccessToken.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/Token/MacToken.php"><i class="icon-file"></i> Guzzle/Plugin/Token/MacToken.php</a></li>
+                                                                                                    <li><a href="#Guzzle/Plugin/QueryPluging.php"><i class="icon-file"></i> Guzzle/Plugin/QueryPluging.php</a></li>
+                                                                    </ul>
+        </div>
+
+        <div class="span10 offset2">
+            <ul class="breadcrumb">
+                <li><a href="../"><i class="icon-remove-sign"></i></a><span class="divider">\</span></li>
+                <li>Compilation Errors</li>
+            </ul>
+
+            
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Client/AuthenticationException.php" id="ChateaClient/Client/AuthenticationException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Client/AuthenticationException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for class \Ant\ChateaClient\Client\AuthenticationException</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Client/IApi.php" id="ChateaClient/Client/IApi.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Client/IApi.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>7</td>
+                                        <td>No summary for interface \Ant\ChateaClient\Client\IApi</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $username is missing from the Docblock of updateAccount()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $email is missing from the Docblock of updateAccount()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $current_password is missing from the Docblock of updateAccount()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>141</td>
+                                        <td>Argument $user_id is missing from the Docblock of showFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>152</td>
+                                        <td>Argument $user_id is missing from the Docblock of showFriendshipsPending()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>298</td>
+                                        <td>Argument $thread_id is missing from the Docblock of delThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>307</td>
+                                        <td>Argument $page is missing from the Docblock of who()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Client/Authentication.php" id="ChateaClient/Client/Authentication.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Client/Authentication.php
+                            <small style="float: right;padding-right: 10px;">19</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for class \Ant\ChateaClient\Client\Authentication</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for property $client</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>23</td>
+                                        <td>No summary for property $client_id</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for property $secret</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $client_id is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $secret is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>48</td>
+                                        <td>No summary for method getClient()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>56</td>
+                                        <td>No summary for method getClientId()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>64</td>
+                                        <td>No summary for method getSecret()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>70</td>
+                                        <td>Argument $username is missing from the Docblock of withUserCredentials()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>70</td>
+                                        <td>Argument $password is missing from the Docblock of withUserCredentials()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>70</td>
+                                        <td>No summary for method withUserCredentials()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>96</td>
+                                        <td>Argument $auth_code is missing from the Docblock of withAuthorizationCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>96</td>
+                                        <td>Argument $redirect_uri is missing from the Docblock of withAuthorizationCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>96</td>
+                                        <td>No summary for method withAuthorizationCode()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>122</td>
+                                        <td>No summary for method withClientCredentials()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>140</td>
+                                        <td>Argument $refresh_token is missing from the Docblock of withRefreshToken()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>140</td>
+                                        <td>No summary for method withRefreshToken()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Client/Api.php" id="ChateaClient/Client/Api.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Client/Api.php
+                            <small style="float: right;padding-right: 10px;">102</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>31</td>
+                                        <td>No summary for property $client</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>607</td>
+                                        <td>No summary for method addUserChannelFan()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>628</td>
+                                        <td>Argument $channel_id is missing from the Docblock of delUserChannelFan()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>628</td>
+                                        <td>Argument $user_id is missing from the Docblock of delUserChannelFan()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>628</td>
+                                        <td>No summary for method delUserChannelFan()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>650</td>
+                                        <td>Argument $user_id is missing from the Docblock of showFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>650</td>
+                                        <td>No summary for method showFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>663</td>
+                                        <td>Argument $user_id is missing from the Docblock of addFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>663</td>
+                                        <td>Argument $friend_id is missing from the Docblock of addFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>663</td>
+                                        <td>No summary for method addFriends()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>681</td>
+                                        <td>Argument $user_id is missing from the Docblock of showFriendshipsPending()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>681</td>
+                                        <td>No summary for method showFriendshipsPending()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>694</td>
+                                        <td>Argument $user_id is missing from the Docblock of showFriendshipsRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>694</td>
+                                        <td>No summary for method showFriendshipsRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>707</td>
+                                        <td>Argument $user_id is missing from the Docblock of addFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>707</td>
+                                        <td>Argument $user_accept_id is missing from the Docblock of addFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>707</td>
+                                        <td>No summary for method addFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>729</td>
+                                        <td>Argument $user_id is missing from the Docblock of delFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>729</td>
+                                        <td>Argument $user_decline_id is missing from the Docblock of delFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>729</td>
+                                        <td>No summary for method delFriendshipRequest()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>750</td>
+                                        <td>Argument $user_id is missing from the Docblock of delFriend()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>750</td>
+                                        <td>Argument $user_delete_id is missing from the Docblock of delFriend()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>750</td>
+                                        <td>No summary for method delFriend()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>795</td>
+                                        <td>Argument $photo_id is missing from the Docblock of addReportPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>795</td>
+                                        <td>Argument $reason is missing from the Docblock of addReportPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>795</td>
+                                        <td>No summary for method addReportPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>816</td>
+                                        <td>Argument $photo_id is missing from the Docblock of delPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>816</td>
+                                        <td>No summary for method delPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>832</td>
+                                        <td>Argument $user_id is missing from the Docblock of addAlbum()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>832</td>
+                                        <td>Argument $title is missing from the Docblock of addAlbum()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>832</td>
+                                        <td>Argument $description is missing from the Docblock of addAlbum()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>832</td>
+                                        <td>No summary for method addAlbum()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>851</td>
+                                        <td>Argument $user_id is missing from the Docblock of addPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>851</td>
+                                        <td>Argument $imageTile is missing from the Docblock of addPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>851</td>
+                                        <td>Argument $imageFile is missing from the Docblock of addPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>851</td>
+                                        <td>No summary for method addPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>876</td>
+                                        <td>Argument $photo_id is missing from the Docblock of showPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>876</td>
+                                        <td>No summary for method showPhoto()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>881</td>
+                                        <td>Argument $photo_id is missing from the Docblock of showPhotoVotes()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>881</td>
+                                        <td>No summary for method showPhotoVotes()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>886</td>
+                                        <td>Argument $user_id is missing from the Docblock of showPhotos()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>886</td>
+                                        <td>No summary for method showPhotos()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>893</td>
+                                        <td>Argument $user_id is missing from the Docblock of showUserVotes()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>893</td>
+                                        <td>No summary for method showUserVotes()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>898</td>
+                                        <td>Argument $user_id is missing from the Docblock of addPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>898</td>
+                                        <td>Argument $photo_id is missing from the Docblock of addPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>898</td>
+                                        <td>Argument $core is missing from the Docblock of addPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>898</td>
+                                        <td>No summary for method addPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>903</td>
+                                        <td>Argument $photo_id is missing from the Docblock of delPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>903</td>
+                                        <td>No summary for method delPhotoVote()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>912</td>
+                                        <td>No summary for method showReports()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>917</td>
+                                        <td>Argument $report_id is missing from the Docblock of showReport()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>917</td>
+                                        <td>No summary for method showReport()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>922</td>
+                                        <td>Argument $report_id is missing from the Docblock of addAsReviewedReport()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>922</td>
+                                        <td>No summary for method addAsReviewedReport()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>931</td>
+                                        <td>Argument $recipient is missing from the Docblock of addThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>931</td>
+                                        <td>Argument $subject is missing from the Docblock of addThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>931</td>
+                                        <td>Argument $body is missing from the Docblock of addThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>931</td>
+                                        <td>No summary for method addThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>954</td>
+                                        <td>Argument $user_id is missing from the Docblock of showThreadsInbox()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>954</td>
+                                        <td>No summary for method showThreadsInbox()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>970</td>
+                                        <td>Argument $user_id is missing from the Docblock of showThreadsSent()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>970</td>
+                                        <td>No summary for method showThreadsSent()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>985</td>
+                                        <td>Argument $user_id is missing from the Docblock of addThreadMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>985</td>
+                                        <td>Argument $thread_id is missing from the Docblock of addThreadMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>985</td>
+                                        <td>Argument $body is missing from the Docblock of addThreadMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>985</td>
+                                        <td>No summary for method addThreadMessage()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1003</td>
+                                        <td>Argument $thread_id is missing from the Docblock of showThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1003</td>
+                                        <td>No summary for method showThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1009</td>
+                                        <td>Argument $thread_id is missing from the Docblock of delThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1009</td>
+                                        <td>No summary for method delThread()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1021</td>
+                                        <td>Argument $limit is missing from the Docblock of who()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1021</td>
+                                        <td>Argument $offset is missing from the Docblock of who()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1038</td>
+                                        <td>Argument $user_id is missing from the Docblock of showUser()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1038</td>
+                                        <td>No summary for method showUser()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1050</td>
+                                        <td>Argument $user_id is missing from the Docblock of showUsersBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1050</td>
+                                        <td>Argument $limit is missing from the Docblock of showUsersBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1050</td>
+                                        <td>Argument $offset is missing from the Docblock of showUsersBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1050</td>
+                                        <td>No summary for method showUsersBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1071</td>
+                                        <td>Argument $user_id is missing from the Docblock of addUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1071</td>
+                                        <td>Argument $user_blocked_id is missing from the Docblock of addUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1071</td>
+                                        <td>No summary for method addUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1088</td>
+                                        <td>Argument $user_id is missing from the Docblock of updateUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1088</td>
+                                        <td>Argument $about is missing from the Docblock of updateUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1088</td>
+                                        <td>Argument $sexualOrientation is missing from the Docblock of updateUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1088</td>
+                                        <td>No summary for method updateUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1114</td>
+                                        <td>Argument $user_id is missing from the Docblock of showUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1114</td>
+                                        <td>No summary for method showUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1126</td>
+                                        <td>Argument $user_id is missing from the Docblock of addUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1126</td>
+                                        <td>Argument $about is missing from the Docblock of addUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1126</td>
+                                        <td>Argument $sexualOrientation is missing from the Docblock of addUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1126</td>
+                                        <td>No summary for method addUserProfile()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1152</td>
+                                        <td>Argument $user_id is missing from the Docblock of addUserReports()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1152</td>
+                                        <td>Argument $reason is missing from the Docblock of addUserReports()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1152</td>
+                                        <td>No summary for method addUserReports()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1157</td>
+                                        <td>Argument $user_id is missing from the Docblock of delUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1157</td>
+                                        <td>Argument $user_blocked_id is missing from the Docblock of delUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1157</td>
+                                        <td>No summary for method delUserBlocked()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1177</td>
+                                        <td>Argument $user_id is missing from the Docblock of showUserVisitors()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1177</td>
+                                        <td>Argument $maxResult is missing from the Docblock of showUserVisitors()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>1177</td>
+                                        <td>No summary for method showUserVisitors()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Client/ApiException.php" id="ChateaClient/Client/ApiException.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Client/ApiException.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
+                                        <td>No summary for class \Ant\ChateaClient\Client\ApiException</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Service/Client/Client.php" id="ChateaClient/Service/Client/Client.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Service/Client/Client.php
+                            <small style="float: right;padding-right: 10px;">6</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for class \Ant\ChateaClient\Service\Client\Client</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>23</td>
+                                        <td>No summary for property $scheme</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for property $subdomain</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for property $version</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>56</td>
+                                        <td>Argument $uri is missing from the Docblock of parseUrl()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>56</td>
+                                        <td>No summary for method parseUrl()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Service/Client/ChateaGratisClient.php" id="ChateaClient/Service/Client/ChateaGratisClient.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Service/Client/ChateaGratisClient.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>23</td>
+                                        <td>No summary for property $_OAuth2Plugin</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $config is missing from the Docblock of factory()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method factory()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>78</td>
+                                        <td>Argument $acces_token is missing from the Docblock of updateAccessToken()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>78</td>
+                                        <td>No summary for method updateAccessToken()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Service/Client/ClientInterface.php" id="ChateaClient/Service/Client/ClientInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Service/Client/ClientInterface.php
+                            <small style="float: right;padding-right: 10px;">1</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
+                                        <td>No summary for interface \Ant\ChateaClient\Service\Client\ClientInterface</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="ChateaClient/Service/Client/ChateaOAuth2Client.php" id="ChateaClient/Service/Client/ChateaOAuth2Client.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            ChateaClient/Service/Client/ChateaOAuth2Client.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for class \Ant\ChateaClient\Service\Client\ChateaOAuth2Client</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $config is missing from the Docblock of factory()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method factory()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/OAuth2Plugin.php" id="Guzzle/Plugin/OAuth2Plugin.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/OAuth2Plugin.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>No summary for class \Ant\Guzzle\Plugin\OAuth2Plugin</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for property $config</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>Argument $config is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>36</td>
+                                        <td>Argument $acces_token is missing from the Docblock of updateAccessToken()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>36</td>
+                                        <td>No summary for method updateAccessToken()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/AcceptHeaderPluging.php" id="Guzzle/Plugin/AcceptHeaderPluging.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/AcceptHeaderPluging.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>Argument $config is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/Token/BearerToken.php" id="Guzzle/Plugin/Token/BearerToken.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/Token/BearerToken.php
+                            <small style="float: right;padding-right: 10px;">9</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for class \Ant\Guzzle\Plugin\Token\BearerToken</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for property $format</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for property $tokenString</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $config is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>32</td>
+                                        <td>No summary for method __toString()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>37</td>
+                                        <td>No summary for method getFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>Argument $format is missing from the Docblock of setFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>42</td>
+                                        <td>No summary for method setFormat()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/Token/AccessToken.php" id="Guzzle/Plugin/Token/AccessToken.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/Token/AccessToken.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for interface \Ant\Guzzle\Plugin\Token\AccessToken</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for method __toString()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method getFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $format is missing from the Docblock of setFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method setFormat()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/Token/MacToken.php" id="Guzzle/Plugin/Token/MacToken.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/Token/MacToken.php
+                            <small style="float: right;padding-right: 10px;">7</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
+                                        <td>No summary for class \Ant\Guzzle\Plugin\Token\MacToken</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>Argument $config is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>17</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method __toString()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for method getFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>Argument $format is missing from the Docblock of setFormat()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>No summary for method setFormat()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Guzzle/Plugin/QueryPluging.php" id="Guzzle/Plugin/QueryPluging.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Guzzle/Plugin/QueryPluging.php
+                            <small style="float: right;padding-right: 10px;">2</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $config is missing from the Docblock of __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                    </div>
+    </section>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Ant.html">\Ant</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="">Errors</a></li>
+                                    <li><a href="">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on October 21st, 2013 at 18:00.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

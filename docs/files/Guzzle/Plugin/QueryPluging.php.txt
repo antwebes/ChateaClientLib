@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created by Ant-WEB S.L.
+ * User: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 9/10/13
+ * Time: 14:46
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Ant\Guzzle\Plugin;
+use Guzzle\Common\Event;
+use Guzzle\Common\Collection;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Guzzle\Http\Message\Request;
+
+/**
+ * Class AcceptHeaderPluging
+ * @package Ant\Guzzle\Plugin
+ */
+class QueryPluging implements EventSubscriberInterface
+{
+
+    public function __construct($config)
+    {
+        $this->config = Collection::fromConfig($config, array(), array('query'));
+    }
+
+    /**
+     * Returns an array of event names this subscriber wants to listen to.
+     *
+     * The array keys are event names and the value can be:
+     *
+     *  * The method name to call (priority defaults to 0)
+     *  * An array composed of the method name to call and the priority
+     *  * An array of arrays composed of the method names to call and respective
+     *    priorities, or 0 if unset
+     *
+     * For instance:
+     *
+     *  * array('eventName' => 'methodName')
+     *  * array('eventName' => array('methodName', $priority))
+     *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
+     *
+     * @return array The event names to listen to
+     *
+     * @api
+     */
+    public static function getSubscribedEvents()
+    {
+        return array('request.before_send' => 'onRequestBeforeSend');
+    }
+    /**
+     * Request before-send event handler
+     *
+     * @param Event $event Event received
+     * @return string Accept Header value
+     */
+    public function onRequestBeforeSend(Event $event)
+    {
+        /*@var $request Guzzle\Http\Message\Request  */
+        $request = $event['request'];
+
+        $request->getQuery()->set('grant_type','password');
+        //$request->set(array('grant_type'=>'password'));
+
+        return $this->config['query'];
+    }
+}
