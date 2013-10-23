@@ -2,7 +2,7 @@
     "operations": {
         "AddThread":{
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/threads",
+            "uri": "api/users/{id}/threads",
             "summary": "Creates a new threads",
             "parameters": {
                 "message": {
@@ -31,7 +31,7 @@
         },
         "GetThreadInbox": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/threads/inbox",
+            "uri": "api/users/{id}/threads/inbox",
             "summary": "Lists threads with messages sent to the logged in user",
             "parameters": {
                 "id": {
@@ -43,7 +43,7 @@
         },
         "GetThreadSent": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/threads/sent",
+            "uri": "api/users/{id}/threads/sent",
             "summary": "Lists threads with messages sent by the logged in user",
             "parameters": {
                 "id": {
@@ -55,7 +55,7 @@
         },
         "GetThreadMessages": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/threads/{thread_id}",
+            "uri": "api/users/{id}/threads/{thread_id}",
             "summary": "Lists the messages of a given thread",
             "parameters": {
                 "id": {
@@ -72,7 +72,7 @@
         },
         "AddThreadMessages": {
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/threads/{thread_id}",
+            "uri": "api/users/{id}/threads/{thread_id}",
             "summary": "Replies a message to a given thread",
             "parameters": {
                 "id": {
@@ -101,7 +101,7 @@
         },
         "DeleteThread":{
             "httpMethod": "DELETE",
-            "uri": "/api/users/{id}/threads/{thread_id}",
+            "uri": "api/users/{id}/threads/{thread_id}",
             "summary": "Deletes a thread",
             "parameters": {
                 "id": {

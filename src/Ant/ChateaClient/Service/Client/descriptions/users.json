@@ -2,7 +2,7 @@
     "operations": {
         "Who": {
             "httpMethod": "GET",
-            "uri": "/api/users",
+            "uri": "api/users",
             "summary": "List all users",
             "parameters": {
                 "limit": {
@@ -21,7 +21,7 @@
         },
         "ShowUser": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}",
+            "uri": "api/users/{id}",
             "summary": "Show a user by id",
             "parameters": {
                 "id": {
@@ -33,7 +33,7 @@
         },
         "showUsersBlocked": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/blocked",
+            "uri": "api/users/{id}/blocked",
             "summary": "Get blocked users of the session user",
             "parameters": {
                 "id": {
@@ -57,7 +57,7 @@
         },
         "AddUserBlocked": {
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/blocked",
+            "uri": "api/users/{id}/blocked",
             "summary": "Get blocked users of the session user",
             "parameters": {
                 "id": {
@@ -74,7 +74,7 @@
         },
         "DeleteUserBlocked": {
             "httpMethod": "DELETE",
-            "uri": "/api/users/{user_id}/blocked/{blocked_user_id}",
+            "uri": "api/users/{user_id}/blocked/{blocked_user_id}",
             "summary": "unblocks the given user for the session user",
             "parameters": {
                 "user_id": {
@@ -91,7 +91,7 @@
         },
         "ShowUserProfile": {
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/profiles",
+            "uri": "api/users/{id}/profiles",
             "summary": "show a profile",
             "parameters": {
                 "id": {
@@ -103,7 +103,7 @@
         },
         "AddUserProfile": {
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/profiles",
+            "uri": "api/users/{id}/profiles",
             "summary": "show a profile",
             "parameters": {
                 "id": {
@@ -134,7 +134,7 @@
         },
         "UpdateUserProfile": {
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/profiles",
+            "uri": "api/users/{id}/profiles",
             "summary": "show a profile",
             "parameters": {
                 "id": {

@@ -2,7 +2,7 @@
     "operations": {
         "AddReportPhoto": {
             "httpMethod": "POST",
-            "uri": "/api/photos/{id}/report",
+            "uri": "api/photos/{id}/report",
             "summary": "Reports the given user",
             "parameters": {
                 "id":{
@@ -19,7 +19,7 @@
          },
         "DeletePhoto":{
             "httpMethod": "DELETE",
-            "uri": "/api/photos/{photo_id}",
+            "uri": "api/photos/{photo_id}",
             "summary": "Delete a photo",
             "parameters": {
                 "photo_id":{
@@ -31,7 +31,7 @@
         },
         "AddAlbum":{
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/albums",
+            "uri": "api/users/{id}/albums",
             "summary": "Create an album",
             "parameters": {
                 "id":{

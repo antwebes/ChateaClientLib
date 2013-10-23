@@ -2,7 +2,7 @@
     "operations": {
         "GetChannels": {
             "httpMethod": "GET",
-            "uri": "/api/channels",
+            "uri": "api/channels",
             "summary": "List all the channels",
             "parameters": {
                 "filter": {
@@ -27,7 +27,7 @@
         },
         "GetChannel": {
             "httpMethod": "GET",
-            "uri": "/api/channels/{id}",
+            "uri": "api/channels/{id}",
             "summary": "Show a channel by id",
             "parameters": {
                 "id": {
@@ -39,7 +39,7 @@
         },
         "AddChannel": {
             "httpMethod": "POST",
-            "uri": "/api/channels",
+            "uri": "api/channels",
             "summary": "Creates a new Channel",
             "parameters": {
                 "channel": {
@@ -74,7 +74,7 @@
         },
         "UpdateChannel":{
             "httpMethod": "PATCH",
-            "uri": "/api/channels/{id}",
+            "uri": "api/channels/{id}",
             "summary": "Update a channel by id",
             "parameters": {
                 "id": {
@@ -114,7 +114,7 @@
         },
         "DeleteChannel":{
             "httpMethod": "DELETE",
-            "uri": "/api/channels/{id}",
+            "uri": "api/channels/{id}",
             "summary": "Delete a channel by id",
             "parameters": {
                 "id": {
@@ -126,7 +126,7 @@
         },
         "GetChannelFans":{
             "httpMethod": "GET",
-            "uri": "/api/channels/{id}/fans",
+            "uri": "api/channels/{id}/fans",
             "summary": "Show all fans a channel",
             "parameters": {
                 "id": {
@@ -138,7 +138,7 @@
         },
         "GetChannelsType":{
             "httpMethod": "GET",
-            "uri": "/api/channelstype",
+            "uri": "api/channelstype",
             "summary": "List all the channels type"
         },
         "GetChannelsCreatedByUser":{
@@ -155,7 +155,7 @@
         },
         "GetFavoritesChannelsByUser":{
             "httpMethod": "GET",
-            "uri": "/api/users/{id}/channelsFan",
+            "uri": "api/users/{id}/channelsFan",
             "summary": "Show all channels fan of an user",
             "parameters": {
                 "id": {
@@ -167,7 +167,7 @@
         },
         "SetChannelFan":{
             "httpMethod": "POST",
-            "uri": "/api/users/{user_id}/channels/{channel_id}/fans",
+            "uri": "api/users/{user_id}/channels/{channel_id}/fans",
             "summary": "Make user a channel fan",
             "parameters": {
                 "user_id": {
@@ -184,7 +184,7 @@
         },
         "DeleteChannelFan":{
             "httpMethod": "DELETE",
-            "uri": "/api/users/{user_id}/channels/{channel_id}/fans",
+            "uri": "api/users/{user_id}/channels/{channel_id}/fans",
             "summary": "Remove user as a channel fan",
             "responseNotes": "return ok if channel is deleted, or one error if channel is not owner",
             "parameters": {

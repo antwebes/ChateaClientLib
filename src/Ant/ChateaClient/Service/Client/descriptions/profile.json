@@ -2,7 +2,7 @@
     "operations": {
         "ShowAccount": {
             "httpMethod": "GET",
-            "uri": "/api/account/",
+            "uri": "api/account/",
             "summary": "Show a profile of an user"
         },
         "UpdateAccount": {
@@ -36,7 +36,7 @@
         },
         "ChangePassword": {
             "httpMethod": "PATCH",
-            "uri": "/api/account/change-password",
+            "uri": "api/account/change-password",
             "summary": "Change user password",
             "parameters": {
                 "change_password": {
