@@ -1023,11 +1023,11 @@ class Api
 
         if ($limit < 1) {
             throw new InvalidArgumentException(
-                "Api::showChannels() limit must be a min 1 ");
+                "Api::who() limit must be a min 1 ");
         }
         if ($offset < 0) {
             throw new InvalidArgumentException(
-                "Api::showChannels() $offset must be a positive number,  min 0 ");
+                "Api::who offset must be a positive number,  min 0 ");
         }
 
         $command = $this->client->getCommand('Who', array('limit' => $limit,'offset'=>$offset));
