@@ -5,7 +5,7 @@
     "operations": {
         "withUserCredentials":{
             "httpMethod": "POST",
-            "uri": "/oauth/v2/token",
+            "uri": "oauth/v2/token",
             "summary": "Auth client with user and password",
             "parameters": {
                 "grant_type":{
@@ -42,7 +42,7 @@
         },
         "withAuthorizationCode":{
             "httpMethod": "POST",
-            "uri": "/oauth/v2/token",
+            "uri": "oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{
@@ -79,7 +79,7 @@
         },
         "withClientCredentials":{
             "httpMethod": "POST",
-            "uri": "/oauth/v2/token",
+            "uri": "oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{
@@ -104,7 +104,7 @@
         },
         "withRefreshToken":{
             "httpMethod": "POST",
-            "uri": "/oauth/v2/token",
+            "uri": "oauth/v2/token",
             "summary": "Auth client with Authorization Code",
             "parameters": {
                 "grant_type":{
