@@ -11,6 +11,7 @@ namespace Ant\ChateaClient\Service\Client;
 
 use Ant\ChateaClient\Client\Authentication;
 use Guzzle\Common\Collection;
+use Guzzle\Service\Command\CommandInterface;
 use Guzzle\Service\Description\ServiceDescription;
 use Ant\Guzzle\Plugin\OAuth2Plugin;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
@@ -83,7 +84,7 @@ class ChateaGratisAppClient extends Client
         return $client;
     }
 
-    public function execute($command)
+    protected function prepareCommand(CommandInterface $command)
     {
 
       if($this->expires_at > time()){
@@ -93,7 +94,7 @@ class ChateaGratisAppClient extends Client
           $this->updateAccessToken($auth_data['acces_token']);
       }
 
-      parent::execute($command);
+      return parent::prepareCommand($command);
     }
 
     protected  function updateAccessToken($acces_token)
