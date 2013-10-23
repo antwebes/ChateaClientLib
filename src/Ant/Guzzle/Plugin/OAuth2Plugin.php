@@ -25,11 +25,9 @@ class OAuth2Plugin implements EventSubscriberInterface
     {
         $this->config = Collection::fromConfig($config, array(
                 'version' => '2.0',
-                'consumer_key' => 'anonymous',
-                'consumer_secret' => 'anonymous',
                 'token_type' => 'Bearer',
             ), array(
-                'consumer_key', 'consumer_secret', 'version', 'token_type',
+                'version', 'token_type',
             ));
     }
 
@@ -88,7 +86,6 @@ class OAuth2Plugin implements EventSubscriberInterface
             }
         }
         $request->setHeader('Authorization',(string) $this->config['access_token']);
-
         return $this->config['access_token'];
     }
 }

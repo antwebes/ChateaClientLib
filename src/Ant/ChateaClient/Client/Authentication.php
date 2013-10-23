@@ -12,6 +12,7 @@
 namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\Service\Client\ChateaOAuth2Client;
+use Ant\ChateaClient\Service\Client\AuthenticationException;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
@@ -20,25 +21,10 @@ class Authentication
 {
 
     private $client;
-    private $client_id;
-    private $secret;
-    function __construct(ChateaOAuth2Client $client, $client_id, $secret)
+
+    function __construct(ChateaOAuth2Client $client)
     {
-
-        if (!$client || null == $client ) {
-            throw new InvalidArgumentException("client must is not null");
-        }
-
-        if (!is_string($client_id) || 0 >= strlen($client_id)) {
-            throw new InvalidArgumentException("client_id must be a non-empty string");
-        }
-        if (!is_string($secret) || 0 >= strlen($secret)) {
-            throw new InvalidArgumentException("secret must be a non-empty string");
-        }
-
         $this->client = $client;
-        $this->client_id = $client_id;
-        $this->secret = $secret;
 
     }
 
@@ -55,7 +41,7 @@ class Authentication
      */
     public function getClientId()
     {
-        return $this->client_id;
+        return $this->client->getClientId();
     }
 
     /**
@@ -63,7 +49,7 @@ class Authentication
      */
     public function getSecret()
     {
-        return $this->secret;
+        return $this->client->getSecret();
     }
 
 
@@ -78,7 +64,7 @@ class Authentication
 
         /* @var $command Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('withUserCredentials',
-            array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'username'=>$username,'password'=>$password)
+            array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret(),'username'=>$username,'password'=>$password)
         );
 
         try{
@@ -105,7 +91,7 @@ class Authentication
 
         /* @var $command Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('withAuthorizationCode',
-            array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'redirect_uri'=>$redirect_uri,'code'=>$auth_code)
+            array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret(),'redirect_uri'=>$redirect_uri,'code'=>$auth_code)
         );
 
         try{
@@ -123,7 +109,7 @@ class Authentication
     {
         /* @var $command Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('withClientCredentials',
-            array('client_id'=>$this->client_id,'client_secret'=>$this->secret)
+            array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret())
         );
 
         try{
@@ -145,7 +131,7 @@ class Authentication
 
         /* @var $command Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('withRefreshToken',
-            array('client_id'=>$this->client_id,'client_secret'=>$this->secret,'refresh_token'=>$refresh_token)
+            array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret(),'refresh_token'=>$refresh_token)
         );
 
         try{

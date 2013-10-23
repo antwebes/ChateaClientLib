@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Ant\ChateaClient\Client;
+namespace Ant\ChateaClient\Service\Client;
 
 use Exception;
 
