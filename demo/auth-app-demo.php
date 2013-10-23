@@ -6,12 +6,12 @@ use Guzzle\Http\Exception\BadResponseException;
 
 
 //config app data
-$client_id ='1_client_demo';
+$client_id ='2_random-demo';
 $secret = 'secret-demo';
 
 try{
 
- $cliente = ChateaGratisAppClient::factory(array('environment'=>'dev','client_id'=>$client_id,'secret'=>$secret));
+ $cliente    = ChateaGratisAppClient::factory(array('environment'=>'dev','client_id'=>$client_id,'secret'=>$secret));
  ldd($cliente);
 
 }catch (Exception $ex){

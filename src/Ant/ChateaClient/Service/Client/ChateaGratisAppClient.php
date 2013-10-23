@@ -12,18 +12,30 @@ namespace Ant\ChateaClient\Service\Client;
 use Ant\ChateaClient\Client\Authentication;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
+use Ant\Guzzle\Plugin\OAuth2Plugin;
+use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaGratisAppClient extends Client
 {
+    /**
+     * @var \Ant\Guzzle\Plugin\OAuth2Plugin
+     */
+    private $_OAuth2Plugin;
+
+    private $refresh_token;
+    private $expires_at;
+    private static $authentication;
     public static function factory($config = array()){
         // Provide a hash of default client configuration options
         $default = array(
             'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
+            'token_format'=>'Bearer',
             'Accept'=>'application/json',
             'environment'=>'prod',
             'scheme' => 'https',
             'version'=>'',
             'subdomain'=>'api',
+            'service-description-name' => Client::NAME_SERVICE_API
         );
 
         $required = array(
@@ -49,11 +61,46 @@ class ChateaGratisAppClient extends Client
 
 
         $clientAuth = ChateaOAuth2Client::factory(array('environment'=>$config['environment']));
-        $authApp = new Authentication($clientAuth,$config['client_id'],$config['secret']);
+        self::$authentication = new Authentication($clientAuth,$config['client_id'],$config['secret']);
+        $auth_data = self::$authentication->withClientCredentials();
 
-        $json_data = $authApp->withClientCredentials();
-        ldd($json_data);
+        // Create a new ChateaGratis client
+        $client = new self($config->get('base_url'),
+            $config->get('scheme'),
+            $config->get('subdomain'),
+            $config
+        );
 
-        return $clientAuth;
+
+        $client->_OAuth2Plugin = new OAuth2Plugin($config->toArray());
+        $client->refresh_token = $auth_data['refresh_token'];
+        $client->expires_at = $auth_data['expires_in']+time();
+
+        // Ensure that the Oauth2Plugin is attached to the client
+        $client->addSubscriber($client->_OAuth2Plugin);
+
+        $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
+
+        return $client;
     }
+
+    public function execute($command)
+    {
+
+      if($this->expires_at > time()){
+          $auth_data = self::$authentication->withRefreshToken($this->refresh_token);
+          $this->refresh_token = $auth_data['refresh_token'];
+          $this->expires_at = $auth_data['expires_in']+time();
+          $this->updateAccessToken($auth_data['acces_token']);
+      }
+
+      parent::execute($command);
+    }
+
+    protected  function updateAccessToken($acces_token)
+    {
+        $this->_OAuth2Plugin->updateAccessToken($acces_token);
+    }
+
+
 }

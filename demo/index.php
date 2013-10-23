@@ -45,4 +45,8 @@
     <li>
         <a href="auth-demo.php">OAuth2</a>
     </li>
+    <li>
+        <a href="auth-app-demo.php">App auth</a>
+    </li>
+
 </ul>

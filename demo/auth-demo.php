@@ -7,14 +7,14 @@ use Guzzle\Http\Exception\BadResponseException;
 
 $client = ChateaOAuth2Client::factory(array('environment'=>'dev'));
 //config app data
-$client_id ='1_client_demo';
+$client_id ='2_random-demo';
 $secret = 'secret-demo';
 
 $authentication = new Authentication($client,$client_id,$secret);
 
 //users data
-$username = 'alex';
-$password = 'alex';
+$username = 'jjbier';
+$password = 'jjbier';
 $authCode = 'auth-token-test';
 $rediret = 'http://www.chateagratis.net';
 
