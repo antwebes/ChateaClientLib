@@ -29,7 +29,6 @@ class ChateaGratisAppClient extends Client
         // Provide a hash of default client configuration options
         $default = array(
             'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
-            'token_format'=>'Bearer',
             'Accept'=>'application/json',
             'environment'=>'prod',
             'scheme' => 'https',
@@ -40,12 +39,12 @@ class ChateaGratisAppClient extends Client
 
         $required = array(
             'base_url',
+            'Accept',
             'scheme',
+            'environment',
             'subdomain',
             'client_id',
-            'secret',
-            'Accept',
-            'environment',
+            'secret'
         );
 
         // Merge in default settings and validate the config
