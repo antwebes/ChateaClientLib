@@ -80,11 +80,10 @@ class ChateaGratisAppClient extends Client
         $client->addSubscriber($client->_OAuth2Plugin);
 
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
-
         return $client;
     }
 
-    protected function prepareCommand(CommandInterface $command)
+    /*protected function prepareCommand(CommandInterface $command)
     {
 
       if($this->expires_at > time()){
@@ -95,9 +94,9 @@ class ChateaGratisAppClient extends Client
       }
 
       return parent::prepareCommand($command);
-    }
+    }*/
 
-    protected  function updateAccessToken($acces_token)
+    public function updateAccessToken($acces_token)
     {
         $this->_OAuth2Plugin->updateAccessToken($acces_token);
     }
