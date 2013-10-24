@@ -74,18 +74,6 @@ class ChateaGratisAppClient extends Client
         // primeira autenticacion
         if(!isset( $_SESSION['chatea_client_expires_at'])) {
 
-<<<<<<< HEAD
-        $client->_OAuth2Plugin = new OAuth2Plugin($config->toArray());
-        $client->cookie = new ArrayCookieJar(true);
-        $pluginCookie = new CookiePlugin($client->cookie);
-
-        $client->refresh_token = $auth_data['refresh_token'];
-        $client->expires_at = $auth_data['expires_in']+time();
-
-        // Ensure that the Oauth2Plugin is attached to the client
-        $client->addSubscriber($client->_OAuth2Plugin);
-        $client->addSubscriber($pluginCookie);
-=======
             //auth in server
             $authClient = ChateaOAuth2Client::factory($config->toArray());
             ldd($authClient);
@@ -113,8 +101,6 @@ class ChateaGratisAppClient extends Client
             //set in header access_token of session
             ldd("set in header access_token of session");
         }
-
->>>>>>> e68d3cc745edccfea3e390c8a44e7fa91befa526
 
         return $client;
     }
