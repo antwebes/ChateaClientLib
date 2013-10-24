@@ -71,11 +71,10 @@ class ChateaGratisAppClient extends Client
         );
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
 
+        $authClient = ChateaOAuth2Client::factory($config->toArray());
+
         // primeira autenticacion
         if(!isset( $_SESSION['chatea_client_expires_at'])) {
-
-            //auth in server
-            $authClient = ChateaOAuth2Client::factory($config->toArray());
             ldd($authClient);
             $auth_data = $authClient->withClientCredentials();
 
@@ -88,10 +87,9 @@ class ChateaGratisAppClient extends Client
             $_SESSION['chatea_client_expires_at'] = $auth_data['expires_in']+time();
         }else if($_SESSION['chatea_client_expires_at'] > time()){
             //TODO: the acces_token timeout , new acces_toekn with refresh_token
+            ld("s");
+            $auth_data =  $authClient->withRefreshToken($_SESSION['chatea_client_refresh_token']);
 
-
-            $clientAuth = ChateaOAuth2Client::factory($config->toArray());
-            $auth_data =  $clientAuth->withRefreshToken($_SESSION['chatea_client_refresh_token']);
             $client->updateAccessToken($auth_data['access_token']);
             $_SESSION['chatea_client_access_token'] = $auth_data['access_token'];
             $_SESSION['chatea_client_refresh_token'] = $auth_data['refresh_token'];

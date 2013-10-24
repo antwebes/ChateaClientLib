@@ -15,7 +15,6 @@ use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaOAuth2Client extends Client
 {
-    private $client;
     private $client_id;
     private $secret;
 
@@ -61,7 +60,6 @@ class ChateaOAuth2Client extends Client
             $config
         );
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
-
         return $client;
     }
 
@@ -134,7 +132,7 @@ class ChateaOAuth2Client extends Client
 
     public function withClientCredentials()
     {
-
+        ldd($this);
         $command = $this->getCommand('withClientCredentials',
             array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret())
         );
