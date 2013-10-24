@@ -56,6 +56,7 @@ class Api
             return $command->execute();
         }
         catch (ClientErrorResponseException $cerEx) {
+            ldd($cerEx->getRequest()->getHeaderLines());
             throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
         }catch (BadResponseException $brEx) {
             throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);

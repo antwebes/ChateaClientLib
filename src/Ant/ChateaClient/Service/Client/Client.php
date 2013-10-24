@@ -47,7 +47,6 @@ class Client extends BaseClient
 
 
         if($config['service-description-name']){
-
             $this->setDescription(ServiceDescription::factory(__DIR__.'/descriptions/'.$config['service-description-name'].'.json'));
         }
 
