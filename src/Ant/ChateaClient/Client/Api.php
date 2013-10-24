@@ -2,7 +2,7 @@
 namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\Client\IApi;
-use Ant\ChateaClient\Service\Client\ChateaGratisClient;
+use Ant\ChateaClient\Service\Client\Client;
 use Exception;
 use InvalidArgumentException;
 use Guzzle\Http\Exception\BadResponseException;
@@ -36,7 +36,7 @@ class Api
      * @param ChateaGratisClient $client The http client liable to request server commands
      *
      */
-    public function __construct(ChateaGratisClient $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }

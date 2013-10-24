@@ -11,7 +11,9 @@ namespace Ant\ChateaClient\Service\Client;
 
 use Ant\ChateaClient\Client\Authentication;
 use Guzzle\Common\Collection;
-use Guzzle\Service\Command\CommandInterface;
+use Guzzle\Plugin\Cookie\CookiePlugin;
+use Guzzle\Plugin\Cookie\CookieJar\FileCookieJar;
+use Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
 use Guzzle\Service\Description\ServiceDescription;
 use Ant\Guzzle\Plugin\OAuth2Plugin;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
@@ -26,6 +28,8 @@ class ChateaGratisAppClient extends Client
     private $refresh_token;
     private $expires_at;
     private static $authentication;
+    private $cookie;
+
     public static function factory($config = array()){
         // Provide a hash of default client configuration options
         $default = array(
@@ -73,11 +77,15 @@ class ChateaGratisAppClient extends Client
 
 
         $client->_OAuth2Plugin = new OAuth2Plugin($config->toArray());
+        $client->cookie = new ArrayCookieJar(true);
+        $pluginCookie = new CookiePlugin($client->cookie);
+
         $client->refresh_token = $auth_data['refresh_token'];
         $client->expires_at = $auth_data['expires_in']+time();
 
         // Ensure that the Oauth2Plugin is attached to the client
         $client->addSubscriber($client->_OAuth2Plugin);
+        $client->addSubscriber($pluginCookie);
 
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
         return $client;
