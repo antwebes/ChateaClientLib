@@ -5,12 +5,10 @@ use Ant\ChateaClient\Service\Client\ChateaOAuth2Client;
 use Ant\ChateaClient\Client\Authentication;
 use Guzzle\Http\Exception\BadResponseException;
 
-$client = ChateaOAuth2Client::factory(array('environment'=>'dev'));
+$client = ChateaOAuth2Client::factory(array('environment'=>'dev','client_id'=>'2_random-demo','secret'=>'secret-demo'));
 //config app data
 $client_id ='2_random-demo';
 $secret = 'secret-demo';
-
-$authentication = new Authentication($client,$client_id,$secret);
 
 //users data
 $username = 'jjbier';
@@ -20,21 +18,21 @@ $rediret = 'http://www.chateagratis.net';
 
 try{
     // withUserCredentials
-    print_r ( $authentication->withUserCredentials($username,$password) );
+    print_r ( $client->withUserCredentials($username,$password) );
     echo "<br><br><br>";
 
     // withAuthorizationCode
-    print_r( $authentication->withAuthorizationCode($authCode,$rediret));
+    print_r( $client->withAuthorizationCode($authCode,$rediret));
     echo "<br><br><br>";
 
 
     //withClientCredentials
-    print_r(  $authentication->withClientCredentials() );
-    $model = $authentication->withClientCredentials();
+    print_r(  $client->withClientCredentials() );
+    $model = $client->withClientCredentials();
     echo "<br><br><br>";
 
     //withRefreshToken
-    print_r(  $authentication->withRefreshToken($model['refresh_token']) );
+    print_r(  $client->withRefreshToken($model['refresh_token']) );
     echo "<br><br><br>";
 
 }catch (Exception $ex){

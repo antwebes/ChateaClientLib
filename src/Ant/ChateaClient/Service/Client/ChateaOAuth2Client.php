@@ -15,8 +15,6 @@ use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaOAuth2Client extends Client
 {
-    private $client_id;
-    private $secret;
 
     public static function factory($config = array())
     {
@@ -43,9 +41,7 @@ class ChateaOAuth2Client extends Client
         // Merge in default settings and validate the config
         $config = Collection::fromConfig($config, $default, $required);
 
-
         if($config['environment'] == 'dev' ){
-
             $config['base_url'] = $config['base_url'] . '/app_dev.php';
             $config['scheme'] = 'http';
             $config['ssl.certificate_authority'] = 'system';
@@ -54,7 +50,7 @@ class ChateaOAuth2Client extends Client
 
 
         // Create a new ChateaOAuth2 client
-        $client = new self($config->get('base_url'),
+        $client = new ChateaOAuth2Client ($config->get('base_url'),
             $config->get('scheme'),
             $config->get('subdomain'),
             $config
@@ -132,7 +128,6 @@ class ChateaOAuth2Client extends Client
 
     public function withClientCredentials()
     {
-        ldd($this);
         $command = $this->getCommand('withClientCredentials',
             array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret())
         );

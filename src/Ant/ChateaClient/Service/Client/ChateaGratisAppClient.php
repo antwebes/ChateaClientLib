@@ -9,8 +9,8 @@
 
 namespace Ant\ChateaClient\Service\Client;
 
-use Ant\ChateaClient\Client\Authentication;
 use Guzzle\Common\Collection;
+use Guzzle\Plugin\Cookie\Cookie;
 use Guzzle\Plugin\Cookie\CookiePlugin;
 use Guzzle\Plugin\Cookie\CookieJar\FileCookieJar;
 use Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
@@ -24,10 +24,7 @@ class ChateaGratisAppClient extends Client
      * @var \Ant\Guzzle\Plugin\OAuth2Plugin
      */
     private $_OAuth2Plugin;
-
-    private $refresh_token;
-    private $expires_at;
-    private static $authentication;
+    private $access_token;
     private $cookie;
 
     public static function factory($config = array()){
@@ -69,31 +66,51 @@ class ChateaGratisAppClient extends Client
             $config->get('subdomain'),
             $config
         );
-        $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
+        $client->cookie = new Cookie(array(
+            'name'        => 'ChateaGratis',
+            'secure'      => true,
+            'data'          => array()
+        ));
 
-        $authClient = ChateaOAuth2Client::factory($config->toArray());
+        $cookieJar = new ArrayCookieJar();
+        $cookieJar->add($client->cookie);
+        $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
+        $client->addSubscriber(new CookiePlugin($cookieJar));
+
+
+        $authClient = ChateaOAuth2Client::factory(
+            array('environment'=>$config->get('environment'),
+                'client_id'=>$config->get('client_id'),
+                'secret'=>$config-> get('secret')
+            )
+        );
 
         // primeira autenticacion
-        if(!isset( $_SESSION['chatea_client_expires_at'])) {
-            ldd($authClient);
+        if(!$client->cookie->getAttribute('chatea_client_expires_at')) {
             $auth_data = $authClient->withClientCredentials();
-
             $config->set('access_token',$auth_data['access_token']);
             $client->_OAuth2Plugin = new OAuth2Plugin($config->toArray());
             $client->addSubscriber($client->_OAuth2Plugin);
 
-            $_SESSION['chatea_client_access_token'] = $auth_data['access_token'];
-            $_SESSION['chatea_client_refresh_token'] = $auth_data['refresh_token'];
-            $_SESSION['chatea_client_expires_at'] = $auth_data['expires_in']+time();
-        }else if($_SESSION['chatea_client_expires_at'] > time()){
-            //TODO: the acces_token timeout , new acces_toekn with refresh_token
-            ld("s");
-            $auth_data =  $authClient->withRefreshToken($_SESSION['chatea_client_refresh_token']);
 
+            $client->cookie->setAttribute('chatea_client_access_token', $auth_data['access_token']);
+            $client->cookie->setAttribute('chatea_client_refresh_token', $auth_data['refresh_token']);
+            $client->cookie->setAttribute('chatea_client_expires_at', $auth_data['expires_in']);
+            $client->cookie->setAttribute('chatea_client_access_token', $auth_data['access_token']);
+            $client->access_token = $auth_data['access_token'];
+
+        }else if($client->cookie->getAttribute('chatea_client_expires_at') > time()){
+            //TODO: the acces_token timeout , new acces_toekn with refresh_token
+            $auth_data =  $authClient->withRefreshToken($_SESSION['chatea_client_refresh_token']);
+            $client->access_token = $auth_data['access_token'];
             $client->updateAccessToken($auth_data['access_token']);
-            $_SESSION['chatea_client_access_token'] = $auth_data['access_token'];
-            $_SESSION['chatea_client_refresh_token'] = $auth_data['refresh_token'];
-            $_SESSION['chatea_client_expires_at'] = $auth_data['expires_in']+time();
+
+            $client->cookie->setAttribute('chatea_client_access_token', $auth_data['access_token']);
+            $client->cookie->setAttribute('chatea_client_refresh_token', $auth_data['refresh_token']);
+            $client->cookie->setAttribute('chatea_client_expires_at', $auth_data['expires_in']);
+            $client->cookie->setAttribute('chatea_client_access_token', $auth_data['access_token']);
+
+
 
         }else{
             //set in header access_token of session
@@ -103,23 +120,9 @@ class ChateaGratisAppClient extends Client
         return $client;
     }
 
-    /*protected function prepareCommand(CommandInterface $command)
-    {
-
-      if($this->expires_at > time()){
-          $auth_data = self::$authentication->withRefreshToken($this->refresh_token);
-          $this->refresh_token = $auth_data['refresh_token'];
-          $this->expires_at = $auth_data['expires_in']+time();
-          $this->updateAccessToken($auth_data['acces_token']);
-      }
-
-      return parent::prepareCommand($command);
-    }*/
-
     public function updateAccessToken($acces_token)
     {
         $this->_OAuth2Plugin->updateAccessToken($acces_token);
     }
-
 
 }
