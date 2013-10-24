@@ -116,12 +116,17 @@ class ChateaGratisAppClient extends Client
 
         return $access_token;
     }
+    public function revokeToken()
+    {
+        $command = $this->getCommand('RevokeToken');
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
+    }
 }
-
-/*
- *
- *
-        $cookie = new Cookie(array('name'=>self::COOKIE_NAME,'value'=>serialize($authData),'domain'=>$_SERVER['HTTP_HOST']));
-        $cookieJar = new ArrayCookieJar();
-        $cookieJar->add($cookie);
- */
