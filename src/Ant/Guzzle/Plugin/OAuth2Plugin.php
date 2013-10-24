@@ -28,6 +28,7 @@ class OAuth2Plugin implements EventSubscriberInterface
                 'token_type' => 'Bearer',
             ), array(
                 'version', 'token_type',
+                'access_token'
             ));
     }
 

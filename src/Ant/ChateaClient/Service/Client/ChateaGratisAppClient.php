@@ -13,6 +13,7 @@ use Guzzle\Common\Collection;
 use Guzzle\Plugin\Cookie\Cookie;
 use Guzzle\Plugin\Cookie\CookiePlugin;
 use Guzzle\Plugin\Cookie\CookieJar\FileCookieJar;
+use  Guzzle\Common\Event;
 use Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Command\CommandInterface;
@@ -66,22 +67,61 @@ class ChateaGratisAppClient extends Client
         );
 
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
-        $client->addSubscriber(new CookiePlugin(new ArrayCookieJar()));
+
         return $client;
     }
     public function prepareCommand(CommandInterface $command)
     {
         $request = parent::prepareCommand($command);
-        if($request->getCookie(self::COOKIE_NAME)){
-
-        }
-        ldd($request->getCookie(self::COOKIE_NAME));
+        $request->setHeader('Authorization ','Bearer '. $this->prepareAccessToken());
         return $request;
     }
 
     public function updateAccessToken($access_token)
     {
-        $this->access_token = $access_token;
+        $this->getEventDispatcher()->addListener('request.before_send', function(Event $event) use($access_token){
+            $request = $event['request'];
+            $request->setHeader('Authorization ','Bearer '. $access_token);
+        });
     }
 
+
+    private function prepareAccessToken()
+    {
+        $access_token = null;
+
+        if(!isset($_SESSION['chatea_client_token'])){
+
+            $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withClientCredentials();
+
+            $_SESSION['chatea_client_token'] = $authData['access_token'];
+            $_SESSION['chatea_client_time'] = $authData['expires_in'] + time();
+            $_SESSION['chatea_client_refresh'] = $authData['refresh_token'];
+
+            $access_token = $_SESSION['chatea_client_token'];
+
+        }else if($_SESSION['chatea_client_time'] < time()){
+
+            $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withRefreshToken($_SESSION['chatea_client_refresh']);
+
+            $_SESSION['chatea_client_token'] = $authData['access_token'];
+            $_SESSION['chatea_client_time'] = $authData['expires_in'] + time();
+            $_SESSION['chatea_client_refresh'] = $authData['refresh_token'];
+
+            $access_token = $_SESSION['chatea_client_token'];
+
+        }else{
+            $access_token = $_SESSION['chatea_client_token'];
+        }
+
+        return $access_token;
+    }
 }
+
+/*
+ *
+ *
+        $cookie = new Cookie(array('name'=>self::COOKIE_NAME,'value'=>serialize($authData),'domain'=>$_SERVER['HTTP_HOST']));
+        $cookieJar = new ArrayCookieJar();
+        $cookieJar->add($cookie);
+ */
