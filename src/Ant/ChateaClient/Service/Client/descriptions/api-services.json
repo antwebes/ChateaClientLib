@@ -51,7 +51,7 @@
         },
         "RequestResetPassword":{
             "httpMethod": "POST",
-            "uri": "resetting/send-email",
+            "uri": "api/resetting/send-email",
             "summary": "Request reset user password, in the request is mandatory send username or email",
             "parameters": {
                 "username": {

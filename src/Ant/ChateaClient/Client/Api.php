@@ -33,7 +33,7 @@ class Api
     /**
      * Create a new API object
      *
-     * @param ChateaGratisClient $client The http client liable to request server commands
+     * @param Client $client The http client liable to request server commands
      *
      */
     public function __construct(Client $client)
@@ -68,8 +68,97 @@ class Api
     }
 
     /******************************************************************************/
-    /*				  				  PROFILE METHODS    	   					  */
+    /*				  				  API METHODS    	   					      */
     /******************************************************************************/
+
+    /**
+     * Revokes the access token and logout the user session in server.
+     *
+     * @return string a message ok and the HTTP status code 200
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
+    public function logout()
+    {
+
+        $command = $this->client->getCommand('revoke');
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Register new user at server
+     *
+     * @param $username The name of user. This is unique for user
+     *
+     * @param $email The email for user. This is unique for user
+     *
+     * @param $new_password The user password
+     *
+     * @param $repeat_new_password Repeat the password
+     *
+     * @param $affiliate_host The name of your server, where you make send request.
+     *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
+     *
+     * @return array
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->register('new user name','new_password','repeat_new_password','your hosts name');
+     *
+     *      <h3>Ouput<h3>
+     *
+     *      array{
+     *          "id"=> 1234,
+     *          "username"=> "new-username",
+     *          "email"=> "newUserName@ant.com"
+     *      }
+     */
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host)
+    {
+
+        if (!is_string($username) || 0 >= strlen($username)) {
+            throw new InvalidArgumentException("username must be a non-empty string");
+        }
+        if (!is_string($email) || 0 >= strlen($email)) {
+            throw new InvalidArgumentException("email must be a non-empty string");
+        }
+        if (!is_string($new_password) || 0 >= strlen($new_password)) {
+            throw new InvalidArgumentException("new_password must be a non-empty string");
+        }
+
+        if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "repeat_new_password must be a non-empty string");
+        }
+
+        if (strcmp($new_password, $repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "the new_password and repeat_new_password is not equals");
+        }
+
+        $command = $this->client->getCommand(
+            "Register",
+            array(
+                'user_registration' =>
+                array(
+                    'email' => $email,
+                    'username' => $username,
+                    'plainPassword' => array(
+                        'first' => $new_password,
+                        'second' => $repeat_new_password
+                    ),
+                    'affiliate'=>$affiliate_host
+                )
+            )
+        );
+
+        return $this->executeCommand($command);
+    }
 
     /**
      * Update a profile of an user
@@ -207,78 +296,6 @@ class Api
         return $this->executeCommand($command);
     }
 
-
-    /**
-     * Register new user at server
-     *
-     * @param $username The name of user. This is unique for user
-     *
-     * @param $email The email for user. This is unique for user
-     *
-     * @param $new_password The user password
-     *
-     * @param $repeat_new_password Repeat the password
-     *
-     * @param $affiliate_host The name of your server, where you make send request.
-     *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
-     *
-     * @return array
-     *
-     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->register('new user name','new_password','repeat_new_password','your hosts name');
-     *
-     *      <h3>Ouput<h3>
-     *
-     *      array{
-     *
-     *      }
-     */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host)
-    {
-
-        if (!is_string($username) || 0 >= strlen($username)) {
-            throw new InvalidArgumentException("username must be a non-empty string");
-        }
-        if (!is_string($email) || 0 >= strlen($email)) {
-            throw new InvalidArgumentException("email must be a non-empty string");
-        }
-        if (!is_string($new_password) || 0 >= strlen($new_password)) {
-            throw new InvalidArgumentException("new_password must be a non-empty string");
-        }
-
-        if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "repeat_new_password must be a non-empty string");
-        }
-
-        if (strcmp($new_password, $repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "the new_password and repeat_new_password is not equals");
-        }
-
-        $command = $this->client->getCommand(
-            "Register",
-            array(
-                'user_registration' =>
-                array(
-                    'email' => $email,
-                    'username' => $username,
-                    'plainPassword' => array(
-                        'first' => $new_password,
-                        'second' => $repeat_new_password
-                    ),
-                    'affiliate'=>$affiliate_host
-                )
-            )
-        );
-
-        return $this->executeCommand($command);
-    }
 
     /**
      *
