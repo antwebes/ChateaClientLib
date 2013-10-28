@@ -59,6 +59,11 @@
                     "type": "string"
                 }
             }
+        },
+        "RevokeToken":{
+            "httpMethod": "DELETE",
+            "uri": "api/oauth/v2/revoke",
+            "summary": "Revokes the acces token"
         }
     },
     "includes":[

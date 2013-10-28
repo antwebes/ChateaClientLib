@@ -144,4 +144,18 @@ class Authentication
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
     }
+
+    public function revokeToken()
+    {
+        $command = $this->client->getCommand('RevokeToken');
+        try{
+            return $command->execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(CurlException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
+    }
 }
