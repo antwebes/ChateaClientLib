@@ -936,25 +936,75 @@ class Api
     /******************************************************************************/
 
     /**
-     * Get frienfs of one user
+     * Get me friends
      *
-     * @param $user_id
+     * @param $user_id The user id retrieve friends
      *
-     * @param int $limit
-     * @param int $offset
-     * @return array|string
+     * @param int $limit  number of items to retrieve at most
      *
-     * @throws \InvalidArgumentException
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|Collection  associative array with channel's is fan one user
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show User friends for user id = 1, only the first friend
+     *
+     *
+     *          $your_api_instance->showFriends(1,1,0);
+     *
+     *  array(
+     *      "total" => 4,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends",
+     *          ),
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 3,
+     *              "username" => "alex3",
+     *              "email" => "alex3@chateagratis.net",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                  ),
+     *                  "channels" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                  ),
+     *                  "channels_fan" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                  ),
+     *                  "blocked_users" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                  ),
+     *              ),
+     *          ),
+     *      )
+     * );
      */
     public function showFriends($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "showFriends user_id field should be positive integer");
+                "Api::showFriends() user_id field should be positive integer");
+        }
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showFriends() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showFriends() $offset must be a positive number,  min 0 ");
         }
 
         /** @var $command \Guzzle\Service\Command\AbstractCommand */
-        $command = $this->client->getCommand('ShowFriends', array('id' => $user_id));
+        $command = $this->client->getCommand('ShowFriends', array('id' => $user_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }

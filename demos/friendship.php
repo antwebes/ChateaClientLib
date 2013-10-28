@@ -10,13 +10,34 @@ $client = ChateaGratisClient::factory(
         'environment'=>'dev'
     )
 );
+function print_array(array $array )
+{
+    foreach($array as $key=>$value){
+        $parte = $array[$key];
+        if(is_array($parte)){
+            if(!is_numeric($key)){
+                echo '<li style="list-style-type:none"><strong>"'.$key.'"</strong> => ';
+            }
+            echo 'array(';
+            echo '<ul style="list-style-type:none" >';
+            print_array($parte);
+            echo '</ul>';
+            echo '),';
+        }else{
+            $value = is_numeric($value)? $value: '"'.$value.'"';
+            echo '<li style="list-style-type:none" ><strong>"'.$key.'"</strong> => '.$value .', </li>';
+        }
+    }
+}
+
 $api = new Api($client);
 
 try{
 
-    echo " showFriends by user 1 <br>";
-    print_r($api->showFriends(1));
-    echo "<br/><br/><br/>";
+
+    echo "<h2>ShowFriends by user 1</h2>";
+    print_array($api->showFriends(1,1,0));
+
 
 
     echo " addFriends by user 1 friend 3 <br>";

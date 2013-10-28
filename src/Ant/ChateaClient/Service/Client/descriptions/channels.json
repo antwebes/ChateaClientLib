@@ -15,7 +15,7 @@
                     "type": "integer",
                     "location": "query",
                     "default": 25,
-                    "description": "number of position at collection"
+                    "description": "number of elemnts return at collection"
                 },
                 "offset": {
                     "type": "integer",

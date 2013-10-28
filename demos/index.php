@@ -24,6 +24,9 @@
         <a href="channels.php">Channels</a>
     </li>
     <li>
+        <a href="friendship.php">Friendship</a>
+    </li>
+    <li>
         <a href="profile.php">Profile</a>
         <ul>
             <li>Show a profile of one user</li>
@@ -38,9 +41,7 @@
     <li>
         <a href="users-demo.php">Users</a>
     </li>
-    <li>
-        <a href="friendship-demo.php">Friendship</a>
-    </li>
+
     <li>
         <a href="photo-demo.php">Photo</a>
     </li>

@@ -10,6 +10,18 @@
                     "location": "uri",
                     "require": true,
                     "description": "Show a ShowFriends by user id"
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },
