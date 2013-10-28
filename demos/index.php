@@ -21,6 +21,9 @@
         </ul>
     </li>
     <li>
+        <a href="channels.php">Channels</a>
+    </li>
+    <li>
         <a href="profile.php">Profile</a>
         <ul>
             <li>Show a profile of one user</li>
@@ -28,9 +31,7 @@
             <li>Update a Password one user</li>
         </ul>
     </li>
-    <li>
-        <a href="channels-demo.php">Channels</a>
-    </li>
+
     <li>
         <a href="me-demo.php">Me</a>
     </li>

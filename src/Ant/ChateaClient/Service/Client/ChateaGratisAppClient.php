@@ -11,21 +11,17 @@ namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
 use Guzzle\Plugin\Cookie\Cookie;
-use Guzzle\Plugin\Cookie\CookiePlugin;
-use Guzzle\Plugin\Cookie\CookieJar\FileCookieJar;
 use  Guzzle\Common\Event;
-use Guzzle\Plugin\Cookie\CookieJar\ArrayCookieJar;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Command\CommandInterface;
-use Ant\Guzzle\Plugin\OAuth2Plugin;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
 class ChateaGratisAppClient extends Client
 {
 
-    private $access_token;
     const  COOKIE_NAME = 'chat_client';
-
+    /**@var StoreInterface store */
+    private $store ;
     public static function factory($config = array()){
         // Provide a hash of default client configuration options
         $default = array(
@@ -35,7 +31,8 @@ class ChateaGratisAppClient extends Client
             'scheme' => 'https',
             'version'=>'',
             'subdomain'=>'api',
-            'service-description-name' => Client::NAME_SERVICE_API
+            'service-description-name' => Client::NAME_SERVICE_API,
+            'store' => 'Ant\ChateaClient\Service\Client\FileStore'
         );
 
         $required = array(
@@ -45,7 +42,8 @@ class ChateaGratisAppClient extends Client
             'environment',
             'subdomain',
             'client_id',
-            'secret'
+            'secret',
+            'store'
         );
 
         // Merge in default settings and validate the config
@@ -66,6 +64,8 @@ class ChateaGratisAppClient extends Client
             $config
         );
 
+        $store = $config->get('store');
+        $client->store = new $store();
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
 
         return $client;
@@ -88,33 +88,29 @@ class ChateaGratisAppClient extends Client
 
     private function prepareAccessToken()
     {
-        $access_token = null;
 
-        if(!isset($_SESSION['chatea_client_token'])){
+        if(!$this->store->getPersistentData('token_expires_at')){
 
             $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withClientCredentials();
+            $this->store->setPersistentData('access_token',$authData['access_token']);
+            $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
+            $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
 
-            $_SESSION['chatea_client_token'] = $authData['access_token'];
-            $_SESSION['chatea_client_time'] = $authData['expires_in'] + time();
-            $_SESSION['chatea_client_refresh'] = $authData['refresh_token'];
+            return $authData['access_token'];
 
-            $access_token = $_SESSION['chatea_client_token'];
-
-        }else if($_SESSION['chatea_client_time'] < time()){
+        }else if($this->store->getPersistentData('token_expires_at') < time()){
 
             $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withRefreshToken($_SESSION['chatea_client_refresh']);
 
-            $_SESSION['chatea_client_token'] = $authData['access_token'];
-            $_SESSION['chatea_client_time'] = $authData['expires_in'] + time();
-            $_SESSION['chatea_client_refresh'] = $authData['refresh_token'];
+            $this->store->setPersistentData('access_token',$authData['access_token']);
+            $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
+            $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
 
-            $access_token = $_SESSION['chatea_client_token'];
+            return $authData['access_token'];
 
         }else{
-            $access_token = $_SESSION['chatea_client_token'];
+            return $this->store->getPersistentData('access_token');
         }
-
-        return $access_token;
     }
     public function revokeToken()
     {

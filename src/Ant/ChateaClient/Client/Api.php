@@ -79,8 +79,7 @@ class Api
      */
     public function logout()
     {
-
-        $command = $this->client->getCommand('revoke');
+        $command = $this->client->getCommand('RevokeToken');
 
         return $this->executeCommand($command);
     }
@@ -160,6 +159,39 @@ class Api
     }
 
     /**
+     *
+     * Request reset the user password. The server send email with new password,
+     * this this request is only once for day.
+     *
+     * @param $username_or_email The user email or username
+     *
+     * @return string message ok message if your new password have been sent
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->forgotPassword('you_user_name');
+     *      $your_api_instance->forgotPassword('you_email@antwebs.es');
+     *
+     *      <h3>Ouput<h3>
+     *
+     */
+    public function forgotPassword($username_or_email)
+    {
+
+        if (!is_string($username_or_email) || 0 >= strlen($username_or_email)) {
+            throw new InvalidArgumentException("username_or_email must be a non-empty string");
+        }
+
+        $command = $this->client->getCommand("RequestResetPassword", array('username' => $username_or_email));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
      * Update a profile of an user
      *
      * @param $username your user name | the new username
@@ -213,122 +245,6 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**
-     * Show a profile of an user
-     *
-     * @return array with you profile data
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->showAccount();
-     *      //ouput
-     *      array(
-     *          'id' => '2',
-     *          'username' => 'me user',
-     *          'email' => 'me@antweb.es',
-     *          );
-     */
-    public function showAccount()
-    {
-        $command = $this->client->getCommand('ShowAccount');
-        return $this->executeCommand($command);
-    }
-
-    /**
-     *
-     * Change user password
-     *
-     * @param $current_password your actual password
-     *
-     * @param $new_password your new password
-     *
-     * @param $repeat_new_password repeat your new password
-     *
-     * @return string message ok message if your password have been changed
-     *
-     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
-     *      //ouput message
-     *      Password changed sucessfully
-     *
-     */
-    public function changePassword($current_password,$new_password,$repeat_new_password) {
-        if (!is_string($current_password) || 0 >= strlen($current_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() current_password must be a non-empty string");
-        }
-
-        if (!is_string($new_password) || 0 >= strlen($new_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() new_password must be a non-empty string");
-        }
-
-        if (!is_string($repeat_new_password)
-            || 0 >= strlen($repeat_new_password)
-        ) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() repeat_new_password must be a non-empty string");
-        }
-
-        if (strcmp($new_password, $repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() the new_password and repeat_new_password isn't equals");
-        }
-
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand(
-            'ChangePassword',
-            array(
-                'change_password' => array(
-                    'current_password' => $current_password,
-                    'plainPassword' => array('first' => $new_password, 'second' => $repeat_new_password)
-                )
-            )
-        );
-        return $this->executeCommand($command);
-    }
-
-
-    /**
-     *
-     * Request reset the user password. The server send email with new password,
-     * this this request is only once for day.
-     *
-     * @param $username_or_email The user email or username
-     *
-     * @return string message ok message if your new password have been sent
-     *
-     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->forgotPassword('you_user_name');
-     *      $your_api_instance->forgotPassword('you_email@antwebs.es');
-     *
-     *      <h3>Ouput<h3>
-     *
-     */
-    public function forgotPassword($username_or_email)
-    {
-
-        if (!is_string($username_or_email) || 0 >= strlen($username_or_email)) {
-            throw new InvalidArgumentException("username_or_email must be a non-empty string");
-        }
-
-        $command = $this->client->getCommand("RequestResetPassword", array('username' => $username_or_email));
-
-        return $this->executeCommand($command);
-    }
-
 
     /******************************************************************************/
     /*				  				  CHANNEL METHODS    	   					  */
@@ -354,7 +270,29 @@ class Api
      *      Get first twenty channels what type is love
      *      $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
      *
-     *      <h3>Ouput</h3>
+     *      <h3>Sample Ouput</h3>
+     *  array(
+     *      "id"=>11,
+     *      "name" => "channel 11",
+     *      "slug" => "channel-11",
+     *      "owner"=>array(
+     *          id: 1
+     *          username: alex
+     *       ),
+     *      "channel_type" => array(
+     *          "name" => "default"
+     *       ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              href => "http://api.chateagratis.local/app_dev.php/api/channels/11"
+     *          ),
+     *          "fans" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/channels/11/fans"
+     *          ),
+     *          "owner" => array(
+     *              "href => http://api.chateagratis.local/app_dev.php/api/users/1"
+     *           )
+     *      );
      *
      */
     public function showChannels($limit = 25, $offset = 0, array $filter = null)
@@ -381,7 +319,7 @@ class Api
             }
             $filterHash;
         }
-        //@var $command Guzzle\Service\Command\AbstractCommand
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'GetChannels',
             array('limit' => $limit, 'offset' => $offset, 'filter' => $filterHash)
@@ -413,7 +351,33 @@ class Api
      *          $your_api_instance->addChanel('new channel name','API - Channel Name',
      *                                        'This is channel about loves, friends and others', 'love');
      *
-     *          <h3>Ouput</h3>
+     *      <h3>Sample Ouput</h3>
+     *
+     * array(
+     *      "id" =>96
+     *      "name" =>"new channel name",
+     *      "slug" =>"new-channel-name",
+     *      "title" =>"API - Channel Name",
+     *      "description" =>"This is channel about loves, friends and others",
+     *      "owner" => array(
+     *              "id" =>1
+     *              "username" =>"alan"
+     *      ),
+     *      "channel_type" => array(
+     *          "name" =>"love"
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *          ),
+     *          "fans" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *          ),
+     *          "owner" => array(
+     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *          )
+     *      )
+     *  );
      *
      */
     public function addChanel($name, $title = '', $description = '', $channel_type = '')
@@ -422,7 +386,7 @@ class Api
             throw new InvalidArgumentException("addChanel name field needs to be a non-empty string");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'AddChannel',
             array('channel' =>
@@ -452,6 +416,39 @@ class Api
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *          $your_api_instance->updateChannel(96, 'update channel name','API - Channel title',
+     *                                        'This is channel about loves, friends and others', 'love');
+     *
+     *      <h3>Sample Ouput</h3>
+     *
+     * array(
+     *      "id" =>96
+     *      "name" =>"update channel name",
+     *      "slug" =>"update-channel-name",
+     *      "title" =>"API - Channel title",
+     *      "description" =>"This is channel about loves, friends and others",
+     *      "owner" => array(
+     *              "id" =>1
+     *              "username" =>"alex"
+     *      ),
+     *      "channel_type" => array(
+     *          "name" =>"love"
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *          ),
+     *          "fans" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *          ),
+     *          "owner" => array(
+     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *          )
+     *      )
+     *  );
      */
     public function updateChannel($channel_id, $name, $title = '', $description = '', $channel_type = '')
     {
@@ -488,6 +485,13 @@ class Api
      *
      * @throws ApiException This exception is thrown if server send one error
      *
+     * @example
+     *
+     *          $your_api_instance->delChannel(96);
+     *
+     *      <h3>Ouput this message: </h3>
+     *
+     *      Channel deleted
      */
     public function delChannel($channel_id)
     {
@@ -503,7 +507,7 @@ class Api
     }
 
     /**
-     * Get channel
+     * Get channel. Show data channel by id
      *
      * @param $channel_id  Channel to retrieve by ID
      *
@@ -512,6 +516,38 @@ class Api
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *          $your_api_instance->showChannel(96);
+     *
+     *      <h3>Sample Ouput</h3>
+     *
+     * array(
+     *      "id" =>96
+     *      "name" =>"update channel name",
+     *      "slug" =>"update-channel-name",
+     *      "title" =>"API - Channel title",
+     *      "description" =>"This is channel about loves, friends and others",
+     *      "owner" => array(
+     *              "id" =>1
+     *              "username" =>"alex"
+     *      ),
+     *      "channel_type" => array(
+     *          "name" =>"love"
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *          ),
+     *          "fans" => array(
+     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *          ),
+     *          "owner" => array(
+     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *          )
+     *      )
+     *  );
      */
     public function showChannel($channel_id)
     {
@@ -531,21 +567,73 @@ class Api
      *
      * @param $channel_id Channel to retrieve fans
      *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
      * @return array|Collection Associative array with users that are fans a channel
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     *
+     * @example Show Channels Fans of channel 2, only the first
+     *
+     *
+     *          $your_api_instance->showChannelFans(3,1,0);
+     *
+     *      <h3>Sample Ouput</h3>
+     *
+     * array(
+     *      "total" => 2,
+     *      "limit" => 2,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *          "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2/fans"
+     *          )
+     *      ),
+     *      "resources" => array(
+     *           array(  "id" => 1,
+     *                   "username" => "alex",
+     *                   "email" => "alex@chateagratis.net",
+     *                   "_links" => array(
+     *                          "self" => array(
+     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1"
+     *                          ),
+     *                          "channels" => array(
+     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels"
+     *                          ),
+     *                          "channels_fan" => array(
+     *                               "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan"
+     *                          ),
+     *                          "blocked_users" => array(
+     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked"
+     *                          )
+     *                   )
+     *           )
+     *      )
+     * );
      */
-    public function showChannelFans($channel_id)
+    public function showChannelFans($channel_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
                 "ApiException::showChannelFans channel_id field should be positive integer");
         }
 
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showChannelFans() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showChannelFans() $offset must be a positive number,  min 0 ");
+        }
+
         //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id));
+        $command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -553,14 +641,59 @@ class Api
     /**
      * Get Channles types
      *
-     * @return array|Collection
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|Collection  associative array with channels types use one channel
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @example Show Channels types, only the first
+     *
+     *
+     *          $your_api_instance->showChannelsTypes(1,0);
+     *
+     *      <h3>Sample Ouput</h3>
+     * array(
+     *      "total" => 6,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *              "self" => array(
+     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/channelstype"
+     *              ),
+     *      ),
+     *      "resources" => array(
+     *              array(
+     *                  "name" => "adult",
+     *                   "_links" => array(
+     *                          "channelsType" => array(
+     *                                  "href" => "http://api.chateagratis.local/app_dev.php/api/channels?filter%3DchannelType=adult",
+     *                          )
+     *                   )
+     *              )
+     *
+     *      )
+     * );
+     *
      */
-    public function showChannelsTypes()
+    public function showChannelsTypes($limit = 1, $offset = 0)
     {
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannelsType');
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showChannelsTypes() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showChannelsTypes() $offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('GetChannelsType',array('limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -571,21 +704,76 @@ class Api
      *
      * @param $user_id User id  to retrieve channel
      *
-     * @return array|Collection
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|Collection  associative array with channels created one user
+     *
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show Channels created by user id = 1, only the first channel
+     *
+     *
+     *          $your_api_instance->showUserChannels(1,1,0);
+     *
+     *  array(
+     *      "total" => 32,
+     *      "limit" => 32,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *          ),
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 1,
+     *              "name" => "channel 1",
+     *              "slug" => "channel-1",
+     *              "owner" => array(
+     *                  "id" => 1,
+     *                  "username" => "alex",
+     *              ),
+     *              "channel_type" => array(
+     *                  "name" => "adult",
+     *              ),
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/1",
+     *                  ),
+     *                  "fans" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/1/fans",
+     *                  ),
+     *                  "owner" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                  ),
+     *              )
+     *          )
+     *      )
+     *  );
      */
-    public function showUserChannels($user_id)
+    public function showUserChannels($user_id, $limit= 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "ApiException::showChannelsByUser user_id field should be positive integer");
+                "ApiException::showUserChannels user_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannelsCreatedByUser', array("id" => $user_id));
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showUserChannels() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showUserChannels() $offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('GetChannelsCreatedByUser', array("id" => $user_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -595,41 +783,101 @@ class Api
      *
      * @param $user_id  User id  to retrieve fans channels
      *
-     * @return array|Collection
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|Collection  associative array with channel's is fan one user
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
      *
+     * @example Show Channels favorites for user id = 1, only the first channel
+     *
+     *
+     *          $your_api_instance->showUserChannelsFan(1,1,0);
+     *
+     *  array(
+     *      "total" => 2,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan"
+     *          ),
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 2,
+     *              "name" => "channel 2",
+     *              "slug" => "channel-2",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2"
+     *                  ),
+     *                  "fans" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2/fans",
+     *                  ),
+     *                  "owner" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2"
+     *                  )
+     *              )
+     *          )
+     *      )
+     *  );
      */
-    public function showUserChannelsFan($user_id)
+    public function showUserChannelsFan($user_id, $limit= 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "ApiException::showChannelsFan user_id field should be positive integer");
+                "ApiException::showUserChannelsFan user_id field should be positive integer");
         }
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetFavoritesChannelsByUser', array('id' => $user_id));
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showUserChannelsFan() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showUserChannelsFan() $offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('GetFavoritesChannelsByUser', array('id' => $user_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
 
     /**
+     * Make channel's  fan one user
      *
-     * @param $channel_id
-     * @param $user_id
-     * @return array|string
-     * @throws \InvalidArgumentException
+     * @param $channel_id Channel id to receive a fan
+     *
+     * @param $user_id The user id will be fan
+     *
+     * @return string Massage ok if user is new fan
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example add the user 1 fan of channel 1
+     *
+     *          $your_api_instance->addUserChannelFan(1,1);
+     *
+     *      <h3>The ouput message:</h3>
+     *          The user is a fan of the channel successfully
      */
     public function addUserChannelFan($channel_id, $user_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
-                "ApiException::addChannelFan channel_id field should be positive integer");
+                "ApiException::addUserChannelFan channel_id field should be positive integer");
         }
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "ApiException::addChannelFan user_id field should be positive integer");
+                "ApiException::addUserChannelFan user_id field should be positive integer");
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
@@ -641,16 +889,35 @@ class Api
         return $this->executeCommand($command);
 
     }
-
+    /**
+     * Remove channel's  fan one user
+     *
+     * @param $channel_id Channel id to receive a fan
+     *
+     * @param $user_id The user id will be fan
+     *
+     * @return string Massage ok if user is not fan
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example remove the user 1 fan of channel 1
+     *
+     *          $your_api_instance->delUserChannelFan(1,1);
+     *
+     *      <h3>The ouput message:</h3>
+     *          The user has been removed as fan of the channel successfully
+     */
     public function delUserChannelFan($channel_id, $user_id)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
-                "ApiException::addChannelFan channel_id field should be positive integer");
+                "ApiException::delUserChannelFan channel_id field should be positive integer");
         }
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "ApiException::addChannelFan user_id field should be positive integer");
+                "ApiException::delUserChannelFan user_id field should be positive integer");
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
@@ -662,16 +929,31 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**********************************************************************************************************************/
 
-    public function showFriends($user_id)
+
+    /******************************************************************************/
+    /*				  				  CHANNEL FRIENSSHIP  	   					  */
+    /******************************************************************************/
+
+    /**
+     * Get frienfs of one user
+     *
+     * @param $user_id
+     *
+     * @param int $limit
+     * @param int $offset
+     * @return array|string
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function showFriends($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "ShowFriends user_id field should be positive integer");
+                "showFriends user_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('ShowFriends', array('id' => $user_id));
 
         return $this->executeCommand($command);
@@ -1194,6 +1476,88 @@ class Api
     public function showUserVisitors($user_id, $maxResult)
     {
         throw new \Exception("TThis method is not supported yet");
+    }
+
+    /**
+     * Show a profile of an user
+     *
+     * @return array with you profile data
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->showAccount();
+     *      //ouput
+     *      array(
+     *          'id' => '2',
+     *          'username' => 'me user',
+     *          'email' => 'me@antweb.es',
+     *          );
+     */
+    public function showAccount()
+    {
+        $command = $this->client->getCommand('ShowAccount');
+        return $this->executeCommand($command);
+    }
+
+    /**
+     *
+     * Change user password
+     *
+     * @param $current_password your actual password
+     *
+     * @param $new_password your new password
+     *
+     * @param $repeat_new_password repeat your new password
+     *
+     * @return string message ok message if your password have been changed
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
+     *      //ouput message
+     *      Password changed sucessfully
+     *
+     */
+    public function changePassword($current_password,$new_password,$repeat_new_password) {
+        if (!is_string($current_password) || 0 >= strlen($current_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() current_password must be a non-empty string");
+        }
+
+        if (!is_string($new_password) || 0 >= strlen($new_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() new_password must be a non-empty string");
+        }
+
+        if (!is_string($repeat_new_password)
+            || 0 >= strlen($repeat_new_password)
+        ) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() repeat_new_password must be a non-empty string");
+        }
+
+        if (strcmp($new_password, $repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() the new_password and repeat_new_password isn't equals");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand(
+            'ChangePassword',
+            array(
+                'change_password' => array(
+                    'current_password' => $current_password,
+                    'plainPassword' => array('first' => $new_password, 'second' => $repeat_new_password)
+                )
+            )
+        );
+        return $this->executeCommand($command);
     }
 
 }

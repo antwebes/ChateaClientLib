@@ -133,13 +133,39 @@
                     "location": "uri",
                     "description": "Channels fans to retrieve by ID",
                     "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },
         "GetChannelsType":{
             "httpMethod": "GET",
             "uri": "api/channelstype",
-            "summary": "List all the channels type"
+            "summary": "List all the channels type",
+            "parameters": {
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
         },
         "GetChannelsCreatedByUser":{
             "httpMethod": "GET",
@@ -150,6 +176,18 @@
                     "location": "uri",
                     "description": "Channels fans to retrieve by ID",
                     "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },
@@ -162,6 +200,18 @@
                     "location": "uri",
                     "description": "Channels fans to retrieve by ID",
                     "required": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },

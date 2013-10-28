@@ -20,9 +20,9 @@ try{
 
 
     echo "<h3>Forgot password | send email</h3>";
-    print_r($api->forgotPassword("alex3@chateagratis.net"));
+    print_r($api->forgotPassword("xabier_".$key."@gmail.com"));
 
-    echo "<h3>Forgot password | send email</h3>";
+    echo "<h3>Logout</h3>";
     print_r($api->logout());
 
 }catch (ApiException $ex){

@@ -11,9 +11,8 @@ $secret = 'secret-demo';
 
 try{
 
- $cliente    = ChateaGratisAppClient::factory(array('environment'=>'dev','client_id'=>$client_id,'secret'=>$secret));
- ldd($cliente);
-
+    $cliente = ChateaGratisAppClient::factory(array('environment'=>'dev','client_id'=>$client_id,'secret'=>$secret));
+    ld($cliente);
 }catch (Exception $ex){
     echo "<br>ERROR<br>";
     echo $ex->getMessage();
