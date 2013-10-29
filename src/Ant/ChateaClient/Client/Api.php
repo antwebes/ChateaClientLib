@@ -17,11 +17,11 @@ use Guzzle\Service\Command\CommandInterface;
  * for all API methods.
  *
  * This class cannot connect with server,
- * this responsibility it is class that implement ClientInterface for example ChateaGratisClient
+ * this responsibility it is class that implement ClientInterface for example ChateaGratisClient or ChateaGratisAppClient
  *
  * @author Xabier Fernández Rodríguez in Ant-Web S.L.
  *
- * @see Ant\ChateaClient\Service\Client\ChateaGratisClient;
+ * @see Ant\ChateaClient\Service\Client\Client;
  * @see Ant\ChateaClient\Client\IApi;
  * @see Ant\ChateaClient\Client\ApiException;
  */
@@ -46,7 +46,7 @@ class Api
      *
      * @param CommandInterface $command
      *
-     * @return array|string return a collection of data or a message.
+     * @return array|string return a collection of data or a message. | Message with error in json format
      *
      * @throws ApiException This exception is thrown if server send one error
      */
@@ -98,7 +98,7 @@ class Api
      * @param $affiliate_host The name of your server, where you make send request.
      *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
      *
-     * @return array
+     * @return array|string Associative array with you profile | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -191,60 +191,6 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**
-     * Update a profile of an user
-     *
-     * @param $username your user name | the new username
-     *
-     * @param $email your email | the new user email
-     *
-     * @param $current_password  your password. This method can not change your password for this use @link #changePassword
-     *
-     * @return array with you data updated
-     *
-     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->updateAccount('xabier','xabier@antweb.es','mySecretPassword');
-     *      //ouput
-     *      array(
-     *          'id' => '1',
-     *          'username' => 'xabier',
-     *          'email' => 'xabier@antweb.es',
-     *          );
-     */
-    public function updateAccount($username, $email, $current_password)
-    {
-        if (!is_string($username) || 0 >= strlen($username)) {
-            throw new InvalidArgumentException(
-                "ApiException::updateProfile username field needs to be a non-empty string");
-        }
-        if (!is_string($email) || 0 >= strlen($email)) {
-            throw new InvalidArgumentException(
-                "ApiException::updateProfile email field needs to be a non-empty string");
-        }
-        if (!is_string($current_password) || 0 >= strlen($current_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::updateProfile current_password field needs to be a non-empty string");
-        }
-
-        $command = $this->client->getCommand(
-            'UpdateAccount',
-            array(
-                'profile' => array(
-                    'username' => $username,
-                    'email' => $email,
-                    'current_password' => $current_password
-                )
-            )
-        );
-
-        return $this->executeCommand($command);
-    }
-
 
     /******************************************************************************/
     /*				  				  CHANNEL METHODS    	   					  */
@@ -259,7 +205,7 @@ class Api
      *
      * @param array $filter Associative array with format filter_name =>value_name
      *
-     * @return array|Collection Associative array with channels data
+     * @return array|string Associative array with channels data | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -340,7 +286,7 @@ class Api
      * @param string $channel_type The type pof channel, This value have a subset available in  server,
      *  you can view the channels type with command @link #showChannelsTypes()
      *
-     * @return array|Collection Associative array with new channel
+     * @return array|string Associative array with new channel | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -411,7 +357,7 @@ class Api
      *
      * @param string $channel_type The type, of channel if you would like  update this field.
      *
-     * @return array|Collection Associative array with updated channel
+     * @return array|string Associative array with updated channel | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -511,7 +457,7 @@ class Api
      *
      * @param $channel_id  Channel to retrieve by ID
      *
-     * @return array|Collection Associative array with channel data
+     * @return array|string Associative array with channel data | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -571,7 +517,7 @@ class Api
      *
      * @param int $offset The distance (displacement) from the start of a data
      *
-     * @return array|Collection Associative array with users that are fans a channel
+     * @return array|string Associative array with users that are fans a channel | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -645,7 +591,7 @@ class Api
      *
      * @param int $offset The distance (displacement) from the start of a data
      *
-     * @return array|Collection  associative array with channels types use one channel
+     * @return array|string  Associative array with channels types use one channel | Message with error in json format
      *
      * @throws ApiException This exception is thrown if server send one error
      *
@@ -708,8 +654,7 @@ class Api
      *
      * @param int $offset The distance (displacement) from the start of a data
      *
-     * @return array|Collection  associative array with channels created one user
-     *
+     * @return array|string Associative array with channels created one user | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -787,7 +732,7 @@ class Api
      *
      * @param int $offset The distance (displacement) from the start of a data
      *
-     * @return array|Collection  associative array with channel's is fan one user
+     * @return array|string Associative array with channel's is fan one user | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -944,7 +889,7 @@ class Api
      *
      * @param int $offset The distance (displacement) from the start of a data
      *
-     * @return array|Collection  associative array with channel's is fan one user
+     * @return array|string Associative array with users's are friends one user | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
@@ -1009,61 +954,225 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Sends a friendship request between two users
+     *
+     * @param $user_id Your user id
+     *
+     * @param $friend_id The user id that retrieve the request
+     *
+     * @return string Massage endorsement , if the request have been sent
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Sends a friendship request between user 1 to user 3
+     *
+     *
+     *          $your_api_instance->addFriends(1,3);
+     *
+     *
+     */
+
     public function addFriends($user_id, $friend_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addFriends user_id field should be positive integer");
+                "Api::addFriends user_id field should be positive integer");
         }
 
         if (!is_numeric($friend_id) || 0 >= $friend_id) {
             throw new InvalidArgumentException(
-                "addFriends friend_id field should be positive integer");
+                "Api::addFriends friend_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
+        /**  @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand('AddFriends', array('id' => $user_id, 'user_id' => $friend_id));
 
         return $this->executeCommand($command);
     }
 
-    public function showFriendshipsPending($user_id)
+    /**
+     * Show list user, that one user will pending have your friendship
+     *
+     * @param $user_id The user id that you retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with users's are friends one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show a friendship pending by user 1, only the first friendship
+     *
+     *          $your_api_instance->showFriendshipsPending(1);
+     *
+     *  array(
+     *      "total" => 4,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends/pending",
+     *          ),
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 3,
+     *              "username" => "alex3",
+     *              "username_canonical" => "alex3",
+     *              "email" => "alex3@chateagratis.net",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                  ),
+     *                  "channels" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                  ),
+     *                  "channels_fan" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                  ),
+     *                  "blocked_users" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                  ),
+     *              )
+     *          )
+     *      )
+     *  );
+     */
+    public function showFriendshipsPending($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "showFriendshipsPending user_id field should be positive integer");
+                "Api::showFriendshipsPending user_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('ShowFriendshipsPending', array('id' => $user_id));
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsPending() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsPending() $offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowFriendshipsPending', array('id' => $user_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
 
-    public function showFriendshipsRequest($user_id)
+    /**
+     * Show the friendship requests sent by user id, and it pending to be accepted
+     *
+     * @param $user_id The user id that you retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with users's are friends one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show the friendship requests sent by user 1, only the first request friendship
+     *
+     *          $your_api_instance->showFriendshipsRequest(1,1,0);
+     *
+     *  array(
+     *      "total" => 4,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends/pending",
+     *          ),
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 3,
+     *              "username" => "alex3",
+     *              "username_canonical" => "alex3",
+     *              "email" => "alex3@chateagratis.net",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                  ),
+     *                  "channels" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                  ),
+     *                  "channels_fan" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                  ),
+     *                  "blocked_users" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                  ),
+     *              )
+     *          )
+     *      )
+     *  );
+     */
+    public function showFriendshipsRequest($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "showFriendshipsRequest user_id field should be positive integer");
+                "Api::showFriendshipsRequest user_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('ShowFriendshipsRequest', array('id' => $user_id));
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsRequest() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsRequest() $offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowFriendshipsRequest', array('id' => $user_id,'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
 
+
+    /**
+     * Accept request new Friend
+     *
+     * @param $user_id The user id that you retrieve request new Friend
+     *
+     * @param $user_accept_id The user id pending friendship
+     *
+     * @return string Message accepted | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example User 1 accept like new Friend to user 3
+     *
+     *          $your_api_instance->showFriendshipsRequest(1,3);
+     *
+     *       Friendship accepted
+     *
+     */
     public function addFriendshipRequest($user_id, $user_accept_id)
     {
 
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addFriendshipRequest user_id field should be positive integer");
+                "Api::addFriendshipRequest user_id field should be positive integer");
         }
 
         if (!is_numeric($user_accept_id) || 0 >= $user_accept_id) {
             throw new InvalidArgumentException(
-                "addFriendshipRequest user_accept_id field should be positive integer");
+                "Api::addFriendshipRequest user_accept_id field should be positive integer");
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
@@ -1075,27 +1184,66 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * @param $user_id The user id that you decliene new Friend
+     *
+     * @param $user_decline_id The user id pending friendship
+     *
+     * @return string Message declined | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example User 1 declined like new Friend to user 3
+     *
+     *          $your_api_instance->delFriendshipRequest(1,3);
+     *
+     *      Friendship declined
+     *
+     */
     public function delFriendshipRequest($user_id, $user_decline_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addFriendshipRequest user_id field should be positive integer");
+                "Api::addFriendshipRequest user_id field should be positive integer");
         }
 
         if (!is_numeric($user_decline_id) || 0 >= $user_decline_id) {
             throw new InvalidArgumentException(
-                "delFriendshipRequest user_decline_id field should be positive integer");
+                "Api::delFriendshipRequest user_decline_id field should be positive integer");
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand(
             'DeleteFriendshipRequest',
-            array('id' => $user_id, 'user_accept_id' => $user_decline_id)
+            array('id' => $user_id, 'user_decline_id' => $user_decline_id)
         );
 
         return $this->executeCommand($command);
     }
 
+    //
+    /**
+     * Delete friends between two users
+     *
+     * @param $user_id The user id that you delere friend
+     *
+     * @param $user_delete_id The user id, you want deleted.
+     *
+     * @return string Message delete | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example User 1 delete friendship to user 3
+     *
+     *          $your_api_instance->delFriend(1,3);
+     *
+     *      Friendship deleted
+     *
+     */
     public function delFriend($user_id, $user_delete_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -1117,12 +1265,40 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**********************************************************************************************************************/
+    /******************************************************************************/
+    /*				  				  CHANNEL ME            					  */
+    /******************************************************************************/
 
     /**
-     * Get my user of session
+     * Get my user
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->me();
+     *
+     *      array(
+     *          'id' => '1',
+     *          'username' => 'xabier',
+     *          'email' => 'xabier@antweb.es',
+     *          "_links" => array(
+     *              "self" => array(
+     *                "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *              ),
+     *              "channels" => array(
+     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *              ),
+     *              "channels_fan" => array(
+     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *              ),
+     *              "blocked_users" => array(
+     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *              )
+     *          )
+     *      );
      */
-    public function whoami()
+    public function me()
     {
         $command = $this->client->getCommand('Whoami');
 
@@ -1130,7 +1306,70 @@ class Api
     }
 
     /**
+     * Update a profile of me user
+     *
+     * @param $username your user name | the new username
+     *
+     * @param $email your email | the new user email
+     *
+     * @param $current_password your password. This method can not change your password for this use @link #changePassword
+     *
+     * @return array|string Associative array with you profile updated | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->updateMe('xabier','xabier@antweb.es','mySecretPassword');
+     *
+     *      array(
+     *          'id' => '1',
+     *          'username' => 'xabier',
+     *          'email' => 'xabier@antweb.es',
+     *          );
+     */
+    public function updateMe($username, $email, $current_password)
+    {
+        if (!is_string($username) || 0 >= strlen($username)) {
+            throw new InvalidArgumentException(
+                "ApiException::updateProfile username field needs to be a non-empty string");
+        }
+        if (!is_string($email) || 0 >= strlen($email)) {
+            throw new InvalidArgumentException(
+                "ApiException::updateProfile email field needs to be a non-empty string");
+        }
+        if (!is_string($current_password) || 0 >= strlen($current_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::updateProfile current_password field needs to be a non-empty string");
+        }
+
+        $command = $this->client->getCommand(
+            'UpdateAccount',
+            array(
+                'profile' => array(
+                    'username' => $username,
+                    'email' => $email,
+                    'current_password' => $current_password
+                )
+            )
+        );
+
+        return $this->executeCommand($command);
+    }
+    /**
      * Delete my user
+     *
+     * @return string Message deleted user | Message with error in json format
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Delete me user
+     *
+     *      $your_api_instance->delMe();
+     *      //ouput message
+     *      User deleted
      */
     public function delMe()
     {
@@ -1139,54 +1378,316 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**********************************************************************************************************************/
+    /**
+     *
+     * Change user password
+     *
+     * @param $current_password your actual password
+     *
+     * @param $new_password your new password
+     *
+     * @param $repeat_new_password repeat your new password
+     *
+     * @return string message password changed sucessfully if your password have been changed | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
+     *      //ouput message
+     *      Password changed sucessfully
+     *
+     */
+    public function changePassword($current_password,$new_password,$repeat_new_password) {
+        if (!is_string($current_password) || 0 >= strlen($current_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() current_password must be a non-empty string");
+        }
 
+        if (!is_string($new_password) || 0 >= strlen($new_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() new_password must be a non-empty string");
+        }
+
+        if (!is_string($repeat_new_password)
+            || 0 >= strlen($repeat_new_password)
+        ) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() repeat_new_password must be a non-empty string");
+        }
+
+        if (strcmp($new_password, $repeat_new_password)) {
+            throw new InvalidArgumentException(
+                "ApiException::changePassword() the new_password and repeat_new_password isn't equals");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand(
+            'ChangePassword',
+            array(
+                'change_password' => array(
+                    'current_password' => $current_password,
+                    'plainPassword' => array('first' => $new_password, 'second' => $repeat_new_password)
+                )
+            )
+        );
+        return $this->executeCommand($command);
+    }
+
+
+    /******************************************************************************/
+    /*				  				  CHANNEL PHOTO            					  */
+    /******************************************************************************/
+
+    /**
+     * List all photos of an album
+     *
+     * @param $album_id The photo album ID that you to retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with photos an album | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show first photo of photo album
+     *
+     *      $your_api_instance->showPhotoAlbum(1);
+     *
+     *  array(
+     *      "total" => 6,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *          )
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 1,
+     *              "participant" => array(
+     *                  "id" => 1,
+     *                  "username" => "alex",
+     *              ),
+     *              "publicated_at" => "2013-10-29T12:27:34+0100",
+     *              "path" => "photo1-path.jpg",
+     *              "title" => "la foto 1",
+     *              "number_votes" => 15,
+     *              "score" => 15,
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *                  ),
+     *                  "creator" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                  ),
+     *                  "path" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *                      "type" => "image/*",
+     *                  ),
+     *                  "album" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *                  ),
+     *              ),
+     *          ),
+     *      )
+     * );
+     *
+     */
+    public function showPhotoAlbum($album_id, $limit = 1, $offset = 0)
+    {
+        if (!is_numeric($album_id) || 0 >= $album_id) {
+            throw new InvalidArgumentException(
+                "Api::showPhotoAlbum album_id field should be positive integer");
+        }
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsRequest() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showFriendshipsRequest() offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowPhotoAlbum',array('album_id' => $album_id, 'limit'=>$limit,'offset'=>$offset));
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Show Photo
+     *
+     * @param $photo_id The photo ID that you to retrieve data
+     *
+     * @return array|string Associative array with photo data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show a photo
+     *
+     *      $your_api_instance->showPhoto(1);
+     *
+     *  array(
+     *      "id" => 1,
+     *      "participant" => array(
+     *          "id" => 1,
+     *          "username" => "alex",
+     *      ),
+     *      "publicated_at" => "2013-10-29T12:27:34+0100",
+     *      "path" => "photo1-path.jpg",
+     *      "title" => "la foto 1",
+     *      "number_votes" => 15,
+     *      "score" => 15,
+     *      "album" => array(
+     *          "id" => 1,
+     *          "title" => "la foto 1",
+     *          "description" => "default album",
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *          ),
+     *          "creator" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *          ),
+     *          "path" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *              "type" => "image/*",
+     *          ),
+     *          "album" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *           ),
+     *      )
+     *  );
+     */
+    public function showPhoto($photo_id)
+    {
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::showPhoto $photo_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('ShowPhoto',array('id' => $photo_id,));
+
+        return $this->executeCommand($command);
+    }
+    /**
+     * @param $photo_id The Photo ID to be reported
+     *
+     * @param $reason The reason this report
+     *
+     * @return array|string Associative array with report | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add Photo report
+     *
+     *      $your_api_instance->addReportPhoto(1,'This photo is not adequate');
+     *
+     * array(
+     *  "reason" => "this is not me photo",
+     *  "created_at" => "2013-10-29T12:13:07+0100",
+     * "id" => 9,
+     * );
+     *
+     */
     public function addReportPhoto($photo_id, $reason)
     {
         if (!is_numeric($photo_id) || 0 >= $photo_id) {
             throw new InvalidArgumentException(
-                "addReportPhoto photo_id field should be positive integer");
+                "Api::addReportPhoto photo_id field should be positive integer");
         }
 
         if (!is_string($reason) || 0 >= strlen($reason)) {
             throw new InvalidArgumentException("addReportPhoto reason field needs to be a non-empty string");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand(
-            'AddReportPhoto',
-            array('id' => $photo_id, 'reason' => $reason)
-        );
-
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('AddReportPhoto',array('id' => $photo_id, 'report'=>array('reason' => $reason)));
         return $this->executeCommand($command);
     }
 
-
+    /**
+     * Delete a Photo
+     *
+     * @param $photo_id The photo id you like deleting
+     *
+     * @return string Message sucessfully if can delete the photo | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Delete Photo
+     *
+     *      $your_api_instance->delPhoto(1);
+     *       Photo deleted
+     */
     public function delPhoto($photo_id)
     {
         if (!is_numeric($photo_id) || 0 >= $photo_id) {
             throw new InvalidArgumentException(
-                "delPhoto photo_id field should be positive integer");
+                "Api::delPhoto photo_id field should be positive integer");
         }
 
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand(
-            'delPhoto',
-            array('id' => $photo_id)
-        );
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('DeletePhoto',array('photo_id' => $photo_id));
 
         return $this->executeCommand($command);
     }
 
+    /**
+     * Add new Photo Album in user accont
+     *
+     * @param $user_id The user ID
+     *
+     * @param $title One name for the Album
+     *
+     * @param string $description A short description of type photos
+     *
+     * @return array|string  | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add Photo Album
+     *
+     * array(
+     *  "id" => 2,
+     *  "participant" => array(
+     *      "id" => 1,
+     *      "username" => "alex",
+     *      "email" => "alex@chateagratis.net"
+     *  ),
+     *  "title" => "new Album",
+     *  "description" => "this is my secret album"
+     * );
+     *
+     */
     public function addAlbum($user_id, $title, $description='')
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addAlbum user_id field should be positive integer");
+                "Api::addAlbum user_id field should be positive integer");
         }
 
         if (!is_string($title) || 0 >= strlen($title)) {
-            throw new InvalidArgumentException("addAlbum reason title field needs to be a non-empty string");
+            throw new InvalidArgumentException("Api::addAlbum reason title field needs to be a non-empty string");
         }
 
 
@@ -1197,39 +1698,129 @@ class Api
 
         return $this->executeCommand($command);
     }
+
     public function addPhoto($user_id, $imageTile, $imageFile)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addPhoto user_id field should be positive integer");
+                "Api::addPhoto user_id field should be positive integer");
         }
 
         if (!is_string($imageTile) || 0 >= strlen($imageTile)) {
-            throw new InvalidArgumentException("addPhoto imageTile title field needs to be a non-empty string");
+            throw new InvalidArgumentException("Api::addPhoto imageTile title field needs to be a non-empty string");
         }
 
         if (!is_string($imageFile) || 0 >= strlen($imageFile)) {
-            throw new InvalidArgumentException("addPhoto imageFile title field needs to be a non-empty string");
+            throw new InvalidArgumentException("Api::addPhoto imageFile title field needs to be a non-empty string");
         }
         if(!file_exists($imageFile)){
-            throw new InvalidArgumentException("addPhoto '.$imageFile.' not exist or It do not read");
+            throw new InvalidArgumentException("Api::addPhoto '.$imageFile.' not exist or It do not read");
         }
 
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
-        $command = $this->client->getCommand(
-            'AddPhoto',
-            array('id' => $user_id,'ant_photo'=>array('title'=>$imageTile,'files'=>array($imageFile))));
+        $command = $this->client->getCommand('AddPhoto',array('id' => $user_id, 'title'=>'titulo command','image'=>$imageFile));
+
+        return $this->executeCommand($command);
+
+    }
+
+    /**
+     * @param $user_id The user id to retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with photos an album | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show photos of user id
+     *
+     * array (
+        "total" => 40,
+        "limit" => 1,
+        "offset" => 0,
+        "_links" => array(
+            "self" => array(
+                "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos",
+            ),
+     *   ),
+     *   "resources" => array(
+     *       array(
+     *           "id" => 1,
+     *           "participant" => array(
+     *               "id" => 1,
+     *               "username" => "alex",
+     *           ),
+     *           "publicated_at" => "2013-10-29T12:27:34+0100",
+     *           "path" => "photo1-path.jpg",
+     *           "title" => "la foto 1",
+     *           "number_votes" => 15,
+     *           "score" => 15,
+     *           "album" => array(
+     *           "id" => 1,
+     *           "title" => "la foto 1",
+     *           "description" => "default album",
+     *       ),
+     *       "_links" => array(
+     *           "self" => array(
+     *             "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *           ),
+     *           "creator" => array(
+     *               "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *           ),
+     *           "path" => array(
+     *               "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *               "type" => "image/*",
+     *           ),
+     *           "album" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *          )
+     *      )
+     *  )
+     *  );
+     */
+    public function showUserPhotos($user_id, $limit = 1, $offset = 0)
+    {
+
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::ShowUserPhotos user_id field should be positive integer");
+        }
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::ShowUserPhotos() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::ShowUserPhotos() offset must be a positive number,  min 0 ");
+        }
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowUserPhotos',array('id' => $user_id, 'limit'=>$limit, 'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
-    public function showPhoto($photo_id)
-    {
-        // TODO: Implement showPhoto() method.
-    }
 
-    public function showPhotoVotes($photo_id)
+    public function showPhotoVotes($user_id, $photo_id)
     {
-        // TODO: Implement showPhotoVotes() method.$user_id
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showPhotoVotes user_id field should be positive integer");
+        }
+
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::showPhotoVotes photo_id field should be positive integer");
+        }
+
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowUserPhotoVote',array('id' => $user_id, 'photo_id'=>$photo_id));
+
+        return $this->executeCommand($command);
     }
 
     public function showPhotos($user_id)
@@ -1239,10 +1830,7 @@ class Api
 
 
 
-    public function showUserVotes($user_id)
-    {
-        // TODO: Implement showUserVotes() method.
-    }
+
 
     public function addPhotoVote($user_id, $photo_id, $core)
     {
@@ -1551,63 +2139,5 @@ class Api
         return $this->executeCommand($command);
     }
 
-    /**
-     *
-     * Change user password
-     *
-     * @param $current_password your actual password
-     *
-     * @param $new_password your new password
-     *
-     * @param $repeat_new_password repeat your new password
-     *
-     * @return string message ok message if your password have been changed
-     *
-     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
-     *      //ouput message
-     *      Password changed sucessfully
-     *
-     */
-    public function changePassword($current_password,$new_password,$repeat_new_password) {
-        if (!is_string($current_password) || 0 >= strlen($current_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() current_password must be a non-empty string");
-        }
-
-        if (!is_string($new_password) || 0 >= strlen($new_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() new_password must be a non-empty string");
-        }
-
-        if (!is_string($repeat_new_password)
-            || 0 >= strlen($repeat_new_password)
-        ) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() repeat_new_password must be a non-empty string");
-        }
-
-        if (strcmp($new_password, $repeat_new_password)) {
-            throw new InvalidArgumentException(
-                "ApiException::changePassword() the new_password and repeat_new_password isn't equals");
-        }
-
-        //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand(
-            'ChangePassword',
-            array(
-                'change_password' => array(
-                    'current_password' => $current_password,
-                    'plainPassword' => array('first' => $new_password, 'second' => $repeat_new_password)
-                )
-            )
-        );
-        return $this->executeCommand($command);
-    }
 
 }

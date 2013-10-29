@@ -1,55 +1,98 @@
 {
     "operations": {
+        "ShowPhotoAlbum":{
+            "httpMethod": "GET",
+            "uri": "api/albums/{album_id}/photos",
+            "summary": "List all Photo entities of an album",
+            "parameters": {
+                "album_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
+        },
+        "ShowPhoto":{
+            "httpMethod": "GET",
+            "uri": "api/photos/{id}",
+            "summary": "Show a photo",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
         "AddReportPhoto": {
             "httpMethod": "POST",
             "uri": "api/photos/{id}/report",
             "summary": "Reports the given user",
             "parameters": {
-                "id":{
+                "id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
                 },
-                "reason":{
-                    "type": "string",
+                "report": {
+                    "type": "object",
                     "required": true,
-                    "location": "json"
+                    "location": "json",
+                    "parameters": {
+                        "reason": {
+                            "type": "string",
+                            "required": true,
+                            "location": "json"
+                        }
+                    }
                 }
             }
-         },
-        "DeletePhoto":{
+        },
+        "DeletePhoto": {
             "httpMethod": "DELETE",
             "uri": "api/photos/{photo_id}",
             "summary": "Delete a photo",
             "parameters": {
-                "photo_id":{
+                "photo_id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
                 }
             }
         },
-        "AddAlbum":{
+        "AddAlbum": {
             "httpMethod": "POST",
             "uri": "api/users/{id}/albums",
             "summary": "Create an album",
             "parameters": {
-                "id":{
+                "id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
                 },
-                "ant_photo_album":{
+                "ant_photo_album": {
                     "type": "object",
                     "required": true,
                     "location": "json",
-                    "parameters":{
-                        "title":{
+                    "parameters": {
+                        "title": {
                             "type": "string",
                             "required": true,
                             "location": "json"
                         },
-                        "description":{
+                        "description": {
                             "type": "string",
                             "location": "json"
                         }
@@ -57,50 +100,69 @@
                 }
             }
         },
-        "AddPhoto":{
+        "AddPhoto": {
             "httpMethod": "POST",
             "uri": "api/users/{id}/photo",
             "summary": "create a photo",
             "parameters": {
-                "id":{
+                "id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
                 },
-                "ant_photo":{
-                    "type": "object",
+                "title":{
+                    "type": "string",
+                    "required": true
+                },
+                "image": {
+                    "type": "array",
+                    "location": "postFile",
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "ShowUserPhotos":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/photos",
+            "summary": "List all photos of an user",
+            "parameters": {
+                "id": {
+                    "type": "integer",
                     "required": true,
-                    "location": "json",
-                    "parameters":{
-                        "title":{
-                            "type": "string",
-                            "required": true,
-                            "location": "json"
-                        }
-                    },
-                    "files":{
-                        "type": "array",
-                        "required": false,
-                        "location": "postFile",
-                        "sentAs":"image"
-
-                    },
-                    "filename":{
-                        "location": "postFile",
-                        "type" : "string",
-                        "required" :"true"
-                    }
+                    "location": "uri"
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
+        },
+        "ShowUserPhotoVote":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/photos/{photo_id}/votes",
+            "summary": "Show my vote of a photo of the user",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "photo_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-
-
 

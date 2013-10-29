@@ -70,7 +70,6 @@
         "channels.json",
         "me.json",
         "users.json",
-        "profile.json",
         "friendship.json",
         "photo.json",
         "reports.json",

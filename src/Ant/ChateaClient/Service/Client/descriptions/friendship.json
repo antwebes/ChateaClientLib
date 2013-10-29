@@ -42,23 +42,6 @@
                 }
             }
         },
-        "DeleteFriends": {
-            "httpMethod": "DELETE",
-            "uri": "api/users/{id}/friends/{user_delete_id}",
-            "summary": "Deletes a friendship",
-            "parameters": {
-                "id": {
-                    "type": "integer",
-                    "location": "uri",
-                    "require": true
-                },
-                "user_delete_id": {
-                    "type": "integer",
-                    "location": "uri",
-                    "require": true
-                }
-            }
-        },
         "ShowFriendshipsPending":{
             "httpMethod": "GET",
             "uri": "api/users/{id}/friends/pending",
@@ -68,6 +51,18 @@
                     "type": "integer",
                     "location": "uri",
                     "require": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },
@@ -80,6 +75,18 @@
                     "type": "integer",
                     "location": "uri",
                     "require": true
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         },
@@ -111,6 +118,23 @@
                     "require": true
                 },
                 "user_decline_id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                }
+            }
+        },
+        "DeleteFriends": {
+            "httpMethod": "DELETE",
+            "uri": "api/users/{id}/friends/{user_delete_id}",
+            "summary": "Deletes a friendship",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri",
+                    "require": true
+                },
+                "user_delete_id": {
                     "type": "integer",
                     "location": "uri",
                     "require": true

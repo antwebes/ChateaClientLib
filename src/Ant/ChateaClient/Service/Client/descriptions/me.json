@@ -5,10 +5,76 @@
             "uri": "api/me",
             "summary": "Print the user name associated with the current effective user"
         },
+        "UpdateAccount": {
+            "httpMethod": "PUT",
+            "uri": "api/me",
+            "summary": "Update a profile of an user",
+            "parameters": {
+                "profile": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "username": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "email": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "current_password": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
         "DelMe": {
             "httpMethod": "DELETE",
             "uri": "api/me",
             "summary": "delete me user"
+        },
+        "ChangePassword": {
+            "httpMethod": "PATCH",
+            "uri": "api/me/change-password",
+            "summary": "Change user password",
+            "parameters": {
+                "change_password": {
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "current_password": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        },
+                        "plainPassword": {
+                            "type": "object",
+                            "required": true,
+                            "location": "json",
+                            "properties": {
+                                "first": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                },
+                                "second": {
+                                    "location": "json",
+                                    "type": "string",
+                                    "required": true
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
         }
     }
 }
