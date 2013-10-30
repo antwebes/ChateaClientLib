@@ -1,0 +1,172 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: ant3
+ * Date: 23/10/13
+ * Time: 15:12
+ * To change this template use File | Settings | File Templates.
+ */
+
+namespace Ant\ChateaClient\Service\Client;
+
+use Guzzle\Common\Collection;
+use Guzzle\Plugin\Cookie\Cookie;
+use  Guzzle\Common\Event;
+use Guzzle\Service\Description\ServiceDescription;
+use Guzzle\Service\Command\CommandInterface;
+use Ant\Guzzle\Plugin\AcceptHeaderPluging;
+
+class ChateaGratisAppClient extends Client
+{
+
+    const  COOKIE_NAME = 'chat_client';
+    /**@var StoreInterface store */
+    private $store ;
+    public static function factory($config = array()){
+        // Provide a hash of default client configuration options
+        $default = array(
+            'base_url'=&gt;'{scheme}://{subdomain}.chateagratis.local',
+            'Accept'=&gt;'application/json',
+            'environment'=&gt;'prod',
+            'scheme' =&gt; 'https',
+            'version'=&gt;'',
+            'subdomain'=&gt;'api',
+            'service-description-name' =&gt; Client::NAME_SERVICE_API,
+            'store' =&gt; 'Ant\ChateaClient\Service\Client\FileStore'
+        );
+
+        $required = array(
+            'base_url',
+            'Accept',
+            'scheme',
+            'environment',
+            'subdomain',
+            'client_id',
+            'secret',
+            'store'
+        );
+
+        // Merge in default settings and validate the config
+        $config = Collection::fromConfig($config, $default, $required);
+
+        if($config['environment'] == 'dev' ){
+
+            $config['base_url'] = $config['base_url'] . '/app_dev.php';
+            $config['scheme'] = 'http';
+            $config['ssl.certificate_authority'] = 'system';
+            $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=&gt;false,CURLOPT_SSL_VERIFYPEER=&gt;false);
+        }
+
+        // Create a new ChateaGratis client
+        $client = new self($config-&gt;get('base_url'),
+            $config-&gt;get('scheme'),
+            $config-&gt;get('subdomain'),
+            $config
+        );
+
+        $store = $config-&gt;get('store');
+        $client-&gt;store = new $store();
+        $client-&gt;addSubscriber(new AcceptHeaderPluging($config-&gt;toArray()));
+
+        return $client;
+    }
+    public function prepareCommand(CommandInterface $command)
+    {
+        $request = parent::prepareCommand($command);
+        $request-&gt;setHeader('Authorization ','Bearer '. $this-&gt;prepareAccessToken());
+        return $request;
+    }
+
+    public function updateAccessToken($access_token)
+    {
+        $this-&gt;getEventDispatcher()-&gt;addListener('request.before_send', function(Event $event) use($access_token){
+            $request = $event['request'];
+            $request-&gt;setHeader('Authorization ','Bearer '. $access_token);
+        });
+    }
+
+
+    private function prepareAccessToken()
+    {
+
+        if(!$this-&gt;store-&gt;getPersistentData('token_expires_at')){
+
+            $authData = ChateaOAuth2Client::factory(array('environment'=&gt;$this-&gt;getConfig('environment'),'client_id'=&gt;$this-&gt;getConfig('client_id'),'secret'=&gt;$this-&gt;getConfig('secret')))-&gt;withClientCredentials();
+            $this-&gt;store-&gt;setPersistentData('access_token',$authData['access_token']);
+            $this-&gt;store-&gt;setPersistentData('token_refresh',$authData['refresh_token']);
+            $this-&gt;store-&gt;setPersistentData('token_expires_at',$authData['expires_in'] + time());
+
+            return $authData['access_token'];
+
+        }else if($this-&gt;store-&gt;getPersistentData('token_expires_at') &lt; time()){
+
+            $authData = ChateaOAuth2Client::factory(array('environment'=&gt;$this-&gt;getConfig('environment'),'client_id'=&gt;$this-&gt;getConfig('client_id'),'secret'=&gt;$this-&gt;getConfig('secret')))-&gt;withRefreshToken($_SESSION['chatea_client_refresh']);
+
+            $this-&gt;store-&gt;setPersistentData('access_token',$authData['access_token']);
+            $this-&gt;store-&gt;setPersistentData('token_refresh',$authData['refresh_token']);
+            $this-&gt;store-&gt;setPersistentData('token_expires_at',$authData['expires_in'] + time());
+
+            return $authData['access_token'];
+
+        }else{
+            return $this-&gt;store-&gt;getPersistentData('access_token');
+        }
+    }
+    public function revokeToken()
+    {
+        $command = $this-&gt;getCommand('RevokeToken');
+        try{
+            return $command-&gt;execute();
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex-&gt;getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex-&gt;getMessage(), 400, $ex);
+        }catch(CurlException $ex){
+            throw new AuthenticationException($ex-&gt;getMessage(), 400, $ex);
+        }
+    }
+}</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

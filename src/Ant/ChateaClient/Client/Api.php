@@ -25,7 +25,7 @@ use Guzzle\Service\Command\CommandInterface;
  * @see Ant\ChateaClient\Client\IApi;
  * @see Ant\ChateaClient\Client\ApiException;
  */
-class Api
+class Api implements  ApiInterface
 {
 
     private $client;

@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation » \Ant\ChateaClient\Service\Client\FileStore</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Ant.html"><i class="icon-th"></i> Ant</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Ant.html"><i class="icon-folder-open"></i> Ant</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">28</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct() :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_clearAllPersistentData" title="clearAllPersistentData() :: Clear all data from the persistent storage"><span class="description">Clear all data from the persistent storage</span><pre>clearAllPersistentData()</pre></a></li>
+<li class="method public "><a href="#method_clearPersistentData" title="clearPersistentData() :: Clear the data with $key from the persistent storage"><span class="description">Clear the data with $key from the persistent storage</span><pre>clearPersistentData()</pre></a></li>
+<li class="method public "><a href="#method_getPersistentData" title="getPersistentData() :: Get the data for $key, persisted by Client::setPersistentData()"><span class="description">Get the data for $key, persisted by Client::setPersistentData()</span><pre>getPersistentData()</pre></a></li>
+<li class="method public "><a href="#method_setPersistentData" title="setPersistentData() :: Stores the given ($key, $value) pair, so that future calls to
+getPersistentData($key) return $value. This call may be in another request."><span class="description">Stores the given ($key, $value) pair, so that future calls to
+getPersistentData($key) return $value. This call may be in another request.</span><pre>setPersistentData()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_getDataInFile" title="getDataInFile() :: "><span class="description">getDataInFile()
+        </span><pre>getDataInFile()</pre></a></li>
+<li class="method protected "><a href="#method_saveInFile" title="saveInFile() :: "><span class="description">saveInFile()
+        </span><pre>saveInFile()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_config" title="$config() :: "><span class="description"></span><pre>$config</pre></a></li>
+<li class="property protected "><a href="#property_kSupportedKeys" title="$kSupportedKeys() :: "><span class="description"></span><pre>$kSupportedKeys</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul><li class="constant  "><a href="#constant_SIGNED_ALGORITHM" title="SIGNED_ALGORITHM() :: "><span class="description">SIGNED_ALGORITHM</span><pre>SIGNED_ALGORITHM</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Ant\ChateaClient\Service\Client\FileStore"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Ant.html">Ant</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.html">ChateaClient</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.html">Service</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.Client.html">Client</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Ant.ChateaClient.Service.Client.FileStore.html">FileStore</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description"></p>
+<div class="details">
+<div class="long_description"></div>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct($config) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$config</h4></div>
+</div></div>
+</div>
+<a id="method_clearAllPersistentData"></a><div class="element clickable method public method_clearAllPersistentData" data-toggle="collapse" data-target=".method_clearAllPersistentData .collapse">
+<h2>Clear all data from the persistent storage</h2>
+<pre>clearAllPersistentData() : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_clearPersistentData"></a><div class="element clickable method public method_clearPersistentData" data-toggle="collapse" data-target=".method_clearPersistentData .collapse">
+<h2>Clear the data with $key from the persistent storage</h2>
+<pre>clearPersistentData(string $key) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_getPersistentData"></a><div class="element clickable method public method_getPersistentData" data-toggle="collapse" data-target=".method_getPersistentData .collapse">
+<h2>Get the data for $key, persisted by Client::setPersistentData()</h2>
+<pre>getPersistentData(string $key, boolean $default) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>The key of the data to retrieve</p></div>
+<div class="subelement argument">
+<h4>$default</h4>
+<code>boolean</code><p>The default value to return if $key is not found</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
+</div>
+<a id="method_setPersistentData"></a><div class="element clickable method public method_setPersistentData" data-toggle="collapse" data-target=".method_setPersistentData .collapse">
+<h2>Stores the given ($key, $value) pair, so that future calls to
+getPersistentData($key) return $value. This call may be in another request.</h2>
+<pre>setPersistentData(string $key, array $value) : void</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>array</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html">\Ant\ChateaClient\Service\Client\AuthenticationException</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_getDataInFile"></a><div class="element clickable method protected method_getDataInFile" data-toggle="collapse" data-target=".method_getDataInFile .collapse">
+<h2>getDataInFile()
+        </h2>
+<pre>getDataInFile() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_saveInFile"></a><div class="element clickable method protected method_saveInFile" data-toggle="collapse" data-target=".method_saveInFile .collapse">
+<h2>saveInFile()
+        </h2>
+<pre>saveInFile($content) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$content</h4></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
+<h2>$config</h2>
+<pre>$config </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_kSupportedKeys"> </a><div class="element clickable property protected property_kSupportedKeys" data-toggle="collapse" data-target=".property_kSupportedKeys .collapse">
+<h2>$kSupportedKeys</h2>
+<pre>$kSupportedKeys </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_SIGNED_ALGORITHM"> </a><div class="element clickable constant  constant_SIGNED_ALGORITHM" data-toggle="collapse" data-target=".constant_SIGNED_ALGORITHM .collapse">
+<h2>SIGNED_ALGORITHM</h2>
+<pre>SIGNED_ALGORITHM </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+</div>
+</body>
+</html>

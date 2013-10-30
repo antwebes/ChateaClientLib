@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+
+namespace Ant\ChateaClient\Service\Client;
+
+use Guzzle\Common\Collection;
+
+class FileStore implements StoreInterface
+{
+    protected $config;
+    protected static $kSupportedKeys = array('access_token', 'token_refresh','token_expires_at');
+
+    const SIGNED_ALGORITHM = 'HMAC-SHA256';
+
+    public function __construct($config = array())
+    {
+        $default = array(
+            'file_directory' =&gt; sys_get_temp_dir(),
+            'file_name' =&gt; 'chatea_client',
+            'SIGNED_ALGORITHM' =&gt; 'HMAC-SHA256'
+        );
+        $required = array(
+            'file_directory',
+            'file_name',
+            'SIGNED_ALGORITHM'
+        );
+
+        // Merge in default settings and validate the config
+        $this-&gt;config = Collection::fromConfig($config, $default, $required);
+    }
+
+    protected function saveInFile($content)
+    {
+        $filename = $this-&gt;config-&gt;get('file_directory').DIRECTORY_SEPARATOR.$this-&gt;config-&gt;get('file_name');
+        $fp = fopen($filename,&quot;a+b&quot;);
+        //TODO: Cifrar contido
+        fwrite($fp,$content.&quot;;&quot;);
+        fclose($fp);
+    }
+    protected function getDataInFile()
+    {
+        $filename = $this-&gt;config-&gt;get('file_directory').DIRECTORY_SEPARATOR.$this-&gt;config-&gt;get('file_name');
+
+        if(!file_exists($filename)){
+            return array();
+        }
+
+        $fp = fopen($filename,&quot;rb&quot;);
+        //TODO: Descifrar
+        $contenido = fread($fp, filesize($filename));
+        fclose($fp);
+
+        $data_ouput = array();
+
+        foreach (explode(';',$contenido) as $key=&gt;$value){
+            $data_tmp = explode('=',$value);
+            if(count($data_tmp) &gt; 1){
+                $data_ouput[$data_tmp[0]] = $data_tmp[1];
+            }
+        }
+        return $data_ouput;
+    }
+    /**
+     * Stores the given ($key, $value) pair, so that future calls to
+     * getPersistentData($key) return $value. This call may be in another request.
+     *
+     * @param string $key
+     * @param array  $value
+     *
+     * @throws AuthenticationException
+     * @return void
+     */
+    public function setPersistentData ($key, $value)
+    {
+        if (!in_array($key, self::$kSupportedKeys)) {
+            throw new AuthenticationException('Unsupported key passed to setPersistentData.');
+        }
+        $this-&gt;saveInFile($key.'='.$value);
+    }
+
+    /**
+     * Get the data for $key, persisted by Client::setPersistentData()
+     *
+     * @param string  $key     The key of the data to retrieve
+     * @param boolean $default The default value to return if $key is not found
+     *
+     * @return mixed
+     */
+    public function getPersistentData ($key, $default = false)
+    {
+        if (!in_array($key, self::$kSupportedKeys)) {
+            return $default;
+        }
+
+        $lines = $this-&gt;getDataInFile();
+        return array_key_exists($key, $lines) ?  $lines[$key] : $default;
+    }
+
+    /**
+     * Clear the data with $key from the persistent storage
+     *
+     * @param string $key
+     *
+     * @return void
+     */
+    public function clearPersistentData ($key)
+    {
+        $filename = $this-&gt;config-&gt;get('file_directory').DIRECTORY_SEPARATOR.$this-&gt;config-&gt;get('file_name');
+
+        if(!file_exists($filename)){
+            return array();
+        }
+
+        $fp = fopen($filename,&quot;rb&quot;);
+        //TODO: Descifrar
+        $contenido = fread($fp, filesize($filename));
+        fclose($fp);
+
+        $lines = explode(';',$contenido);
+        $lines = array_key_exists($key, $lines) ? $lines[$key] = null: $lines;
+
+        $fp = fopen($filename,&quot;wb&quot;);
+
+        foreach($lines as $key=&gt;$value){
+            fwrite($fp,$key.'=&gt;'.$value.&quot;;&quot;);
+        }
+        fclose($fp);
+    }
+
+    /**
+     * Clear all data from the persistent storage
+     *
+     * @return void
+     */
+    public function clearAllPersistentData ()
+    {
+        $filename = $this-&gt;config-&gt;get('file_directory').__DIR__.$this-&gt;config-&gt;get('file_name');
+        unlink ($filename);
+    }}</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>

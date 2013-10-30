@@ -8,4 +8,4 @@ IN OAuth2 A better and simple structure In API A Repository Content
 
 >mkdir /docs
 
->phpdoc -d ./src -t docs/ --template zend
+>phpdoc -d ./src -t docs/ --template responsive

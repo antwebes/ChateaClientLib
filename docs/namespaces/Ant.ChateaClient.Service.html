@@ -1,347 +1,168 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <meta charset="utf-8"/>
-    <title>API Documentation</title>
-    <meta name="author" content=""/>
-    <meta name="description" content=""/>
-
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/prism.css" rel="stylesheet" media="all"/>
-    <link href="../css/template.css" rel="stylesheet" media="all"/>
-    
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="../js/jquery.smooth-scroll.js"></script>
-    <script src="../js/prism.min.js"></script>
-    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-    
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
-    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
-    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>API Documentation » Ant\ChateaClient\Service</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
 </head>
 <body>
-
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <i class="icon-ellipsis-vertical"></i>
-            </a>
-            <a class="brand" href="../index.html">API Documentation</a>
-
-            <div class="nav-collapse">
-                <ul class="nav pull-right">
-                    <li class="dropdown">
-                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
-                            API Documentation <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                                                        <li><a href="../namespaces/Ant.html">\Ant</a></li>
-                                                    </ul>
-                    </li>
-                    <li class="dropdown" id="charts-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Charts <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../graphs/class.html">
-                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="reports-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Reports <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="../reports/errors.html">
-                                    <i class="icon-list-alt"></i>&#160;Errors
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../reports/markers.html">
-                                    <i class="icon-list-alt"></i>&#160;Markers
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--<div class="go_to_top">-->
-    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
-    <!--</div>-->
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">API Documentation</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Ant.html"><i class="icon-th"></i> Ant</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Ant.html"><i class="icon-folder-open"></i> Ant</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">28</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
 </div>
-
-<div id="___" class="container-fluid">
-        <section class="row-fluid">
-        <div class="span2 sidebar">
-                                <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-536713989"></a>
-                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
-            </div>
-            <div id="namespace-536713989" class="accordion-body collapse in">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1660768545"></a>
-                                <a href="../namespaces/Ant.html" style="margin-left: 30px; padding-left: 0">Ant</a>
-            </div>
-            <div id="namespace-1660768545" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2123324794"></a>
-                                <a href="../namespaces/Ant.ChateaClient.html" style="margin-left: 30px; padding-left: 0">ChateaClient</a>
-            </div>
-            <div id="namespace-2123324794" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-388105339"></a>
-                                <a href="../namespaces/Ant.ChateaClient.Client.html" style="margin-left: 30px; padding-left: 0">Client</a>
-            </div>
-            <div id="namespace-388105339" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                    <li class="interface"><a href="../classes/Ant.ChateaClient.Client.IApi.html">IApi</a></li>
-                                                                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Client.AuthenticationException.html">AuthenticationException</a></li>
-                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Client.Authentication.html">Authentication</a></li>
-                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Client.Api.html">Api</a></li>
-                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Client.ApiException.html">ApiException</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1540168427"></a>
-                                <a href="../namespaces/Ant.ChateaClient.Service.html" style="margin-left: 30px; padding-left: 0">Service</a>
-            </div>
-            <div id="namespace-1540168427" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-218593521"></a>
-                                <a href="../namespaces/Ant.ChateaClient.Service.Client.html" style="margin-left: 30px; padding-left: 0">Client</a>
-            </div>
-            <div id="namespace-218593521" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                    <li class="interface"><a href="../classes/Ant.ChateaClient.Service.Client.ClientInterface.html">ClientInterface</a></li>
-                                                                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Service.Client.Client.html">Client</a></li>
-                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisClient.html">ChateaGratisClient</a></li>
-                                                    <li class="class"><a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html">ChateaOAuth2Client</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-762034111"></a>
-                                <a href="../namespaces/Ant.Guzzle.html" style="margin-left: 30px; padding-left: 0">Guzzle</a>
-            </div>
-            <div id="namespace-762034111" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1262771384"></a>
-                                <a href="../namespaces/Ant.Guzzle.Plugin.html" style="margin-left: 30px; padding-left: 0">Plugin</a>
-            </div>
-            <div id="namespace-1262771384" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                                                    <div class="accordion" style="margin-bottom: 0">
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-117341428"></a>
-                                <a href="../namespaces/Ant.Guzzle.Plugin.Token.html" style="margin-left: 30px; padding-left: 0">Token</a>
-            </div>
-            <div id="namespace-117341428" class="accordion-body collapse ">
-                <div class="accordion-inner">
-
-                    
-                    <ul>
-                                                    <li class="interface"><a href="../classes/Ant.Guzzle.Plugin.Token.AccessToken.html">AccessToken</a></li>
-                                                                                                    <li class="class"><a href="../classes/Ant.Guzzle.Plugin.Token.BearerToken.html">BearerToken</a></li>
-                                                    <li class="class"><a href="../classes/Ant.Guzzle.Plugin.Token.MacToken.html">MacToken</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                                    <li class="class"><a href="../classes/Ant.Guzzle.Plugin.OAuth2Plugin.html">OAuth2Plugin</a></li>
-                                                    <li class="class"><a href="../classes/Ant.Guzzle.Plugin.AcceptHeaderPluging.html">AcceptHeaderPluging</a></li>
-                                                    <li class="class"><a href="../classes/Ant.Guzzle.Plugin.QueryPluging.html">QueryPluging</a></li>
-                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-                    
-                    <ul>
-                                                                                            </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        </div>
-    </section>
-    <section class="row-fluid">
-        <div class="span10 offset2">
-            <div class="row-fluid">
-                <div class="span8 content namespace">
-                    <nav>
-                                                <a href="../namespaces/Ant.ChateaClient.html">\Ant\ChateaClient</a>
-                                            </nav>
-                    <h1><small>\Ant\ChateaClient</small>Service</h1>
-
-                                        <h2>Namespaces</h2>
-                    <table class="table table-hover">
-                                                    <tr>
-                                <td><a href="../namespaces/Ant.ChateaClient.Service.Client.html">Client</a></td>
-                            </tr>
-                                            </table>
-                    
-                    
-                    
-                                    </div>
-
-                <aside class="span4 detailsbar">
-                    <dl>
-                        <dt>Namespace hierarchy</dt>
-                        <dd class="hierarchy">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                    <div class="namespace-wrapper"><a href="../namespaces/default.html">\</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/Ant.html">\Ant</a></div>
-                                                            
-                                    <div class="namespace-wrapper"><a href="../namespaces/Ant.ChateaClient.html">\Ant\ChateaClient</a></div>
-                                                                                        <div class="namespace-wrapper">\Ant\ChateaClient\Service</div>
-                        </dd>
-                    </dl>
-                </aside>
-            </div>
-
-            
-            
-        </div>
-    </section>
-
-    <footer class="row-fluid">
-        <section class="span10 offset2">
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <section class="row-fluid footer-sections">
-                        <section class="span4">
-                                                        <h1><i class="icon-code"></i></h1>
-                            <div>
-                                <ul>
-                                                                            <li><a href="../namespaces/Ant.html">\Ant</a></li>
-                                                                    </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-bar-chart"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="">Class Hierarchy Diagram</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                        <section class="span4">
-                                                        <h1><i class="icon-pushpin"></i></h1>
-                            <div>
-                                <ul>
-                                    <li><a href="">Errors</a></li>
-                                    <li><a href="">Markers</a></li>
-                                </ul>
-                            </div>
-                        </section>
-                    </section>
-                </section>
-            </section>
-            <section class="row-fluid">
-                <section class="span10 offset1">
-                    <hr />
-                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on October 21st, 2013 at 18:00.
-                </section>
-            </section>
-        </section>
-    </footer>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Namespaces</li>
+<li>
+<span class="empty-namespace"><i class="icon-stop"></i>Service</span><ul class="nav nav-list nav-namespaces"><li>
+<a href="../namespaces/Ant.ChateaClient.Service.Client.html" title="Client"><i class="icon-th"></i>Client</a><ul class="nav nav-list nav-namespaces"></ul>
+</li></ul>
+</li>
+</ul>
+</div>
+<div class="span8 namespace-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Ant.html">Ant</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.html">ChateaClient</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.html">Service</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<div class="alert alert-info">This namespace does not contain any documentable elements</div>
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Ant.html">Ant</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.html">ChateaClient</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.html">Service</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.Client.html">Client</a>
+</li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="ClientInterface" class="element ajax clickable interface">
+<h1>ClientInterface<a href="../classes/Ant.ChateaClient.Service.Client.ClientInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.ClientInterface.html" class="more">« More »</a>
+</div>
+<div id="StoreInterface" class="element ajax clickable interface">
+<h1>StoreInterface<a href="../classes/Ant.ChateaClient.Service.Client.StoreInterface.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.StoreInterface.html" class="more">« More »</a>
+</div>
+<div id="AuthenticationException" class="element ajax clickable class">
+<h1>AuthenticationException<a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html" class="more">« More »</a>
+</div>
+<div id="ChateaGratisAppClient" class="element ajax clickable class">
+<h1>ChateaGratisAppClient<a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html" class="more">« More »</a>
+</div>
+<div id="ChateaGratisClient" class="element ajax clickable class">
+<h1>ChateaGratisClient<a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisClient.html">¶</a>
+</h1>
+<p class="short_description">A ChateaGratis API client</p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisClient.html" class="more">« More »</a>
+</div>
+<div id="ChateaOAuth2Client" class="element ajax clickable class">
+<h1>ChateaOAuth2Client<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html" class="more">« More »</a>
+</div>
+<div id="Client" class="element ajax clickable class">
+<h1>Client<a href="../classes/Ant.ChateaClient.Service.Client.Client.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.Client.html" class="more">« More »</a>
+</div>
+<div id="FileStore" class="element ajax clickable class">
+<h1>FileStore<a href="../classes/Ant.ChateaClient.Service.Client.FileStore.html">¶</a>
+</h1>
+<p class="short_description"></p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.FileStore.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
+</a> and<br>
+            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+</div>
 </body>
 </html>

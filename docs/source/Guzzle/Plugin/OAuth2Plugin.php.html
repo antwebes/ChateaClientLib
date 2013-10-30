@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <script
+            type="text/javascript"
+            src="../../../js/jquery-1.4.2.min.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shCore.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushJScript.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushPhp.js">
+        </script>
+        <script
+            type="text/javascript"
+            src="../../../syntax_highlighter/scripts/shBrushXml.js">
+        </script>
+        <link
+            href="../../../syntax_highlighter/styles/shCore.css" rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shCoreEclipse.css"
+            rel="stylesheet" type="text/css"
+        />
+        <link
+            href="../../../syntax_highlighter/styles/shThemeWordpress.css"
+            rel="stylesheet" type="text/css"
+        />
+    </head>
+    <body>
+        <pre class="brush: php">&lt;?php
+namespace Ant\Guzzle\Plugin;
+
+/**
+ * Created by Ant-WEB S.L.
+ * User: Xabier Fern&aacute;ndez Rodr&iacute;guez &lt;jjbier@gmail.com&gt;
+ * Date: 9/10/13
+ * Time: 10:43
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+use Guzzle\Common\Event;
+use Guzzle\Common\Collection;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Ant\Guzzle\Plugin\Token\BearerToken;
+use Ant\Guzzle\Plugin\Token\MacToken;
+
+class OAuth2Plugin implements EventSubscriberInterface
+{
+    private $config;
+
+    public function __construct($config)
+    {
+        $this-&gt;config = Collection::fromConfig($config, array(
+                'version' =&gt; '2.0',
+                'token_type' =&gt; 'Bearer',
+            ), array(
+                'version', 'token_type',
+                'access_token'
+            ));
+    }
+
+    public function updateAccessToken($acces_token)
+    {
+        $this-&gt;config['access_token'] = $acces_token;
+    }
+    /**
+     * Returns an array of event names this subscriber wants to listen to.
+     *
+     * The array keys are event names and the value can be:
+     *
+     *  * The method name to call (priority defaults to 0)
+     *  * An array composed of the method name to call and the priority
+     *  * An array of arrays composed of the method names to call and respective
+     *    priorities, or 0 if unset
+     *
+     * For instance:
+     *
+     *  * array('eventName' =&gt; 'methodName')
+     *  * array('eventName' =&gt; array('methodName', $priority))
+     *  * array('eventName' =&gt; array(array('methodName1', $priority), array('methodName2'))
+     *
+     * @return array The event names to listen to
+     *
+     * @api
+     */
+    public static function getSubscribedEvents()
+    {
+        return array('request.before_send' =&gt; 'onRequestBeforeSend');
+    }
+
+    /**
+     * Request before-send event handler
+     *
+     * @param Event $event Event received
+     * @return string AccessToken value
+     */
+    public function onRequestBeforeSend(Event $event)
+    {
+        $request = $event['request'];
+
+        if (is_string($this-&gt;config['access_token'])) {
+            $params = array('access_token' =&gt; $this-&gt;config['access_token']);
+            if (isset($this-&gt;config['token_format'])) {
+                $params['token_format'] = $this-&gt;config['token_format'];
+            }
+            switch ($this-&gt;config['token_type']) {
+                case 'Mac':
+                    $this-&gt;config['access_token'] = new MacToken($params);
+                    break;
+                case 'Bearer':
+                default:
+                    $this-&gt;config['access_token'] = new BearerToken($params);
+                    break;
+            }
+        }
+        $request-&gt;setHeader('Authorization',(string) $this-&gt;config['access_token']);
+        return $this-&gt;config['access_token'];
+    }
+}</pre>
+        <script type="text/javascript">
+             SyntaxHighlighter.all()
+             jQuery('.gutter div').each(function(key, data){
+                jQuery(data).prepend('<a name="L'+jQuery(data).text()+'"/>');
+             });
+        </script>
+    </body>
+</html>
