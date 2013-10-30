@@ -1,5 +1,49 @@
 {
     "operations": {
-
+        "ShowReports":{
+            "httpMethod": "GET",
+            "uri": "api/reports",
+            "summary": "List reports",
+            "parameters": {
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
+        },
+        "ShowReport":{
+            "httpMethod": "GET",
+            "uri": "api/reports/{id}",
+            "summary": "Shows the details of a report",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "uri"
+                }
+            }
+        },
+        "MarksReviewedReport":{
+            "httpMethod": "PUT",
+            "uri": "api/reports/{id}",
+            "summary": "Marks a report as reviewed",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "location": "query"
+                }
+            }
+        }
     }
 }
+
+
+
+

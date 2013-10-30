@@ -133,7 +133,7 @@
             }
         },
         "UpdateUserProfile": {
-            "httpMethod": "POST",
+            "httpMethod": "PATCH",
             "uri": "api/users/{id}/profiles",
             "summary": "show a profile",
             "parameters": {
@@ -150,16 +150,54 @@
                         "about": {
                             "location": "json",
                             "type": "string",
-                            "required": true,
                             "description": "the about in profile"
                         },
                         "sexualOrientation": {
                             "location": "json",
                             "type": "string",
-                            "required": true,
                             "description": "The sexualOrientation"
                         }
                     }
+                }
+            }
+        },
+        "AddUserReports":{
+            "httpMethod": "POST",
+            "uri": "/api/users/{id}/report",
+            "summary": "show a report",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to add profile by ID",
+                    "required": true
+                },
+                "report":{
+                    "type": "object",
+                    "required": true,
+                    "location": "json",
+                    "properties": {
+                        "reason": {
+                            "location": "json",
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                }
+            }
+        },
+        "ShowUserVisitors":{
+            "httpMethod": "GET",
+            "uri": "api/users/{user_id}/visitors",
+            "summary": "show visit of one profile",
+            "parameters": {
+                "user_id": {
+                    "location": "uri",
+                    "type": "integer",
+                    "required": true
+                },
+                "maxResult": {
+                    "location": "query",
+                    "type": "integer"
                 }
             }
         }

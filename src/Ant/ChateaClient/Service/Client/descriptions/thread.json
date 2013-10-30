@@ -5,6 +5,10 @@
             "uri": "api/users/{id}/threads",
             "summary": "Creates a new threads",
             "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                },
                 "message": {
                     "type": "object",
                     "required": true,
@@ -29,7 +33,7 @@
                 }
             }
         },
-        "GetThreadInbox": {
+        "ShowThreadInbox": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/threads/inbox",
             "summary": "Lists threads with messages sent to the logged in user",
@@ -41,7 +45,7 @@
                 }
             }
         },
-        "GetThreadSent": {
+        "ShowThreadSent": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/threads/sent",
             "summary": "Lists threads with messages sent by the logged in user",
@@ -53,7 +57,7 @@
                 }
             }
         },
-        "GetThreadMessages": {
+        "ShowThreadMessages": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/threads/{thread_id}",
             "summary": "Lists the messages of a given thread",

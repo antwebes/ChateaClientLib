@@ -230,13 +230,13 @@ class Api
      *       ),
      *      "_links" => array(
      *          "self" => array(
-     *              href => "http://api.chateagratis.local/app_dev.php/api/channels/11"
+     *              href => "http://api.chateagratis.net/api/channels/11"
      *          ),
      *          "fans" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/channels/11/fans"
+     *              "href" => "http://api.chateagratis.net/api/channels/11/fans"
      *          ),
      *          "owner" => array(
-     *              "href => http://api.chateagratis.local/app_dev.php/api/users/1"
+     *              "href => http://api.chateagratis.net/api/users/1"
      *           )
      *      );
      *
@@ -537,7 +537,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *          "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2/fans"
+     *          "href" => "http://api.chateagratis.net/api/channels/2/fans"
      *          )
      *      ),
      *      "resources" => array(
@@ -546,16 +546,16 @@ class Api
      *                   "email" => "alex@chateagratis.net",
      *                   "_links" => array(
      *                          "self" => array(
-     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1"
+     *                              "href" => "http://api.chateagratis.net/api/users/1"
      *                          ),
      *                          "channels" => array(
-     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels"
+     *                              "href" => "http://api.chateagratis.net/api/users/1/channels"
      *                          ),
      *                          "channels_fan" => array(
-     *                               "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan"
+     *                               "href" => "http://api.chateagratis.net/api/users/1/channelsFan"
      *                          ),
      *                          "blocked_users" => array(
-     *                              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked"
+     *                              "href" => "http://api.chateagratis.net/api/users/1/blocked"
      *                          )
      *                   )
      *           )
@@ -609,7 +609,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *              "self" => array(
-     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/channelstype"
+     *                  "href" => "http://api.chateagratis.net/api/channelstype"
      *              ),
      *      ),
      *      "resources" => array(
@@ -617,7 +617,7 @@ class Api
      *                  "name" => "adult",
      *                   "_links" => array(
      *                          "channelsType" => array(
-     *                                  "href" => "http://api.chateagratis.local/app_dev.php/api/channels?filter%3DchannelType=adult",
+     *                                  "href" => "http://api.chateagratis.net/api/channels?filter%3DchannelType=adult",
      *                          )
      *                   )
      *              )
@@ -671,7 +671,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *              "href" => "http://api.chateagratis.net/api/users/1/channels",
      *          ),
      *      ),
      *      "resources" => array(
@@ -688,13 +688,13 @@ class Api
      *              ),
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/1",
+     *                      "href" => "http://api.chateagratis.net/api/channels/1",
      *                  ),
      *                  "fans" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/1/fans",
+     *                      "href" => "http://api.chateagratis.net/api/channels/1/fans",
      *                  ),
      *                  "owner" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.net/api/users/1",
      *                  ),
      *              )
      *          )
@@ -749,7 +749,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan"
+     *              "href" => "http://api.chateagratis.net/api/users/1/channelsFan"
      *          ),
      *      ),
      *      "resources" => array(
@@ -759,13 +759,13 @@ class Api
      *              "slug" => "channel-2",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2"
+     *                      "href" => "http://api.chateagratis.net/api/channels/2"
      *                  ),
      *                  "fans" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/channels/2/fans",
+     *                      "href" => "http://api.chateagratis.net/api/channels/2/fans",
      *                  ),
      *                  "owner" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2"
+     *                      "href" => "http://api.chateagratis.net/api/users/2"
      *                  )
      *              )
      *          )
@@ -906,7 +906,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends",
+     *              "href" => "http://api.chateagratis.net/api/users/1/friends",
      *          ),
      *      ),
      *      "resources" => array(
@@ -916,16 +916,16 @@ class Api
      *              "email" => "alex3@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                      "href" => "http://api.chateagratis.net/api/users/3",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/blocked",
      *                  ),
      *              ),
      *          ),
@@ -1018,7 +1018,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends/pending",
+     *              "href" => "http://api.chateagratis.net/api/users/1/friends/pending",
      *          ),
      *      ),
      *      "resources" => array(
@@ -1029,16 +1029,16 @@ class Api
      *              "email" => "alex3@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                      "href" => "http://api.chateagratis.net/api/users/3",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/blocked",
      *                  ),
      *              )
      *          )
@@ -1092,7 +1092,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/friends/pending",
+     *              "href" => "http://api.chateagratis.net/api/users/1/friends/pending",
      *          ),
      *      ),
      *      "resources" => array(
@@ -1103,16 +1103,16 @@ class Api
      *              "email" => "alex3@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3",
+     *                      "href" => "http://api.chateagratis.net/api/users/3",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channels",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/channelsFan",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/3/blocked",
+     *                      "href" => "http://api.chateagratis.net/api/users/3/blocked",
      *                  ),
      *              )
      *          )
@@ -1284,16 +1284,16 @@ class Api
      *          'email' => 'xabier@antweb.es',
      *          "_links" => array(
      *              "self" => array(
-     *                "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                "href" => "http://api.chateagratis.net/api/users/1",
      *              ),
      *              "channels" => array(
-     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *                  "href" => "http://api.chateagratis.net/api/users/1/channels",
      *              ),
      *              "channels_fan" => array(
-     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *                  "href" => "http://api.chateagratis.net/api/users/1/channelsFan",
      *              ),
      *              "blocked_users" => array(
-     *                  "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *                  "href" => "http://api.chateagratis.net/api/users/1/blocked",
      *              )
      *          )
      *      );
@@ -1467,7 +1467,7 @@ class Api
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *              "href" => "http://api.chateagratis.net/api/albums/1/photos",
      *          )
      *      ),
      *      "resources" => array(
@@ -1484,17 +1484,17 @@ class Api
      *              "score" => 15,
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *                      "href" => "http://api.chateagratis.net/api/photos/1",
      *                  ),
      *                  "creator" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.net/api/users/1",
      *                  ),
      *                  "path" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *                      "href" => "http://api.chateagratis.net/api/users/uploads/photo1-path.jpg",
      *                      "type" => "image/*",
      *                  ),
      *                  "album" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *                      "href" => "http://api.chateagratis.net/api/users/1/albums/1",
      *                  ),
      *              ),
      *          ),
@@ -1556,17 +1556,17 @@ class Api
      *      ),
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *              "href" => "http://api.chateagratis.net/api/photos/1",
      *          ),
      *          "creator" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *              "href" => "http://api.chateagratis.net/api/users/1",
      *          ),
      *          "path" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *              "href" => "http://api.chateagratis.net/api/users/uploads/photo1-path.jpg",
      *              "type" => "image/*",
      *          ),
      *          "album" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *              "href" => "http://api.chateagratis.net/api/users/1/albums/1",
      *           ),
      *      )
      *  );
@@ -1659,13 +1659,15 @@ class Api
      *
      * @param string $description A short description of type photos
      *
-     * @return array|string  | Message with error in json format
+     * @return array|string Associative array with new album data | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
      *
      * @example Add Photo Album
+     *
+     *      $your_api_instance->addAlbum(1,'new Album', 'this is me personal photobook');
      *
      * array(
      *  "id" => 2,
@@ -1675,7 +1677,7 @@ class Api
      *      "email" => "alex@chateagratis.net"
      *  ),
      *  "title" => "new Album",
-     *  "description" => "this is my secret album"
+     *  "description" => "this is me personal photobook"
      * );
      *
      */
@@ -1699,7 +1701,51 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function addPhoto($user_id, $imageTile, $imageFile)
+
+    /**
+     * upload new photo at server api
+     *
+     * @param number $user_id The user owner of photo
+     *
+     * @param string $imageFile The path to upload photo
+     *
+     * @param string $imageTile The name of photo
+     *
+     * @return array|string Associative array with new album data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add Photo
+     *
+     *      $your_api_instance->addPhoto(1,'my face in wall', '/home/alex/my_face_wall.png');
+     *
+     *  array(
+     *      "id" => 9,
+     *      "participant" => array(
+     *          "id" => 1,
+     *          "username" => "alex",
+     *      ),
+     *      "publicated_at" => "2013-10-30T08:11:22+0100",
+     *      "path" => "2013/10/30/5270b11b25f5c.png",
+     *      "number_votes" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.net/api/photos/9",
+     *          ),
+     *          "creator" => array(
+     *              "href" => "http://api.chateagratis.net/api/users/1",
+     *          ),
+     *          "path" => array(
+     *              "href" => "http://api.chateagratis.net/uploads/2013/10/30/5270b11b25f5c.png",
+     *              "type" => "image/*",
+     *          )
+     *      )
+     * );
+     *
+     */
+    public function addPhoto($user_id, $imageFile, $imageTile = '')
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -1737,16 +1783,18 @@ class Api
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show photos of user id
+     * @example Show photos of user id, only the first
+     *
+     *      $your_api_instance->showUserPhotos(1,1,0);
      *
      * array (
-        "total" => 40,
-        "limit" => 1,
-        "offset" => 0,
-        "_links" => array(
-            "self" => array(
-                "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos",
-            ),
+     *   "total" => 40,
+     *   "limit" => 1,
+     *   "offset" => 0,
+     *   "_links" => array(
+     *       "self" => array(
+     *           "href" => "http://api.chateagratis.net/api/users/1/photos",
+     *       ),
      *   ),
      *   "resources" => array(
      *       array(
@@ -1767,17 +1815,17 @@ class Api
      *       ),
      *       "_links" => array(
      *           "self" => array(
-     *             "href" => "http://api.chateagratis.local/app_dev.php/api/photos/1",
+     *             "href" => "http://api.chateagratis.net/api/photos/1",
      *           ),
      *           "creator" => array(
-     *               "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *               "href" => "http://api.chateagratis.net/api/users/1",
      *           ),
      *           "path" => array(
-     *               "href" => "http://api.chateagratis.local/app_dev.php/api/users/uploads/photo1-path.jpg",
+     *               "href" => "http://api.chateagratis.net/api/users/uploads/photo1-path.jpg",
      *               "type" => "image/*",
      *           ),
      *           "album" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *              "href" => "http://api.chateagratis.net/api/users/1/albums/1",
      *          )
      *      )
      *  )
@@ -1805,6 +1853,44 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show score I had put to one photo
+     *
+     * @param number $user_id  The user id to retrieve data
+     *
+     * @param number $photo_id The photo id to retrieve data
+     *
+     * @return array|string Associative array with photos an album | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show score User id 1 had put to 5 photo
+     *
+     *      $your_api_instance->showPhotoVotes(1,5);
+     *
+     *  array(
+     *      "score" => 100,
+     *      "photo" => array(
+     *          "id" => 5,
+     *          "number_votes" => 15,
+     *          "score" => 55,
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.net/api/users/1/photos/5/votes",
+     *          ),
+     *          "photo" => array(
+     *              "href" => "http://api.chateagratis.net/api/photos/5",
+     *          ),
+     *          "participant" => array(
+     *              "href" => "http://api.chateagratis.net/api/users/1",
+     *          )
+     *      )
+     *  );
+     *
+     */
     public function showPhotoVotes($user_id, $photo_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -1823,55 +1909,575 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function showPhotos($user_id)
+    /**
+     * Add one vote at photo
+     *
+     * @param number $user_id  The user id to retrieve data
+     *
+     * @param number $photo_id The photo id to retrieve data
+     *
+     * @param int $score The score photo,  The score ha to be between one and ten
+     *
+     * @return array|string Associative array with you vote | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example
+     *
+     * array (
+     *  "score" => 10,
+     *      "photo" => array(
+     *          "id" => 6,
+     *          "number_votes" => 21,
+     *          "score" => 47.571428571428,
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/6/votes",
+     *          ),
+     *          "photo" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/photos/6",
+     *          ),
+     *          "participant" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *          )
+     *      )
+     *  );
+     */
+    public function addPhotoVote($user_id, $photo_id, $score = 1)
     {
-        // TODO: Implement showPhotos() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::addPhotoVote user_id field should be positive integer");
+        }
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::addPhotoVote photo_id field should be positive integer");
+        }
+
+        if($score < 0 && $score > 11 ){
+            throw new InvalidArgumentException(
+                "Api::addPhotoVote The score have to be between one and ten ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('AddPhotoVote',array('id' => $user_id, 'vote'=>array('photo'=>$photo_id,'score'=>$score)));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Show all votes of one user
+     *
+     * @param $user_id The user id to retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with all votes one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show votes User id 1 had put to all photos, only first voto
+     *
+     *      $your_api_instance->showUserPhotoVotes(1,1,0);
+     *
+     *  array(
+     *      "total" => 3,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/votes",
+     *          )
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "score" => 3,
+     *              "photo" => array(
+     *                  "id" => 2,
+     *                  "number_votes" => 25,
+     *                  "score" => 25,
+     *              ),
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/2/votes",
+     *                  ),
+     *                  "photo" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/photos/2",
+     *                  ),
+     *                  "participant" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                  )
+     *              )
+     *          )
+     *      )
+     * );
+     */
+
+    public function showUserPhotoVotes($user_id, $limit = 1, $offset = 0)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showUserPhotoVotes user_id field should be positive integer");
+        }
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::ShowUserPhotos() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::ShowUserPhotos() offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowUserPhotoVotes',array('id' => $user_id, 'limit'=>$limit,'offset'=>$offset));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Delete one vote of one photo
+     *
+     * @param $user_id The user id to delete data
+     *
+     * @param $photo_id The phot id to delete vote
+     *
+     * @return string Message sucessfully if can delete the vote | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example  Delete one vote of  photo 6
+     *
+     *      $your_api_instance->delPhotoVote(1,6);
+     *
+     *          //output
+     *          Vote deleted
+     */
+    public function delPhotoVote($user_id, $photo_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::delPhotoVote user_id field should be positive integer");
+        }
+
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::delPhotoVote user_id field should be positive integer");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('DeletePhotoVotes',array('id' => $user_id, 'photo_id'=>$photo_id));
+
+        return $this->executeCommand($command);
     }
 
 
-
-
-
-    public function addPhotoVote($user_id, $photo_id, $core)
+    /**
+     * Show all abums one user
+     *
+     * @param $user_id The user id to retrieve data
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with all albums one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show all abums to user 1, only 1rst
+     *
+     *      $your_api_instance->showUserAlbums(1);
+     *
+     * array(
+     *      "total" => 1,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums",
+     *          )
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 1,
+     *              "title" => "la foto 1",
+     *              "description" => "default album",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *              ),
+     *                  "participant" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                ),
+     *                  "photos" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *                  )
+     *              )
+     *          )
+     *      )
+     * );
+     */
+    public function showAlbums($user_id, $limit = 1, $offset = 0)
     {
-        // TODO: Implement addPhotoVote() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showUserAlbums user_id field should be positive integer");
+        }
+
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showUserAlbums() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showUserAlbums() offset must be a positive number,  min 0 ");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowAlbums',array('user_id' => $user_id, 'limit'=>$limit,'offset'=>$offset));
+
+        return $this->executeCommand($command);
     }
 
-    public function delPhotoVote($photo_id)
+    /**
+     * Show one album of user
+     *
+     * @param number $user_id The user id to retrieve data
+     *
+     * @param number $album_id The album id to retrieve data
+     *
+     * @return array|string Associative array with the album one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show an abum 1 to user 1
+     *
+     *      $your_api_instance->showUserAlbum(1,1);
+     *
+     * array(
+     *  "id" => 1,
+     *  "title" => "la foto 1",
+     *  "description" => "default album",
+     *  "_links" => array(
+     *      "self" => array(
+     *          "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *      ),
+     *      "participant" => array(
+     *          "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *      ),
+     *      "photos" => array(
+     *          "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *      )
+     *   )
+     * );
+     *
+     */
+    public function showAlbum($user_id, $album_id)
     {
-        // TODO: Implement delPhotoVote() method.
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showUserAlbum user_id field should be positive integer");
+        }
+
+        if (!is_numeric($album_id) || 0 >= $album_id) {
+            throw new InvalidArgumentException(
+                "Api::showUserAlbum album_id field should be positive integer");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowAlbum',array('user_id' => $user_id, 'album_id'=>$album_id));
+
+        return $this->executeCommand($command);
     }
 
+    /**
+     * Delete one album
+     *
+     * @param number $user_id The user id to retrieve data
+     *
+     * @param number $album_id The album id to retrieve data
+     *
+     * @return string Message sucessfully if can delete the album | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Delete an abum 1 to user 1
+     *
+     *      $your_api_instance->delAlbum(1,1);
+     *
+     *      // ouput message
+     *      Album deleted
+     */
+    public function delAlbum($user_id, $album_id)
+    {
 
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::delAlbum user_id field should be positive integer");
+        }
+
+        if (!is_numeric($album_id) || 0 >= $album_id) {
+            throw new InvalidArgumentException(
+                "Api::delAlbum album_id field should be positive integer");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('DeleteAlbum',array('user_id' => $user_id, 'album_id'=>$album_id));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Delete a photo of album
+     *
+     * @param number $user_id The user id to retrieve data
+     *
+     * @param number $photo_id The photo id to retrieve data
+     *
+     * @return string Message sucessfully if can delete photo of album | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Delete an abum 1 to user 1
+     *
+     *      $your_api_instance->delAlbum(1,1);
+     *
+     *      Photo deleted of Album
+     */
+    public function delPhotoAlbum($user_id, $photo_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::delPhotoAlbum user_id field should be positive integer");
+        }
+
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::delPhotoAlbum photo_id field should be positive integer");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('DeletePhotoAlbum',array('user_id' => $user_id, 'photo_id'=>$photo_id));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Insert a photo entity into album id
+     *
+     * @param number $user_id The user id to retrieve data
+     *
+     * @param number $photo_id The photo id to insert
+     *
+     * @param number $album_id The album id to retrieve data
+     *
+     * @return array|string Associative array with the album one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add photo 1 on album 1
+     *
+     *      $your_api_instance->addAlbumPhoto(1,1,1);
+     *
+     *      // ouput message
+     *      Photo inserted
+     */
+    public function addAlbumPhoto($user_id, $photo_id, $album_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::addAlbumPhoto user_id field should be positive integer");
+        }
+
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::addAlbumPhoto photo_id field should be positive integer");
+        }
+
+        if (!is_numeric($album_id) || 0 >= $album_id) {
+            throw new InvalidArgumentException(
+                "Api::addAlbumPhoto album_id field should be positive integer");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('AddPhotoAlbum',array('user_id' => $user_id, 'photo_id'=>$photo_id, 'album_id'=>$album_id));
+
+        return $this->executeCommand($command);
+    }
 
     /**********************************************************************************************************************/
 
-    public function showReports()
+    /**
+     * Show all reports
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with all albums one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show all reports, only 1rst
+     *
+     *      $your_api_instance->showReports();
+     *
+     *  array(
+     *      "total" => 42,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/reports",
+     *          )
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "reason" => "I dislike a lot this guy",
+     *              "created_at" => "2013-08-27T15:01:01+0200",
+     *              "reviewed_at" => "2013-08-27T16:01:01+0200",
+     *              "id" => 1,
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+     *                  ),
+     *                  "reporter" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                  ),
+     *                  "resource" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *                  )
+     *              )
+     *          )
+     *      )
+     * );
+     */
+    public function showReports($limit = 1, $offset = 0)
     {
-        // TODO: Implement delPhoto() method.
+        if ($limit < 1) {
+            throw new InvalidArgumentException(
+                "Api::showReports() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showReports() offset must be a positive number,  min 0 ");
+        }
+
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowReports',array('limit'=>$limit,'offset'=>$offset));
+
+        return $this->executeCommand($command);
     }
 
+    /**
+     * Shows the details of a report
+     *
+     * @param number $report_id The report id to retrieve data
+     *
+     * @return array|string Associative array with all albums one user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show report ID 1
+     *
+     *      $your_api_instance->showReport(1);
+     *
+     *  array(
+     *      "reason" => "I dislike a lot this guy",
+     *      "created_at" => "2013-08-27T15:01:01+0200",
+     *      "reviewed_at" => "2013-08-27T16:01:01+0200",
+     *      "id" => 1,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+     *          ),
+     *          "reporter" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *          ),
+     *          "resource" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *          )
+     *      )
+     *  );
+     */
     public function showReport($report_id)
     {
+        if (!is_numeric($report_id) || 0 >= $report_id) {
+            throw new InvalidArgumentException(
+                "Api::showReport report_id field should be positive integer");
+        }
 
-    }
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ShowReport',array('id'=>$report_id));
 
-    public function addAsReviewedReport($report_id)
-    {
-
+        return $this->executeCommand($command);
     }
 
     /******************************************************************************/
     /*				  				  THREAD METHODS    	   					  */
     /******************************************************************************/
 
-    public function addThread($recipient, $subject, $body)
+    /**
+     * Create new thread
+     *
+     * @param number $user_id The user id that create the thread
+     *
+     * @param string $recipient_name The ID username that retrieve the message
+     *
+     * @param string $subject The short description of thread
+     *
+     * @param string $body The  long text of thread
+     *
+     * @return array|string Associative array with data thread | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add new thread
+     *
+     *      $your_api_instance->addThread(1,'alex2','Subject sample',"<b>this is my body in 1rst message </b>")
+     *
+     *  array(
+     *      "id" => 5,
+     *      "subject" => "Subject sample",
+     * );
+     */
+    public function addThread($user_id, $recipient_name, $subject, $body)
     {
 
-        if (!is_string($recipient) || 0 >= strlen($recipient)) {
-            throw new InvalidArgumentException("addThread recipient field needs to be a non-empty string");
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::addThread user_id field should be positive integer");
         }
-
+        if (!is_string($recipient_name) || 0 >= strlen($recipient_name)) {
+            throw new InvalidArgumentException("addThread subject field needs to be a non-empty string");
+        }
         if (!is_string($subject) || 0 >= strlen($subject)) {
             throw new InvalidArgumentException("addThread subject field needs to be a non-empty string");
         }
@@ -1883,69 +2489,226 @@ class Api
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'AddThread',
-            array('message'=>array('recipient'=>$recipient,'subject'=>$subject,'body'=>$body)));
+            array('id'=>$user_id, 'message'=>array('recipient'=>$recipient_name,'subject'=>$subject,'body'=>$body)));
 
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show user messages have in inbox
+     *
+     * @param number $user_id The user id see her/his inbox
+     *
+     * @return array|string Associative array with the subject | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show messages inbox
+     *
+     *      $your_api_instance->addThread(1);
+     *
+     * array(
+     *      array(
+     *          "id" => 1,
+     *          "subject" => "hola thread 1",
+     *      ),
+     *      array(
+     *      "id" => 4,
+     *      "subject" => "hola thread 4",
+     *      )
+     *  );
+     */
     public function showThreadsInbox($user_id)
     {
 
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "showThreadsInbox user_id field should be positive integer");
+                "Api::showThreadsInbox user_id field should be positive integer");
         }
 
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
-            'GetThreadInbox',
+            'ShowThreadInbox',
             array('id'=>$user_id));
 
         return $this->executeCommand($command);
     }
 
+    /**
+     * @param number $user_id The user id see her/his sent messages
+     *
+     * @return array|string Associative array with the subject | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show messages sent
+     *
+     *      $your_api_instance->showThreadsSent(1);
+     *
+     * array(
+     *      array(
+     *          "id" => 1,
+     *          "subject" => "thread sent 1",
+     *      ),
+     *      array(
+     *      "id" => 4,
+     *      "subject" => "thread sent 2",
+     *      )
+     *  );
+     */
     public function showThreadsSent($user_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "showThreadsSent user_id field should be positive integer");
+                "Api::showThreadsSent user_id field should be positive integer");
         }
 
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
-            'GetThreadSent',
+            'ShowThreadSent',
             array('id'=>$user_id));
 
         return $this->executeCommand($command);
     }
 
+    /**
+     * List all message one thread
+     *
+     * @param number $user_id The user id that create the thread
+     *
+     * @param number $thread_id The ID of thread
+     *
+     * @return array|string Associative array with messages | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show messages on thread
+     *
+     *      $your_api_instance->showThreadMessages(1,1);
+     *
+     * array(
+     *  array(
+     *      "id" => 1,
+     *      "body" => "este es el contenido del msg 1",
+     *      "created_at" => "2013-08-25T15:01:01+0200",
+     *  ),array(
+     *      "id" => 2,
+     *      "body" => "este es el contenido del msg 2",
+     *      "created_at" => "2013-08-25T15:31:01+0200",
+     *  )
+     *);
+     */
+    public function showThreadMessages($user_id, $thread_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showThreadMessages user_id field should be positive integer");
+        }
+
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showThreadMessages thread_id field should be positive integer");
+        }
+
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand(
+            'ShowThreadMessages',array('id'=>$user_id,'thread_id'=>$thread_id));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     *
+     * Add one message on thread
+     *
+     * @param number $user_id The user id that create the thread
+     *
+     * @param number $thread_id The ID of thread
+     *
+     * @param string $body the text of message
+     *
+     * @return array|string Associative array with messages | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Add one message on thread
+     *
+     *      $your_api_instance->showThreadMessages(1,1,'this is entity body');
+     *
+     * array(
+     *  "id" => 15,
+     *   "body" => "this is entity body",
+     *  "created_at" => "2013-10-30T14:00:53+0100"
+     * );
+     */
     public function addThreadMessage($user_id, $thread_id, $body)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
-                "addThreadMessage user_id field should be positive integer");
+                "Api::addThreadMessage user_id field should be positive integer");
         }
+        if (!is_numeric($thread_id) || 0 >= $thread_id) {
+            throw new InvalidArgumentException(
+                "Api::addThreadMessage thread_id field should be positive integer");
+        }
+
+        if (!is_string($body) || 0 >= strlen($body)) {
+            throw new InvalidArgumentException("Api::addThreadMessage body field needs to be a non-empty string");
+        }
+
         /* @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
-            'GetThreadMessages',
-            array('id'=>$user_id));
+            'AddThreadMessages',
+            array('id'=>$user_id,'thread_id'=>$thread_id, 'message'=>array('body'=>$body)));
 
         return $this->executeCommand($command);
     }
 
 
-
-
-
-    public function showThread($thread_id)
+    /**
+     * Delete one thread ant all messages
+     *
+     * @param number $user_id The user id that create the thread
+     *
+     * @param number $thread_id The ID of thread
+     *
+     * @return string Message sucessfully if can delete thread | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Delete thread 6
+     *
+     *      $your_api_instance->delThread(6);
+     *
+     *      //ouput message
+     *  Thread deleted
+     */
+    public function delThread($user_id, $thread_id)
     {
-        // TODO: Implement showThread() method.
-    }
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::addThreadMessage user_id field should be positive integer");
+        }
 
+        if (!is_numeric($thread_id) || 0 >= $thread_id) {
+            throw new InvalidArgumentException(
+                "addThreadMessage thread_id field should be positive integer");
+        }
 
-    public function delThread($thread_id)
-    {
-        // TODO: Implement delThread() method.
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('DeleteThread',array('id'=>$user_id,'thread_id'=>$thread_id));
+
+        return $this->executeCommand($command);
     }
 
     /******************************************************************************/
@@ -1954,8 +2717,54 @@ class Api
 
     /**
      * Get all the users
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with all users | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show all users, only first
+     *
+     *      $your_api_instance->showUsers();
+     *
+     *  array(
+     *      "total" => 12,
+     *      "limit" => 1,
+     *      "offset" => 0,
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+     *              )
+     *      ),
+     *      "resources" => array(
+     *          array(
+     *              "id" => 1,
+     *              "username" => "alex",
+     *              "email" => "alex@chateagratis.net",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                  ),
+     *                  "channels" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *                  ),
+     *                  "channels_fan" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *                  ),
+     *                  "blocked_users" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *                  )
+     *              )
+     *          )
+     *      )
+     * );
      */
-    public function who($limit = 1, $offset = 0)
+    public function showUsers($limit = 1, $offset = 0)
     {
 
         if ($limit < 1) {
@@ -1972,6 +2781,41 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show user by ID
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @return array|string Associative array with user data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show user with DI 1
+     *
+     *      $your_api_instance->showUser();
+     *
+     *  array(
+     *      "id" => 1,
+     *      "username" => "alex",
+     *      "email" => "alex@chateagratis.net",
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *          ),
+     *          "channels" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *          ),
+     *          "channels_fan" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *          ),
+     *          "blocked_users" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *          )
+     *      )
+     * );
+     */
     public function showUser($user_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -1984,6 +2828,57 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show user blocked by ID user
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
+     *
+     * @return array|string Associative array with all users blocked | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Show all users blocked, only first
+     *
+     *      $your_api_instance->showUsersBlocked(1);
+     *
+     *  array(
+     *       "total" => 2,
+     *       "limit" => 1,
+     *       "offset" => 0,
+     *       "_links" => array(
+     *          "self" => array(
+     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+     *          )
+     *       ),
+     *       "resources" => array(
+     *          array(
+     *              "id" => 2,
+     *              "username" => "alex2",
+     *              "email" => "alex2@chateagratis.net",
+     *              "_links" => array(
+     *                  "self" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *                  ),
+     *                  "channels" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channels",
+     *                  ),
+     *                  "channels_fan" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channelsFan",
+     *                  ),
+     *                  "blocked_users" => array(
+     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/blocked",
+     *                  )
+     *              )
+     *          )
+     *      )
+     * );
+     */
     public function showUsersBlocked($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -2005,6 +2900,26 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Blocked one user
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param number $user_blocked_id User to blocked by ID
+     *
+     * @return string Message sucessfully if can blocked an user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Blocked one user
+     *
+     *      $your_api_instance->addUserBlocked(1,6);
+     *
+     *      //output
+     *      User blocked
+     */
     public function addUserBlocked($user_id, $user_blocked_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -2022,19 +2937,40 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function updateUserProfile($user_id, $about, $sexualOrientation)
+    /**
+     * Update user  profile
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param string $about Short description  your profile
+     *
+     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     *
+     * @return array|string Associative array with profile data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Update profile an user
+     *
+     *      $your_api_instance->updateUserProfile(1,'about-103156','homosexual'));
+     *
+     *  array(
+     *       "id" => 11,
+     *       "about" => "about-10",
+     *       "sexual_orientation" => "homosexual",
+     *       "count_visits" => 0,
+     *       "publicated_at" => "2013-10-30T16:43:51+0100",
+     *  );
+     *
+     *
+     */
+    public function updateUserProfile($user_id, $about= '', $sexualOrientation = '')
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "addUserProfile user_id field should be positive integer", 404);
-        }
-        if (!is_string($about) || 0 >= strlen($about)) {
-            throw new InvalidArgumentException(
-                "about must be a non-empty string", 404);
-        }
-        if (!is_string($sexualOrientation) || 0 >= strlen($sexualOrientation)) {
-            throw new InvalidArgumentException(
-                "sexualOrientation must be a non-empty string", 404);
         }
 
         $command = $this->client->getCommand(
@@ -2048,6 +2984,29 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Show profile by user ID
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @return array|string Associative array with profile data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Create profile one user
+     *
+     *      $your_api_instance->showUserProfile(1);
+     *
+     *  array(
+     *       "id" => 11,
+     *       "about" => "about-10",
+     *       "sexual_orientation" => "bisexual",
+     *       "count_visits" => 0,
+     *       "publicated_at" => "2013-10-30T16:43:51+0100",
+     *  );
+     */
     public function showUserProfile($user_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -2060,6 +3019,33 @@ class Api
         return $this->executeCommand($command);
     }
 
+    /**
+     * Add new profile one user
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param string $about Short description  your profile
+     *
+     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     *
+     * @return array|string Associative array with profile data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Create profile one user
+     *
+     *      $your_api_instance->addUserProfile(1,'about-10','bisexual');
+     *
+     *  array(
+     *       "id" => 11,
+     *       "about" => "about-10",
+     *       "sexual_orientation" => "bisexual",
+     *       "count_visits" => 0,
+     *       "publicated_at" => "2013-10-30T16:43:51+0100",
+     *  );
+     */
     public function addUserProfile($user_id, $about, $sexualOrientation)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -2086,11 +3072,62 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function addUserReports($user_id, $reason)
+    /**
+     * Report a user
+     *
+     * @param number $user_reported_id The user id that is report
+     *
+     * @param string $reason Description for report the user
+     *
+     * @return array|string Associative array with report data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * array(
+     *   "reason" => "this user is heterosexual",
+     *   "created_at" => "2013-10-30T17:03:29+0100",
+     *   "id" => 44,
+     * );
+     */
+    public function addUserReports($user_reported_id, $reason)
     {
-        throw new \Exception("TThis method is not supported yet");
-    }
 
+        if (!is_numeric($user_reported_id) || 0 >= $user_reported_id) {
+            throw new InvalidArgumentException(
+                "Api::addUserReports user_reported_id field should be positive integer", 404);
+        }
+        if (!is_string($reason) || 0 >= strlen($reason)) {
+            throw new InvalidArgumentException(
+                "APi::addUserReports reason must be a non-empty string", 404);
+        }
+
+        $command = $this->client->getCommand(
+            'AddUserReports',array('id' => $user_reported_id,'report' => array('reason' => $reason)));
+
+        return $this->executeCommand($command);
+    }
+    /**
+     * UnBlocked one user
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param number $user_blocked_id User to blocked by ID
+     *
+     * @return string Message sucessfully if can blocked an user | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @example Unblocked one user
+     *
+     *      $your_api_instance->delUserBlocked(1,6);
+     *
+     *      //output
+     *      User unblocked
+     */
     public function delUserBlocked($user_id, $user_blocked_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -2111,9 +3148,52 @@ class Api
         return $this->executeCommand($command);
     }
 
-    public function showUserVisitors($user_id, $maxResult)
+    /**
+     * Show count visits on one profile and who visits of one profile
+     *
+     * @param number $user_id User to retrieve by ID
+     *
+     * @param number $maxResult The number visit you can see
+     *
+     * @return array|string
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * array(
+     *      array(
+     *          "participant" => array(
+     *          "id" => 1,
+     *          "username" => "alex",
+     *          "email" => "alex@chateagratis.net",
+     *      ),
+     *      "participant_voyeur" => array(
+     *          "id" => 2,
+     *          "username" => "alex2",
+     *          "email" => "alex2@chateagratis.net",
+     *      ),
+     *      "frequency" => 1,
+     *   )
+     * );
+     */
+    public function showUserVisitors($user_id, $maxResult = null)
     {
-        throw new \Exception("TThis method is not supported yet");
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::showUserVisitors user_id field should be positive integer", 404);
+        }
+
+        if (($maxResult != null) && (!is_numeric($maxResult) || 0 >= $maxResult)) {
+            throw new InvalidArgumentException(
+                "Api::showUserVisitors maxResult field should be positive integer", 404);
+        }
+
+        $command = $this->client->getCommand(
+            'ShowUserVisitors',
+            array('user_id'=>$user_id, 'maxResult'=>$maxResult)
+        );
+        return $this->executeCommand($command);
     }
 
     /**
@@ -2138,6 +3218,4 @@ class Api
         $command = $this->client->getCommand('ShowAccount');
         return $this->executeCommand($command);
     }
-
-
 }

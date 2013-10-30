@@ -50,13 +50,19 @@
             <a href="photo.php">Photo</a>
         </li>
         <li>
-            <a href="users-demo.php">Users</a>
+            <a href="reports.php">Reports</a>
         </li>
         <li>
-            <a href="auth-demo.php">OAuth2</a>
+            <a href="thread.php">Thread</a>
         </li>
         <li>
-            <a href="auth-app-demo.php">App auth</a>
+            <a href="users.php">Users</a>
+        </li>
+        <li>
+            <a href="auth-basic.php">OAuth2</a>
+        </li>
+        <li>
+            <a href="auth-app.php">App auth</a>
         </li>
 
     </ul>

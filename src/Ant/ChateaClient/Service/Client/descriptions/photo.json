@@ -1,6 +1,6 @@
 {
     "operations": {
-        "ShowPhotoAlbum":{
+        "ShowPhotoAlbum": {
             "httpMethod": "GET",
             "uri": "api/albums/{album_id}/photos",
             "summary": "List all Photo entities of an album",
@@ -24,7 +24,7 @@
                 }
             }
         },
-        "ShowPhoto":{
+        "ShowPhoto": {
             "httpMethod": "GET",
             "uri": "api/photos/{id}",
             "summary": "Show a photo",
@@ -110,9 +110,10 @@
                     "required": true,
                     "location": "uri"
                 },
-                "title":{
+                "title": {
                     "type": "string",
-                    "required": true
+                    "required": true,
+                    "location": "postField"
                 },
                 "image": {
                     "type": "array",
@@ -120,9 +121,10 @@
                     "type": "string",
                     "required": true
                 }
+
             }
         },
-        "ShowUserPhotos":{
+        "ShowUserPhotos": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/photos",
             "summary": "List all photos of an user",
@@ -146,7 +148,7 @@
                 }
             }
         },
-        "ShowUserPhotoVote":{
+        "ShowUserPhotoVote": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/photos/{photo_id}/votes",
             "summary": "Show my vote of a photo of the user",
@@ -157,6 +159,171 @@
                     "location": "uri"
                 },
                 "photo_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "ShowUserPhotoVotes":{
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/votes",
+            "summary": "Show my vote of a photo of the user",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
+        },
+        "AddPhotoVote":{
+            "httpMethod": "POST",
+            "uri": "api/users/{id}/vote",
+            "summary": "Create a vote",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "vote":{
+                    "type": "object",
+                    "require": true,
+                    "location": "json",
+                    "parameters":{
+                        "photo": {
+                            "type": "integer",
+                            "location": "json"
+                        },
+                        "score": {
+                            "type": "integer",
+                            "location": "json"
+                        }
+                    }
+                }
+            }
+        },
+        "DeletePhotoVotes":{
+            "httpMethod": "DELETE",
+            "uri": "api/users/{id}/votes/{photo_id}",
+            "summary": "delete a vote",
+            "parameters": {
+                "id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "photo_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "ShowAlbums":{
+            "httpMethod": "GET",
+            "uri": "api/users/{user_id}/albums",
+            "summary": "List the Albums of an user",
+            "parameters": {
+                "user_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "limit": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of elemnts return at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                }
+            }
+        },
+        "ShowAlbum":{
+            "httpMethod": "GET",
+            "uri": "api/users/{user_id}/albums/{album_id}",
+            "summary": "Show a user album",
+            "parameters": {
+                "user_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "album_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "DeleteAlbum":{
+            "httpMethod": "DELETE",
+            "uri": "api/users/{user_id}/albums/{album_id}",
+            "summary": "Delete user album",
+            "parameters": {
+                "user_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "album_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "DeletePhotoAlbum":{
+            "httpMethod": "DELETE",
+            "uri": "api/users/{user_id}/photos/{photo_id}/albums",
+            "summary": "Delete a photo entity of an album id",
+            "parameters": {
+                "user_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "photo_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                }
+            }
+        },
+        "AddPhotoAlbum":{
+            "httpMethod": "POST",
+            "uri": "api/users/{user_id}/photos/{photo_id}/albums/{album_id}",
+            "summary": "Insert a photo entity into album id",
+            "parameters": {
+                "user_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "photo_id": {
+                    "type": "integer",
+                    "required": true,
+                    "location": "uri"
+                },
+                "album_id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
