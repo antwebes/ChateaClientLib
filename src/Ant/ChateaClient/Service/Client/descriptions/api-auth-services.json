@@ -132,6 +132,11 @@
                     "description": "the refresh_token"
                 }
             }
+        },
+        "RevokeToken":{
+            "httpMethod": "DELETE",
+            "uri": "api/oauth/v2/revoke",
+            "summary": "Revokes the access token"
         }
     },
     "models": {

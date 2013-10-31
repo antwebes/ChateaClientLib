@@ -34,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">28</span></a></li>
+                <span class="label label-info">7</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -59,30 +59,23 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_factory" title="factory() :: "><span class="description">factory()
-        </span><pre>factory()</pre></a></li>
-<li class="method public "><a href="#method_prepareCommand" title="prepareCommand() :: "><span class="description">prepareCommand()
-        </span><pre>prepareCommand()</pre></a></li>
-<li class="method public "><a href="#method_revokeToken" title="revokeToken() :: "><span class="description">revokeToken()
-        </span><pre>revokeToken()</pre></a></li>
-<li class="method public "><a href="#method_updateAccessToken" title="updateAccessToken() :: "><span class="description">updateAccessToken()
-        </span><pre>updateAccessToken()</pre></a></li>
+<li class="method public "><a href="#method_factory" title="factory() :: Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
+This client can get self credentials, and save in store. This version do not encrypted credentials."><span class="description">Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
+This client can get self credentials, and save in store. This version do not encrypted credentials.</span><pre>factory()</pre></a></li>
+<li class="method public "><a href="#method_prepareCommand" title="prepareCommand() :: Prepare a command for sending and get the RequestInterface object created by the command"><span class="description">Prepare a command for sending and get the RequestInterface object created by the command</span><pre>prepareCommand()</pre></a></li>
+<li class="method public "><a href="#method_revokeToken" title="revokeToken() :: Disable the service credentials as well as the session."><span class="description">Disable the service credentials as well as the session.</span><pre>revokeToken()</pre></a></li>
+<li class="method public "><a href="#method_updateAccessToken" title="updateAccessToken() :: Update the access token on header."><span class="description">Update the access token on header.</span><pre>updateAccessToken()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_prepareAccessToken" title="prepareAccessToken() :: "><span class="description">prepareAccessToken()
-        </span><pre>prepareAccessToken()</pre></a></li></ul>
+                    <ul><li class="method private "><a href="#method_prepareAccessToken" title="prepareAccessToken() :: This retrieve the access token in store or in server"><span class="description">This retrieve the access token in store or in server</span><pre>prepareAccessToken()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_store" title="$store() :: "><span class="description"></span><pre>$store</pre></a></li></ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-constant"></i> Constants
-                    <ul><li class="constant  "><a href="#constant_COOKIE_NAME" title="COOKIE_NAME() :: "><span class="description">COOKIE_NAME</span><pre>COOKIE_NAME</pre></a></li></ul>
+                    <ul><li class="property private "><a href="#property_store" title="$store() :: "><span class="description">this save data on store</span><pre>$store</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -106,71 +99,122 @@
 </li>
 </ul>
 <div class="element class">
-<p class="short_description"></p>
+<p class="short_description">Specifies a client that provides service to run command at api server
+This client can get self credentials, and save in store. This version do not encrypted credentials.</p>
 <div class="details">
 <div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Ant.ChateaClient.Service.Client.html">Ant\ChateaClient\Service\Client</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CChateaClient%5CService%5CClient%5CClient"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CGuzzle%5CCommon%5CCollection"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CGuzzle%5CCommon%5CEvent"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CGuzzle%5CService%5CCommand%5CCommandInterface"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CGuzzle%5CPlugin%5CAcceptHeaderPluging"></a></td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method_factory"></a><div class="element clickable method public method_factory" data-toggle="collapse" data-target=".method_factory .collapse">
-<h2>factory()
-        </h2>
-<pre>factory($config) </pre>
+<h2>Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
+This client can get self credentials, and save in store. This version do not encrypted credentials.</h2>
+<pre>factory(array $config) : <a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">\Ant\ChateaClient\Service\Client\ChateaGratisAppClient</a> | <a href="Client.html">\Guzzle\Service\Client</a></pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$config</h4></div>
+<div class="subelement argument">
+<h4>$config</h4>
+<code>array</code><p>Associative array can configure the client. The parameters are:
+                     client_id   The public key of client. This parameter is required
+                     secret      The private key of client. This parameter is required
+                     base_url    The server endpoind url. This parameter is optional
+                     Accept      The accept header, default value is json. This parameter is optional
+                     environment Set mode production [prod] or developing [dev] default value is prod. This parameter is optional
+                     scheme      Set server schema communication [http|https] for default https. This parameter is optional
+                     subdomain   Set server subdomain if this exist. For default is api. This parameter is optional
+                     store       Set where save server credentials</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">\Ant\ChateaClient\Service\Client\ChateaGratisAppClient</a></code><code><a href="Client.html">\Guzzle\Service\Client</a></code>
+</div>
 </div></div>
 </div>
 <a id="method_prepareCommand"></a><div class="element clickable method public method_prepareCommand" data-toggle="collapse" data-target=".method_prepareCommand .collapse">
-<h2>prepareCommand()
-        </h2>
-<pre>prepareCommand(\Guzzle\Service\Command\CommandInterface $command) </pre>
+<h2>Prepare a command for sending and get the RequestInterface object created by the command</h2>
+<pre>prepareCommand(\Guzzle\Service\Command\CommandInterface $command) : <a href="RequestInterface.html">\Ant\ChateaClient\Service\Client\RequestInterface</a></pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$command</h4></div>
+<div class="subelement argument">
+<h4>$command</h4>
+<code><a href="CommandInterface.html">\Guzzle\Service\Command\CommandInterface</a></code><p>Command to prepare</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="RequestInterface.html">\Ant\ChateaClient\Service\Client\RequestInterface</a></code></div>
 </div></div>
 </div>
 <a id="method_revokeToken"></a><div class="element clickable method public method_revokeToken" data-toggle="collapse" data-target=".method_revokeToken .collapse">
-<h2>revokeToken()
-        </h2>
-<pre>revokeToken() </pre>
+<h2>Disable the service credentials as well as the session.</h2>
+<pre>revokeToken() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html">\Ant\ChateaClient\Service\Client\AuthenticationException</a></code></th>
+<td>This exception is thrown if you do not credentials or you cannot use this method</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>Message sucessfully if can revoke token | Message with error in json format</div>
+</div></div>
 </div>
 <a id="method_updateAccessToken"></a><div class="element clickable method public method_updateAccessToken" data-toggle="collapse" data-target=".method_updateAccessToken .collapse">
-<h2>updateAccessToken()
-        </h2>
-<pre>updateAccessToken($access_token) </pre>
+<h2>Update the access token on header.</h2>
+<pre>updateAccessToken(string $access_token) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$access_token</h4></div>
+<div class="subelement argument">
+<h4>$access_token</h4>
+<code>string</code><p>The token you put in header</p></div>
 </div></div>
 </div>
 <a id="method_prepareAccessToken"></a><div class="element clickable method private method_prepareAccessToken" data-toggle="collapse" data-target=".method_prepareAccessToken .collapse">
-<h2>prepareAccessToken()
-        </h2>
-<pre>prepareAccessToken() </pre>
+<h2>This retrieve the access token in store or in server</h2>
+<pre>prepareAccessToken() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the access token</div>
+</div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_store"> </a><div class="element clickable property private property_store" data-toggle="collapse" data-target=".property_store .collapse">
-<h2>$store</h2>
-<pre>$store </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<h3>
-<i class="icon-custom icon-constant"></i> Constants</h3>
-<a id="constant_COOKIE_NAME"> </a><div class="element clickable constant  constant_COOKIE_NAME" data-toggle="collapse" data-target=".constant_COOKIE_NAME .collapse">
-<h2>COOKIE_NAME</h2>
-<pre>COOKIE_NAME </pre>
+<h2>this save data on store</h2>
+<pre>$store : <a href="../classes/Ant.ChateaClient.Service.Client.StoreInterface.html">\Ant\ChateaClient\Service\Client\StoreInterface</a></pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -182,7 +226,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+            generated on 2013-10-31T12:26:59+01:00.<br></footer></div>
 </div>
 </body>
 </html>

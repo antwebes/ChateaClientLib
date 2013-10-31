@@ -187,17 +187,25 @@
         },
         "ShowUserVisitors":{
             "httpMethod": "GET",
-            "uri": "api/users/{user_id}/visitors",
+            "uri": "api/users/{id}/visitors",
             "summary": "show visit of one profile",
             "parameters": {
-                "user_id": {
+                "id": {
                     "location": "uri",
                     "type": "integer",
                     "required": true
                 },
-                "maxResult": {
+                "limit": {
+                    "type": "integer",
                     "location": "query",
-                    "type": "integer"
+                    "default": 25,
+                    "description": "number of position at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
                 }
             }
         }

@@ -1,16 +1,50 @@
 <?php
-
+/**
+ * Created by Ant-WEB S.L.
+ * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 14/10/13
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
 
+/**
+ * A FileStore represents a store pull for save data
+ *
+ * @package Ant\ChateaClient\Service\Client
+ *
+ * @see Collection
+ */
 class FileStore implements StoreInterface
 {
+
+    /**
+     * array|\Guzzle\Common\Collection $config Configuration data
+     */
     protected $config;
+    /**
+     * This store only support this type data to save
+     *
+     * @var array Collection support data to save
+     */
     protected static $kSupportedKeys = array('access_token', 'token_refresh','token_expires_at');
 
+    /**
+     *  The algorithn used for signed data
+     */
     const SIGNED_ALGORITHM = 'HMAC-SHA256';
 
+    /**
+     * Initializes a new instance of this class.
+     *
+     * @param array $config Associative array can configure the File store. The parameters are:
+     *                      file_directory      The directory  where save the file
+     *                      file_name           The name of file of data
+     *                      SIGNED_ALGORITHM    The algorithn used for signed data.
+     */
     public function __construct($config = array())
     {
         $default = array(
@@ -28,6 +62,11 @@ class FileStore implements StoreInterface
         $this->config = Collection::fromConfig($config, $default, $required);
     }
 
+    /**
+     * Save data in file.
+     *
+     * @param string $content The data to save
+     */
     protected function saveInFile($content)
     {
         $filename = $this->config->get('file_directory').DIRECTORY_SEPARATOR.$this->config->get('file_name');
@@ -36,6 +75,12 @@ class FileStore implements StoreInterface
         fwrite($fp,$content.";");
         fclose($fp);
     }
+
+    /**
+     * Get all data in file.
+     *
+     * @return array Associative array with all data of file
+     */
     protected function getDataInFile()
     {
         $filename = $this->config->get('file_directory').DIRECTORY_SEPARATOR.$this->config->get('file_name');

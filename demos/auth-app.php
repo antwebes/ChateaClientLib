@@ -10,7 +10,6 @@ $client_id ='2_random-demo';
 $secret = 'secret-demo';
 
 try{
-
     $cliente = ChateaGratisAppClient::factory(array('environment'=>'dev','client_id'=>$client_id,'secret'=>$secret));
     ld($cliente);
 }catch (Exception $ex){

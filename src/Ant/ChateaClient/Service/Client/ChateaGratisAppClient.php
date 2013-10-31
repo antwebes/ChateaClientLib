@@ -1,27 +1,54 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
- * User: ant3
- * Date: 23/10/13
- * Time: 15:12
- * To change this template use File | Settings | File Templates.
+ * Created by Ant-WEB S.L.
+ * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 14/10/13
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
-use Guzzle\Plugin\Cookie\Cookie;
-use  Guzzle\Common\Event;
-use Guzzle\Service\Description\ServiceDescription;
+use Guzzle\Common\Event;
 use Guzzle\Service\Command\CommandInterface;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
+/**
+ * Specifies a client that provides service to run command at api server
+ * This client can get self credentials, and save in store. This version do not encrypted credentials.
+ *
+ * @package Ant\ChateaClient\Service\Client
+ *
+ * @see Client
+ * @see Collection
+ * @see Event
+ * @see CommandInterface
+ * @see AcceptHeaderPluging
+ */
 class ChateaGratisAppClient extends Client
 {
-
-    const  COOKIE_NAME = 'chat_client';
-    /**@var StoreInterface store */
+    /**
+     * @var StoreInterface this save data on store
+     */
     private $store ;
+
+    /**
+     * Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
+     * This client can get self credentials, and save in store. This version do not encrypted credentials.
+     *
+     * @param array $config Associative array can configure the client. The parameters are:
+     *                      client_id   The public key of client. This parameter is required
+     *                      secret      The private key of client. This parameter is required
+     *                      base_url    The server endpoind url. This parameter is optional
+     *                      Accept      The accept header, default value is json. This parameter is optional
+     *                      environment Set mode production [prod] or developing [dev] default value is prod. This parameter is optional
+     *                      scheme      Set server schema communication [http|https] for default https. This parameter is optional
+     *                      subdomain   Set server subdomain if this exist. For default is api. This parameter is optional
+     *                      store       Set where save server credentials
+     *
+     * @return ChateaGratisAppClient|\Guzzle\Service\Client
+     */
     public static function factory($config = array()){
         // Provide a hash of default client configuration options
         $default = array(
@@ -70,6 +97,13 @@ class ChateaGratisAppClient extends Client
 
         return $client;
     }
+    /**
+     * Prepare a command for sending and get the RequestInterface object created by the command
+     *
+     * @param CommandInterface $command Command to prepare
+     *
+     * @return RequestInterface
+     */
     public function prepareCommand(CommandInterface $command)
     {
         $request = parent::prepareCommand($command);
@@ -77,6 +111,11 @@ class ChateaGratisAppClient extends Client
         return $request;
     }
 
+    /**
+     * Update the access token on header.
+     *
+     * @param string $access_token The token you put in header
+     */
     public function updateAccessToken($access_token)
     {
         $this->getEventDispatcher()->addListener('request.before_send', function(Event $event) use($access_token){
@@ -85,7 +124,11 @@ class ChateaGratisAppClient extends Client
         });
     }
 
-
+    /**
+     * This retrieve the access token in store or in server
+     *
+     * @return string the access token
+     */
     private function prepareAccessToken()
     {
 
@@ -112,9 +155,18 @@ class ChateaGratisAppClient extends Client
             return $this->store->getPersistentData('access_token');
         }
     }
+
+    /**
+     * Disable the service credentials as well as the session.
+     *
+     * @return string  Message sucessfully if can revoke token | Message with error in json format
+     *
+     * @throws AuthenticationException This exception is thrown if you do not credentials or you cannot use this method
+     */
     public function revokeToken()
     {
         $command = $this->getCommand('RevokeToken');
+        $this->store->clearAllPersistentData();
         try{
             return $command->execute();
         }catch (BadResponseException $ex){

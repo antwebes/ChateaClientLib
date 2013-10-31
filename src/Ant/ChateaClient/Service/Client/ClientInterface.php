@@ -10,6 +10,9 @@
 namespace Ant\ChateaClient\Service\Client;
 use Guzzle\Service\ClientInterface as BaseClientInterface;
 
-interface ClientInterface  extends  BaseClientInterface
-{
-}
+
+/**
+ * Client interface for executing commands on a web service.
+ * @see ClientInterface
+ */
+interface ClientInterface  extends  BaseClientInterface{}

@@ -1,4 +1,12 @@
 <?php
+/**
+ * Created by Ant-WEB S.L.
+ * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 14/10/13
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\Client\IApi;
@@ -10,8 +18,6 @@ use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 
-
-
 /**
  * This class represent the chateagratis API's, this is single abstraction
  * for all API methods.
@@ -21,13 +27,20 @@ use Guzzle\Service\Command\CommandInterface;
  *
  * @author Xabier Fernández Rodríguez in Ant-Web S.L.
  *
+ * @package Ant\ChateaClient\Client
+ *
  * @see Ant\ChateaClient\Service\Client\Client;
- * @see Ant\ChateaClient\Client\IApi;
+ * @see Ant\ChateaClient\Client\ApiInterface;
  * @see Ant\ChateaClient\Client\ApiException;
  */
 class Api implements  ApiInterface
 {
 
+    /**
+     * Http Client
+     *
+     * @var \Ant\ChateaClient\Service\Client\Client
+     */
     private $client;
 
     /**
@@ -87,15 +100,15 @@ class Api implements  ApiInterface
     /**
      * Register new user at server
      *
-     * @param $username The name of user. This is unique for user
+     * @param string $username The name of user. This is unique for user
      *
-     * @param $email The email for user. This is unique for user
+     * @param string $email The email for user. This is unique for user
      *
-     * @param $new_password The user password
+     * @param string $new_password The user password
      *
-     * @param $repeat_new_password Repeat the password
+     * @param string $repeat_new_password Repeat the password
      *
-     * @param $affiliate_host The name of your server, where you make send request.
+     * @param string $affiliate_host The name of your server, where you make send request.
      *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
      *
      * @return array|string Associative array with you profile | Message with error in json format
@@ -163,7 +176,7 @@ class Api implements  ApiInterface
      * Request reset the user password. The server send email with new password,
      * this this request is only once for day.
      *
-     * @param $username_or_email The user email or username
+     * @param string $username_or_email The user email or username
      *
      * @return string message ok message if your new password have been sent
      *
@@ -347,9 +360,9 @@ class Api implements  ApiInterface
      *
      * Update a channel
      *
-     * @param $channel_id Channel to update by ID
+     * @param number $channel_id Channel to update by ID
      *
-     * @param $name The new name of channel, if you would like  update this field.
+     * @param string $name The new name of channel, if you would like  update this field.
      *
      * @param string $title The new title of channel, if you would like  update this field.
      *
@@ -423,7 +436,7 @@ class Api implements  ApiInterface
     /**
      * Delete channel
      *
-     * @param $channel_id Channel to update by ID
+     * @param number $channel_id Channel to update by ID
      *
      * @return string The message ok, if channel has been deleted
      *
@@ -455,7 +468,7 @@ class Api implements  ApiInterface
     /**
      * Get channel. Show data channel by id
      *
-     * @param $channel_id  Channel to retrieve by ID
+     * @param number $channel_id  Channel to retrieve by ID
      *
      * @return array|string Associative array with channel data | Message with error in json format
      *
@@ -511,7 +524,7 @@ class Api implements  ApiInterface
     /**
      * Get fans (users) the channel
      *
-     * @param $channel_id Channel to retrieve fans
+     * @param number $channel_id Channel to retrieve fans
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -648,7 +661,7 @@ class Api implements  ApiInterface
      *
      * Show channels created for the user
      *
-     * @param $user_id User id  to retrieve channel
+     * @param number $user_id User id  to retrieve channel
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -726,7 +739,7 @@ class Api implements  ApiInterface
     /**
      * Show channels favorites one user
      *
-     * @param $user_id  User id  to retrieve fans channels
+     * @param number $user_id  User id  to retrieve fans channels
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -797,9 +810,9 @@ class Api implements  ApiInterface
     /**
      * Make channel's  fan one user
      *
-     * @param $channel_id Channel id to receive a fan
+     * @param number $channel_id Channel id to receive a fan
      *
-     * @param $user_id The user id will be fan
+     * @param number $user_id The user id will be fan
      *
      * @return string Massage ok if user is new fan
      *
@@ -837,9 +850,9 @@ class Api implements  ApiInterface
     /**
      * Remove channel's  fan one user
      *
-     * @param $channel_id Channel id to receive a fan
+     * @param number $channel_id Channel id to receive a fan
      *
-     * @param $user_id The user id will be fan
+     * @param number $user_id The user id will be fan
      *
      * @return string Massage ok if user is not fan
      *
@@ -883,7 +896,7 @@ class Api implements  ApiInterface
     /**
      * Get me friends
      *
-     * @param $user_id The user id retrieve friends
+     * @param number $user_id The user id retrieve friends
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -957,9 +970,9 @@ class Api implements  ApiInterface
     /**
      * Sends a friendship request between two users
      *
-     * @param $user_id Your user id
+     * @param number $user_id Your user id
      *
-     * @param $friend_id The user id that retrieve the request
+     * @param number $friend_id The user id that retrieve the request
      *
      * @return string Massage endorsement , if the request have been sent
      *
@@ -996,7 +1009,7 @@ class Api implements  ApiInterface
     /**
      * Show list user, that one user will pending have your friendship
      *
-     * @param $user_id The user id that you retrieve data
+     * @param number $user_id The user id that you retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1070,7 +1083,7 @@ class Api implements  ApiInterface
     /**
      * Show the friendship requests sent by user id, and it pending to be accepted
      *
-     * @param $user_id The user id that you retrieve data
+     * @param number $user_id The user id that you retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1145,9 +1158,9 @@ class Api implements  ApiInterface
     /**
      * Accept request new Friend
      *
-     * @param $user_id The user id that you retrieve request new Friend
+     * @param number $user_id The user id that you retrieve request new Friend
      *
-     * @param $user_accept_id The user id pending friendship
+     * @param number $user_accept_id The user id pending friendship
      *
      * @return string Message accepted | Message with error in json format
      *
@@ -1185,9 +1198,11 @@ class Api implements  ApiInterface
     }
 
     /**
-     * @param $user_id The user id that you decliene new Friend
+     * Decline a friendship request
      *
-     * @param $user_decline_id The user id pending friendship
+     * @param number $user_id The user id that you decliene new Friend
+     *
+     * @param number $user_decline_id The user id pending friendship
      *
      * @return string Message declined | Message with error in json format
      *
@@ -1223,13 +1238,12 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
 
-    //
     /**
      * Delete friends between two users
      *
-     * @param $user_id The user id that you delere friend
+     * @param number $user_id The user id that you delere friend
      *
-     * @param $user_delete_id The user id, you want deleted.
+     * @param number $user_delete_id The user id, you want deleted.
      *
      * @return string Message delete | Message with error in json format
      *
@@ -1308,11 +1322,11 @@ class Api implements  ApiInterface
     /**
      * Update a profile of me user
      *
-     * @param $username your user name | the new username
+     * @param string $username your user name | the new username
      *
-     * @param $email your email | the new user email
+     * @param string $email your email | the new user email
      *
-     * @param $current_password your password. This method can not change your password for this use @link #changePassword
+     * @param string $current_password your password. This method can not change your password for this use @link #changePassword
      *
      * @return array|string Associative array with you profile updated | Message with error in json format
      *
@@ -1379,14 +1393,13 @@ class Api implements  ApiInterface
     }
 
     /**
-     *
      * Change user password
      *
-     * @param $current_password your actual password
+     * @param string $current_password your actual password
      *
-     * @param $new_password your new password
+     * @param string $new_password your new password
      *
-     * @param $repeat_new_password repeat your new password
+     * @param string $repeat_new_password repeat your new password
      *
      * @return string message password changed sucessfully if your password have been changed | Message with error in json format
      *
@@ -1445,7 +1458,7 @@ class Api implements  ApiInterface
     /**
      * List all photos of an album
      *
-     * @param $album_id The photo album ID that you to retrieve data
+     * @param string $album_id The photo album ID that you to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1526,7 +1539,7 @@ class Api implements  ApiInterface
     /**
      * Show Photo
      *
-     * @param $photo_id The photo ID that you to retrieve data
+     * @param string $photo_id The photo ID that you to retrieve data
      *
      * @return array|string Associative array with photo data | Message with error in json format
      *
@@ -1584,9 +1597,11 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
     /**
-     * @param $photo_id The Photo ID to be reported
+     * Report a photo
      *
-     * @param $reason The reason this report
+     * @param number $photo_id The Photo ID to be reported
+     *
+     * @param string $reason The reason this report
      *
      * @return array|string Associative array with report | Message with error in json format
      *
@@ -1624,7 +1639,7 @@ class Api implements  ApiInterface
     /**
      * Delete a Photo
      *
-     * @param $photo_id The photo id you like deleting
+     * @param number $photo_id The photo id you like deleting
      *
      * @return string Message sucessfully if can delete the photo | Message with error in json format
      *
@@ -1653,9 +1668,9 @@ class Api implements  ApiInterface
     /**
      * Add new Photo Album in user accont
      *
-     * @param $user_id The user ID
+     * @param number $user_id The user ID
      *
-     * @param $title One name for the Album
+     * @param string $title One name for the Album
      *
      * @param string $description A short description of type photos
      *
@@ -1771,7 +1786,9 @@ class Api implements  ApiInterface
     }
 
     /**
-     * @param $user_id The user id to retrieve data
+     * Show all photos one user
+     *
+     * @param number $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1971,7 +1988,7 @@ class Api implements  ApiInterface
     /**
      * Show all votes of one user
      *
-     * @param $user_id The user id to retrieve data
+     * @param number $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -2045,9 +2062,9 @@ class Api implements  ApiInterface
     /**
      * Delete one vote of one photo
      *
-     * @param $user_id The user id to delete data
+     * @param number $user_id The user id to delete data
      *
-     * @param $photo_id The phot id to delete vote
+     * @param number $photo_id The phot id to delete vote
      *
      * @return string Message sucessfully if can delete the vote | Message with error in json format
      *
@@ -2084,7 +2101,7 @@ class Api implements  ApiInterface
     /**
      * Show all abums one user
      *
-     * @param $user_id The user id to retrieve data
+     * @param number $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -2146,7 +2163,7 @@ class Api implements  ApiInterface
         }
 
         /** @var $command \Guzzle\Service\Command\AbstractCommand */
-        $command = $this->client->getCommand('ShowAlbums',array('user_id' => $user_id, 'limit'=>$limit,'offset'=>$offset));
+        $command = $this->client->getCommand('ShowAlbums',array('id' => $user_id, 'limit'=>$limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
@@ -2199,7 +2216,7 @@ class Api implements  ApiInterface
         }
 
         /** @var $command \Guzzle\Service\Command\AbstractCommand */
-        $command = $this->client->getCommand('ShowAlbum',array('user_id' => $user_id, 'album_id'=>$album_id));
+        $command = $this->client->getCommand('ShowAlbum',array('id' => $user_id, 'album_id'=>$album_id));
 
         return $this->executeCommand($command);
     }
@@ -2325,7 +2342,9 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
 
-    /**********************************************************************************************************************/
+    /******************************************************************************/
+    /*				  				  THREAD REPORTS      	   					  */
+    /******************************************************************************/
 
     /**
      * Show all reports
@@ -2537,6 +2556,8 @@ class Api implements  ApiInterface
     }
 
     /**
+     * Show all thread that you sent
+     *
      * @param number $user_id The user id see her/his sent messages
      *
      * @return array|string Associative array with the subject | Message with error in json format
@@ -3153,7 +3174,9 @@ class Api implements  ApiInterface
      *
      * @param number $user_id User to retrieve by ID
      *
-     * @param number $maxResult The number visit you can see
+     * @param int $limit  number of items to retrieve at most
+     *
+     * @param int $offset The distance (displacement) from the start of a data
      *
      * @return array|string
      *
@@ -3177,45 +3200,27 @@ class Api implements  ApiInterface
      *   )
      * );
      */
-    public function showUserVisitors($user_id, $maxResult = null)
+    public function showUserVisitors($user_id, $limit = 1, $offset = 0)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showUserVisitors user_id field should be positive integer", 404);
         }
 
-        if (($maxResult != null) && (!is_numeric($maxResult) || 0 >= $maxResult)) {
+
+        if ($limit < 1) {
             throw new InvalidArgumentException(
-                "Api::showUserVisitors maxResult field should be positive integer", 404);
+                "Api::showUserVisitors() limit must be a min 1 ");
+        }
+        if ($offset < 0) {
+            throw new InvalidArgumentException(
+                "Api::showUserVisitors() $offset must be a positive number,  min 0 ");
         }
 
         $command = $this->client->getCommand(
             'ShowUserVisitors',
-            array('user_id'=>$user_id, 'maxResult'=>$maxResult)
+            array('id'=>$user_id, 'limit'=>$limit,'offset'=>$offset)
         );
-        return $this->executeCommand($command);
-    }
-
-    /**
-     * Show a profile of an user
-     *
-     * @return array with you profile data
-     *
-     * @throws ApiException This exception is thrown if server send one error
-     *
-     * @example
-     *
-     *      $your_api_instance->showAccount();
-     *      //ouput
-     *      array(
-     *          'id' => '2',
-     *          'username' => 'me user',
-     *          'email' => 'me@antweb.es',
-     *          );
-     */
-    public function showAccount()
-    {
-        $command = $this->client->getCommand('ShowAccount');
         return $this->executeCommand($command);
     }
 }

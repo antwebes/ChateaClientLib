@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>API Documentation » Ant\ChateaClient\Service</title>
+<title>API Documentation » Ant\ChateaClient</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,60 +57,69 @@
 </div>
 <ul class="side-nav nav nav-list">
 <li class="nav-header">
-<i class="icon-map-marker"></i> Namespaces</li>
+<i class="icon-map-marker"></i> Packages</li>
 <li>
-<span class="empty-namespace"><i class="icon-stop"></i>Service</span><ul class="nav nav-list nav-namespaces"><li>
-<a href="../namespaces/Ant.ChateaClient.Service.Client.html" title="Client"><i class="icon-th"></i>Client</a><ul class="nav nav-list nav-namespaces"></ul>
+<span class="empty-package"><i class="icon-folder-close"></i>ChateaClient</span><ul class="nav nav-list nav-packages">
+<li>
+<a href="../packages/Ant.ChateaClient.Client.html" title="Client"><i class="icon-folder-open"></i>Client</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li>
+<span class="empty-package"><i class="icon-folder-close"></i>Service</span><ul class="nav nav-list nav-packages"><li>
+<a href="../packages/Ant.ChateaClient.Service.Client.html" title="Client"><i class="icon-folder-open"></i>Client</a><ul class="nav nav-list nav-packages"></ul>
 </li></ul>
 </li>
 </ul>
+</li>
+</ul>
 </div>
-<div class="span8 namespace-contents">
-<ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/Ant.html">Ant</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.html">ChateaClient</a>
 </li>
-<li><a href="../namespaces/Ant.html">Ant</a></li>
+</li></ul>
+<div class="package-indent">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/Ant.html">Ant</a></li>
 <li>
-<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.html">ChateaClient</a>
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.html">ChateaClient</a>
 </li>
 <li class="active">
-<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.html">Service</a>
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.Client.html">Client</a>
 </li>
-</ul>
-<div class="namespace-indent">
-<div class="alert alert-info">This namespace does not contain any documentable elements</div>
-<ul class="breadcrumb">
-<li>
-<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
-</li>
-<li><a href="../namespaces/Ant.html">Ant</a></li>
-<li>
-<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.html">ChateaClient</a>
-</li>
-<li>
-<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.html">Service</a>
-</li>
-<li class="active">
-<span class="divider">\</span><a href="../namespaces/Ant.ChateaClient.Service.Client.html">Client</a>
-</li>
-</ul>
-<div class="namespace-indent">
+</li></ul>
+<div class="package-indent">
 <h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
-<div id="ClientInterface" class="element ajax clickable interface">
-<h1>ClientInterface<a href="../classes/Ant.ChateaClient.Service.Client.ClientInterface.html">¶</a>
+<div id="ApiInterface" class="element ajax clickable interface">
+<h1>ApiInterface<a href="../classes/Ant.ChateaClient.Client.ApiInterface.html">¶</a>
 </h1>
-<p class="short_description">Client interface for executing commands on a web service.</p>
+<p class="short_description">This class interface contains all command that run in api server.</p>
 <div class="details collapse"></div>
-<a href="../classes/Ant.ChateaClient.Service.Client.ClientInterface.html" class="more">« More »</a>
+<a href="../classes/Ant.ChateaClient.Client.ApiInterface.html" class="more">« More »</a>
 </div>
-<div id="StoreInterface" class="element ajax clickable interface">
-<h1>StoreInterface<a href="../classes/Ant.ChateaClient.Service.Client.StoreInterface.html">¶</a>
+<div id="Api" class="element ajax clickable class">
+<h1>Api<a href="../classes/Ant.ChateaClient.Client.Api.html">¶</a>
 </h1>
-<p class="short_description"></p>
+<p class="short_description">This class represent the chateagratis API's, this is single abstraction
+for all API methods.</p>
 <div class="details collapse"></div>
-<a href="../classes/Ant.ChateaClient.Service.Client.StoreInterface.html" class="more">« More »</a>
+<a href="../classes/Ant.ChateaClient.Client.Api.html" class="more">« More »</a>
+</div>
+<div id="ApiException" class="element ajax clickable class">
+<h1>ApiException<a href="../classes/Ant.ChateaClient.Client.ApiException.html">¶</a>
+</h1>
+<p class="short_description">Indicates that an error occurred at service credential</p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Client.ApiException.html" class="more">« More »</a>
+</div>
+<div id="Authentication" class="element ajax clickable class">
+<h1>Authentication<a href="../classes/Ant.ChateaClient.Client.Authentication.html">¶</a>
+</h1>
+<p class="short_description">Specifies a client that provides user authentication for ApiChateaClient sites that use OAuth2-based authentication.</p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Client.Authentication.html" class="more">« More »</a>
 </div>
 <div id="AuthenticationException" class="element ajax clickable class">
 <h1>AuthenticationException<a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html">¶</a>
@@ -119,6 +128,39 @@
 <div class="details collapse"></div>
 <a href="../classes/Ant.ChateaClient.Service.Client.AuthenticationException.html" class="more">« More »</a>
 </div>
+<div id="ChateaOAuth2Client" class="element ajax clickable class">
+<h1>ChateaOAuth2Client<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html">¶</a>
+</h1>
+<p class="short_description">Specifies a client that provides user authentication for ApiChateaClient sites that use OAuth2-based authentication.</p>
+<div class="details collapse"></div>
+<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html" class="more">« More »</a>
+</div>
+</div>
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/Ant.html">Ant</a></li>
+<li>
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.html">ChateaClient</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.Service.html">Service</a>
+</li>
+</li></ul>
+<div class="package-indent">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/Ant.html">Ant</a></li>
+<li>
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.html">ChateaClient</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.Service.html">Service</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../packages/Ant.ChateaClient.Service.Client.html">Client</a>
+</li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
 <div id="ChateaGratisAppClient" class="element ajax clickable class">
 <h1>ChateaGratisAppClient<a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">¶</a>
 </h1>
@@ -134,13 +176,6 @@ This client can get self credentials, and save in store. This version do not enc
 <div class="details collapse"></div>
 <a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisClient.html" class="more">« More »</a>
 </div>
-<div id="ChateaOAuth2Client" class="element ajax clickable class">
-<h1>ChateaOAuth2Client<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html">¶</a>
-</h1>
-<p class="short_description">Specifies a client that provides user authentication for ApiChateaClient sites that use OAuth2-based authentication.</p>
-<div class="details collapse"></div>
-<a href="../classes/Ant.ChateaClient.Service.Client.ChateaOAuth2Client.html" class="more">« More »</a>
-</div>
 <div id="Client" class="element ajax clickable class">
 <h1>Client<a href="../classes/Ant.ChateaClient.Service.Client.Client.html">¶</a>
 </h1>
@@ -154,6 +189,7 @@ This client can get self credentials, and save in store. This version do not enc
 <p class="short_description">A FileStore represents a store pull for save data</p>
 <div class="details collapse"></div>
 <a href="../classes/Ant.ChateaClient.Service.Client.FileStore.html" class="more">« More »</a>
+</div>
 </div>
 </div>
 </div>

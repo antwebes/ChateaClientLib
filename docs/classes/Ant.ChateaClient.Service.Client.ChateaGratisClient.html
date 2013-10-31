@@ -34,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">28</span></a></li>
+                <span class="label label-info">7</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -55,24 +55,13 @@
 <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
+<ul class="side-nav nav nav-list"><li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_factory" title="factory() :: "><span class="description">factory()
-        </span><pre>factory()</pre></a></li>
-<li class="method public "><a href="#method_updateAccessToken" title="updateAccessToken() :: "><span class="description">updateAccessToken()
-        </span><pre>updateAccessToken()</pre></a></li>
+<li class="method public "><a href="#method_factory" title="factory() :: Build new class ChateaGratisClient, this provides commands to run at ApiChateaServer"><span class="description">Build new class ChateaGratisClient, this provides commands to run at ApiChateaServer</span><pre>factory()</pre></a></li>
+<li class="method public "><a href="#method_updateAccessToken" title="updateAccessToken() :: Update the access token on header."><span class="description">Update the access token on header.</span><pre>updateAccessToken()</pre></a></li>
 </ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties
-                    <ul></ul>
-</li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property__OAuth2Plugin" title="$_OAuth2Plugin() :: "><span class="description"></span><pre>$_OAuth2Plugin</pre></a></li></ul>
-</li>
-</ul>
+</li></ul>
 </div>
 <div class="span8">
 <a id="\Ant\ChateaClient\Service\Client\ChateaGratisClient"></a><ul class="breadcrumb">
@@ -94,40 +83,63 @@
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">A ChateaGratis API client</p>
+<p class="short_description">Specifies a basic client that provides service to run command at api server .</p>
 <div class="details">
-<div class="long_description"></div>
+<div class="long_description">This client self can not get  credentials. You have put in config parameter access_token.</div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Ant.ChateaClient.Service.Client.html">Ant\ChateaClient\Service\Client</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CChateaClient%5CService%5CClient%5CClient"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CGuzzle%5CPlugin%5COAuth2Plugin"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CGuzzle%5CPlugin%5CAcceptHeaderPluging"></a></td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method_factory"></a><div class="element clickable method public method_factory" data-toggle="collapse" data-target=".method_factory .collapse">
-<h2>factory()
-        </h2>
-<pre>factory($config) </pre>
+<h2>Build new class ChateaGratisClient, this provides commands to run at ApiChateaServer</h2>
+<pre>factory(array $config) : <a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">\Ant\ChateaClient\Service\Client\ChateaGratisAppClient</a> | <a href="Client.html">\Guzzle\Service\Client</a></pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$config</h4></div>
+<div class="subelement argument">
+<h4>$config</h4>
+<code>array</code><p>Associative array can configure the client. The parameters are:
+                     access_token    The credentilas of client. This parameter is required
+                     base_url        The server endpoind url. This parameter is optional
+                     Accept          The accept header, default value is json. This parameter is optional
+                     environment     Set mode production [prod] or developing [dev] default value is prod. This parameter is optional
+                     scheme          Set server schema communication [http|https] for default https. This parameter is optional
+                     subdomain       Set server subdomain if this exist. For default is api. This parameter is optional</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/Ant.ChateaClient.Service.Client.ChateaGratisAppClient.html">\Ant\ChateaClient\Service\Client\ChateaGratisAppClient</a></code><code><a href="Client.html">\Guzzle\Service\Client</a></code>
+</div>
 </div></div>
 </div>
 <a id="method_updateAccessToken"></a><div class="element clickable method public method_updateAccessToken" data-toggle="collapse" data-target=".method_updateAccessToken .collapse">
-<h2>updateAccessToken()
-        </h2>
-<pre>updateAccessToken($acces_token) </pre>
+<h2>Update the access token on header.</h2>
+<pre>updateAccessToken(string $access_token) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$acces_token</h4></div>
+<div class="subelement argument">
+<h4>$access_token</h4>
+<code>string</code><p>The token you put in header</p></div>
 </div></div>
-</div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property__OAuth2Plugin"> </a><div class="element clickable property private property__OAuth2Plugin" data-toggle="collapse" data-target=".property__OAuth2Plugin .collapse">
-<h2>$_OAuth2Plugin</h2>
-<pre>$_OAuth2Plugin : <a href="../classes/Ant.Guzzle.Plugin.OAuth2Plugin.html">\Ant\Guzzle\Plugin\OAuth2Plugin</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 </div>
 </div>
@@ -137,7 +149,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+            generated on 2013-10-31T12:26:59+01:00.<br></footer></div>
 </div>
 </body>
 </html>

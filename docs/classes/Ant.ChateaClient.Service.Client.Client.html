@@ -34,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">28</span></a></li>
+                <span class="label label-info">7</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -61,8 +61,9 @@
                     <ul><li class="method public "><a href="#method___construct" title="__construct() :: Client constructor"><span class="description">Client constructor</span><pre>__construct()</pre></a></li></ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_parseUrl" title="parseUrl() :: "><span class="description">parseUrl()
-        </span><pre>parseUrl()</pre></a></li></ul>
+                    <ul><li class="method private "><a href="#method_parseUrl" title="parseUrl() :: This method prepare uri with format api/{id}/user/{user_id} and replace for
+     api/1/user/6"><span class="description">This method prepare uri with format api/{id}/user/{user_id} and replace for
+     api/1/user/6</span><pre>parseUrl()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
@@ -70,9 +71,9 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property_scheme" title="$scheme() :: "><span class="description"></span><pre>$scheme</pre></a></li>
-<li class="property protected "><a href="#property_subdomain" title="$subdomain() :: "><span class="description"></span><pre>$subdomain</pre></a></li>
-<li class="property protected "><a href="#property_version" title="$version() :: "><span class="description"></span><pre>$version</pre></a></li>
+<li class="property protected "><a href="#property_scheme" title='$scheme() :: API scheme (aka. http/https), defaults: "https"'><span class="description"></span><pre>$scheme</pre></a></li>
+<li class="property protected "><a href="#property_subdomain" title='$subdomain() :: API subdomain endpoint, defaults: "api"'><span class="description"></span><pre>$subdomain</pre></a></li>
+<li class="property protected "><a href="#property_version" title="$version() :: The version server api."><span class="description"></span><pre>$version</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -104,9 +105,27 @@
 </li>
 </ul>
 <div class="element class">
-<p class="short_description"></p>
+<p class="short_description">Client object for executing commands on a web service.</p>
 <div class="details">
 <div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Ant.ChateaClient.Service.Client.html">Ant\ChateaClient\Service\Client</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CInvalidArgumentException"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CAnt%5CChateaClient%5CService%5CClient%5CClient"></a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CGuzzle%5CService%5CDescription%5CServiceDescription"></a></td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
@@ -133,34 +152,46 @@
 </div></div>
 </div>
 <a id="method_parseUrl"></a><div class="element clickable method private method_parseUrl" data-toggle="collapse" data-target=".method_parseUrl .collapse">
-<h2>parseUrl()
-        </h2>
-<pre>parseUrl($uri, array $params) </pre>
+<h2>This method prepare uri with format api/{id}/user/{user_id} and replace for
+     api/1/user/6</h2>
+<pre>parseUrl(string $uri, array $params) : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$uri</h4></div>
-<div class="subelement argument"><h4>$params</h4></div>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>The base string url</p></div>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>A collection of params, the order is important</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="InvalidArgumentException.html">\InvalidArgumentException</a></code></th>
+<td>This exception is thrown if any parameter has errors</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the uri well formatted</div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_scheme"> </a><div class="element clickable property protected property_scheme" data-toggle="collapse" data-target=".property_scheme .collapse">
-<h2>$scheme</h2>
-<pre>$scheme </pre>
+<h2>API scheme (aka. http/https), defaults: "https"</h2>
+<pre>$scheme : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_subdomain"> </a><div class="element clickable property protected property_subdomain" data-toggle="collapse" data-target=".property_subdomain .collapse">
-<h2>$subdomain</h2>
-<pre>$subdomain </pre>
+<h2>API subdomain endpoint, defaults: "api"</h2>
+<pre>$subdomain : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_version"> </a><div class="element clickable property protected property_version" data-toggle="collapse" data-target=".property_version .collapse">
-<h2>$version</h2>
-<pre>$version </pre>
+<h2>The version server api.</h2>
+<pre>$version : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -186,7 +217,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+            generated on 2013-10-31T12:26:59+01:00.<br></footer></div>
 </div>
 </body>
 </html>

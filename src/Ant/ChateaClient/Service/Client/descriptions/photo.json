@@ -235,10 +235,10 @@
         },
         "ShowAlbums":{
             "httpMethod": "GET",
-            "uri": "api/users/{user_id}/albums",
+            "uri": "api/users/{id}/albums",
             "summary": "List the Albums of an user",
             "parameters": {
-                "user_id": {
+                "id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"
@@ -259,10 +259,10 @@
         },
         "ShowAlbum":{
             "httpMethod": "GET",
-            "uri": "api/users/{user_id}/albums/{album_id}",
+            "uri": "api/users/{id}/albums/{album_id}",
             "summary": "Show a user album",
             "parameters": {
-                "user_id": {
+                "id": {
                     "type": "integer",
                     "required": true,
                     "location": "uri"

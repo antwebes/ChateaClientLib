@@ -34,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">28</span></a></li>
+                <span class="label label-info">7</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -59,8 +59,7 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct() :: "><span class="description">__construct()
-        </span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct() :: Initializes a new instance of this class."><span class="description">Initializes a new instance of this class.</span><pre>__construct()</pre></a></li>
 <li class="method public "><a href="#method_clearAllPersistentData" title="clearAllPersistentData() :: Clear all data from the persistent storage"><span class="description">Clear all data from the persistent storage</span><pre>clearAllPersistentData()</pre></a></li>
 <li class="method public "><a href="#method_clearPersistentData" title="clearPersistentData() :: Clear the data with $key from the persistent storage"><span class="description">Clear the data with $key from the persistent storage</span><pre>clearPersistentData()</pre></a></li>
 <li class="method public "><a href="#method_getPersistentData" title="getPersistentData() :: Get the data for $key, persisted by Client::setPersistentData()"><span class="description">Get the data for $key, persisted by Client::setPersistentData()</span><pre>getPersistentData()</pre></a></li>
@@ -71,10 +70,8 @@ getPersistentData($key) return $value. This call may be in another request.</spa
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="method protected "><a href="#method_getDataInFile" title="getDataInFile() :: "><span class="description">getDataInFile()
-        </span><pre>getDataInFile()</pre></a></li>
-<li class="method protected "><a href="#method_saveInFile" title="saveInFile() :: "><span class="description">saveInFile()
-        </span><pre>saveInFile()</pre></a></li>
+<li class="method protected "><a href="#method_getDataInFile" title="getDataInFile() :: Get all data in file."><span class="description">Get all data in file.</span><pre>getDataInFile()</pre></a></li>
+<li class="method protected "><a href="#method_saveInFile" title="saveInFile() :: Save data in file."><span class="description">Save data in file.</span><pre>saveInFile()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -83,13 +80,13 @@ getPersistentData($key) return $value. This call may be in another request.</spa
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected "><a href="#property_config" title="$config() :: "><span class="description"></span><pre>$config</pre></a></li>
-<li class="property protected "><a href="#property_kSupportedKeys" title="$kSupportedKeys() :: "><span class="description"></span><pre>$kSupportedKeys</pre></a></li>
+<li class="property protected "><a href="#property_config" title="$config() :: array|\Guzzle\Common\Collection $config Configuration data"><span class="description"></span><pre>$config</pre></a></li>
+<li class="property protected "><a href="#property_kSupportedKeys" title="$kSupportedKeys() :: This store only support this type data to save"><span class="description"></span><pre>$kSupportedKeys</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-constant"></i> Constants
-                    <ul><li class="constant  "><a href="#constant_SIGNED_ALGORITHM" title="SIGNED_ALGORITHM() :: "><span class="description">SIGNED_ALGORITHM</span><pre>SIGNED_ALGORITHM</pre></a></li></ul>
+                    <ul><li class="constant  "><a href="#constant_SIGNED_ALGORITHM" title="SIGNED_ALGORITHM() :: The algorithn used for signed data"><span class="description">The algorithn used for signed data</span><pre>SIGNED_ALGORITHM</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -113,20 +110,34 @@ getPersistentData($key) return $value. This call may be in another request.</spa
 </li>
 </ul>
 <div class="element class">
-<p class="short_description"></p>
+<p class="short_description">A FileStore represents a store pull for save data</p>
 <div class="details">
 <div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Ant.ChateaClient.Service.Client.html">Ant\ChateaClient\Service\Client</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="%5CGuzzle%5CCommon%5CCollection"></a></td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>__construct()
-        </h2>
-<pre>__construct($config) </pre>
+<h2>Initializes a new instance of this class.</h2>
+<pre>__construct(array $config) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$config</h4></div>
+<div class="subelement argument">
+<h4>$config</h4>
+<code>array</code><p>Associative array can configure the File store. The parameters are:
+                     file_directory      The directory  where save the file
+                     file_name           The name of file of data
+                     SIGNED_ALGORITHM    The algorithn used for signed data.</p></div>
 </div></div>
 </div>
 <a id="method_clearAllPersistentData"></a><div class="element clickable method public method_clearAllPersistentData" data-toggle="collapse" data-target=".method_clearAllPersistentData .collapse">
@@ -190,41 +201,46 @@ getPersistentData($key) return $value. This call may be in another request.</h2>
 </div></div>
 </div>
 <a id="method_getDataInFile"></a><div class="element clickable method protected method_getDataInFile" data-toggle="collapse" data-target=".method_getDataInFile .collapse">
-<h2>getDataInFile()
-        </h2>
-<pre>getDataInFile() </pre>
+<h2>Get all data in file.</h2>
+<pre>getDataInFile() : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>Associative array with all data of file</div>
+</div></div>
 </div>
 <a id="method_saveInFile"></a><div class="element clickable method protected method_saveInFile" data-toggle="collapse" data-target=".method_saveInFile .collapse">
-<h2>saveInFile()
-        </h2>
-<pre>saveInFile($content) </pre>
+<h2>Save data in file.</h2>
+<pre>saveInFile(string $content) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
-<div class="subelement argument"><h4>$content</h4></div>
+<div class="subelement argument">
+<h4>$content</h4>
+<code>string</code><p>The data to save</p></div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_config"> </a><div class="element clickable property protected property_config" data-toggle="collapse" data-target=".property_config .collapse">
-<h2>$config</h2>
+<h2>array|\Guzzle\Common\Collection $config Configuration data</h2>
 <pre>$config </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="property_kSupportedKeys"> </a><div class="element clickable property protected property_kSupportedKeys" data-toggle="collapse" data-target=".property_kSupportedKeys .collapse">
-<h2>$kSupportedKeys</h2>
-<pre>$kSupportedKeys </pre>
+<h2>This store only support this type data to save</h2>
+<pre>$kSupportedKeys : array</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <h3>
 <i class="icon-custom icon-constant"></i> Constants</h3>
 <a id="constant_SIGNED_ALGORITHM"> </a><div class="element clickable constant  constant_SIGNED_ALGORITHM" data-toggle="collapse" data-target=".constant_SIGNED_ALGORITHM .collapse">
-<h2>SIGNED_ALGORITHM</h2>
+<h2>The algorithn used for signed data</h2>
 <pre>SIGNED_ALGORITHM </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -237,7 +253,7 @@ getPersistentData($key) return $value. This call may be in another request.</h2>
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-30T17:42:25+01:00.<br></footer></div>
+            generated on 2013-10-31T12:26:59+01:00.<br></footer></div>
 </div>
 </body>
 </html>
