@@ -194,7 +194,7 @@ this responsibility it is class that implement ClientInterface for example Chate
 </div>
 <a id="method_addAlbum"></a><div class="element clickable method public method_addAlbum" data-toggle="collapse" data-target=".method_addAlbum .collapse">
 <h2>Add new Photo Album in user accont</h2>
-<pre>addAlbum(\Ant\ChateaClient\Client\number $user_id, string $title, string $description) : array | string</pre>
+<pre>addAlbum(int $user_id, string $title, string $description) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -217,7 +217,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user ID</p></div>
+<code>int</code><p>The user ID</p></div>
 <div class="subelement argument">
 <h4>$title</h4>
 <code>string</code><p>One name for the Album</p></div>
@@ -247,7 +247,7 @@ array(
 </div>
 <a id="method_addAlbumPhoto"></a><div class="element clickable method public method_addAlbumPhoto" data-toggle="collapse" data-target=".method_addAlbumPhoto .collapse">
 <h2>Insert a photo entity into album id</h2>
-<pre>addAlbumPhoto(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $photo_id, \Ant\ChateaClient\Client\number $album_id) : array | string</pre>
+<pre>addAlbumPhoto(int $user_id, int $photo_id, int $album_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -262,13 +262,13 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The photo id to insert</p></div>
+<code>int</code><p>The photo id to insert</p></div>
 <div class="subelement argument">
 <h4>$album_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The album id to retrieve data</p></div>
+<code>int</code><p>The album id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -366,7 +366,7 @@ array(
 </div>
 <a id="method_addFriends"></a><div class="element clickable method public method_addFriends" data-toggle="collapse" data-target=".method_addFriends .collapse">
 <h2>Sends a friendship request between two users</h2>
-<pre>addFriends(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $friend_id) : string</pre>
+<pre>addFriends(int $user_id, int $friend_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -379,10 +379,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Your user id</p></div>
+<code>int</code><p>Your user id</p></div>
 <div class="subelement argument">
 <h4>$friend_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that retrieve the request</p></div>
+<code>int</code><p>The user id that retrieve the request</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -406,7 +406,7 @@ array(
 </div>
 <a id="method_addFriendshipRequest"></a><div class="element clickable method public method_addFriendshipRequest" data-toggle="collapse" data-target=".method_addFriendshipRequest .collapse">
 <h2>Accept request new Friend</h2>
-<pre>addFriendshipRequest(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $user_accept_id) : string</pre>
+<pre>addFriendshipRequest(int $user_id, int $user_accept_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -420,10 +420,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that you retrieve request new Friend</p></div>
+<code>int</code><p>The user id that you retrieve request new Friend</p></div>
 <div class="subelement argument">
 <h4>$user_accept_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id pending friendship</p></div>
+<code>int</code><p>The user id pending friendship</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -447,7 +447,7 @@ array(
 </div>
 <a id="method_addPhoto"></a><div class="element clickable method public method_addPhoto" data-toggle="collapse" data-target=".method_addPhoto .collapse">
 <h2>upload new photo at server api</h2>
-<pre>addPhoto(\Ant\ChateaClient\Client\number $user_id, string $imageFile, string $imageTile) : array | string</pre>
+<pre>addPhoto(int $user_id, string $imageFile, string $imageTile) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -482,7 +482,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user owner of photo</p></div>
+<code>int</code><p>The user owner of photo</p></div>
 <div class="subelement argument">
 <h4>$imageFile</h4>
 <code>string</code><p>The path to upload photo</p></div>
@@ -512,7 +512,7 @@ array(
 </div>
 <a id="method_addPhotoVote"></a><div class="element clickable method public method_addPhotoVote" data-toggle="collapse" data-target=".method_addPhotoVote .collapse">
 <h2>Add one vote at photo</h2>
-<pre>addPhotoVote(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $photo_id, int $score) : array | string</pre>
+<pre>addPhotoVote(int $user_id, int $photo_id, int $score) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -528,13 +528,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/6/votes",
+             "href" => "http://api.chateagratis.net/api/users/1/photos/6/votes",
          ),
          "photo" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/photos/6",
+             "href" => "http://api.chateagratis.local/api/photos/6",
          ),
          "participant" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chateagratis.local/api/users/1",
          )
      )
  );</td>
@@ -542,10 +542,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The photo id to retrieve data</p></div>
+<code>int</code><p>The photo id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$score</h4>
 <code>int</code><p>The score photo,  The score ha to be between one and ten</p></div>
@@ -572,7 +572,7 @@ array(
 </div>
 <a id="method_addReportPhoto"></a><div class="element clickable method public method_addReportPhoto" data-toggle="collapse" data-target=".method_addReportPhoto .collapse">
 <h2>Report a photo</h2>
-<pre>addReportPhoto(\Ant\ChateaClient\Client\number $photo_id, string $reason) : array | string</pre>
+<pre>addReportPhoto(int $photo_id, string $reason) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -590,7 +590,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The Photo ID to be reported</p></div>
+<code>int</code><p>The Photo ID to be reported</p></div>
 <div class="subelement argument">
 <h4>$reason</h4>
 <code>string</code><p>The reason this report</p></div>
@@ -617,7 +617,7 @@ array(
 </div>
 <a id="method_addThread"></a><div class="element clickable method public method_addThread" data-toggle="collapse" data-target=".method_addThread .collapse">
 <h2>Create new thread</h2>
-<pre>addThread(\Ant\ChateaClient\Client\number $user_id, string $recipient_name, string $subject, string $body) : array | string</pre>
+<pre>addThread(int $user_id, string $recipient_name, string $subject, string $body) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -634,7 +634,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that create the thread</p></div>
+<code>int</code><p>The user id that create the thread</p></div>
 <div class="subelement argument">
 <h4>$recipient_name</h4>
 <code>string</code><p>The ID username that retrieve the message</p></div>
@@ -667,7 +667,7 @@ array(
 </div>
 <a id="method_addThreadMessage"></a><div class="element clickable method public method_addThreadMessage" data-toggle="collapse" data-target=".method_addThreadMessage .collapse">
 <h2>Add one message on thread</h2>
-<pre>addThreadMessage(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $thread_id, string $body) : array | string</pre>
+<pre>addThreadMessage(int $user_id, int $thread_id, string $body) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -685,10 +685,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that create the thread</p></div>
+<code>int</code><p>The user id that create the thread</p></div>
 <div class="subelement argument">
 <h4>$thread_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The ID of thread</p></div>
+<code>int</code><p>The ID of thread</p></div>
 <div class="subelement argument">
 <h4>$body</h4>
 <code>string</code><p>the text of message</p></div>
@@ -715,7 +715,7 @@ array(
 </div>
 <a id="method_addUserBlocked"></a><div class="element clickable method public method_addUserBlocked" data-toggle="collapse" data-target=".method_addUserBlocked .collapse">
 <h2>Blocked one user</h2>
-<pre>addUserBlocked(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $user_blocked_id) : string</pre>
+<pre>addUserBlocked(int $user_id, int $user_blocked_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -730,10 +730,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$user_blocked_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to blocked by ID</p></div>
+<code>int</code><p>User to blocked by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -757,7 +757,7 @@ array(
 </div>
 <a id="method_addUserChannelFan"></a><div class="element clickable method public method_addUserChannelFan" data-toggle="collapse" data-target=".method_addUserChannelFan .collapse">
 <h2>Make channel's  fan one user</h2>
-<pre>addUserChannelFan(\Ant\ChateaClient\Client\number $channel_id, \Ant\ChateaClient\Client\number $user_id) : string</pre>
+<pre>addUserChannelFan(int $channel_id, int $user_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -772,10 +772,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel id to receive a fan</p></div>
+<code>int</code><p>Channel id to receive a fan</p></div>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id will be fan</p></div>
+<code>int</code><p>The user id will be fan</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -799,7 +799,7 @@ array(
 </div>
 <a id="method_addUserProfile"></a><div class="element clickable method public method_addUserProfile" data-toggle="collapse" data-target=".method_addUserProfile .collapse">
 <h2>Add new profile one user</h2>
-<pre>addUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation) : array | string</pre>
+<pre>addUserProfile(int $user_id, string $about, string $sexualOrientation) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -819,7 +819,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$about</h4>
 <code>string</code><p>Short description  your profile</p></div>
@@ -850,14 +850,14 @@ array(
 </div>
 <a id="method_addUserReports"></a><div class="element clickable method public method_addUserReports" data-toggle="collapse" data-target=".method_addUserReports .collapse">
 <h2>Report a user</h2>
-<pre>addUserReports(\Ant\ChateaClient\Client\number $user_reported_id, string $reason) : array | string</pre>
+<pre>addUserReports(int $user_reported_id, string $reason) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_reported_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that is report</p></div>
+<code>int</code><p>The user id that is report</p></div>
 <div class="subelement argument">
 <h4>$reason</h4>
 <code>string</code><p>Description for report the user</p></div>
@@ -927,7 +927,7 @@ array(
 </div>
 <a id="method_delAlbum"></a><div class="element clickable method public method_delAlbum" data-toggle="collapse" data-target=".method_delAlbum .collapse">
 <h2>Delete one album</h2>
-<pre>delAlbum(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $album_id) : string</pre>
+<pre>delAlbum(int $user_id, int $album_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -942,10 +942,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$album_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The album id to retrieve data</p></div>
+<code>int</code><p>The album id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -969,7 +969,7 @@ array(
 </div>
 <a id="method_delChannel"></a><div class="element clickable method public method_delChannel" data-toggle="collapse" data-target=".method_delChannel .collapse">
 <h2>Delete channel</h2>
-<pre>delChannel(\Ant\ChateaClient\Client\number $channel_id) : string</pre>
+<pre>delChannel(int $channel_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -982,7 +982,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel to update by ID</p></div>
+<code>int</code><p>Channel to update by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1006,7 +1006,7 @@ array(
 </div>
 <a id="method_delFriend"></a><div class="element clickable method public method_delFriend" data-toggle="collapse" data-target=".method_delFriend .collapse">
 <h2>Delete friends between two users</h2>
-<pre>delFriend(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $user_delete_id) : string</pre>
+<pre>delFriend(int $user_id, int $user_delete_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1020,10 +1020,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that you delere friend</p></div>
+<code>int</code><p>The user id that you delere friend</p></div>
 <div class="subelement argument">
 <h4>$user_delete_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id, you want deleted.</p></div>
+<code>int</code><p>The user id, you want deleted.</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1047,7 +1047,7 @@ array(
 </div>
 <a id="method_delFriendshipRequest"></a><div class="element clickable method public method_delFriendshipRequest" data-toggle="collapse" data-target=".method_delFriendshipRequest .collapse">
 <h2>Decline a friendship request</h2>
-<pre>delFriendshipRequest(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $user_decline_id) : string</pre>
+<pre>delFriendshipRequest(int $user_id, int $user_decline_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1061,10 +1061,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that you decliene new Friend</p></div>
+<code>int</code><p>The user id that you decliene new Friend</p></div>
 <div class="subelement argument">
 <h4>$user_decline_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id pending friendship</p></div>
+<code>int</code><p>The user id pending friendship</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1117,7 +1117,7 @@ array(
 </div>
 <a id="method_delPhoto"></a><div class="element clickable method public method_delPhoto" data-toggle="collapse" data-target=".method_delPhoto .collapse">
 <h2>Delete a Photo</h2>
-<pre>delPhoto(\Ant\ChateaClient\Client\number $photo_id) : string</pre>
+<pre>delPhoto(int $photo_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1131,7 +1131,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The photo id you like deleting</p></div>
+<code>int</code><p>The photo id you like deleting</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1155,7 +1155,7 @@ array(
 </div>
 <a id="method_delPhotoAlbum"></a><div class="element clickable method public method_delPhotoAlbum" data-toggle="collapse" data-target=".method_delPhotoAlbum .collapse">
 <h2>Delete a photo of album</h2>
-<pre>delPhotoAlbum(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $photo_id) : string</pre>
+<pre>delPhotoAlbum(int $user_id, int $photo_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1169,10 +1169,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The photo id to retrieve data</p></div>
+<code>int</code><p>The photo id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1196,7 +1196,7 @@ array(
 </div>
 <a id="method_delPhotoVote"></a><div class="element clickable method public method_delPhotoVote" data-toggle="collapse" data-target=".method_delPhotoVote .collapse">
 <h2>Delete one vote of one photo</h2>
-<pre>delPhotoVote(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $photo_id) : string</pre>
+<pre>delPhotoVote(int $user_id, int $photo_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1211,10 +1211,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to delete data</p></div>
+<code>int</code><p>The user id to delete data</p></div>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The phot id to delete vote</p></div>
+<code>int</code><p>The phot id to delete vote</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1238,7 +1238,7 @@ array(
 </div>
 <a id="method_delThread"></a><div class="element clickable method public method_delThread" data-toggle="collapse" data-target=".method_delThread .collapse">
 <h2>Delete one thread ant all messages</h2>
-<pre>delThread(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $thread_id) : string</pre>
+<pre>delThread(int $user_id, int $thread_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1253,10 +1253,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that create the thread</p></div>
+<code>int</code><p>The user id that create the thread</p></div>
 <div class="subelement argument">
 <h4>$thread_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The ID of thread</p></div>
+<code>int</code><p>The ID of thread</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1280,14 +1280,13 @@ array(
 </div>
 <a id="method_delUserBlocked"></a><div class="element clickable method public method_delUserBlocked" data-toggle="collapse" data-target=".method_delUserBlocked .collapse">
 <h2>UnBlocked one user</h2>
-<pre>delUserBlocked(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $user_blocked_id) : string</pre>
+<pre>delUserBlocked(int $user_id, int $user_blocked_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>one user
+<th>examples</th>
+<td>Unblocked one user
      $your_api_instance->delUserBlocked(1,6);
      //output
      User unblocked</td>
@@ -1295,10 +1294,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$user_blocked_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to blocked by ID</p></div>
+<code>int</code><p>User to blocked by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1313,16 +1312,11 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can blocked an user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delUserChannelFan"></a><div class="element clickable method public method_delUserChannelFan" data-toggle="collapse" data-target=".method_delUserChannelFan .collapse">
 <h2>Remove channel's  fan one user</h2>
-<pre>delUserChannelFan(\Ant\ChateaClient\Client\number $channel_id, \Ant\ChateaClient\Client\number $user_id) : string</pre>
+<pre>delUserChannelFan(int $channel_id, int $user_id) : string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1337,10 +1331,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel id to receive a fan</p></div>
+<code>int</code><p>Channel id to receive a fan</p></div>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id will be fan</p></div>
+<code>int</code><p>The user id will be fan</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1515,7 +1509,7 @@ this this request is only once for day.</h2>
 </div>
 <a id="method_showAlbum"></a><div class="element clickable method public method_showAlbum" data-toggle="collapse" data-target=".method_showAlbum .collapse">
 <h2>Show one album of user</h2>
-<pre>showAlbum(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $album_id) : array | string</pre>
+<pre>showAlbum(int $user_id, int $album_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1530,13 +1524,13 @@ array(
  "description" => "default album",
  "_links" => array(
      "self" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+         "href" => "http://api.chateagratis.local/api/users/1/albums/1",
      ),
      "participant" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+         "href" => "http://api.chateagratis.local/api/users/1",
      ),
      "photos" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+         "href" => "http://api.chateagratis.local/api/albums/1/photos",
      )
   )
 );</td>
@@ -1544,10 +1538,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$album_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The album id to retrieve data</p></div>
+<code>int</code><p>The album id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1571,7 +1565,7 @@ array(
 </div>
 <a id="method_showAlbums"></a><div class="element clickable method public method_showAlbums" data-toggle="collapse" data-target=".method_showAlbums .collapse">
 <h2>Show all abums one user</h2>
-<pre>showAlbums(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showAlbums(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1586,7 +1580,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums",
+             "href" => "http://api.chateagratis.local/api/users/1/albums",
          )
      ),
      "resources" => array(
@@ -1596,13 +1590,13 @@ array(
              "description" => "default album",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+                     "href" => "http://api.chateagratis.local/api/users/1/albums/1",
              ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chateagratis.local/api/users/1",
                ),
                  "photos" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+                     "href" => "http://api.chateagratis.local/api/albums/1/photos",
                  )
              )
          )
@@ -1612,7 +1606,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -1643,7 +1637,7 @@ array(
 </div>
 <a id="method_showChannel"></a><div class="element clickable method public method_showChannel" data-toggle="collapse" data-target=".method_showChannel .collapse">
 <h2>Get channel. Show data channel by id</h2>
-<pre>showChannel(\Ant\ChateaClient\Client\number $channel_id) : array | string</pre>
+<pre>showChannel(int $channel_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1680,7 +1674,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel to retrieve by ID</p></div>
+<code>int</code><p>Channel to retrieve by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1704,7 +1698,7 @@ array(
 </div>
 <a id="method_showChannelFans"></a><div class="element clickable method public method_showChannelFans" data-toggle="collapse" data-target=".method_showChannelFans .collapse">
 <h2>Get fans (users) the channel</h2>
-<pre>showChannelFans(\Ant\ChateaClient\Client\number $channel_id, int $limit, int $offset) : array | string</pre>
+<pre>showChannelFans(int $channel_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1748,7 +1742,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel to retrieve fans</p></div>
+<code>int</code><p>Channel to retrieve fans</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -1909,7 +1903,7 @@ array(
 </div>
 <a id="method_showFriends"></a><div class="element clickable method public method_showFriends" data-toggle="collapse" data-target=".method_showFriends .collapse">
 <h2>Get me friends</h2>
-<pre>showFriends(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showFriends(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1953,7 +1947,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id retrieve friends</p></div>
+<code>int</code><p>The user id retrieve friends</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -1984,7 +1978,7 @@ array(
 </div>
 <a id="method_showFriendshipsPending"></a><div class="element clickable method public method_showFriendshipsPending" data-toggle="collapse" data-target=".method_showFriendshipsPending .collapse">
 <h2>Show list user, that one user will pending have your friendship</h2>
-<pre>showFriendshipsPending(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showFriendshipsPending(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2029,7 +2023,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that you retrieve data</p></div>
+<code>int</code><p>The user id that you retrieve data</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2060,7 +2054,7 @@ array(
 </div>
 <a id="method_showFriendshipsRequest"></a><div class="element clickable method public method_showFriendshipsRequest" data-toggle="collapse" data-target=".method_showFriendshipsRequest .collapse">
 <h2>Show the friendship requests sent by user id, and it pending to be accepted</h2>
-<pre>showFriendshipsRequest(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showFriendshipsRequest(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2105,7 +2099,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that you retrieve data</p></div>
+<code>int</code><p>The user id that you retrieve data</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2288,7 +2282,7 @@ array(
 </div>
 <a id="method_showPhotoVotes"></a><div class="element clickable method public method_showPhotoVotes" data-toggle="collapse" data-target=".method_showPhotoVotes .collapse">
 <h2>Show score I had put to one photo</h2>
-<pre>showPhotoVotes(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $photo_id) : array | string</pre>
+<pre>showPhotoVotes(int $user_id, int $photo_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2320,10 +2314,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$photo_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The photo id to retrieve data</p></div>
+<code>int</code><p>The photo id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -2347,7 +2341,7 @@ array(
 </div>
 <a id="method_showReport"></a><div class="element clickable method public method_showReport" data-toggle="collapse" data-target=".method_showReport .collapse">
 <h2>Shows the details of a report</h2>
-<pre>showReport(\Ant\ChateaClient\Client\number $report_id) : array | string</pre>
+<pre>showReport(int $report_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2363,13 +2357,13 @@ array(
      "id" => 1,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+             "href" => "http://api.chateagratis.local/api/reports/1",
          ),
          "reporter" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chateagratis.local/api/users/1",
          ),
          "resource" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+             "href" => "http://api.chateagratis.local/api/users/2",
          )
      )
  );</td>
@@ -2377,7 +2371,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$report_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The report id to retrieve data</p></div>
+<code>int</code><p>The report id to retrieve data</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -2416,7 +2410,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/reports",
+             "href" => "http://api.chateagratis.local/api/reports",
          )
      ),
      "resources" => array(
@@ -2427,13 +2421,13 @@ array(
              "id" => 1,
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+                     "href" => "http://api.chateagratis.local/api/reports/1",
                  ),
                  "reporter" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chateagratis.local/api/users/1",
                  ),
                  "resource" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+                     "href" => "http://api.chateagratis.local/api/users/2",
                  )
              )
          )
@@ -2471,7 +2465,7 @@ array(
 </div>
 <a id="method_showThreadMessages"></a><div class="element clickable method public method_showThreadMessages" data-toggle="collapse" data-target=".method_showThreadMessages .collapse">
 <h2>List all message one thread</h2>
-<pre>showThreadMessages(\Ant\ChateaClient\Client\number $user_id, \Ant\ChateaClient\Client\number $thread_id) : array | string</pre>
+<pre>showThreadMessages(int $user_id, int $thread_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2495,10 +2489,10 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id that create the thread</p></div>
+<code>int</code><p>The user id that create the thread</p></div>
 <div class="subelement argument">
 <h4>$thread_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The ID of thread</p></div>
+<code>int</code><p>The ID of thread</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -2522,7 +2516,7 @@ array(
 </div>
 <a id="method_showThreadsInbox"></a><div class="element clickable method public method_showThreadsInbox" data-toggle="collapse" data-target=".method_showThreadsInbox .collapse">
 <h2>Show user messages have in inbox</h2>
-<pre>showThreadsInbox(\Ant\ChateaClient\Client\number $user_id) : array | string</pre>
+<pre>showThreadsInbox(int $user_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2545,7 +2539,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id see her/his inbox</p>
+<code>int</code><p>The user id see her/his inbox</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
@@ -2570,7 +2564,7 @@ array(
 </div>
 <a id="method_showThreadsSent"></a><div class="element clickable method public method_showThreadsSent" data-toggle="collapse" data-target=".method_showThreadsSent .collapse">
 <h2>Show all thread that you sent</h2>
-<pre>showThreadsSent(\Ant\ChateaClient\Client\number $user_id) : array | string</pre>
+<pre>showThreadsSent(int $user_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2593,7 +2587,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id see her/his sent messages</p>
+<code>int</code><p>The user id see her/his sent messages</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
@@ -2618,7 +2612,7 @@ array(
 </div>
 <a id="method_showUser"></a><div class="element clickable method public method_showUser" data-toggle="collapse" data-target=".method_showUser .collapse">
 <h2>Show user by ID</h2>
-<pre>showUser(\Ant\ChateaClient\Client\number $user_id) : array | string</pre>
+<pre>showUser(int $user_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2633,16 +2627,16 @@ array(
      "email" => "alex@chateagratis.net",
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chateagratis.local/api/users/1",
          ),
          "channels" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+             "href" => "http://api.chateagratis.local/api/users/1/channels",
          ),
          "channels_fan" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+             "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
          ),
          "blocked_users" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+             "href" => "http://api.chateagratis.local/api/users/1/blocked",
          )
      )
 );</td>
@@ -2650,7 +2644,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -2674,7 +2668,7 @@ array(
 </div>
 <a id="method_showUserChannels"></a><div class="element clickable method public method_showUserChannels" data-toggle="collapse" data-target=".method_showUserChannels .collapse">
 <h2>Show channels created for the user</h2>
-<pre>showUserChannels(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUserChannels(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2722,7 +2716,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User id  to retrieve channel</p></div>
+<code>int</code><p>User id  to retrieve channel</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2753,7 +2747,7 @@ array(
 </div>
 <a id="method_showUserChannelsFan"></a><div class="element clickable method public method_showUserChannelsFan" data-toggle="collapse" data-target=".method_showUserChannelsFan .collapse">
 <h2>Show channels favorites one user</h2>
-<pre>showUserChannelsFan(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUserChannelsFan(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2794,7 +2788,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User id  to retrieve fans channels</p></div>
+<code>int</code><p>User id  to retrieve fans channels</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2825,7 +2819,7 @@ array(
 </div>
 <a id="method_showUserPhotoVotes"></a><div class="element clickable method public method_showUserPhotoVotes" data-toggle="collapse" data-target=".method_showUserPhotoVotes .collapse">
 <h2>Show all votes of one user</h2>
-<pre>showUserPhotoVotes(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUserPhotoVotes(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2840,7 +2834,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/votes",
+             "href" => "http://api.chateagratis.local/api/users/1/votes",
          )
      ),
      "resources" => array(
@@ -2853,13 +2847,13 @@ array(
              ),
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/2/votes",
+                     "href" => "http://api.chateagratis.local/api/users/1/photos/2/votes",
                  ),
                  "photo" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/photos/2",
+                     "href" => "http://api.chateagratis.local/api/photos/2",
                  ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chateagratis.local/api/users/1",
                  )
              )
          )
@@ -2869,7 +2863,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2900,7 +2894,7 @@ array(
 </div>
 <a id="method_showUserPhotos"></a><div class="element clickable method public method_showUserPhotos" data-toggle="collapse" data-target=".method_showUserPhotos .collapse">
 <h2>Show all photos one user</h2>
-<pre>showUserPhotos(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUserPhotos(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -2956,7 +2950,7 @@ array (
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>The user id to retrieve data</p></div>
+<code>int</code><p>The user id to retrieve data</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -2987,7 +2981,7 @@ array (
 </div>
 <a id="method_showUserProfile"></a><div class="element clickable method public method_showUserProfile" data-toggle="collapse" data-target=".method_showUserProfile .collapse">
 <h2>Show profile by user ID</h2>
-<pre>showUserProfile(\Ant\ChateaClient\Client\number $user_id) : array | string</pre>
+<pre>showUserProfile(int $user_id) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -3007,7 +3001,7 @@ array (
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -3031,14 +3025,36 @@ array (
 </div>
 <a id="method_showUserVisitors"></a><div class="element clickable method public method_showUserVisitors" data-toggle="collapse" data-target=".method_showUserVisitors .collapse">
 <h2>Show count visits on one profile and who visits of one profile</h2>
-<pre>showUserVisitors(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUserVisitors(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
+<div class="row collapse">
+<div class="span4">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>example</th>
+<td>$your_api_instance->showUserVisitors(1);
+ // Sample output
+array(
+     array(
+         "participant" => array(
+         "id" => 1,
+         "username" => "alex",
+         "email" => "alex@chateagratis.net",
+     ),
+     "participant_voyeur" => array(
+         "id" => 2,
+         "username" => "alex2",
+         "email" => "alex2@chateagratis.net",
+     ),
+     "frequency" => 1,
+  )
+);
+</code></td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -3054,29 +3070,19 @@ array (
 </tr>
 <tr>
 <th><code><a href="../classes/Ant.ChateaClient.Client.ApiException.html">\Ant\ChateaClient\Client\ApiException</a></code></th>
-<td>This exception is thrown if server send one error
-array(
-     array(
-         "participant" => array(
-         "id" => 1,
-         "username" => "alex",
-         "email" => "alex@chateagratis.net",
-     ),
-     "participant_voyeur" => array(
-         "id" => 2,
-         "username" => "alex2",
-         "email" => "alex2@chateagratis.net",
-     ),
-     "frequency" => 1,
-  )
-);</td>
+<td>This exception is thrown if server send one error</td>
 </tr>
 </table>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>
 </div>
-</div></div>
+</div>
+<div class="span4">
+<h3>Examples</h3>
+<pre class="prettyprint linenums"></pre>
+</div>
+</div>
 </div>
 <a id="method_showUsers"></a><div class="element clickable method public method_showUsers" data-toggle="collapse" data-target=".method_showUsers .collapse">
 <h2>Get all the users</h2>
@@ -3095,7 +3101,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+             "href" => "http://api.chateagratis.local/api/users",
              )
      ),
      "resources" => array(
@@ -3105,16 +3111,16 @@ array(
              "email" => "alex@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chateagratis.local/api/users/1",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+                     "href" => "http://api.chateagratis.local/api/users/1/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+                     "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+                     "href" => "http://api.chateagratis.local/api/users/1/blocked",
                  )
              )
          )
@@ -3152,7 +3158,7 @@ array(
 </div>
 <a id="method_showUsersBlocked"></a><div class="element clickable method public method_showUsersBlocked" data-toggle="collapse" data-target=".method_showUsersBlocked .collapse">
 <h2>Show user blocked by ID user</h2>
-<pre>showUsersBlocked(\Ant\ChateaClient\Client\number $user_id, int $limit, int $offset) : array | string</pre>
+<pre>showUsersBlocked(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -3167,7 +3173,7 @@ array(
       "offset" => 0,
       "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+             "href" => "http://api.chateagratis.local/api/users",
          )
       ),
       "resources" => array(
@@ -3177,16 +3183,16 @@ array(
              "email" => "alex2@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+                     "href" => "http://api.chateagratis.local/api/users/2",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channels",
+                     "href" => "http://api.chateagratis.local/api/users/2/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channelsFan",
+                     "href" => "http://api.chateagratis.local/api/users/2/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/blocked",
+                     "href" => "http://api.chateagratis.local/api/users/2/blocked",
                  )
              )
          )
@@ -3196,7 +3202,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$limit</h4>
 <code>int</code><p>number of items to retrieve at most</p></div>
@@ -3227,14 +3233,13 @@ array(
 </div>
 <a id="method_updateChannel"></a><div class="element clickable method public method_updateChannel" data-toggle="collapse" data-target=".method_updateChannel .collapse">
 <h2>Update a channel</h2>
-<pre>updateChannel(\Ant\ChateaClient\Client\number $channel_id, string $name, string $title, string $description, string $channel_type) : array | string</pre>
+<pre>updateChannel(int $channel_id, string $name, string $title, string $description, string $channel_type) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>'update channel name','API - Channel title',
+<th>examples</th>
+<td>$your_api_instance->updateChannel(96, 'update channel name','API - Channel title',
                                        'This is channel about loves, friends and others', 'love');
      <h3>Sample Ouput</h3>
 array(
@@ -3266,7 +3271,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$channel_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>Channel to update by ID</p></div>
+<code>int</code><p>Channel to update by ID</p></div>
 <div class="subelement argument">
 <h4>$name</h4>
 <code>string</code><p>The new name of channel, if you would like  update this field.</p></div>
@@ -3293,12 +3298,7 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with updated channel | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_updateMe"></a><div class="element clickable method public method_updateMe" data-toggle="collapse" data-target=".method_updateMe .collapse">
 <h2>Update a profile of me user</h2>
@@ -3349,7 +3349,7 @@ array(
 </div>
 <a id="method_updateUserProfile"></a><div class="element clickable method public method_updateUserProfile" data-toggle="collapse" data-target=".method_updateUserProfile .collapse">
 <h2>Update user  profile</h2>
-<pre>updateUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation) : array | string</pre>
+<pre>updateUserProfile(int $user_id, string $about, string $sexualOrientation) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -3369,7 +3369,7 @@ array(
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
-<code><a href="number.html">\Ant\ChateaClient\Client\number</a></code><p>User to retrieve by ID</p></div>
+<code>int</code><p>User to retrieve by ID</p></div>
 <div class="subelement argument">
 <h4>$about</h4>
 <code>string</code><p>Short description  your profile</p></div>
@@ -3435,7 +3435,7 @@ array(
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-31T12:51:57+01:00.<br></footer></div>
+            generated on 2013-10-31T13:12:08+01:00.<br></footer></div>
 </div>
 </body>
 </html>

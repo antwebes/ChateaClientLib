@@ -89,6 +89,14 @@ class Api implements  ApiInterface
      * @return string a message ok and the HTTP status code 200
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @exampless
+     *
+     *  <code>
+     *      $your_api_instance->logout()
+     *      //Sample output
+     *      Access token revoked
+     *  </code>
      */
     public function logout()
     {
@@ -117,8 +125,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples Register new user at server
      *
+     * <code>
      *      $your_api_instance->register('new user name','new_password','repeat_new_password','your hosts name');
      *
      *      <h3>Ouput<h3>
@@ -128,6 +137,7 @@ class Api implements  ApiInterface
      *          "username"=> "new-username",
      *          "email"=> "newUserName@ant.com"
      *      }
+     * </code>
      */
     public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host)
     {
@@ -184,12 +194,13 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples Request reset the user password
      *
+     * <code>         
      *      $your_api_instance->forgotPassword('you_user_name');
      *      $your_api_instance->forgotPassword('you_email@antwebs.es');
      *
-     *      <h3>Ouput<h3>
+     * </code>     
      *
      */
     public function forgotPassword($username_or_email)
@@ -224,9 +235,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples Get first twenty channels what type is love
      *
-     *      Get first twenty channels what type is love
+     *<code>
      *      $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
      *
      *      <h3>Sample Ouput</h3>
@@ -252,7 +263,7 @@ class Api implements  ApiInterface
      *              "href => http://api.chateagratis.net/api/users/1"
      *           )
      *      );
-     *
+     *</code>
      */
     public function showChannels($limit = 25, $offset = 0, array $filter = null)
     {
@@ -305,7 +316,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples
+     * <code>
      *
      *          $your_api_instance->addChanel('new channel name','API - Channel Name',
      *                                        'This is channel about loves, friends and others', 'love');
@@ -337,7 +349,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
-     *
+     *</code>
      */
     public function addChanel($name, $title = '', $description = '', $channel_type = '')
     {
@@ -360,7 +372,7 @@ class Api implements  ApiInterface
      *
      * Update a channel
      *
-     * @param number $channel_id Channel to update by ID
+     * @param int $channel_id Channel to update by ID
      *
      * @param string $name The new name of channel, if you would like  update this field.
      *
@@ -376,8 +388,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @exampless
      *
+     * <code>
      *          $your_api_instance->updateChannel(96, 'update channel name','API - Channel title',
      *                                        'This is channel about loves, friends and others', 'love');
      *
@@ -408,6 +421,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     * </code>
      */
     public function updateChannel($channel_id, $name, $title = '', $description = '', $channel_type = '')
     {
@@ -436,7 +450,7 @@ class Api implements  ApiInterface
     /**
      * Delete channel
      *
-     * @param number $channel_id Channel to update by ID
+     * @param int $channel_id Channel to update by ID
      *
      * @return string The message ok, if channel has been deleted
      *
@@ -444,13 +458,15 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples
      *
+     * <code>
      *          $your_api_instance->delChannel(96);
      *
      *      <h3>Ouput this message: </h3>
      *
      *      Channel deleted
+     * </code>
      */
     public function delChannel($channel_id)
     {
@@ -468,7 +484,7 @@ class Api implements  ApiInterface
     /**
      * Get channel. Show data channel by id
      *
-     * @param number $channel_id  Channel to retrieve by ID
+     * @param int $channel_id  Channel to retrieve by ID
      *
      * @return array|string Associative array with channel data | Message with error in json format
      *
@@ -476,11 +492,11 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
+     * @examples
      *
+     * <code>
      *          $your_api_instance->showChannel(96);
-     *
-     *      <h3>Sample Ouput</h3>
+     *          //Sample Ouput
      *
      * array(
      *      "id" =>96
@@ -507,6 +523,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     * </code>
      */
     public function showChannel($channel_id)
     {
@@ -524,7 +541,7 @@ class Api implements  ApiInterface
     /**
      * Get fans (users) the channel
      *
-     * @param number $channel_id Channel to retrieve fans
+     * @param int $channel_id Channel to retrieve fans
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -537,9 +554,9 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      *
-     * @example Show Channels Fans of channel 2, only the first
+     * @examples Show Channels Fans of channel 2, only the first
      *
-     *
+     *<code>
      *          $your_api_instance->showChannelFans(3,1,0);
      *
      *      <h3>Sample Ouput</h3>
@@ -574,6 +591,7 @@ class Api implements  ApiInterface
      *           )
      *      )
      * );
+     *</code>
      */
     public function showChannelFans($channel_id, $limit = 1, $offset = 0)
     {
@@ -610,8 +628,9 @@ class Api implements  ApiInterface
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
-     * @example Show Channels types, only the first
+     * @examples Show Channels types, only the first
      *
+     * <code>
      *
      *          $your_api_instance->showChannelsTypes(1,0);
      *
@@ -637,7 +656,7 @@ class Api implements  ApiInterface
      *
      *      )
      * );
-     *
+     *</code>
      */
     public function showChannelsTypes($limit = 1, $offset = 0)
     {
@@ -661,7 +680,7 @@ class Api implements  ApiInterface
      *
      * Show channels created for the user
      *
-     * @param number $user_id User id  to retrieve channel
+     * @param int $user_id User id  to retrieve channel
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -673,8 +692,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show Channels created by user id = 1, only the first channel
+     * @examples Show Channels created by user id = 1, only the first channel
      *
+     * <code>
      *
      *          $your_api_instance->showUserChannels(1,1,0);
      *
@@ -713,6 +733,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     *</code>
      */
     public function showUserChannels($user_id, $limit= 1, $offset = 0)
     {
@@ -739,7 +760,7 @@ class Api implements  ApiInterface
     /**
      * Show channels favorites one user
      *
-     * @param number $user_id  User id  to retrieve fans channels
+     * @param int $user_id  User id  to retrieve fans channels
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -751,10 +772,11 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show Channels favorites for user id = 1, only the first channel
+     * @examples Show Channels favorites for user id = 1, only the first channel
      *
      *
      *          $your_api_instance->showUserChannelsFan(1,1,0);
+     *<code>
      *
      *  array(
      *      "total" => 2,
@@ -784,6 +806,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     *</code>
      */
     public function showUserChannelsFan($user_id, $limit= 1, $offset = 0)
     {
@@ -810,9 +833,9 @@ class Api implements  ApiInterface
     /**
      * Make channel's  fan one user
      *
-     * @param number $channel_id Channel id to receive a fan
+     * @param int $channel_id Channel id to receive a fan
      *
-     * @param number $user_id The user id will be fan
+     * @param int $user_id The user id will be fan
      *
      * @return string Massage ok if user is new fan
      *
@@ -820,12 +843,14 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example add the user 1 fan of channel 1
+     * @examples add the user 1 fan of channel 1
      *
+     *</code>
      *          $your_api_instance->addUserChannelFan(1,1);
      *
      *      <h3>The ouput message:</h3>
      *          The user is a fan of the channel successfully
+     *</code>
      */
     public function addUserChannelFan($channel_id, $user_id)
     {
@@ -850,9 +875,9 @@ class Api implements  ApiInterface
     /**
      * Remove channel's  fan one user
      *
-     * @param number $channel_id Channel id to receive a fan
+     * @param int $channel_id Channel id to receive a fan
      *
-     * @param number $user_id The user id will be fan
+     * @param int $user_id The user id will be fan
      *
      * @return string Massage ok if user is not fan
      *
@@ -860,12 +885,14 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example remove the user 1 fan of channel 1
+     * @examples remove the user 1 fan of channel 1
      *
+     * <code>
      *          $your_api_instance->delUserChannelFan(1,1);
      *
      *      <h3>The ouput message:</h3>
      *          The user has been removed as fan of the channel successfully
+     *</code>
      */
     public function delUserChannelFan($channel_id, $user_id)
     {
@@ -896,7 +923,7 @@ class Api implements  ApiInterface
     /**
      * Get me friends
      *
-     * @param number $user_id The user id retrieve friends
+     * @param int $user_id The user id retrieve friends
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -908,9 +935,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show User friends for user id = 1, only the first friend
+     * @examples Show User friends for user id = 1, only the first friend
      *
-     *
+     *<code>
      *          $your_api_instance->showFriends(1,1,0);
      *
      *  array(
@@ -944,6 +971,7 @@ class Api implements  ApiInterface
      *          ),
      *      )
      * );
+     *</code>
      */
     public function showFriends($user_id, $limit = 1, $offset = 0)
     {
@@ -970,9 +998,9 @@ class Api implements  ApiInterface
     /**
      * Sends a friendship request between two users
      *
-     * @param number $user_id Your user id
+     * @param int $user_id Your user id
      *
-     * @param number $friend_id The user id that retrieve the request
+     * @param int $friend_id The user id that retrieve the request
      *
      * @return string Massage endorsement , if the request have been sent
      *
@@ -980,12 +1008,11 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Sends a friendship request between user 1 to user 3
+     * @examples Sends a friendship request between user 1 to user 3
      *
-     *
+     *<code>
      *          $your_api_instance->addFriends(1,3);
-     *
-     *
+     *</code>
      */
 
     public function addFriends($user_id, $friend_id)
@@ -1009,7 +1036,7 @@ class Api implements  ApiInterface
     /**
      * Show list user, that one user will pending have your friendship
      *
-     * @param number $user_id The user id that you retrieve data
+     * @param int $user_id The user id that you retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1021,8 +1048,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show a friendship pending by user 1, only the first friendship
+     * @examples Show a friendship pending by user 1, only the first friendship
      *
+     * <code>
      *          $your_api_instance->showFriendshipsPending(1);
      *
      *  array(
@@ -1057,6 +1085,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     *</code>
      */
     public function showFriendshipsPending($user_id, $limit = 1, $offset = 0)
     {
@@ -1083,7 +1112,7 @@ class Api implements  ApiInterface
     /**
      * Show the friendship requests sent by user id, and it pending to be accepted
      *
-     * @param number $user_id The user id that you retrieve data
+     * @param int $user_id The user id that you retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1095,8 +1124,9 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show the friendship requests sent by user 1, only the first request friendship
+     * @examples Show the friendship requests sent by user 1, only the first request friendship
      *
+     *<code>
      *          $your_api_instance->showFriendshipsRequest(1,1,0);
      *
      *  array(
@@ -1131,6 +1161,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  );
+     *</code>
      */
     public function showFriendshipsRequest($user_id, $limit = 1, $offset = 0)
     {
@@ -1158,9 +1189,9 @@ class Api implements  ApiInterface
     /**
      * Accept request new Friend
      *
-     * @param number $user_id The user id that you retrieve request new Friend
+     * @param int $user_id The user id that you retrieve request new Friend
      *
-     * @param number $user_accept_id The user id pending friendship
+     * @param int $user_accept_id The user id pending friendship
      *
      * @return string Message accepted | Message with error in json format
      *
@@ -1168,12 +1199,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example User 1 accept like new Friend to user 3
-     *
+     * @examples User 1 accept like new Friend to user 3
+     *<code>
      *          $your_api_instance->showFriendshipsRequest(1,3);
      *
      *       Friendship accepted
-     *
+     *</code>
      */
     public function addFriendshipRequest($user_id, $user_accept_id)
     {
@@ -1200,9 +1231,9 @@ class Api implements  ApiInterface
     /**
      * Decline a friendship request
      *
-     * @param number $user_id The user id that you decliene new Friend
+     * @param int $user_id The user id that you decliene new Friend
      *
-     * @param number $user_decline_id The user id pending friendship
+     * @param int $user_decline_id The user id pending friendship
      *
      * @return string Message declined | Message with error in json format
      *
@@ -1210,12 +1241,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example User 1 declined like new Friend to user 3
-     *
+     * @examples User 1 declined like new Friend to user 3
+     *<code>
      *          $your_api_instance->delFriendshipRequest(1,3);
      *
      *      Friendship declined
-     *
+     *</code>
      */
     public function delFriendshipRequest($user_id, $user_decline_id)
     {
@@ -1241,9 +1272,9 @@ class Api implements  ApiInterface
     /**
      * Delete friends between two users
      *
-     * @param number $user_id The user id that you delere friend
+     * @param int $user_id The user id that you delere friend
      *
-     * @param number $user_delete_id The user id, you want deleted.
+     * @param int $user_delete_id The user id, you want deleted.
      *
      * @return string Message delete | Message with error in json format
      *
@@ -1251,12 +1282,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example User 1 delete friendship to user 3
-     *
+     * @examples User 1 delete friendship to user 3
+     *<code>
      *          $your_api_instance->delFriend(1,3);
      *
      *      Friendship deleted
-     *
+     *</code>
      */
     public function delFriend($user_id, $user_delete_id)
     {
@@ -1288,8 +1319,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
-     *
+     * @examples
+     *<code>
      *      $your_api_instance->me();
      *
      *      array(
@@ -1311,6 +1342,7 @@ class Api implements  ApiInterface
      *              )
      *          )
      *      );
+     * </code>
      */
     public function me()
     {
@@ -1334,8 +1366,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
-     *
+     * @examples
+     *<code>
      *      $your_api_instance->updateMe('xabier','xabier@antweb.es','mySecretPassword');
      *
      *      array(
@@ -1343,6 +1375,7 @@ class Api implements  ApiInterface
      *          'username' => 'xabier',
      *          'email' => 'xabier@antweb.es',
      *          );
+     * </code>
      */
     public function updateMe($username, $email, $current_password)
     {
@@ -1379,11 +1412,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Delete me user
-     *
+     * @examples Delete me user
+     *<code>
      *      $your_api_instance->delMe();
      *      //ouput message
      *      User deleted
+     *</code>
      */
     public function delMe()
     {
@@ -1407,12 +1441,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
-     *
+     * @examples
+     *<code>
      *      $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
      *      //ouput message
      *      Password changed sucessfully
-     *
+     *</code>
      */
     public function changePassword($current_password,$new_password,$repeat_new_password) {
         if (!is_string($current_password) || 0 >= strlen($current_password)) {
@@ -1470,8 +1504,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show first photo of photo album
-     *
+     * @examples Show first photo of photo album
+     *<code>
      *      $your_api_instance->showPhotoAlbum(1);
      *
      *  array(
@@ -1513,7 +1547,7 @@ class Api implements  ApiInterface
      *          ),
      *      )
      * );
-     *
+     *</code>
      */
     public function showPhotoAlbum($album_id, $limit = 1, $offset = 0)
     {
@@ -1547,8 +1581,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show a photo
-     *
+     * @examples Show a photo
+     *<code>
      *      $your_api_instance->showPhoto(1);
      *
      *  array(
@@ -1583,6 +1617,7 @@ class Api implements  ApiInterface
      *           ),
      *      )
      *  );
+     *</code>
      */
     public function showPhoto($photo_id)
     {
@@ -1599,7 +1634,7 @@ class Api implements  ApiInterface
     /**
      * Report a photo
      *
-     * @param number $photo_id The Photo ID to be reported
+     * @param int $photo_id The Photo ID to be reported
      *
      * @param string $reason The reason this report
      *
@@ -1609,8 +1644,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add Photo report
-     *
+     * @examples Add Photo report
+     *<code>
      *      $your_api_instance->addReportPhoto(1,'This photo is not adequate');
      *
      * array(
@@ -1618,7 +1653,7 @@ class Api implements  ApiInterface
      *  "created_at" => "2013-10-29T12:13:07+0100",
      * "id" => 9,
      * );
-     *
+     *</code>
      */
     public function addReportPhoto($photo_id, $reason)
     {
@@ -1639,7 +1674,7 @@ class Api implements  ApiInterface
     /**
      * Delete a Photo
      *
-     * @param number $photo_id The photo id you like deleting
+     * @param int $photo_id The photo id you like deleting
      *
      * @return string Message sucessfully if can delete the photo | Message with error in json format
      *
@@ -1647,10 +1682,11 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Delete Photo
-     *
+     * @examples Delete Photo
+     *<code>
      *      $your_api_instance->delPhoto(1);
      *       Photo deleted
+     *</code>
      */
     public function delPhoto($photo_id)
     {
@@ -1668,7 +1704,7 @@ class Api implements  ApiInterface
     /**
      * Add new Photo Album in user accont
      *
-     * @param number $user_id The user ID
+     * @param int $user_id The user ID
      *
      * @param string $title One name for the Album
      *
@@ -1680,8 +1716,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add Photo Album
-     *
+     * @examples Add Photo Album
+     *<code>
      *      $your_api_instance->addAlbum(1,'new Album', 'this is me personal photobook');
      *
      * array(
@@ -1694,7 +1730,7 @@ class Api implements  ApiInterface
      *  "title" => "new Album",
      *  "description" => "this is me personal photobook"
      * );
-     *
+     *</code>
      */
     public function addAlbum($user_id, $title, $description='')
     {
@@ -1720,7 +1756,7 @@ class Api implements  ApiInterface
     /**
      * upload new photo at server api
      *
-     * @param number $user_id The user owner of photo
+     * @param int $user_id The user owner of photo
      *
      * @param string $imageFile The path to upload photo
      *
@@ -1732,8 +1768,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add Photo
-     *
+     * @examples Add Photo
+     *<code>
      *      $your_api_instance->addPhoto(1,'my face in wall', '/home/alex/my_face_wall.png');
      *
      *  array(
@@ -1758,7 +1794,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      * );
-     *
+     *</code>
      */
     public function addPhoto($user_id, $imageFile, $imageTile = '')
     {
@@ -1788,7 +1824,7 @@ class Api implements  ApiInterface
     /**
      * Show all photos one user
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -1800,8 +1836,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show photos of user id, only the first
-     *
+     * @examples Show photos of user id, only the first
+     *<code>
      *      $your_api_instance->showUserPhotos(1,1,0);
      *
      * array (
@@ -1846,7 +1882,8 @@ class Api implements  ApiInterface
      *          )
      *      )
      *  )
-     *  );
+     *);
+     *</code>
      */
     public function showUserPhotos($user_id, $limit = 1, $offset = 0)
     {
@@ -1873,9 +1910,9 @@ class Api implements  ApiInterface
     /**
      * Show score I had put to one photo
      *
-     * @param number $user_id  The user id to retrieve data
+     * @param int $user_id  The user id to retrieve data
      *
-     * @param number $photo_id The photo id to retrieve data
+     * @param int $photo_id The photo id to retrieve data
      *
      * @return array|string Associative array with photos an album | Message with error in json format
      *
@@ -1883,7 +1920,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show score User id 1 had put to 5 photo
+     * @examples Show score User id 1 had put to 5 photo
      *
      *      $your_api_instance->showPhotoVotes(1,5);
      *
@@ -1929,9 +1966,9 @@ class Api implements  ApiInterface
     /**
      * Add one vote at photo
      *
-     * @param number $user_id  The user id to retrieve data
+     * @param int $user_id  The user id to retrieve data
      *
-     * @param number $photo_id The photo id to retrieve data
+     * @param int $photo_id The photo id to retrieve data
      *
      * @param int $score The score photo,  The score ha to be between one and ten
      *
@@ -1941,8 +1978,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example
-     *
+     * @examples
+     *<code>
      * array (
      *  "score" => 10,
      *      "photo" => array(
@@ -1952,16 +1989,17 @@ class Api implements  ApiInterface
      *      ),
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/6/votes",
+     *              "href" => "http://api.chateagratis.net/api/users/1/photos/6/votes",
      *          ),
      *          "photo" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/photos/6",
+     *              "href" => "http://api.chateagratis.local/api/photos/6",
      *          ),
      *          "participant" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *              "href" => "http://api.chateagratis.local/api/users/1",
      *          )
      *      )
      *  );
+     *</code>
      */
     public function addPhotoVote($user_id, $photo_id, $score = 1)
     {
@@ -1988,7 +2026,7 @@ class Api implements  ApiInterface
     /**
      * Show all votes of one user
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -2000,8 +2038,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show votes User id 1 had put to all photos, only first voto
-     *
+     * @examples Show votes User id 1 had put to all photos, only first voto
+     *<code>
      *      $your_api_instance->showUserPhotoVotes(1,1,0);
      *
      *  array(
@@ -2010,7 +2048,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/votes",
+     *              "href" => "http://api.chateagratis.local/api/users/1/votes",
      *          )
      *      ),
      *      "resources" => array(
@@ -2023,18 +2061,19 @@ class Api implements  ApiInterface
      *              ),
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/2/votes",
+     *                      "href" => "http://api.chateagratis.local/api/users/1/photos/2/votes",
      *                  ),
      *                  "photo" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/photos/2",
+     *                      "href" => "http://api.chateagratis.local/api/photos/2",
      *                  ),
      *                  "participant" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.local/api/users/1",
      *                  )
      *              )
      *          )
      *      )
      * );
+     *</code>
      */
 
     public function showUserPhotoVotes($user_id, $limit = 1, $offset = 0)
@@ -2062,9 +2101,9 @@ class Api implements  ApiInterface
     /**
      * Delete one vote of one photo
      *
-     * @param number $user_id The user id to delete data
+     * @param int $user_id The user id to delete data
      *
-     * @param number $photo_id The phot id to delete vote
+     * @param int $photo_id The phot id to delete vote
      *
      * @return string Message sucessfully if can delete the vote | Message with error in json format
      *
@@ -2072,12 +2111,13 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example  Delete one vote of  photo 6
-     *
+     * @examples  Delete one vote of  photo 6
+     *<code>
      *      $your_api_instance->delPhotoVote(1,6);
      *
      *          //output
      *          Vote deleted
+     * </code>
      */
     public function delPhotoVote($user_id, $photo_id)
     {
@@ -2101,7 +2141,7 @@ class Api implements  ApiInterface
     /**
      * Show all abums one user
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -2113,8 +2153,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show all abums to user 1, only 1rst
-     *
+     * @examples Show all abums to user 1, only 1rst
+     *<code>
      *      $your_api_instance->showUserAlbums(1);
      *
      * array(
@@ -2123,7 +2163,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums",
+     *              "href" => "http://api.chateagratis.local/api/users/1/albums",
      *          )
      *      ),
      *      "resources" => array(
@@ -2133,18 +2173,19 @@ class Api implements  ApiInterface
      *              "description" => "default album",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *                      "href" => "http://api.chateagratis.local/api/users/1/albums/1",
      *              ),
      *                  "participant" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.local/api/users/1",
      *                ),
      *                  "photos" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *                      "href" => "http://api.chateagratis.local/api/albums/1/photos",
      *                  )
      *              )
      *          )
      *      )
      * );
+     *</code>
      */
     public function showAlbums($user_id, $limit = 1, $offset = 0)
     {
@@ -2171,9 +2212,9 @@ class Api implements  ApiInterface
     /**
      * Show one album of user
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
-     * @param number $album_id The album id to retrieve data
+     * @param int $album_id The album id to retrieve data
      *
      * @return array|string Associative array with the album one user | Message with error in json format
      *
@@ -2181,8 +2222,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show an abum 1 to user 1
-     *
+     * @examples Show an abum 1 to user 1
+     *<code>
      *      $your_api_instance->showUserAlbum(1,1);
      *
      * array(
@@ -2191,17 +2232,17 @@ class Api implements  ApiInterface
      *  "description" => "default album",
      *  "_links" => array(
      *      "self" => array(
-     *          "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+     *          "href" => "http://api.chateagratis.local/api/users/1/albums/1",
      *      ),
      *      "participant" => array(
-     *          "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *          "href" => "http://api.chateagratis.local/api/users/1",
      *      ),
      *      "photos" => array(
-     *          "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+     *          "href" => "http://api.chateagratis.local/api/albums/1/photos",
      *      )
      *   )
      * );
-     *
+     *</code>
      */
     public function showAlbum($user_id, $album_id)
     {
@@ -2224,9 +2265,9 @@ class Api implements  ApiInterface
     /**
      * Delete one album
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
-     * @param number $album_id The album id to retrieve data
+     * @param int $album_id The album id to retrieve data
      *
      * @return string Message sucessfully if can delete the album | Message with error in json format
      *
@@ -2234,12 +2275,13 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Delete an abum 1 to user 1
-     *
+     * @examples Delete an abum 1 to user 1
+     *<code>
      *      $your_api_instance->delAlbum(1,1);
      *
      *      // ouput message
      *      Album deleted
+     *</code>
      */
     public function delAlbum($user_id, $album_id)
     {
@@ -2263,9 +2305,9 @@ class Api implements  ApiInterface
     /**
      * Delete a photo of album
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
-     * @param number $photo_id The photo id to retrieve data
+     * @param int $photo_id The photo id to retrieve data
      *
      * @return string Message sucessfully if can delete photo of album | Message with error in json format
      *
@@ -2273,11 +2315,12 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Delete an abum 1 to user 1
-     *
+     * @examples Delete an abum 1 to user 1
+     *<code>
      *      $your_api_instance->delAlbum(1,1);
      *
      *      Photo deleted of Album
+     * </code>
      */
     public function delPhotoAlbum($user_id, $photo_id)
     {
@@ -2300,11 +2343,11 @@ class Api implements  ApiInterface
     /**
      * Insert a photo entity into album id
      *
-     * @param number $user_id The user id to retrieve data
+     * @param int $user_id The user id to retrieve data
      *
-     * @param number $photo_id The photo id to insert
+     * @param int $photo_id The photo id to insert
      *
-     * @param number $album_id The album id to retrieve data
+     * @param int $album_id The album id to retrieve data
      *
      * @return array|string Associative array with the album one user | Message with error in json format
      *
@@ -2312,12 +2355,13 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add photo 1 on album 1
-     *
+     * @examples Add photo 1 on album 1
+     *<code>
      *      $your_api_instance->addAlbumPhoto(1,1,1);
      *
      *      // ouput message
      *      Photo inserted
+     * </code>
      */
     public function addAlbumPhoto($user_id, $photo_id, $album_id)
     {
@@ -2359,8 +2403,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show all reports, only 1rst
-     *
+     * @examples Show all reports, only 1rst
+     *<code>
      *      $your_api_instance->showReports();
      *
      *  array(
@@ -2369,7 +2413,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/reports",
+     *              "href" => "http://api.chateagratis.local/api/reports",
      *          )
      *      ),
      *      "resources" => array(
@@ -2380,18 +2424,19 @@ class Api implements  ApiInterface
      *              "id" => 1,
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+     *                      "href" => "http://api.chateagratis.local/api/reports/1",
      *                  ),
      *                  "reporter" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.local/api/users/1",
      *                  ),
      *                  "resource" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *                      "href" => "http://api.chateagratis.local/api/users/2",
      *                  )
      *              )
      *          )
      *      )
      * );
+     * </code>
      */
     public function showReports($limit = 1, $offset = 0)
     {
@@ -2414,7 +2459,7 @@ class Api implements  ApiInterface
     /**
      * Shows the details of a report
      *
-     * @param number $report_id The report id to retrieve data
+     * @param int $report_id The report id to retrieve data
      *
      * @return array|string Associative array with all albums one user | Message with error in json format
      *
@@ -2422,8 +2467,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show report ID 1
-     *
+     * @examples Show report ID 1
+     *<code>
      *      $your_api_instance->showReport(1);
      *
      *  array(
@@ -2433,16 +2478,17 @@ class Api implements  ApiInterface
      *      "id" => 1,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+     *              "href" => "http://api.chateagratis.local/api/reports/1",
      *          ),
      *          "reporter" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *              "href" => "http://api.chateagratis.local/api/users/1",
      *          ),
      *          "resource" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *              "href" => "http://api.chateagratis.local/api/users/2",
      *          )
      *      )
      *  );
+     * </code>
      */
     public function showReport($report_id)
     {
@@ -2464,7 +2510,7 @@ class Api implements  ApiInterface
     /**
      * Create new thread
      *
-     * @param number $user_id The user id that create the thread
+     * @param int $user_id The user id that create the thread
      *
      * @param string $recipient_name The ID username that retrieve the message
      *
@@ -2478,14 +2524,15 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add new thread
-     *
+     * @examples Add new thread
+     *<code>
      *      $your_api_instance->addThread(1,'alex2','Subject sample',"<b>this is my body in 1rst message </b>")
      *
      *  array(
      *      "id" => 5,
      *      "subject" => "Subject sample",
      * );
+     * </code>
      */
     public function addThread($user_id, $recipient_name, $subject, $body)
     {
@@ -2516,7 +2563,7 @@ class Api implements  ApiInterface
     /**
      * Show user messages have in inbox
      *
-     * @param number $user_id The user id see her/his inbox
+     * @param int $user_id The user id see her/his inbox
      *
      * @return array|string Associative array with the subject | Message with error in json format
      *
@@ -2524,8 +2571,8 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show messages inbox
-     *
+     * @examples Show messages inbox
+     *<code>
      *      $your_api_instance->addThread(1);
      *
      * array(
@@ -2538,6 +2585,7 @@ class Api implements  ApiInterface
      *      "subject" => "hola thread 4",
      *      )
      *  );
+     * </code>
      */
     public function showThreadsInbox($user_id)
     {
@@ -2558,7 +2606,7 @@ class Api implements  ApiInterface
     /**
      * Show all thread that you sent
      *
-     * @param number $user_id The user id see her/his sent messages
+     * @param int $user_id The user id see her/his sent messages
      *
      * @return array|string Associative array with the subject | Message with error in json format
      *
@@ -2566,7 +2614,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show messages sent
+     * @examples Show messages sent
      *
      *      $your_api_instance->showThreadsSent(1);
      *
@@ -2599,9 +2647,9 @@ class Api implements  ApiInterface
     /**
      * List all message one thread
      *
-     * @param number $user_id The user id that create the thread
+     * @param int $user_id The user id that create the thread
      *
-     * @param number $thread_id The ID of thread
+     * @param int $thread_id The ID of thread
      *
      * @return array|string Associative array with messages | Message with error in json format
      *
@@ -2609,7 +2657,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show messages on thread
+     * @examples Show messages on thread
      *
      *      $your_api_instance->showThreadMessages(1,1);
      *
@@ -2648,9 +2696,9 @@ class Api implements  ApiInterface
      *
      * Add one message on thread
      *
-     * @param number $user_id The user id that create the thread
+     * @param int $user_id The user id that create the thread
      *
-     * @param number $thread_id The ID of thread
+     * @param int $thread_id The ID of thread
      *
      * @param string $body the text of message
      *
@@ -2660,7 +2708,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Add one message on thread
+     * @examples Add one message on thread
      *
      *      $your_api_instance->showThreadMessages(1,1,'this is entity body');
      *
@@ -2697,9 +2745,9 @@ class Api implements  ApiInterface
     /**
      * Delete one thread ant all messages
      *
-     * @param number $user_id The user id that create the thread
+     * @param int $user_id The user id that create the thread
      *
-     * @param number $thread_id The ID of thread
+     * @param int $thread_id The ID of thread
      *
      * @return string Message sucessfully if can delete thread | Message with error in json format
      *
@@ -2707,7 +2755,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Delete thread 6
+     * @examples Delete thread 6
      *
      *      $your_api_instance->delThread(6);
      *
@@ -2749,7 +2797,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show all users, only first
+     * @examples Show all users, only first
      *
      *      $your_api_instance->showUsers();
      *
@@ -2759,7 +2807,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+     *              "href" => "http://api.chateagratis.local/api/users",
      *              )
      *      ),
      *      "resources" => array(
@@ -2769,16 +2817,16 @@ class Api implements  ApiInterface
      *              "email" => "alex@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *                      "href" => "http://api.chateagratis.local/api/users/1",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *                      "href" => "http://api.chateagratis.local/api/users/1/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *                      "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *                      "href" => "http://api.chateagratis.local/api/users/1/blocked",
      *                  )
      *              )
      *          )
@@ -2805,7 +2853,7 @@ class Api implements  ApiInterface
     /**
      * Show user by ID
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @return array|string Associative array with user data | Message with error in json format
      *
@@ -2813,7 +2861,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show user with DI 1
+     * @examples Show user with DI 1
      *
      *      $your_api_instance->showUser();
      *
@@ -2823,16 +2871,16 @@ class Api implements  ApiInterface
      *      "email" => "alex@chateagratis.net",
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+     *              "href" => "http://api.chateagratis.local/api/users/1",
      *          ),
      *          "channels" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+     *              "href" => "http://api.chateagratis.local/api/users/1/channels",
      *          ),
      *          "channels_fan" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+     *              "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
      *          ),
      *          "blocked_users" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+     *              "href" => "http://api.chateagratis.local/api/users/1/blocked",
      *          )
      *      )
      * );
@@ -2852,7 +2900,7 @@ class Api implements  ApiInterface
     /**
      * Show user blocked by ID user
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -2864,7 +2912,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Show all users blocked, only first
+     * @examples Show all users blocked, only first
      *
      *      $your_api_instance->showUsersBlocked(1);
      *
@@ -2874,7 +2922,7 @@ class Api implements  ApiInterface
      *       "offset" => 0,
      *       "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+     *              "href" => "http://api.chateagratis.local/api/users",
      *          )
      *       ),
      *       "resources" => array(
@@ -2884,16 +2932,16 @@ class Api implements  ApiInterface
      *              "email" => "alex2@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+     *                      "href" => "http://api.chateagratis.local/api/users/2",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channels",
+     *                      "href" => "http://api.chateagratis.local/api/users/2/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channelsFan",
+     *                      "href" => "http://api.chateagratis.local/api/users/2/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/blocked",
+     *                      "href" => "http://api.chateagratis.local/api/users/2/blocked",
      *                  )
      *              )
      *          )
@@ -2924,9 +2972,9 @@ class Api implements  ApiInterface
     /**
      * Blocked one user
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
-     * @param number $user_blocked_id User to blocked by ID
+     * @param int $user_blocked_id User to blocked by ID
      *
      * @return string Message sucessfully if can blocked an user | Message with error in json format
      *
@@ -2934,7 +2982,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Blocked one user
+     * @examples Blocked one user
      *
      *      $your_api_instance->addUserBlocked(1,6);
      *
@@ -2961,7 +3009,7 @@ class Api implements  ApiInterface
     /**
      * Update user  profile
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @param string $about Short description  your profile
      *
@@ -2973,7 +3021,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Update profile an user
+     * @examples Update profile an user
      *
      *      $your_api_instance->updateUserProfile(1,'about-103156','homosexual'));
      *
@@ -3008,7 +3056,7 @@ class Api implements  ApiInterface
     /**
      * Show profile by user ID
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @return array|string Associative array with profile data | Message with error in json format
      *
@@ -3016,7 +3064,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Create profile one user
+     * @examples Create profile one user
      *
      *      $your_api_instance->showUserProfile(1);
      *
@@ -3043,7 +3091,7 @@ class Api implements  ApiInterface
     /**
      * Add new profile one user
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @param string $about Short description  your profile
      *
@@ -3055,7 +3103,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Create profile one user
+     * @examples Create profile one user
      *
      *      $your_api_instance->addUserProfile(1,'about-10','bisexual');
      *
@@ -3096,7 +3144,7 @@ class Api implements  ApiInterface
     /**
      * Report a user
      *
-     * @param number $user_reported_id The user id that is report
+     * @param int $user_reported_id The user id that is report
      *
      * @param string $reason Description for report the user
      *
@@ -3132,9 +3180,9 @@ class Api implements  ApiInterface
     /**
      * UnBlocked one user
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
-     * @param number $user_blocked_id User to blocked by ID
+     * @param int $user_blocked_id User to blocked by ID
      *
      * @return string Message sucessfully if can blocked an user | Message with error in json format
      *
@@ -3142,7 +3190,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
-     * @example Unblocked one user
+     * @exampless Unblocked one user
      *
      *      $your_api_instance->delUserBlocked(1,6);
      *
@@ -3172,7 +3220,7 @@ class Api implements  ApiInterface
     /**
      * Show count visits on one profile and who visits of one profile
      *
-     * @param number $user_id User to retrieve by ID
+     * @param int $user_id User to retrieve by ID
      *
      * @param int $limit  number of items to retrieve at most
      *
@@ -3183,6 +3231,13 @@ class Api implements  ApiInterface
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
+     * @exampless
+     *
+     * <code>
+     *  $your_api_instance->showUserVisitors(1);
+     *
+     *  // Sample output
      *
      * array(
      *      array(
@@ -3199,6 +3254,7 @@ class Api implements  ApiInterface
      *      "frequency" => 1,
      *   )
      * );
+     * </code>
      */
     public function showUserVisitors($user_id, $limit = 1, $offset = 0)
     {

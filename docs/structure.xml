@@ -203,7 +203,7 @@ file that was distributed with this source code.</long-description>
     </class>
     <source>eJxtUMtOAjEU3c9X3DXRGYmugCg4DgkJMUYWumBT2stMsdM2ffDQ+DF+gF/Bj3kLghtX7T3nPs45gzvb2KzodDLoQOmQBRSw2MFIh8uX6h5m+TRP1AOuURmLrgevbCHRwRid3n9pge/wbITbf9eRvoPVKrHDumVS5dy0t4dpWtuD7k3RvSq614QkcGwchAZhGZUCbuzOyboJwLQAJTlqjyD10riWBWn0BViFjLC1xM1hbjopq8dZlVYtpULCWIAN8yCkD04uYrKykaEhRnrwJjqOdEhgclRkmrXoLSOMzM5LmkZWKolUzNCtScL8WPazLNLhasvRJin9U14TLSSnMX+8zTSgc+TKcB6dS9ebJIwb7WMrdQ0MrDNrKSi+0dMk/w1iSCLeWP2PjuNzavOIMD+rOHjginkPo0h56JC0EHHuAMBtQC08/GmHj88fJUOn5A==</source>
   </file>
-  <file path="ChateaClient/Service/Client/StoreInterface.php" generated-path="ChateaClient.Service.Client.StoreInterface.html" hash="a61579b6f913541fe891f7306e2867c4" package="Default">
+  <file path="ChateaClient/Service/Client/StoreInterface.php" generated-path="ChateaClient.Service.Client.StoreInterface.html" hash="0e100ec61d4a53db0ab4ef66331c3483" package="Default">
     <docblock line="0">
       <description>Created by JetBrains PhpStorm.</description>
       <long-description>User: ant3
@@ -305,7 +305,7 @@ getPersistentData($key) return $value. This call may be in another request.</des
         </docblock>
       </method>
     </interface>
-    <source>eJyNU8Fu00AQvfsr5tBDE0UxKQIhlwpKKhCcKiXcepk443jU9a7ZXRsi4N+ZXduNlDo0liJ7Z2fee/Nm8v5DXdZJOp0mMIWlJfS0hc0evpH/ZJG1g/uyXnljq3nI+O7IZoDavw6nO8nO4OpduniVLmJkzZVEFlfZm7fxaCAvUe8IfMkOPFW1khpoHMFnVgR/YEXes945+YyRdZ/jAl+aJBorcjXmBLfaPyxLucKlYpLDimzLOT10x+tkaOOOCtaBEj2woFEl14DgpI3AjaKnMFYieawMNeH3UWgew+ULTFEYa0+2CLqCO/R1OCa/kwTkiVrCM+0SpPuSYMctabi8eKT9DC5aVA1NoEa2M3CmU1w0vhGZOSolNWYA2ZG/J+vYeVEgxmMEmYAlSdc91hzWwedQCxXuYUPAWsZlhNtK6o+GnJ/3kAOytG2xEneszAEC6tENWitYHcNxbU/fGt72sTS+62ajOJdmdO7ZaHCj8p88uH5m2hfy0bGt5MZpdfl1DxKXtBtHlj0Hn7zYozhFEN6mOPB4E/y0TC0dVW6MUYTi85YKbJSP5cN37KEvDm5w0VHIKMR6Ud/o7QnjKv5F/3dufPCzg5IbKFC5MQ+XItkeuvvJvuyEFdZUMV4/Icd/hyz/+ctx7ujzoGJsd08JDtvbjf18mafEjKu5Vep4YUTM33/JSY1A</source>
+    <source>eJyNU8Fu00AQvfsr5tBDE0UxKQIhlwpKKhCcKiXcepk443jU9a7ZXRsi4N+ZXduNlDo0vtg7O+/Nmzfj9x/qsk7S6TSBKSwtoactbPbwjfwni6wd3Jf1yhtbzUPGd0c2A9T+dTjdSXYGV+/Sxat0ESNrriSyuMrevI1HA3mJekfgS3bgqaqVYKBxBJ9ZEfyBFXnPeufkM0bWfY4L9dIk0ViRqzEnuNX+YVnKFS4VkxxWZFvO6aE7XidDG3dUsA4l0QMLG1VyDQhO2gi1UfQUxkokj0jBBNhHqfIY7l4oFHWx9mSLICuYQ1+HY/I7SUCeKCU80y5Bmi8JdtyShsuLR9rP4KJF1dAEamQ7A2c6wUXjG1GZo1KCMQPJjvw9WcfOiwLxHSPJBCxJuu655rAONgcsVLiHDQFrmZaR2lZSfzTk/LynHJilbYuVmGNlDBBYj27QWuHqKhxj+/Kt4W0fS+O7bjaKc2lG556NBjcq/8mD62emfSEfHdtKbhxWl1/3JHFHu3Fk2XPyyYs9ilME4W2KQx1vgp+WqaUj5MYYRSg+b6nARvkIH75jDz04uMFFV0JGIdaL+kZvTxhX8S/6v3Pjg58dlNxAgcqNebgUyfbQ3U/2ZSessKaK8fqJOf4csvznL8e5o8+DirHdPSU4bG839vNlnhIzruZWqeOFETF//wH1tY0g</source>
   </file>
   <file path="ChateaClient/Service/Client/ChateaGratisClient.php" generated-path="ChateaClient.Service.Client.ChateaGratisClient.html" hash="17e424db7057ab01f2eeb98006406899" package="Default">
     <docblock line="0">
@@ -2980,7 +2980,7 @@ authentication settings for use on the apps side of communication.</description>
     </class>
     <source>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</source>
   </file>
-  <file path="ChateaClient/Client/Api.php" generated-path="ChateaClient.Client.Api.html" hash="e105c730369e110f34045a78b700c3b2" package="Default">
+  <file path="ChateaClient/Client/Api.php" generated-path="ChateaClient.Client.Api.html" hash="8b35268608c111912ce11828b6300d72" package="Default">
     <docblock line="0">
       <description>Created by Ant-WEB S.L.</description>
       <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
@@ -3255,8 +3255,8 @@ this this request is only once for day.</description>
         <docblock line="412">
           <description>Update a channel</description>
           <long-description></long-description>
-          <tag name="param" line="412" description="&lt;p&gt;Channel to update by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="412" description="&lt;p&gt;Channel to update by ID&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="412" description="&lt;p&gt;The new name of channel, if you would like  update this field.&lt;/p&gt;" type="string" variable="$name">
             <type>string</type>
@@ -3280,12 +3280,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="412" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="412" description="'update channel name','API - Channel title',&#10;                                       'This is channel about loves, friends and others', 'love');&#10;     &lt;h3&gt;Sample Ouput&lt;/h3&gt;&#10;array(&#10;     &quot;id&quot; =&gt;96&#10;     &quot;name&quot; =&gt;&quot;update channel name&quot;,&#10;     &quot;slug&quot; =&gt;&quot;update-channel-name&quot;,&#10;     &quot;title&quot; =&gt;&quot;API - Channel title&quot;,&#10;     &quot;description&quot; =&gt;&quot;This is channel about loves, friends and others&quot;,&#10;     &quot;owner&quot; =&gt; array(&#10;             &quot;id&quot; =&gt;1&#10;             &quot;username&quot; =&gt;&quot;alex&quot;&#10;     ),&#10;     &quot;channel_type&quot; =&gt; array(&#10;         &quot;name&quot; =&gt;&quot;love&quot;&#10;     ),&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/channels/96&quot;&#10;         ),&#10;         &quot;fans&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/channels/96/fans&quot;&#10;         ),&#10;         &quot;owner&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/users/1&quot;&#10;         )&#10;     )&#10; );"/>
+          <tag name="examples" line="412" description="$your_api_instance-&gt;updateChannel(96, 'update channel name','API - Channel title',&#10;                                       'This is channel about loves, friends and others', 'love');&#10;     &lt;h3&gt;Sample Ouput&lt;/h3&gt;&#10;array(&#10;     &quot;id&quot; =&gt;96&#10;     &quot;name&quot; =&gt;&quot;update channel name&quot;,&#10;     &quot;slug&quot; =&gt;&quot;update-channel-name&quot;,&#10;     &quot;title&quot; =&gt;&quot;API - Channel title&quot;,&#10;     &quot;description&quot; =&gt;&quot;This is channel about loves, friends and others&quot;,&#10;     &quot;owner&quot; =&gt; array(&#10;             &quot;id&quot; =&gt;1&#10;             &quot;username&quot; =&gt;&quot;alex&quot;&#10;     ),&#10;     &quot;channel_type&quot; =&gt; array(&#10;         &quot;name&quot; =&gt;&quot;love&quot;&#10;     ),&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/channels/96&quot;&#10;         ),&#10;         &quot;fans&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/channels/96/fans&quot;&#10;         ),&#10;         &quot;owner&quot; =&gt; array(&#10;             &quot;href&quot; =&gt;&quot;https://api.chateagratis.local/api/users/1&quot;&#10;         )&#10;     )&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$name</name>
@@ -3314,8 +3314,8 @@ this this request is only once for day.</description>
         <docblock line="455">
           <description>Delete channel</description>
           <long-description></long-description>
-          <tag name="param" line="455" description="&lt;p&gt;Channel to update by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="455" description="&lt;p&gt;Channel to update by ID&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="455" description="The message ok, if channel has been deleted" type="string">
             <type>string</type>
@@ -3331,7 +3331,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="511" package="Ant\ChateaClient\Client">
@@ -3340,8 +3340,8 @@ this this request is only once for day.</description>
         <docblock line="511">
           <description>Get channel. Show data channel by id</description>
           <long-description></long-description>
-          <tag name="param" line="511" description="&lt;p&gt;Channel to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="511" description="&lt;p&gt;Channel to retrieve by ID&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="511" description="Associative array with channel data | Message with error in json format" type="array|string">
             <type>array</type>
@@ -3358,7 +3358,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="578" package="Ant\ChateaClient\Client">
@@ -3367,8 +3367,8 @@ this this request is only once for day.</description>
         <docblock line="578">
           <description>Get fans (users) the channel</description>
           <long-description></long-description>
-          <tag name="param" line="578" description="&lt;p&gt;Channel to retrieve fans&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="578" description="&lt;p&gt;Channel to retrieve fans&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="578" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3391,7 +3391,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3445,8 +3445,8 @@ this this request is only once for day.</description>
         <docblock line="717">
           <description>Show channels created for the user</description>
           <long-description></long-description>
-          <tag name="param" line="717" description="&lt;p&gt;User id  to retrieve channel&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="717" description="&lt;p&gt;User id  to retrieve channel&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="717" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3469,7 +3469,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3488,8 +3488,8 @@ this this request is only once for day.</description>
         <docblock line="788">
           <description>Show channels favorites one user</description>
           <long-description></long-description>
-          <tag name="param" line="788" description="&lt;p&gt;User id  to retrieve fans channels&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="788" description="&lt;p&gt;User id  to retrieve fans channels&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="788" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3512,7 +3512,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3531,11 +3531,11 @@ this this request is only once for day.</description>
         <docblock line="830">
           <description>Make channel's  fan one user</description>
           <long-description></long-description>
-          <tag name="param" line="830" description="&lt;p&gt;Channel id to receive a fan&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="830" description="&lt;p&gt;Channel id to receive a fan&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="830" description="&lt;p&gt;The user id will be fan&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="830" description="&lt;p&gt;The user id will be fan&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="830" description="Massage ok if user is new fan" type="string">
             <type>string</type>
@@ -3551,12 +3551,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="870" package="Ant\ChateaClient\Client">
@@ -3565,11 +3565,11 @@ this this request is only once for day.</description>
         <docblock line="870">
           <description>Remove channel's  fan one user</description>
           <long-description></long-description>
-          <tag name="param" line="870" description="&lt;p&gt;Channel id to receive a fan&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$channel_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="870" description="&lt;p&gt;Channel id to receive a fan&lt;/p&gt;" type="int" variable="$channel_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="870" description="&lt;p&gt;The user id will be fan&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="870" description="&lt;p&gt;The user id will be fan&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="870" description="Massage ok if user is not fan" type="string">
             <type>string</type>
@@ -3585,12 +3585,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$channel_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="948" package="Ant\ChateaClient\Client">
@@ -3599,8 +3599,8 @@ this this request is only once for day.</description>
         <docblock line="948">
           <description>Get me friends</description>
           <long-description></long-description>
-          <tag name="param" line="948" description="&lt;p&gt;The user id retrieve friends&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="948" description="&lt;p&gt;The user id retrieve friends&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="948" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3623,7 +3623,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3642,11 +3642,11 @@ this this request is only once for day.</description>
         <docblock line="991">
           <description>Sends a friendship request between two users</description>
           <long-description></long-description>
-          <tag name="param" line="991" description="&lt;p&gt;Your user id&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="991" description="&lt;p&gt;Your user id&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="991" description="&lt;p&gt;The user id that retrieve the request&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$friend_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="991" description="&lt;p&gt;The user id that retrieve the request&lt;/p&gt;" type="int" variable="$friend_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="991" description="Massage endorsement , if the request have been sent" type="string">
             <type>string</type>
@@ -3662,12 +3662,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$friend_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1061" package="Ant\ChateaClient\Client">
@@ -3676,8 +3676,8 @@ this this request is only once for day.</description>
         <docblock line="1061">
           <description>Show list user, that one user will pending have your friendship</description>
           <long-description></long-description>
-          <tag name="param" line="1061" description="&lt;p&gt;The user id that you retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1061" description="&lt;p&gt;The user id that you retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1061" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3700,7 +3700,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3719,8 +3719,8 @@ this this request is only once for day.</description>
         <docblock line="1135">
           <description>Show the friendship requests sent by user id, and it pending to be accepted</description>
           <long-description></long-description>
-          <tag name="param" line="1135" description="&lt;p&gt;The user id that you retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1135" description="&lt;p&gt;The user id that you retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1135" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -3743,7 +3743,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -3762,11 +3762,11 @@ this this request is only once for day.</description>
         <docblock line="1178">
           <description>Accept request new Friend</description>
           <long-description></long-description>
-          <tag name="param" line="1178" description="&lt;p&gt;The user id that you retrieve request new Friend&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1178" description="&lt;p&gt;The user id that you retrieve request new Friend&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="1178" description="&lt;p&gt;The user id pending friendship&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_accept_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1178" description="&lt;p&gt;The user id pending friendship&lt;/p&gt;" type="int" variable="$user_accept_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="1178" description="Message accepted | Message with error in json format" type="string">
             <type>string</type>
@@ -3782,12 +3782,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_accept_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1220" package="Ant\ChateaClient\Client">
@@ -3796,11 +3796,11 @@ this this request is only once for day.</description>
         <docblock line="1220">
           <description>Decline a friendship request</description>
           <long-description></long-description>
-          <tag name="param" line="1220" description="&lt;p&gt;The user id that you decliene new Friend&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1220" description="&lt;p&gt;The user id that you decliene new Friend&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="1220" description="&lt;p&gt;The user id pending friendship&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_decline_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1220" description="&lt;p&gt;The user id pending friendship&lt;/p&gt;" type="int" variable="$user_decline_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="1220" description="Message declined | Message with error in json format" type="string">
             <type>string</type>
@@ -3816,12 +3816,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_decline_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1261" package="Ant\ChateaClient\Client">
@@ -3830,11 +3830,11 @@ this this request is only once for day.</description>
         <docblock line="1261">
           <description>Delete friends between two users</description>
           <long-description></long-description>
-          <tag name="param" line="1261" description="&lt;p&gt;The user id that you delere friend&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1261" description="&lt;p&gt;The user id that you delere friend&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="1261" description="&lt;p&gt;The user id, you want deleted.&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_delete_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1261" description="&lt;p&gt;The user id, you want deleted.&lt;/p&gt;" type="int" variable="$user_delete_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="1261" description="Message delete | Message with error in json format" type="string">
             <type>string</type>
@@ -3850,12 +3850,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_delete_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1315" package="Ant\ChateaClient\Client">
@@ -4046,8 +4046,8 @@ this this request is only once for day.</description>
         <docblock line="1623">
           <description>Report a photo</description>
           <long-description></long-description>
-          <tag name="param" line="1623" description="&lt;p&gt;The Photo ID to be reported&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1623" description="&lt;p&gt;The Photo ID to be reported&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1623" description="&lt;p&gt;The reason this report&lt;/p&gt;" type="string" variable="$reason">
             <type>string</type>
@@ -4067,7 +4067,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$reason</name>
@@ -4081,8 +4081,8 @@ this this request is only once for day.</description>
         <docblock line="1655">
           <description>Delete a Photo</description>
           <long-description></long-description>
-          <tag name="param" line="1655" description="&lt;p&gt;The photo id you like deleting&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1655" description="&lt;p&gt;The photo id you like deleting&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="1655" description="Message sucessfully if can delete the photo | Message with error in json format" type="string">
             <type>string</type>
@@ -4098,7 +4098,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1699" package="Ant\ChateaClient\Client">
@@ -4107,8 +4107,8 @@ this this request is only once for day.</description>
         <docblock line="1699">
           <description>Add new Photo Album in user accont</description>
           <long-description></long-description>
-          <tag name="param" line="1699" description="&lt;p&gt;The user ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1699" description="&lt;p&gt;The user ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1699" description="&lt;p&gt;One name for the Album&lt;/p&gt;" type="string" variable="$title">
             <type>string</type>
@@ -4131,7 +4131,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$title</name>
@@ -4150,8 +4150,8 @@ this this request is only once for day.</description>
         <docblock line="1763">
           <description>upload new photo at server api</description>
           <long-description></long-description>
-          <tag name="param" line="1763" description="&lt;p&gt;The user owner of photo&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1763" description="&lt;p&gt;The user owner of photo&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1763" description="&lt;p&gt;The path to upload photo&lt;/p&gt;" type="string" variable="$imageFile">
             <type>string</type>
@@ -4174,7 +4174,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$imageFile</name>
@@ -4193,8 +4193,8 @@ this this request is only once for day.</description>
         <docblock line="1851">
           <description>Show all photos one user</description>
           <long-description></long-description>
-          <tag name="param" line="1851" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1851" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1851" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -4217,7 +4217,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -4236,11 +4236,11 @@ this this request is only once for day.</description>
         <docblock line="1911">
           <description>Show score I had put to one photo</description>
           <long-description></long-description>
-          <tag name="param" line="1911" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1911" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="1911" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1911" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="1911" description="Associative array with photos an album | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4257,12 +4257,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="1966" package="Ant\ChateaClient\Client">
@@ -4271,11 +4271,11 @@ this this request is only once for day.</description>
         <docblock line="1966">
           <description>Add one vote at photo</description>
           <long-description></long-description>
-          <tag name="param" line="1966" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1966" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="1966" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="1966" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="1966" description="&lt;p&gt;The score photo,  The score ha to be between one and ten&lt;/p&gt;" type="int" variable="$score">
             <type>int</type>
@@ -4290,17 +4290,17 @@ this this request is only once for day.</description>
           <tag name="throws" line="1966" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="1966" description="(&#10; &quot;score&quot; =&gt; 10,&#10;     &quot;photo&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 6,&#10;         &quot;number_votes&quot; =&gt; 21,&#10;         &quot;score&quot; =&gt; 47.571428571428,&#10;     ),&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/photos/6/votes&quot;,&#10;         ),&#10;         &quot;photo&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/photos/6&quot;,&#10;         ),&#10;         &quot;participant&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;         )&#10;     )&#10; );"/>
+          <tag name="example" line="1966" description="(&#10; &quot;score&quot; =&gt; 10,&#10;     &quot;photo&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 6,&#10;         &quot;number_votes&quot; =&gt; 21,&#10;         &quot;score&quot; =&gt; 47.571428571428,&#10;     ),&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.net/api/users/1/photos/6/votes&quot;,&#10;         ),&#10;         &quot;photo&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/photos/6&quot;,&#10;         ),&#10;         &quot;participant&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;         )&#10;     )&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$score</name>
@@ -4314,8 +4314,8 @@ this this request is only once for day.</description>
         <docblock line="2040">
           <description>Show all votes of one user</description>
           <long-description></long-description>
-          <tag name="param" line="2040" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2040" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2040" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -4333,12 +4333,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="2040" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2040" description="votes User id 1 had put to all photos, only first voto&#10;     $your_api_instance-&gt;showUserPhotoVotes(1,1,0);&#10; array(&#10;     &quot;total&quot; =&gt; 3,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/votes&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;score&quot; =&gt; 3,&#10;             &quot;photo&quot; =&gt; array(&#10;                 &quot;id&quot; =&gt; 2,&#10;                 &quot;number_votes&quot; =&gt; 25,&#10;                 &quot;score&quot; =&gt; 25,&#10;             ),&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/photos/2/votes&quot;,&#10;                 ),&#10;                 &quot;photo&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/photos/2&quot;,&#10;                 ),&#10;                 &quot;participant&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2040" description="votes User id 1 had put to all photos, only first voto&#10;     $your_api_instance-&gt;showUserPhotoVotes(1,1,0);&#10; array(&#10;     &quot;total&quot; =&gt; 3,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/votes&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;score&quot; =&gt; 3,&#10;             &quot;photo&quot; =&gt; array(&#10;                 &quot;id&quot; =&gt; 2,&#10;                 &quot;number_votes&quot; =&gt; 25,&#10;                 &quot;score&quot; =&gt; 25,&#10;             ),&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/photos/2/votes&quot;,&#10;                 ),&#10;                 &quot;photo&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/photos/2&quot;,&#10;                 ),&#10;                 &quot;participant&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -4357,11 +4357,11 @@ this this request is only once for day.</description>
         <docblock line="2082">
           <description>Delete one vote of one photo</description>
           <long-description></long-description>
-          <tag name="param" line="2082" description="&lt;p&gt;The user id to delete data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2082" description="&lt;p&gt;The user id to delete data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2082" description="&lt;p&gt;The phot id to delete vote&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2082" description="&lt;p&gt;The phot id to delete vote&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2082" description="Message sucessfully if can delete the vote | Message with error in json format" type="string">
             <type>string</type>
@@ -4377,12 +4377,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2149" package="Ant\ChateaClient\Client">
@@ -4391,8 +4391,8 @@ this this request is only once for day.</description>
         <docblock line="2149">
           <description>Show all abums one user</description>
           <long-description></long-description>
-          <tag name="param" line="2149" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2149" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2149" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -4410,12 +4410,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="2149" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2149" description="all abums to user 1, only 1rst&#10;     $your_api_instance-&gt;showUserAlbums(1);&#10;array(&#10;     &quot;total&quot; =&gt; 1,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/albums&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;title&quot; =&gt; &quot;la foto 1&quot;,&#10;             &quot;description&quot; =&gt; &quot;default album&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/albums/1&quot;,&#10;             ),&#10;                 &quot;participant&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;               ),&#10;                 &quot;photos&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/albums/1/photos&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2149" description="all abums to user 1, only 1rst&#10;     $your_api_instance-&gt;showUserAlbums(1);&#10;array(&#10;     &quot;total&quot; =&gt; 1,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/albums&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;title&quot; =&gt; &quot;la foto 1&quot;,&#10;             &quot;description&quot; =&gt; &quot;default album&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/albums/1&quot;,&#10;             ),&#10;                 &quot;participant&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;               ),&#10;                 &quot;photos&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/albums/1/photos&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -4434,11 +4434,11 @@ this this request is only once for day.</description>
         <docblock line="2206">
           <description>Show one album of user</description>
           <long-description></long-description>
-          <tag name="param" line="2206" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2206" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2206" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$album_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2206" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="int" variable="$album_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2206" description="Associative array with the album one user | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4450,17 +4450,17 @@ this this request is only once for day.</description>
           <tag name="throws" line="2206" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2206" description="an abum 1 to user 1&#10;     $your_api_instance-&gt;showUserAlbum(1,1);&#10;array(&#10; &quot;id&quot; =&gt; 1,&#10; &quot;title&quot; =&gt; &quot;la foto 1&quot;,&#10; &quot;description&quot; =&gt; &quot;default album&quot;,&#10; &quot;_links&quot; =&gt; array(&#10;     &quot;self&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/albums/1&quot;,&#10;     ),&#10;     &quot;participant&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;     ),&#10;     &quot;photos&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/albums/1/photos&quot;,&#10;     )&#10;  )&#10;);"/>
+          <tag name="example" line="2206" description="an abum 1 to user 1&#10;     $your_api_instance-&gt;showUserAlbum(1,1);&#10;array(&#10; &quot;id&quot; =&gt; 1,&#10; &quot;title&quot; =&gt; &quot;la foto 1&quot;,&#10; &quot;description&quot; =&gt; &quot;default album&quot;,&#10; &quot;_links&quot; =&gt; array(&#10;     &quot;self&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/albums/1&quot;,&#10;     ),&#10;     &quot;participant&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;     ),&#10;     &quot;photos&quot; =&gt; array(&#10;         &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/albums/1/photos&quot;,&#10;     )&#10;  )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$album_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2244" package="Ant\ChateaClient\Client">
@@ -4469,11 +4469,11 @@ this this request is only once for day.</description>
         <docblock line="2244">
           <description>Delete one album</description>
           <long-description></long-description>
-          <tag name="param" line="2244" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2244" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2244" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$album_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2244" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="int" variable="$album_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2244" description="Message sucessfully if can delete the album | Message with error in json format" type="string">
             <type>string</type>
@@ -4489,12 +4489,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$album_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2282" package="Ant\ChateaClient\Client">
@@ -4503,11 +4503,11 @@ this this request is only once for day.</description>
         <docblock line="2282">
           <description>Delete a photo of album</description>
           <long-description></long-description>
-          <tag name="param" line="2282" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2282" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2282" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2282" description="&lt;p&gt;The photo id to retrieve data&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2282" description="Message sucessfully if can delete photo of album | Message with error in json format" type="string">
             <type>string</type>
@@ -4523,12 +4523,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2322" package="Ant\ChateaClient\Client">
@@ -4537,14 +4537,14 @@ this this request is only once for day.</description>
         <docblock line="2322">
           <description>Insert a photo entity into album id</description>
           <long-description></long-description>
-          <tag name="param" line="2322" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2322" description="&lt;p&gt;The user id to retrieve data&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2322" description="&lt;p&gt;The photo id to insert&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$photo_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2322" description="&lt;p&gt;The photo id to insert&lt;/p&gt;" type="int" variable="$photo_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2322" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$album_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2322" description="&lt;p&gt;The album id to retrieve data&lt;/p&gt;" type="int" variable="$album_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2322" description="Associative array with the album one user | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4561,17 +4561,17 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$photo_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$album_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2396" package="Ant\ChateaClient\Client">
@@ -4596,7 +4596,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="2396" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2396" description="all reports, only 1rst&#10;     $your_api_instance-&gt;showReports();&#10; array(&#10;     &quot;total&quot; =&gt; 42,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/reports&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;reason&quot; =&gt; &quot;I dislike a lot this guy&quot;,&#10;             &quot;created_at&quot; =&gt; &quot;2013-08-27T15:01:01+0200&quot;,&#10;             &quot;reviewed_at&quot; =&gt; &quot;2013-08-27T16:01:01+0200&quot;,&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/reports/1&quot;,&#10;                 ),&#10;                 &quot;reporter&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;                 ),&#10;                 &quot;resource&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2396" description="all reports, only 1rst&#10;     $your_api_instance-&gt;showReports();&#10; array(&#10;     &quot;total&quot; =&gt; 42,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/reports&quot;,&#10;         )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;reason&quot; =&gt; &quot;I dislike a lot this guy&quot;,&#10;             &quot;created_at&quot; =&gt; &quot;2013-08-27T15:01:01+0200&quot;,&#10;             &quot;reviewed_at&quot; =&gt; &quot;2013-08-27T16:01:01+0200&quot;,&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/reports/1&quot;,&#10;                 ),&#10;                 &quot;reporter&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;                 ),&#10;                 &quot;resource&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$limit</name>
@@ -4615,8 +4615,8 @@ this this request is only once for day.</description>
         <docblock line="2447">
           <description>Shows the details of a report</description>
           <long-description></long-description>
-          <tag name="param" line="2447" description="&lt;p&gt;The report id to retrieve data&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$report_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2447" description="&lt;p&gt;The report id to retrieve data&lt;/p&gt;" type="int" variable="$report_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2447" description="Associative array with all albums one user | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4628,12 +4628,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="2447" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2447" description="report ID 1&#10;     $your_api_instance-&gt;showReport(1);&#10; array(&#10;     &quot;reason&quot; =&gt; &quot;I dislike a lot this guy&quot;,&#10;     &quot;created_at&quot; =&gt; &quot;2013-08-27T15:01:01+0200&quot;,&#10;     &quot;reviewed_at&quot; =&gt; &quot;2013-08-27T16:01:01+0200&quot;,&#10;     &quot;id&quot; =&gt; 1,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/reports/1&quot;,&#10;         ),&#10;         &quot;reporter&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;         ),&#10;         &quot;resource&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2&quot;,&#10;         )&#10;     )&#10; );"/>
+          <tag name="example" line="2447" description="report ID 1&#10;     $your_api_instance-&gt;showReport(1);&#10; array(&#10;     &quot;reason&quot; =&gt; &quot;I dislike a lot this guy&quot;,&#10;     &quot;created_at&quot; =&gt; &quot;2013-08-27T15:01:01+0200&quot;,&#10;     &quot;reviewed_at&quot; =&gt; &quot;2013-08-27T16:01:01+0200&quot;,&#10;     &quot;id&quot; =&gt; 1,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/reports/1&quot;,&#10;         ),&#10;         &quot;reporter&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;         ),&#10;         &quot;resource&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2&quot;,&#10;         )&#10;     )&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$report_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2490" package="Ant\ChateaClient\Client">
@@ -4642,8 +4642,8 @@ this this request is only once for day.</description>
         <docblock line="2490">
           <description>Create new thread</description>
           <long-description></long-description>
-          <tag name="param" line="2490" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2490" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2490" description="&lt;p&gt;The ID username that retrieve the message&lt;/p&gt;" type="string" variable="$recipient_name">
             <type>string</type>
@@ -4669,7 +4669,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$recipient_name</name>
@@ -4693,8 +4693,8 @@ this this request is only once for day.</description>
         <docblock line="2542">
           <description>Show user messages have in inbox</description>
           <long-description></long-description>
-          <tag name="param" line="2542" description="&lt;p&gt;The user id see her/his inbox&lt;/p&gt;&#10;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2542" description="&lt;p&gt;The user id see her/his inbox&lt;/p&gt;&#10;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2542" description="Associative array with the subject | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4711,7 +4711,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2584" package="Ant\ChateaClient\Client">
@@ -4720,8 +4720,8 @@ this this request is only once for day.</description>
         <docblock line="2584">
           <description>Show all thread that you sent</description>
           <long-description></long-description>
-          <tag name="param" line="2584" description="&lt;p&gt;The user id see her/his sent messages&lt;/p&gt;&#10;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2584" description="&lt;p&gt;The user id see her/his sent messages&lt;/p&gt;&#10;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2584" description="Associative array with the subject | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4738,7 +4738,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2628" package="Ant\ChateaClient\Client">
@@ -4747,11 +4747,11 @@ this this request is only once for day.</description>
         <docblock line="2628">
           <description>List all message one thread</description>
           <long-description></long-description>
-          <tag name="param" line="2628" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2628" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2628" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$thread_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2628" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="int" variable="$thread_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2628" description="Associative array with messages | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4768,12 +4768,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$thread_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2673" package="Ant\ChateaClient\Client">
@@ -4782,11 +4782,11 @@ this this request is only once for day.</description>
         <docblock line="2673">
           <description>Add one message on thread</description>
           <long-description></long-description>
-          <tag name="param" line="2673" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2673" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2673" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$thread_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2673" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="int" variable="$thread_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2673" description="&lt;p&gt;the text of message&lt;/p&gt;" type="string" variable="$body">
             <type>string</type>
@@ -4806,12 +4806,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$thread_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$body</name>
@@ -4825,11 +4825,11 @@ this this request is only once for day.</description>
         <docblock line="2717">
           <description>Delete one thread ant all messages</description>
           <long-description></long-description>
-          <tag name="param" line="2717" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2717" description="&lt;p&gt;The user id that create the thread&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2717" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$thread_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2717" description="&lt;p&gt;The ID of thread&lt;/p&gt;" type="int" variable="$thread_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2717" description="Message sucessfully if can delete thread | Message with error in json format" type="string">
             <type>string</type>
@@ -4845,12 +4845,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$thread_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2788" package="Ant\ChateaClient\Client">
@@ -4875,7 +4875,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="2788" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2788" description="all users, only first&#10;     $your_api_instance-&gt;showUsers();&#10; array(&#10;     &quot;total&quot; =&gt; 12,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users&quot;,&#10;             )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;username&quot; =&gt; &quot;alex&quot;,&#10;             &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;                 ),&#10;                 &quot;channels&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/channels&quot;,&#10;                 ),&#10;                 &quot;channels_fan&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan&quot;,&#10;                 ),&#10;                 &quot;blocked_users&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/blocked&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2788" description="all users, only first&#10;     $your_api_instance-&gt;showUsers();&#10; array(&#10;     &quot;total&quot; =&gt; 12,&#10;     &quot;limit&quot; =&gt; 1,&#10;     &quot;offset&quot; =&gt; 0,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users&quot;,&#10;             )&#10;     ),&#10;     &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 1,&#10;             &quot;username&quot; =&gt; &quot;alex&quot;,&#10;             &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;                 ),&#10;                 &quot;channels&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/channels&quot;,&#10;                 ),&#10;                 &quot;channels_fan&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/channelsFan&quot;,&#10;                 ),&#10;                 &quot;blocked_users&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/blocked&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$limit</name>
@@ -4894,8 +4894,8 @@ this this request is only once for day.</description>
         <docblock line="2840">
           <description>Show user by ID</description>
           <long-description></long-description>
-          <tag name="param" line="2840" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2840" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2840" description="Associative array with user data | Message with error in json format" type="array|string">
             <type>array</type>
@@ -4907,12 +4907,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="2840" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2840" description="user with DI 1&#10;     $your_api_instance-&gt;showUser();&#10; array(&#10;     &quot;id&quot; =&gt; 1,&#10;     &quot;username&quot; =&gt; &quot;alex&quot;,&#10;     &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1&quot;,&#10;         ),&#10;         &quot;channels&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/channels&quot;,&#10;         ),&#10;         &quot;channels_fan&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan&quot;,&#10;         ),&#10;         &quot;blocked_users&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/1/blocked&quot;,&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2840" description="user with DI 1&#10;     $your_api_instance-&gt;showUser();&#10; array(&#10;     &quot;id&quot; =&gt; 1,&#10;     &quot;username&quot; =&gt; &quot;alex&quot;,&#10;     &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;     &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1&quot;,&#10;         ),&#10;         &quot;channels&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/channels&quot;,&#10;         ),&#10;         &quot;channels_fan&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/channelsFan&quot;,&#10;         ),&#10;         &quot;blocked_users&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/1/blocked&quot;,&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2903" package="Ant\ChateaClient\Client">
@@ -4921,8 +4921,8 @@ this this request is only once for day.</description>
         <docblock line="2903">
           <description>Show user blocked by ID user</description>
           <long-description></long-description>
-          <tag name="param" line="2903" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2903" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2903" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
@@ -4940,12 +4940,12 @@ this this request is only once for day.</description>
           <tag name="throws" line="2903" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="2903" description="all users blocked, only first&#10;     $your_api_instance-&gt;showUsersBlocked(1);&#10; array(&#10;      &quot;total&quot; =&gt; 2,&#10;      &quot;limit&quot; =&gt; 1,&#10;      &quot;offset&quot; =&gt; 0,&#10;      &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users&quot;,&#10;         )&#10;      ),&#10;      &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 2,&#10;             &quot;username&quot; =&gt; &quot;alex2&quot;,&#10;             &quot;email&quot; =&gt; &quot;alex2@chateagratis.net&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2&quot;,&#10;                 ),&#10;                 &quot;channels&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2/channels&quot;,&#10;                 ),&#10;                 &quot;channels_fan&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2/channelsFan&quot;,&#10;                 ),&#10;                 &quot;blocked_users&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/app_dev.php/api/users/2/blocked&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
+          <tag name="example" line="2903" description="all users blocked, only first&#10;     $your_api_instance-&gt;showUsersBlocked(1);&#10; array(&#10;      &quot;total&quot; =&gt; 2,&#10;      &quot;limit&quot; =&gt; 1,&#10;      &quot;offset&quot; =&gt; 0,&#10;      &quot;_links&quot; =&gt; array(&#10;         &quot;self&quot; =&gt; array(&#10;             &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users&quot;,&#10;         )&#10;      ),&#10;      &quot;resources&quot; =&gt; array(&#10;         array(&#10;             &quot;id&quot; =&gt; 2,&#10;             &quot;username&quot; =&gt; &quot;alex2&quot;,&#10;             &quot;email&quot; =&gt; &quot;alex2@chateagratis.net&quot;,&#10;             &quot;_links&quot; =&gt; array(&#10;                 &quot;self&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2&quot;,&#10;                 ),&#10;                 &quot;channels&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2/channels&quot;,&#10;                 ),&#10;                 &quot;channels_fan&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2/channelsFan&quot;,&#10;                 ),&#10;                 &quot;blocked_users&quot; =&gt; array(&#10;                     &quot;href&quot; =&gt; &quot;http://api.chateagratis.local/api/users/2/blocked&quot;,&#10;                 )&#10;             )&#10;         )&#10;     )&#10;);"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -4964,11 +4964,11 @@ this this request is only once for day.</description>
         <docblock line="2944">
           <description>Blocked one user</description>
           <long-description></long-description>
-          <tag name="param" line="2944" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2944" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="2944" description="&lt;p&gt;User to blocked by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_blocked_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2944" description="&lt;p&gt;User to blocked by ID&lt;/p&gt;" type="int" variable="$user_blocked_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="2944" description="Message sucessfully if can blocked an user | Message with error in json format" type="string">
             <type>string</type>
@@ -4984,12 +4984,12 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_blocked_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="2990" package="Ant\ChateaClient\Client">
@@ -4998,8 +4998,8 @@ this this request is only once for day.</description>
         <docblock line="2990">
           <description>Update user  profile</description>
           <long-description></long-description>
-          <tag name="param" line="2990" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="2990" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="2990" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
@@ -5022,7 +5022,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$about</name>
@@ -5041,8 +5041,8 @@ this this request is only once for day.</description>
         <docblock line="3031">
           <description>Show profile by user ID</description>
           <long-description></long-description>
-          <tag name="param" line="3031" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="3031" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="3031" description="Associative array with profile data | Message with error in json format" type="array|string">
             <type>array</type>
@@ -5059,7 +5059,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="3070" package="Ant\ChateaClient\Client">
@@ -5068,8 +5068,8 @@ this this request is only once for day.</description>
         <docblock line="3070">
           <description>Add new profile one user</description>
           <long-description></long-description>
-          <tag name="param" line="3070" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="3070" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="3070" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
@@ -5092,7 +5092,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$about</name>
@@ -5111,8 +5111,8 @@ this this request is only once for day.</description>
         <docblock line="3115">
           <description>Report a user</description>
           <long-description></long-description>
-          <tag name="param" line="3115" description="&lt;p&gt;The user id that is report&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_reported_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="3115" description="&lt;p&gt;The user id that is report&lt;/p&gt;" type="int" variable="$user_reported_id">
+            <type>int</type>
           </tag>
           <tag name="param" line="3115" description="&lt;p&gt;Description for report the user&lt;/p&gt;" type="string" variable="$reason">
             <type>string</type>
@@ -5131,7 +5131,7 @@ this this request is only once for day.</description>
         <argument line="0">
           <name>$user_reported_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$reason</name>
@@ -5145,11 +5145,11 @@ this this request is only once for day.</description>
         <docblock line="3152">
           <description>UnBlocked one user</description>
           <long-description></long-description>
-          <tag name="param" line="3152" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="3152" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
+            <type>int</type>
           </tag>
-          <tag name="param" line="3152" description="&lt;p&gt;User to blocked by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_blocked_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
+          <tag name="param" line="3152" description="&lt;p&gt;User to blocked by ID&lt;/p&gt;" type="int" variable="$user_blocked_id">
+            <type>int</type>
           </tag>
           <tag name="return" line="3152" description="Message sucessfully if can blocked an user | Message with error in json format" type="string">
             <type>string</type>
@@ -5160,49 +5160,50 @@ this this request is only once for day.</description>
           <tag name="throws" line="3152" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="3152" description="one user&#10;     $your_api_instance-&gt;delUserBlocked(1,6);&#10;     //output&#10;     User unblocked"/>
+          <tag name="examples" line="3152" description="Unblocked one user&#10;     $your_api_instance-&gt;delUserBlocked(1,6);&#10;     //output&#10;     User unblocked"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$user_blocked_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="3203" package="Ant\ChateaClient\Client">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Client" line="3211" package="Ant\ChateaClient\Client">
         <name>showUserVisitors</name>
         <full_name>\Ant\ChateaClient\Client\Api::showUserVisitors()</full_name>
-        <docblock line="3203">
+        <docblock line="3211">
           <description>Show count visits on one profile and who visits of one profile</description>
           <long-description></long-description>
-          <tag name="param" line="3203" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="\Ant\ChateaClient\Client\number" variable="$user_id">
-            <type link="number.html">\Ant\ChateaClient\Client\number</type>
-          </tag>
-          <tag name="param" line="3203" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
+          <tag name="param" line="3211" description="&lt;p&gt;User to retrieve by ID&lt;/p&gt;" type="int" variable="$user_id">
             <type>int</type>
           </tag>
-          <tag name="param" line="3203" description="&lt;p&gt;The distance (displacement) from the start of a data&lt;/p&gt;&#10;" type="int" variable="$offset">
+          <tag name="param" line="3211" description="&lt;p&gt;number of items to retrieve at most&lt;/p&gt;" type="int" variable="$limit">
             <type>int</type>
           </tag>
-          <tag name="return" line="3203" description="" type="array|string">
+          <tag name="param" line="3211" description="&lt;p&gt;The distance (displacement) from the start of a data&lt;/p&gt;&#10;" type="int" variable="$offset">
+            <type>int</type>
+          </tag>
+          <tag name="return" line="3211" description="" type="array|string">
             <type>array</type>
             <type>string</type>
           </tag>
-          <tag name="throws" line="3203" description="This exception is thrown if any parameter has errors" type="\InvalidArgumentException">
+          <tag name="throws" line="3211" description="This exception is thrown if any parameter has errors" type="\InvalidArgumentException">
             <type link="InvalidArgumentException.html">\InvalidArgumentException</type>
           </tag>
-          <tag name="throws" line="3203" description="This exception is thrown if server send one error&#10;array(&#10;     array(&#10;         &quot;participant&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 1,&#10;         &quot;username&quot; =&gt; &quot;alex&quot;,&#10;         &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;     ),&#10;     &quot;participant_voyeur&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 2,&#10;         &quot;username&quot; =&gt; &quot;alex2&quot;,&#10;         &quot;email&quot; =&gt; &quot;alex2@chateagratis.net&quot;,&#10;     ),&#10;     &quot;frequency&quot; =&gt; 1,&#10;  )&#10;);" type="\Ant\ChateaClient\Client\ApiException">
+          <tag name="throws" line="3211" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
+          <tag name="example" line="3211" description="$your_api_instance-&gt;showUserVisitors(1);&#10; // Sample output&#10;array(&#10;     array(&#10;         &quot;participant&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 1,&#10;         &quot;username&quot; =&gt; &quot;alex&quot;,&#10;         &quot;email&quot; =&gt; &quot;alex@chateagratis.net&quot;,&#10;     ),&#10;     &quot;participant_voyeur&quot; =&gt; array(&#10;         &quot;id&quot; =&gt; 2,&#10;         &quot;username&quot; =&gt; &quot;alex2&quot;,&#10;         &quot;email&quot; =&gt; &quot;alex2@chateagratis.net&quot;,&#10;     ),&#10;     &quot;frequency&quot; =&gt; 1,&#10;  )&#10;);&#10;&lt;/code&gt;"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
           <default></default>
-          <type>\Ant\ChateaClient\Client\number</type>
+          <type>int</type>
         </argument>
         <argument line="0">
           <name>$limit</name>
@@ -5216,7 +5217,7 @@ this this request is only once for day.</description>
         </argument>
       </method>
     </class>
-    <source>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</source>
+    <source>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</source>
   </file>
   <file path="ChateaClient/Service/Client/FileStore.php" generated-path="ChateaClient.Service.Client.FileStore.html" hash="3d97e898d613e904f3b4923c4ccebf5c" package="Default">
     <docblock line="0">
