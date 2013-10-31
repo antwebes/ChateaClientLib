@@ -1,132 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project title="API Documentation" version="2.1.0&#10;">
   <partials/>
-  <file path="Guzzle/Plugin/Token/AccessToken.php" generated-path="Guzzle.Plugin.Token.AccessToken.html" hash="8e53f25b4b183e25ad366bc48ed1bb4c" package="Default">
+  <file path="Guzzle/Plugin/Token/AccessToken.php" generated-path="Guzzle.Plugin.Token.AccessToken.html" hash="a98edf6a357fb8fcf4fb7f6f2f3b1889" package="Default">
     <docblock line="0">
       <description>Created by Ant-WEB S.L.</description>
-      <long-description>User: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
-Date: 9/10/13
-Time: 10:37
+      <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
+Date: 14/10/13
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.</long-description>
     </docblock>
-    <interface namespace="Ant\Guzzle\Plugin\Token" line="14" package="Default">
+    <interface namespace="Ant\Guzzle\Plugin\Token" line="18" package="Ant\Guzzle\Plugin\Token">
       <name>AccessToken</name>
       <full_name>\Ant\Guzzle\Plugin\Token\AccessToken</full_name>
-      <docblock line="14">
-        <description></description>
+      <docblock line="18">
+        <description>Interface AccessToken</description>
         <long-description></long-description>
+        <tag name="package" line="18" description="Ant\Guzzle\Plugin\Token"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="16" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="25" package="Ant\Guzzle\Plugin\Token">
         <name>__toString</name>
         <full_name>\Ant\Guzzle\Plugin\Token\AccessToken::__toString()</full_name>
-        <docblock line="16">
-          <description></description>
+        <docblock line="25">
+          <description>The access token as string</description>
           <long-description></long-description>
+          <tag name="return" line="25" description="The value of token" type="string">
+            <type>string</type>
+          </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="17" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="32" package="Ant\Guzzle\Plugin\Token">
         <name>getFormat</name>
         <full_name>\Ant\Guzzle\Plugin\Token\AccessToken::getFormat()</full_name>
-        <docblock line="17">
-          <description></description>
+        <docblock line="32">
+          <description>Get the token type</description>
           <long-description></long-description>
+          <tag name="return" line="32" description="Value of token type" type="string">
+            <type>string</type>
+          </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="18" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="41" package="Ant\Guzzle\Plugin\Token">
         <name>setFormat</name>
         <full_name>\Ant\Guzzle\Plugin\Token\AccessToken::setFormat()</full_name>
-        <docblock line="18">
-          <description></description>
+        <docblock line="41">
+          <description>Set the token type</description>
           <long-description></long-description>
+          <tag name="param" line="41" description="&lt;p&gt;set the token type&lt;/p&gt;" type="string" variable="$format">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="41" description="" type="void">
+            <type>void</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$format</name>
           <default></default>
-          <type/>
+          <type>string</type>
         </argument>
       </method>
     </interface>
-    <source>eJx1j01OwzAQhfc+xSxYQAVNqy4QbcVfaRFShRAtgkWlykkmyRTHjmyHqkEchgNwil6McZBYgVfj7735eeOLqqhE1OkI6MDEovSYQryDK+1PnqfXsOjOu0F6cmiH8CJjQgsztHr/qVNs4NGkdv+V11yON5ugXualJNVNTHkeGm944hDOon4v6g8CWFLJoN8bDk75G8jMWPAFQlYrBYmpdpbywoPUKShKUDsE0pmxpfRk9DFUCiWzN8Jt2ze/m0zvF9MwKiOFzKSHrXSQkvOW4jpk2pIvWCEHztQ2QV6UYogWCaFlia6SDDn26rZuGoWrB1XnpFdL84p6JARpjzZrPUmCzrUc3oUAflUd86UcQCfhRFivvVnwap0fHo3+dOToZ22i/wzu13DwE519H9/BFo3Z</source>
-  </file>
-  <file path="Guzzle/Plugin/QueryPluging.php" generated-path="Guzzle.Plugin.QueryPluging.html" hash="26ea3e838c49de2404a9d98faae4be78" package="Default">
-    <docblock line="0">
-      <description>Created by Ant-WEB S.L.</description>
-      <long-description>User: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
-Date: 9/10/13
-Time: 14:46
-
-For the full copyright and license information, please view the LICENSE
-file that was distributed with this source code.</long-description>
-    </docblock>
-    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin" line="22" package="Ant\Guzzle\Plugin">
-      <extends/>
-      <implements>\Symfony\Component\EventDispatcher\EventSubscriberInterface</implements>
-      <name>QueryPluging</name>
-      <full_name>\Ant\Guzzle\Plugin\QueryPluging</full_name>
-      <docblock line="22">
-        <description>Class AcceptHeaderPluging</description>
-        <long-description></long-description>
-        <tag name="package" line="22" description="Ant\Guzzle\Plugin"/>
-      </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="25" package="Ant\Guzzle\Plugin">
-        <name>__construct</name>
-        <full_name>\Ant\Guzzle\Plugin\QueryPluging::__construct()</full_name>
-        <docblock line="25">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-        <argument line="0">
-          <name>$config</name>
-          <default></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Ant\Guzzle\Plugin" line="50" package="Ant\Guzzle\Plugin">
-        <name>getSubscribedEvents</name>
-        <full_name>\Ant\Guzzle\Plugin\QueryPluging::getSubscribedEvents()</full_name>
-        <docblock line="50">
-          <description>Returns an array of event names this subscriber wants to listen to.</description>
-          <long-description>The array keys are event names and the value can be:
-
- * The method name to call (priority defaults to 0)
- * An array composed of the method name to call and the priority
- * An array of arrays composed of the method names to call and respective
-   priorities, or 0 if unset
-
-For instance:
-
- * array('eventName' =&gt; 'methodName')
- * array('eventName' =&gt; array('methodName', $priority))
- * array('eventName' =&gt; array(array('methodName1', $priority), array('methodName2'))</long-description>
-          <tag name="return" line="50" description="The event names to listen to" type="array">
-            <type>array</type>
-          </tag>
-          <tag name="api" line="50" description=""/>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="60" package="Ant\Guzzle\Plugin">
-        <name>onRequestBeforeSend</name>
-        <full_name>\Ant\Guzzle\Plugin\QueryPluging::onRequestBeforeSend()</full_name>
-        <docblock line="60">
-          <description>Request before-send event handler</description>
-          <long-description></long-description>
-          <tag name="param" line="60" description="&lt;p&gt;Event received&lt;/p&gt;" type="\Guzzle\Common\Event" variable="$event">
-            <type link="Event.html">\Guzzle\Common\Event</type>
-          </tag>
-          <tag name="return" line="60" description="Accept Header value" type="string">
-            <type>string</type>
-          </tag>
-        </docblock>
-        <argument line="0">
-          <name>$event</name>
-          <default></default>
-          <type>\Guzzle\Common\Event</type>
-        </argument>
-      </method>
-    </class>
-    <source>eJyNVNtu2zgQfddXzIMBWYYvyW6xQJ3Gm9RNL0C36MZdbIG6CGhpJLOVSJWkHChFP6Yf0K/oj+2QlBz50nb9YFAcnjMzZy6P/izXZTAZDAIYwFwhM5jAqoZLYUb/Xj2Gxfjl2Jr+0aim8JatOCp4ikp8/yoSvINrmajv37KKjo8+fLDWi6xgPB/HsphZ4BNinMLDyenJ5PR3e/GGF3Rx+mD64A/6tDdPpQKzRkirPIdYlrXi2doAEwnkPEahEbhIpSqY4VIMocyR0d2G463DvXwxv3q1uLJUKc+R7piBW6Yh4doovqpsTrfcrMnCNWhZqRjJUYI2tUkQCFagLhldUtrLZ9XdXY7L13mVcXEWVOSquZrLopBiebVBYY4Z5jLPMbZBeuuiLlIpamsupSCQhz7h5MzEa1T+e1GtdExxonohDKqUAtlhf25MufwLtWYZLq/xU4Wa3G+LljOt4TKOsTTPkSWofOSZNV5QVh8JdpiYyzx22L8rVHUDAl6QvAVFpeFHwQWfgwDoV1Yrqg+VTbic4eYmloIUr2LT79Ex5VnkHn52//bXsxUYzbwRzuFesek0VbKYO0OLHgJTitX9qD2En2yoYRSdOcYvPg4nhP0N4BpNpYSm3vEIkCmgTQNcjZsG2KZEXWITNZIaTRsUdBo3VC3jG2owT/URayJWuENom9T24IblFfUU+V3hdI+iYSnQrGXicNZjzKjb+6XiUnFTQ4Ipq3IfzEnUgV62qcS2izS1MuVkfsDXhtPSHuMhuDvonzHqHUpF42HLtMEtIbQ+OOoh0ASfAE+homE1e+nb8ebUF0zEx6RpKutEfUWeQzifQehDcd/Rrx43lx3IEHqtAtH/hB+QnO6wDA+9/BZuuVsXF8r1XyO0LfpO83XabB/ISt6cJ93ZItVMd8QyvB/IxM2n7u/PWDeGfqj8vhivkDYo3mgUiVdYimaVPHaWhTVs5+pgrNxL8CQjS9Jktqb2yFHtp1MyxQq/QKDnX/oPhTFSGyX7itlFTdvHrzHwe8wP1TFZtnocSaLf9bqvzWRwsWEKeo0qP9uwW59ub7WA84b4XSts+P4sOHg2mlGh3FrtR6MZjUQ/zBStmhtTl9SdYUlr91aqreAutMk92iKa+nVw57MOMOq4bTTcWa7vml35vi3pl/8AW3+BYg==</source>
+    <source>eJyNUs1OAjEQvu9TzMGDEmUlehKiKIIhIcYIUQ8kpOzOLsVu2/QHAsaH8QF8Cl7MtixGI6K9bDPzzfcz28aFnMgorlQiqEBLITGYwngBl9wcPbavoF/tVX3rGmfIhER1Bk9kTFFBBxVfvfEUl3AvUrV6z627NqZT323mBaGsmojiPEw72jOonca147h24iq+2BEKzAQhs4xBIuRC0XxigPAUGE2QawTKM6EKYqjghyAZElebUZyHuV631b7ttz1VRhm6GjEwJxpSqo2iY+ujzKmZuA7VoIVVCTqhFH2iOOKkQC2Jq7mwwxu7XDIc3jGbUz4ciGfk9ahcjJfocoMqC+gkQa0Douw1HcszyX8lCnJ0GwG8RBG4E3T8qcDARSMBASZAXCKfh+clYgNsKjRW8bIZ5maEWQSRrSdLYBy+0o7dVt2yeeLXCaOREf0wuX9Q/2HiBk3Y8dqBWUjcLf7wTfjrwHb1HE0n/Nlt4v0/xSVRpNho763fCOj/ep4Jmu50pz/dldzO5OsHc6r3WQ==</source>
   </file>
   <file path="ChateaClient/Service/Client/ChateaGratisAppClient.php" generated-path="ChateaClient.Service.Client.ChateaGratisAppClient.html" hash="90f93a00415285378f69f075406f9c88" package="Default">
     <docblock line="0">
@@ -269,7 +203,7 @@ file that was distributed with this source code.</long-description>
     </class>
     <source>eJxtUMtOAjEU3c9X3DXRGYmugCg4DgkJMUYWumBT2stMsdM2ffDQ+DF+gF/Bj3kLghtX7T3nPs45gzvb2KzodDLoQOmQBRSw2MFIh8uX6h5m+TRP1AOuURmLrgevbCHRwRid3n9pge/wbITbf9eRvoPVKrHDumVS5dy0t4dpWtuD7k3RvSq614QkcGwchAZhGZUCbuzOyboJwLQAJTlqjyD10riWBWn0BViFjLC1xM1hbjopq8dZlVYtpULCWIAN8yCkD04uYrKykaEhRnrwJjqOdEhgclRkmrXoLSOMzM5LmkZWKolUzNCtScL8WPazLNLhasvRJin9U14TLSSnMX+8zTSgc+TKcB6dS9ebJIwb7WMrdQ0MrDNrKSi+0dMk/w1iSCLeWP2PjuNzavOIMD+rOHjginkPo0h56JC0EHHuAMBtQC08/GmHj88fJUOn5A==</source>
   </file>
-  <file path="ChateaClient/Service/Client/StoreInterface.php" generated-path="ChateaClient.Service.Client.StoreInterface.html" hash="44aad3f2af21bf684cf2adba135604d5" package="Default">
+  <file path="ChateaClient/Service/Client/StoreInterface.php" generated-path="ChateaClient.Service.Client.StoreInterface.html" hash="a61579b6f913541fe891f7306e2867c4" package="Default">
     <docblock line="0">
       <description>Created by JetBrains PhpStorm.</description>
       <long-description>User: ant3
@@ -277,27 +211,28 @@ Date: 28/10/13
 Time: 12:56
 To change this template use File | Settings | File Templates.</long-description>
     </docblock>
-    <interface namespace="Ant\ChateaClient\Service\Client" line="13" package="Default">
+    <interface namespace="Ant\ChateaClient\Service\Client" line="17" package="Ant\ChateaClient\Service\Client">
       <name>StoreInterface</name>
       <full_name>\Ant\ChateaClient\Service\Client\StoreInterface</full_name>
-      <docblock line="13">
-        <description></description>
+      <docblock line="17">
+        <description>Define that implement a store usage for a client</description>
         <long-description></long-description>
+        <tag name="package" line="17" description="Ant\ChateaClient\Service\Client"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="25" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="29" package="Ant\ChateaClient\Service\Client">
         <name>setPersistentData</name>
         <full_name>\Ant\ChateaClient\Service\Client\StoreInterface::setPersistentData()</full_name>
-        <docblock line="25">
+        <docblock line="29">
           <description>Stores the given ($key, $value) pair, so that future calls to
 getPersistentData($key) return $value. This call may be in another request.</description>
           <long-description></long-description>
-          <tag name="param" line="25" description="" type="string" variable="$key">
+          <tag name="param" line="29" description="" type="string" variable="$key">
             <type>string</type>
           </tag>
-          <tag name="param" line="25" description="" type="array" variable="$value">
+          <tag name="param" line="29" description="" type="array" variable="$value">
             <type>array</type>
           </tag>
-          <tag name="return" line="25" description="" type="void">
+          <tag name="return" line="29" description="" type="void">
             <type>void</type>
           </tag>
         </docblock>
@@ -312,19 +247,19 @@ getPersistentData($key) return $value. This call may be in another request.</des
           <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="35" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="39" package="Ant\ChateaClient\Service\Client">
         <name>getPersistentData</name>
         <full_name>\Ant\ChateaClient\Service\Client\StoreInterface::getPersistentData()</full_name>
-        <docblock line="35">
+        <docblock line="39">
           <description>Get the data for $key, persisted by Client::setPersistentData()</description>
           <long-description></long-description>
-          <tag name="param" line="35" description="&lt;p&gt;The key of the data to retrieve&lt;/p&gt;" type="string" variable="$key">
+          <tag name="param" line="39" description="&lt;p&gt;The key of the data to retrieve&lt;/p&gt;" type="string" variable="$key">
             <type>string</type>
           </tag>
-          <tag name="param" line="35" description="&lt;p&gt;The default value to return if $key is not found&lt;/p&gt;&#10;" type="boolean" variable="$default">
+          <tag name="param" line="39" description="&lt;p&gt;The default value to return if $key is not found&lt;/p&gt;&#10;" type="boolean" variable="$default">
             <type>boolean</type>
           </tag>
-          <tag name="return" line="35" description="" type="mixed">
+          <tag name="return" line="39" description="" type="mixed">
             <type>mixed</type>
           </tag>
         </docblock>
@@ -339,16 +274,16 @@ getPersistentData($key) return $value. This call may be in another request.</des
           <type>boolean</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="43" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="47" package="Ant\ChateaClient\Service\Client">
         <name>clearPersistentData</name>
         <full_name>\Ant\ChateaClient\Service\Client\StoreInterface::clearPersistentData()</full_name>
-        <docblock line="43">
+        <docblock line="47">
           <description>Clear the data with $key from the persistent storage</description>
           <long-description></long-description>
-          <tag name="param" line="43" description="" type="string" variable="$key">
+          <tag name="param" line="47" description="" type="string" variable="$key">
             <type>string</type>
           </tag>
-          <tag name="return" line="43" description="" type="void">
+          <tag name="return" line="47" description="" type="void">
             <type>void</type>
           </tag>
         </docblock>
@@ -358,19 +293,19 @@ getPersistentData($key) return $value. This call may be in another request.</des
           <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="50" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\ChateaClient\Service\Client" line="54" package="Ant\ChateaClient\Service\Client">
         <name>clearAllPersistentData</name>
         <full_name>\Ant\ChateaClient\Service\Client\StoreInterface::clearAllPersistentData()</full_name>
-        <docblock line="50">
+        <docblock line="54">
           <description>Clear all data from the persistent storage</description>
           <long-description></long-description>
-          <tag name="return" line="50" description="" type="void">
+          <tag name="return" line="54" description="" type="void">
             <type>void</type>
           </tag>
         </docblock>
       </method>
     </interface>
-    <source>eJyNUsGO0zAQvfsr5rAHWlUNXQRaZUGwFIHgtFLLbS9uMkksHNvYk0AF/DtjJ91KbQqbSzKTN2/evJnXb13jRDafC5jD2qMkLGG3hy9I771UJsB94zZkfbuMiK8BfQ7S0IsYfWB0Dtc32ep5tkqZrWo5s7rOX75KoYWikaZGoEYFIGyd5hroAsJHpRF+wwaJlKkDf6bMdsSE2C8TwsgWg5MFwp2hh3XDv+RaK+Rgg75XBT4M4a0QQhlCX0VwlIyfD6H4JQTwk+aMz3wAsKQGoVY9Gnh29Q33C7jqpe5wBk4qv4BgGSEJqo46j1BIrbnGHkhqpHv0QQViAeyGTCQz8MhwM3ItYRuHj7XQyj3sEJRhDy339gz93mGg5Uh5YH7npJctBPJsDkTWkz/Se+YaOpzWju17q8oxl6W363ZaFTyMKUhZA2FS/qMHt2emfUJKjpWMhcp6GPBuJEmXM2wjz8/JZ/+dkZ1CiG9bHfuQjX56hT2eVO6s1SjZ5xIr2WlK5YfvNMNYHN1Q1dCCV8HWs/rOlBeMa9VP/Ldz04tfHJW8gUrqMOXhmiX743Q/FDWDsMrbNuXdIzN7Y72szxZ8+Tieuvoiqpi63UuC4/UOa3+6zEtiptXcaX16MCzmz18GS2oV</source>
+    <source>eJyNU8Fu00AQvfsr5tBDE0UxKQIhlwpKKhCcKiXcepk443jU9a7ZXRsi4N+ZXduNlDo0liJ7Z2fee/Nm8v5DXdZJOp0mMIWlJfS0hc0evpH/ZJG1g/uyXnljq3nI+O7IZoDavw6nO8nO4OpduniVLmJkzZVEFlfZm7fxaCAvUe8IfMkOPFW1khpoHMFnVgR/YEXes945+YyRdZ/jAl+aJBorcjXmBLfaPyxLucKlYpLDimzLOT10x+tkaOOOCtaBEj2woFEl14DgpI3AjaKnMFYieawMNeH3UWgew+ULTFEYa0+2CLqCO/R1OCa/kwTkiVrCM+0SpPuSYMctabi8eKT9DC5aVA1NoEa2M3CmU1w0vhGZOSolNWYA2ZG/J+vYeVEgxmMEmYAlSdc91hzWwedQCxXuYUPAWsZlhNtK6o+GnJ/3kAOytG2xEneszAEC6tENWitYHcNxbU/fGt72sTS+62ajOJdmdO7ZaHCj8p88uH5m2hfy0bGt5MZpdfl1DxKXtBtHlj0Hn7zYozhFEN6mOPB4E/y0TC0dVW6MUYTi85YKbJSP5cN37KEvDm5w0VHIKMR6Ud/o7QnjKv5F/3dufPCzg5IbKFC5MQ+XItkeuvvJvuyEFdZUMV4/Icd/hyz/+ctx7ujzoGJsd08JDtvbjf18mafEjKu5Vep4YUTM33/JSY1A</source>
   </file>
   <file path="ChateaClient/Service/Client/ChateaGratisClient.php" generated-path="ChateaClient.Service.Client.ChateaGratisClient.html" hash="17e424db7057ab01f2eeb98006406899" package="Default">
     <docblock line="0">
@@ -2612,43 +2547,45 @@ this this request is only once for day.</description>
     </interface>
     <source>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</source>
   </file>
-  <file path="Guzzle/Plugin/AcceptHeaderPluging.php" generated-path="Guzzle.Plugin.AcceptHeaderPluging.html" hash="a8811de2ca38a837d7ff062dfbbf5ab3" package="Default">
+  <file path="Guzzle/Plugin/AcceptHeaderPluging.php" generated-path="Guzzle.Plugin.AcceptHeaderPluging.html" hash="cb25258d7c9aef53a9a6663c9771c8de" package="Default">
     <docblock line="0">
       <description>Created by Ant-WEB S.L.</description>
-      <long-description>User: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
-Date: 9/10/13
-Time: 14:46
+      <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
+Date: 14/10/13
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.</long-description>
     </docblock>
-    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin" line="21" package="Ant\Guzzle\Plugin">
+    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin" line="20" package="Ant\Guzzle\Plugin">
       <extends/>
       <implements>\Symfony\Component\EventDispatcher\EventSubscriberInterface</implements>
       <name>AcceptHeaderPluging</name>
       <full_name>\Ant\Guzzle\Plugin\AcceptHeaderPluging</full_name>
-      <docblock line="21">
-        <description>Class AcceptHeaderPluging</description>
+      <docblock line="20">
+        <description>Class AcceptHeaderPluging put Accept header at Guzzle client</description>
         <long-description></long-description>
-        <tag name="package" line="21" description="Ant\Guzzle\Plugin"/>
+        <tag name="package" line="20" description="Ant\Guzzle\Plugin"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="24" package="Ant\Guzzle\Plugin">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="29" package="Ant\Guzzle\Plugin">
         <name>__construct</name>
         <full_name>\Ant\Guzzle\Plugin\AcceptHeaderPluging::__construct()</full_name>
-        <docblock line="24">
-          <description></description>
+        <docblock line="29">
+          <description>Creare a instace of AcceptHeaderPluging</description>
           <long-description></long-description>
+          <tag name="param" line="29" description="&lt;p&gt;The config values, this plugin only accept key accept-header&lt;/p&gt;&#10;" type="array" variable="$config">
+            <type>array</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$config</name>
           <default></default>
-          <type/>
+          <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Ant\Guzzle\Plugin" line="53" package="Ant\Guzzle\Plugin">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Ant\Guzzle\Plugin" line="58" package="Ant\Guzzle\Plugin">
         <name>getSubscribedEvents</name>
         <full_name>\Ant\Guzzle\Plugin\AcceptHeaderPluging::getSubscribedEvents()</full_name>
-        <docblock line="53">
+        <docblock line="58">
           <description>Returns an array of event names this subscriber wants to listen to.</description>
           <long-description>The array keys are event names and the value can be:
 
@@ -2662,22 +2599,22 @@ For instance:
  * array('eventName' =&gt; 'methodName')
  * array('eventName' =&gt; array('methodName', $priority))
  * array('eventName' =&gt; array(array('methodName1', $priority), array('methodName2'))</long-description>
-          <tag name="return" line="53" description="The event names to listen to" type="array">
+          <tag name="return" line="58" description="The event names to listen to" type="array">
             <type>array</type>
           </tag>
-          <tag name="api" line="53" description=""/>
+          <tag name="api" line="58" description=""/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="63" package="Ant\Guzzle\Plugin">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="68" package="Ant\Guzzle\Plugin">
         <name>onRequestBeforeSend</name>
         <full_name>\Ant\Guzzle\Plugin\AcceptHeaderPluging::onRequestBeforeSend()</full_name>
-        <docblock line="63">
+        <docblock line="68">
           <description>Request before-send event handler</description>
           <long-description></long-description>
-          <tag name="param" line="63" description="&lt;p&gt;Event received&lt;/p&gt;" type="\Guzzle\Common\Event" variable="$event">
+          <tag name="param" line="68" description="&lt;p&gt;Event received&lt;/p&gt;" type="\Guzzle\Common\Event" variable="$event">
             <type link="Event.html">\Guzzle\Common\Event</type>
           </tag>
-          <tag name="return" line="63" description="Accept Header value" type="string">
+          <tag name="return" line="68" description="Accept Header value" type="string">
             <type>string</type>
           </tag>
         </docblock>
@@ -2688,7 +2625,7 @@ For instance:
         </argument>
       </method>
     </class>
-    <source>eJyNVNtOGzEQfd+vmAekTVAu0KJKTYACAVokhCpC1UqAkLM7mxh27a3tDQqIj+kH9Cv4sY7t3ZAblH1Y2R7PmZnjM7P9JR/lQXt9PYB16ClkBmMYTGBfmObPowPot05b1vRDo+rALzbgqOAYlXj+I2J8gHMZq+e/w4KW27e31ro3zBhPW5HMdq3jISF24HN7c6O9+dEeXPCMDja3OlufaGtPjqUCM0JIijSFSOYTxYcjA0zEkPIIhUbgIpEqY4ZL0YA8RUZnY473zu/0pHd01j+yUAlPkc6YgXumIebaKD4obE333IzIwjVoWagIKVCMtrR2EAiWoc4ZHVLZV1+Lh4cUr76nxZCLblBQqPKoJ7NMiqujMQqzytCTaYqRTdJb+5MskWJizbkU5ORdDzkFM9EIld/3i4GOKE9UJ8KgSiiRbjB9k5RpDftRhLn5hixG5RMbWuMeJX3HhivydoVFr/kCz4jEjGJreC2F4DEIgL68GNAr0OMIVxnc3ERSEK9FZGprtEz4sO4uPrq//dYsz81db4QdeOGl00mUzHrOUHk3gCnFJrWpe/WFzGXeHLnUQ9jZpaM8p2ycENq3Wopwzqv+Xqx5r3rX7Z98wY54+63DOZpCCU1S9LggE0DLFzjJlHqackeis4waSbrVBgWtWiVUhXhBevVQdzghYIVzgFbzVtJjlhYkUYo7wM4CRImSoRnJ2PnZiBGj5qnlikvFzQRiTFiR+mQ26jOu+1UpkRWlps6gmswreFU6FewqHHJ3C/0Wop6DVNRtVg9jnAJCFYOjbgANhA3gCRTU+2ahfDstOAmQiWgVNf79Q0fqGUX2svGpuH39f5fLwxmXBqxVDNTf6b4EsjmH0liO8iGcYlch9pTTX0m0ffQ58c3IbNGR5bxct2ebmFgzs708xJfOj90g0LXFZp7NoRYq/F2gNq0B0kDGG40i9gxLce5NB87St4ZpXy21lbsJHqRpQcrKRiSPFNViOTlTLPOTCtb8Tb9RGCHJKF5kzM59GnN+9IGffb6pVtEy5WNFEbXZqEuDrqSDZpy/cFkRFF53g6VrzV2Ss0+mFvrcwkbN51qfn5qXCwPruj6DVxb5tkPF/dM/PepzaA==</source>
+    <source>eJyNVdtuEzEQfd+vmIdKm1S5tMBTCqVtKBcJIdQggUSryvHOZl289mJ7U6WIj+ED+Ap+jLG9G3Jr6b7EnvGcOXPN85dVUSXD/f0E9mFskDnMYLqAU+X6n8/PYDJ4P/CqVzhHqSs0I/jCpgINvEaj/vxSGd7Bhc7Mn9+zmo7Pb2689mRWMiEHXJfHwZpgR3D4bHh4MDx8ShIvfK0NuAIhr6UErquFEbPCAVMZSMFRWQShcm1K5oRWPagkMpLNBd4Gu/fvxucfJuceKhcSScYc3DILmbDOiGntQ7kVriCNsGB1bTiSowx9RMNEsRJtxUhGwV6+qe/uJF5+lPVMqKOkJk+NaKzLUqvL8zkqt0sx1lIi9xyjdrIoc60WXl1pRUbR9JUgZ44XaOJ9Uk8tJ5po3imHJiciR8myEpJZC6ecY+XeIsvQRGIzqGrXyKEICqCoIyHgUhBwk94TCu0bm+2ILkTP7/UgSsp0SUAW7iOa/EiSBOgLdP0Xm8cgMCqadT6rOt8F3zxvrYilYSUwY9gC9rhWuZjBp8LXKRznTNZoe7GEVYAAreQCWMzBN2yP/ZiOBngYfqt6Sq1EHaZCfeD6mmCpOWruOo2zbnj4I5rRt+c99Y8b9y/gX3VHo9zochwUrXUvMu8szdsvXSOVwotjElUVsQndPLyxWqVrVt3HYq1bdY/C/edWPS7Q1UZZmqcmu1QP9PWE0PjNUCxrS5PjK+40DZ91qOg02KiVL0uEoqwTMFV7FdAPrp/LUDLg5HeKow2IBqVEV+gs2HmPnNEG6FRGaCPcAjLMWS0jmYPuiulpGwr3o2VpvCkmdw9eS6eF3YVD5uFgH0K0a5CGdobvhzkuAaH1IXyn0lY7AJFDTQvMbYTvV14YD8V3pSbWPw1J/UCeY9tEKuHe/d/jRrhi0oO9NgPdR5pvgRyuofS2vTxJl9jLwTah/5pE+6KvNd9Km20askrsGmLKmlud5Rn+20xZWFS2sznMqxw6qcHvtEvcYIr0r4LXFlUWM6zVRVSdBc3EK5ZztTVW4SVEkL4HaSIrqD3kcgFtLLhAEPbiy3gxyJHaKNvMmP/zojXcLPm4PONQPbjbdgTRWfW6teiadNCOiw++tglKr46SrWf9Y2rnSKaTRm5prxO5dte35teNhXXVXcFrgnzYoM39z78hY6/f</source>
   </file>
   <file path="ChateaClient/Service/Client/Client.php" generated-path="ChateaClient.Service.Client.Client.html" hash="3b28845134e81c54229dc4cf5f53d77e" package="Default">
     <docblock line="0">
@@ -5468,138 +5405,167 @@ getPersistentData($key) return $value. This call may be in another request.</des
     </markers>
     <source>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</source>
   </file>
-  <file path="Guzzle/Plugin/Token/BearerToken.php" generated-path="Guzzle.Plugin.Token.BearerToken.html" hash="8ec053c7e6b0efc569e36dfe20df2faf" package="Default">
+  <file path="Guzzle/Plugin/Token/BearerToken.php" generated-path="Guzzle.Plugin.Token.BearerToken.html" hash="f647bfeea21f59c6376e254f063ca0a4" package="Default">
     <docblock line="0">
       <description>Created by Ant-WEB S.L.</description>
-      <long-description>User: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
-Date: 9/10/13
-Time: 10:25
+      <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
+Date: 14/10/13
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.</long-description>
     </docblock>
-    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin\Token" line="16" package="Default">
+    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin\Token" line="20" package="Ant\Guzzle\Plugin\Token">
       <extends/>
       <implements>\Ant\Guzzle\Plugin\Token\AccessToken</implements>
       <name>BearerToken</name>
       <full_name>\Ant\Guzzle\Plugin\Token\BearerToken</full_name>
-      <docblock line="16">
-        <description></description>
-        <long-description></long-description>
-      </docblock>
-      <property static="false" visibility="private" line="18" namespace="Ant\Guzzle\Plugin\Token" package="Default">
-        <name>$format</name>
-        <default></default>
-        <docblock line="18">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </property>
-      <property static="false" visibility="protected" line="19" namespace="Ant\Guzzle\Plugin\Token" package="Default">
-        <name>$tokenString</name>
-        <default></default>
-        <docblock line="19">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="21" package="Default">
-        <name>__construct</name>
-        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::__construct()</full_name>
-        <docblock line="21">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-        <argument line="0">
-          <name>$config</name>
-          <default></default>
-          <type/>
-        </argument>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="32" package="Default">
-        <name>__toString</name>
-        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::__toString()</full_name>
-        <docblock line="32">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="37" package="Default">
-        <name>getFormat</name>
-        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::getFormat()</full_name>
-        <docblock line="37">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="42" package="Default">
-        <name>setFormat</name>
-        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::setFormat()</full_name>
-        <docblock line="42">
-          <description></description>
-          <long-description></long-description>
-        </docblock>
-        <argument line="0">
-          <name>$format</name>
-          <default></default>
-          <type/>
-        </argument>
-      </method>
-    </class>
-    <source>eJyNUtFu2jAUfc9X3AeqAKJQNu1hoWVrGVSTqqkanTZpTMgkN8GdY0e2UwRVP6YfsK/oj+3ahBZoV80PiXOuzz3n3Pj4QzEvgk6zGUATBhqZxQRmSziV9vD78AzG7Yu2K30zqCP4wWYcNYxQy4d7meAKvqpEP/zJStoeX1+76scsZ1y0Y5X3HfETdYzgfad71Om+dcAVzwnoHkVv3tGnQ0ZKg50jpKUQEKtiqXk2t8BkAoLHKA0Cl6nSObNcyRYUAhlhNxwXnnfxeTD8Mh66VikXSBizsGAGEm6s5rPSZVpwO6cKN2BUqWMkoQRdtE4QSJajKRiBFHtyXq5WAieXosy4nFyp3yh7QVCSYlUZqDxXkl5CYOwsUTkWzBg4Q6ZRewrwnHzmKK2B0zhGYzx8GwRAq9D8hgZDu9o6WK+ClaWWZLdm3ekx2ZdZr+KUMxoHTUl6UZhOYyUpYBnbeo22Kc8a/uCtf7pVwXACT2ajKNUqH/jChtcCpjVb1h+JmxV6G9O1xxBO+hCuM4atnbON/+ywx2r0nqy6f3PY34pNrit7P0PmJzj11fDXM9a6+zZhR7Ui3P1rjlatFev789NoSy3B0O+SNq2HBwYOTNjayGZoR16h3mi9EKDxquwW+WXVnWyvtjKPrarb9Owe7I9pt+ndX2tpOoU=</source>
-  </file>
-  <file path="Guzzle/Plugin/OAuth2Plugin.php" generated-path="Guzzle.Plugin.OAuth2Plugin.html" hash="728dbb2aea3b162273b6ea16975937df" package="Default">
-    <docblock line="0">
-      <description></description>
-      <long-description></long-description>
-    </docblock>
-    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin" line="20" package="Default">
-      <extends/>
-      <implements>\Symfony\Component\EventDispatcher\EventSubscriberInterface</implements>
-      <name>OAuth2Plugin</name>
-      <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin</full_name>
       <docblock line="20">
-        <description></description>
+        <description>Create a token of type  Bearer</description>
         <long-description></long-description>
+        <tag name="package" line="20" description="Ant\Guzzle\Plugin\Token"/>
       </docblock>
-      <property static="false" visibility="private" line="22" namespace="Ant\Guzzle\Plugin" package="Default">
-        <name>$config</name>
+      <property static="false" visibility="private" line="22" namespace="Ant\Guzzle\Plugin\Token" package="Ant\Guzzle\Plugin\Token">
+        <name>$format</name>
         <default></default>
         <docblock line="22">
           <description></description>
           <long-description></long-description>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="24" package="Default">
-        <name>__construct</name>
-        <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin::__construct()</full_name>
-        <docblock line="24">
+      <property static="false" visibility="protected" line="23" namespace="Ant\Guzzle\Plugin\Token" package="Ant\Guzzle\Plugin\Token">
+        <name>$tokenString</name>
+        <default></default>
+        <docblock line="23">
           <description></description>
           <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="29" package="Ant\Guzzle\Plugin\Token">
+        <name>__construct</name>
+        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::__construct()</full_name>
+        <docblock line="29">
+          <description>Create a  token type Bearer</description>
+          <long-description></long-description>
+          <tag name="param" line="29" description="&lt;p&gt;Associative array with only one key token_format, The default value is Bearer&lt;/p&gt;" type="array" variable="$config">
+            <type>array</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$config</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="44" package="Ant\Guzzle\Plugin\Token">
+        <name>__toString</name>
+        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::__toString()</full_name>
+        <docblock line="44">
+          <description>The access token as string</description>
+          <long-description></long-description>
+          <tag name="return" line="44" description="The value of token" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="53" package="Ant\Guzzle\Plugin\Token">
+        <name>getFormat</name>
+        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::getFormat()</full_name>
+        <docblock line="53">
+          <description>Get the token type</description>
+          <long-description></long-description>
+          <tag name="return" line="53" description="Value of token type" type="string">
+            <type>string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="64" package="Ant\Guzzle\Plugin\Token">
+        <name>setFormat</name>
+        <full_name>\Ant\Guzzle\Plugin\Token\BearerToken::setFormat()</full_name>
+        <docblock line="64">
+          <description>Set the token type</description>
+          <long-description></long-description>
+          <tag name="param" line="64" description="&lt;p&gt;set the token type&lt;/p&gt;" type="string" variable="$format">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="64" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+        <argument line="0">
+          <name>$format</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+      </method>
+    </class>
+    <source>eJyNVNtOGzEQfd+vmAfQJiiQovYpAQqkgCqhqmpQW6lUkbM7uzF47ZXtDQqIj+kH9Cv4sc7azmVDoPghiWZ8Zs6ZM87Bx3JSRt2dnQh2YKCRWUxhPIMTaXd/nJ3CcO9yr059wikKVaLuwU825qjhHLV8+iNTvIdvKtVPf/OKfh7c3NTZ47xgXOwlqjhyaCrbg/0P3f133f33FKmD50qDnSBklRCQqHKmeT6xwGQKgicoDQKXmdIFs1zJDpQCGcWmHO8c7vLz4OzL8KwulXGBFGMW7piBlBur+biqpdxxO6EMN2BUpROkRinWirpRJFmBpmQUJLXXF9X9vcDrr6LKuby+Urco+1FUUceQGaiiUJK+hMCkpkTpxuCAga1hoDKwsxIBTpFp1EHvMbW6ZfmL3RypRDBjAs5FgRckvEBpDZwkCRrjwg9RBHRKzad1Z4AtP6l+CCtLHEn/lmM0pHnIvO8xjnN9VngH4o71nLS/Qqw1K4BpzWawlSiZ8RxOjFEJJ1+mGDJuzkqKGX0g3OLMVxx5Vh24IsNSzFglLEyZqMhb0+zU9cyrMZlPOyHdiGE0opZkZ5XYVpPDoe/carcd8MGXqSexuLC0qtfLtCoGLtEKFzqhwAI4P/Eq9RgOjyD2TONO4277jRXWUO3+kmq9mbtHKx4R60DvV8yc3SOXjX8/Q/nqq4BG1wB4XPe8dsJXDqbTizGud7ixcF6jrbQMSYfzztXr7Rf2VeOs8pJa6wbN69LySpu14m0D2ybuzHXlaM+dhFa7s2FC7Rd0XaB1fwvLTX5dz/eGllXAZkErtDbradjyAsnhf0n65xY4hkcN5q3apoqnr6owCxWh9rPXs75cTT2P/wAcg9yl</source>
+  </file>
+  <file path="Guzzle/Plugin/OAuth2Plugin.php" generated-path="Guzzle.Plugin.OAuth2Plugin.html" hash="b05d4bba7fe041954f256669c9939c21" package="Default">
+    <docblock line="0">
+      <description>Created by Ant-WEB S.L.</description>
+      <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
+Date: 14/10/13
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.</long-description>
+    </docblock>
+    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin" line="24" package="Ant\Guzzle\Plugin">
+      <extends/>
+      <implements>\Symfony\Component\EventDispatcher\EventSubscriberInterface</implements>
+      <name>OAuth2Plugin</name>
+      <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin</full_name>
+      <docblock line="24">
+        <description>Class OAuth2Plugin put Authorization header at Guzzle client</description>
+        <long-description></long-description>
+        <tag name="package" line="24" description="Ant\Guzzle\Plugin"/>
+      </docblock>
+      <property static="false" visibility="private" line="31" namespace="Ant\Guzzle\Plugin" package="Ant\Guzzle\Plugin">
+        <name>$config</name>
+        <default></default>
+        <docblock line="31">
+          <description>The collection that configure this Plugin</description>
+          <long-description></long-description>
+          <tag name="var" line="31" description="" type="\Guzzle\Common\Collection" variable="">
+            <type link="Collection.html">\Guzzle\Common\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="38" package="Ant\Guzzle\Plugin">
+        <name>__construct</name>
+        <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin::__construct()</full_name>
+        <docblock line="38">
+          <description>Creare a instace of OAuth2Plugin</description>
+          <long-description></long-description>
+          <tag name="param" line="38" description="&lt;p&gt;The config values, this plugin accept key token_type and access_token value&lt;/p&gt;" type="array" variable="$config">
+            <type>array</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$config</name>
           <default></default>
-          <type/>
+          <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="35" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="54" package="Ant\Guzzle\Plugin">
         <name>updateAccessToken</name>
         <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin::updateAccessToken()</full_name>
-        <docblock line="35">
-          <description></description>
+        <docblock line="54">
+          <description>Update de access token value</description>
           <long-description></long-description>
+          <tag name="param" line="54" description="&lt;p&gt;The token value&lt;/p&gt;" type="string" variable="$acces_token">
+            <type>string</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$acces_token</name>
           <default></default>
-          <type/>
+          <type>string</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="Ant\Guzzle\Plugin" line="59" package="Default">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="Ant\Guzzle\Plugin" line="76" package="Ant\Guzzle\Plugin">
         <name>getSubscribedEvents</name>
         <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin::getSubscribedEvents()</full_name>
-        <docblock line="59">
+        <docblock line="76">
           <description>Returns an array of event names this subscriber wants to listen to.</description>
           <long-description>The array keys are event names and the value can be:
 
@@ -5613,22 +5579,21 @@ For instance:
  * array('eventName' =&gt; 'methodName')
  * array('eventName' =&gt; array('methodName', $priority))
  * array('eventName' =&gt; array(array('methodName1', $priority), array('methodName2'))</long-description>
-          <tag name="return" line="59" description="The event names to listen to" type="array">
+          <tag name="return" line="76" description="The event names to listen to" type="array">
             <type>array</type>
           </tag>
-          <tag name="api" line="59" description=""/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="70" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin" line="87" package="Ant\Guzzle\Plugin">
         <name>onRequestBeforeSend</name>
         <full_name>\Ant\Guzzle\Plugin\OAuth2Plugin::onRequestBeforeSend()</full_name>
-        <docblock line="70">
+        <docblock line="87">
           <description>Request before-send event handler</description>
           <long-description></long-description>
-          <tag name="param" line="70" description="&lt;p&gt;Event received&lt;/p&gt;" type="\Guzzle\Common\Event" variable="$event">
+          <tag name="param" line="87" description="&lt;p&gt;Event received&lt;/p&gt;" type="\Guzzle\Common\Event" variable="$event">
             <type link="Event.html">\Guzzle\Common\Event</type>
           </tag>
-          <tag name="return" line="70" description="AccessToken value" type="string">
+          <tag name="return" line="87" description="AccessToken value" type="string">
             <type>string</type>
           </tag>
         </docblock>
@@ -5639,18 +5604,9 @@ For instance:
         </argument>
       </method>
     </class>
-    <parse_markers>
-      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
-      <error line="20" code="PPC:ERR-50005">No summary for class \Ant\Guzzle\Plugin\OAuth2Plugin</error>
-      <error line="22" code="PPC:ERR-50007">No summary for property $config</error>
-      <error line="24" code="PPC:ERR-50015">Argument $config is missing from the Docblock of __construct()</error>
-      <error line="24" code="PPC:ERR-50008">No summary for method __construct()</error>
-      <error line="35" code="PPC:ERR-50015">Argument $acces_token is missing from the Docblock of updateAccessToken()</error>
-      <error line="35" code="PPC:ERR-50008">No summary for method updateAccessToken()</error>
-    </parse_markers>
-    <source>eJydVuFu2zYQ/u+nuB8GJAeO7WT7M6fNmrjpVqBrhzjDBtSBQUsnm41EqiTlwCnyMHuAPUVfbEdSciRbdbrphyDx7r67+3h35Iuf81XeESxDnbMI4UKY2S/Fw0OKs9/TYsnFWaczPDrqwBFMFDKDMSw2Vuv4z6tLmA7eDazoD41qDH+xBUcFb1CJr3+LGB/gWsbq6z/Lgj5ffPpkpa+WGePpIJLZuTV8TYhj+Gl4Mhqe/GAXbnhGCyej8Y/21668kQrMCiEp0hQimW8UX64MMBFDyiMUGoGLRKqMGS5FH/IUGa2tOd47u3dvJ1fvp1cWKuEp0hozcM80xFwbxReFzememxVJuAYtC0U8RDJGm9qw0ykIraRkIrNMitnVGoU5axFMZJpiZOPw0ukmS6TYWHEuBRl509ecyDbRCpX/nxYLHVEoqN4KgyqhjfD2e7sxu5F3KGaXyBQq931Y8TcWlVqdKGVaw4eLwqxOvQ7wjMjKKAAN34qj86UD9OSKr2mroBtJkfAlwbnVYkFbQDsjXM4wn5OYSC0iE5aaPafoQezTtSQfn3shvIQnxsbjRMls4gSVdR+YUmwTbs2rJ1ij0mQUwMtzCE4Ho6C/r2Ns5nOzydGredZ2NHvP++g3oFocsShCredOKWii987c/2M7YUUeE6sXztztU9h1WB7qIHcfm15vicu6beXWvl3/2ucIrtEUSmjqHp81yATQbj24EVC2wLYMqE9scRhJraYNCvoalFAV4g21mIe6ww0BK2wA2ja1XbhmaUFdRX4XON6BKFEyNCsZOzvrMWLU7yEVnlTcbCDGhBWpD2bUq5leVKlEtsk0NTPlZL6BV4VTwbbhkLn70IcQdQNS0fS0VbzGLSBUPjjqPtAMGwFPoKBxZXbStwOOU9swEbVR46szcKS+J8++ln0o7r/3nHK5WDPpQ7dioPed5nsgJw2U/r6X02CLXbl4pVz9lUTbTW8UX63Mdg1ZzsvvYb2TiDVTb6glPg2x2M00He62UT2GMFD4uUBtBgukMwTnGkXsGZbi2osunWRqBc1ubvSVUwWPcmxRytRWVB8pqt18cqZY5qcudL2m/1EYIdVRvEuZPavEEmqzwvdUGytbOlpyCOs+9yZMyYYdJk7hY8VPcFvOfPtQIYdcz31I4cGx1OvV4J0Ll7kmD+UGNPQt84fxzhpoPhLqqd0o/MD214KWKGqR7Ora3A9hNQN4bPxpukdEK2gPxp0et22RRPbCEtBZHYz3ZC7SZwa/oKtOddKHZVo7RFXPgi5xd/siH0F5QO4HUQ7f/x9d7cLy3wN84vhxr1KPz2nzf0UWowoDe7ehcfTgboJBP/QF2vvuiipb7aB6NQEe/wU0c2CR</source>
+    <source>eJydVttu4zYQffdXzEMAyYFjJ2mfnN00iTfbLrDdFvEWLbAODFoa29xIlEpSDpwiH9MP6Ffsj3V4kaNbnLR6sUnOnJk5cyHf/JCv897o8LAHhzCRyDTGsNjCpdBHv19fwXT4cWiO3uEGkyxHOYY/2IKjhPcoxbe/RYwPcJPF8ts/q4L+vvn61ZxerFLGk2GUpedWm2DHcPL96OR4dPId7ZjN95kEvUZYFkkCUZZvJV+tNTARQ8IjFAqBi2UmU6Z5JgaQJ8hob8Px3up9/DC5/jS9NlBLniDtMQ33TEHMlZZ8UZhQ7rle0wlXoLJCRkiGYjQRjXo9wVJUOaNNinb2Y/HwkODs16RYcXHW6xVky+9NsjTNxOx6g0KfdRxMsiTByHjpTqfbdJmJrTnOM0FKTvUdJ2s6WqN062mxUBE5ivKD0CiX5InTb7kz+5zdoZhdIZMo7f/9gj+zyEvtUpswpeCXy0KvT50o5IUGs84kf7AUwxpZTJklGh0oRAknP32+LoiqO7bqsGrpjNoWeEo5SwlBwXMB9/7qAX3WS/Mdwue1SVJJqMtqlIklXxUSXSpLq1ah1LvYMAmz5xLjpUb2N5d8QxUJBw6XWGr4YBqBjDEqQKVNgWTLWmRN0zmTLAUmJduWoD4O+3fDkgLVwDmfO25YFGGu4Q63oE2q5nqboy1+c6LU3O461brzxYLag7pGOILmc7JCBV9EOvS2+1bQMWu+A2P46Nx78xaeaBmPlzJLJ/ag1B64QMKdevkFG5SKlAJ4ew7B6fA4GLRlnoJxYq5mG5L9l20MalAdhqo0BXX0/pldP7by+lsem7zH6EmGNsmNnJpJIlZwYOV9TkxmX5udwlq8tNZsS4ZVqL2J+lIP8ZYSV9UtY2yEeIO6kEJRJfl6pNJF03xgx52fhbtGpIFp2lNnNHOVppB0NmwwYcJ1UFSsBEyNUQU0JWvGseUCIrK7wHEDwqOkSNMmtnrGYsRo8IfUjDSB9JaysmRF4pw57ldUL8tQIjNPFU11ikk/g1e6U8J24ZC6/aP2IaoapKSbwrTMBneAUNrgprfpMjsGvoSC7i3dCN/cdHaSiKiLGtcKgSX1E1l2jeNcsev+S8J+s6IygIOSgf4r1VsgJzWUQdvKabDD3rWNtPXniTZJrxVfpcy62oYo0tXuWeHTnRHbK0SFzZ6pGgwDiX/SqNXDBdLLAecKRezozMSNO7qyJ1Nz8Oyc8KLgUI4Mio9jTcWQoOweFtZDOHCSbiExQiqauMmPnyuVwfCKYdIRQ1i12Ronng0zOazAl5Kf4NZfeuajqg25mjuXwr0zqN+vwFsTNnJFFnwCavKG+f14ZzU05wk1UNMLdxW4x2CHFxVPmrIm9n1YdQceaytFr8doDd3O2HvptsuTyDxTA3qDBePWmfX0hSkv6IFbvuBCH1aDqPJb0EPlrn3kPPBXb9sJP2n/v3eVh+h/d/CJ48dWpR6dU/J/ss/QMKg9ToNB6Aq0/+qK8q22V7ycAI//Ah3o8Tw=</source>
   </file>
-  <file path="ChateaClient/Service/Client/ClientInterface.php" generated-path="ChateaClient.Service.Client.ClientInterface.html" hash="8701de09cae72266404e7bb696898184" package="Default">
+  <file path="ChateaClient/Service/Client/ClientInterface.php" generated-path="ChateaClient.Service.Client.ClientInterface.html" hash="dee08a99f0d77614edbd40e795d4fca8" package="Default">
     <docblock line="0">
       <description>Created by JetBrains PhpStorm.</description>
       <long-description>User: xabier
@@ -5658,17 +5614,18 @@ Date: 10/10/13
 Time: 21:38
 To change this template use File | Settings | File Templates.</long-description>
     </docblock>
-    <interface namespace="Ant\ChateaClient\Service\Client" line="18" package="Default">
+    <interface namespace="Ant\ChateaClient\Service\Client" line="17" package="Ant\ChateaClient\Service\Client">
       <extends>\Guzzle\Service\ClientInterface</extends>
       <name>ClientInterface</name>
       <full_name>\Ant\ChateaClient\Service\Client\ClientInterface</full_name>
-      <docblock line="18">
+      <docblock line="17">
         <description>Client interface for executing commands on a web service.</description>
         <long-description></long-description>
-        <tag name="see" line="18" description="" link="\Ant\ChateaClient\Service\Client\ClientInterface"/>
+        <tag name="package" line="17" description="Ant\ChateaClient\Service\Client"/>
+        <tag name="see" line="17" description="" link="\Ant\ChateaClient\Service\Client\ClientInterface"/>
       </docblock>
     </interface>
-    <source>eJxtUEFOwzAQvPsVc86BUHpBKRLQIBCckFJuvTjptLGUOJHXgVLg79gpKlJUyQfP7Ozs7N7c9nWv0iRRSJA7as8Nyk+80C+dNlbwWveF71x7ERVvQpdhr0tDF/FD0GeYXabxzSOzMm1grmbZ/HqEHapa2x3hayPwbPsm9GAQ4tE0xDcKem/sTsJ3ZFZ/GokTU6Wsbim9roh769d5HUo6bwwDKOjeTcX1ES5UdH0aDoeGk9Kz9XTb6KEFSy2c0AulTkcYKzCnjm3nwD2rIaZE1bWtthtBZ6HxwRJynDTe505ITLzHLf7tpoGCt2c0PJfr6+cXMOSLTg==</source>
+    <source>eJyFUEFOwzAQvOcVc86BUHpBKRLQIBCckFJuvWzSbWIRO5HXgVLg79guKlJUCckHz+zszuxeXQ/tkGRpmiBFYZkcb1B94Ind0pIygud2KF1v9VlQvAjbHDuqFNuA77w+x+w8C28emJXSnrmY5fPLCHvULZmG4VolcKyHzvdgFMa96hhfKNk5ZRrx38isfjUSHLPEkGYZqGbcGrcuWl+holPsQcn2TdW8PsBFEoY+jPt9x5PSo3Fst2EGCZYkPKEXyfEEsQB1bNj2FrzjegwZUfdak9kIegPCO1eQg1G8zo2P+UrNv0mjVpgxiRH3/bOeZvc5HAfzUyt8fv8A3+Wa5g==</source>
   </file>
   <file path="ChateaClient/Client/Authentication.php" generated-path="ChateaClient.Client.Authentication.html" hash="337338ae7e88a8116f5e82c416261792" package="Default">
     <docblock line="0">
@@ -5892,69 +5849,95 @@ authentication settings for use on the apps side of communication.</description>
     </class>
     <source>eJztWdtu20YQfddXDAIDUg1d7Kbog5O4VmQnNZC2QJyifTAgrMiRtDZFsrtLycrlY/oB/Yr8WGd2SYqiSMlqgTYtJBihtDszO7dzZqU8/y6exo3e8XEDjmGgUBj0YbSEfmg6v1y9hJvumy5vXeIcgyhGdQa/ipFEBa9QhZ9/D318D28jX33+Y5LQ2+d3d7x7MZkJGXS9aHZutcnsGZx+0zs96Z0+pRVefBUpMFOEcRIE4EXxUsnJ1IAIfQikh6FGkOE4UjNhZBS2IQ5Q0Npc4sLqvbkeXP14c8WmxjJAWhMGFkKDL7VRcpRwKAtpprQjNegoUR7SQT5yRL1GKGaoY0FrFOztgLRRDAKJ/ME+njUaia7YvUE1JwdvM2G791M/MdOvM8XH6LECPaVn47t68DDmN3RqWo6bGD05lqhBgGd1XIyxiubSp2U6RYFYMwOUMOjHsngwaGlI2uqyY87Vzoiy6ZfUu2ltLniZLG2ttQxdm+AoaxOrSim9F5ParGZiGhFgM3dr2zUpsuXzAqF1SaLxodEAetkE8usY3lGnTI2J8wxG1AJhiJ5xvSFiCZTGOapM42IuFNzuX/VUv2efsZJzEoAjL2ulkl8vExn4EFIvVwXSBte0+5Y6tZ6HEgslZhVZzvyqSs99GC125MjFOE5CzzoyHJI4YS7xTKv+rK+s0gdngl5HHGHnPD34RSlVnzYy9hqNxX3RXU7BdlfzVCg0iQr/SmHBZul7Praq0smI6GqVjAkaJ9UqB5x6sBb3s5pg+cTU8j0uIRqnEddExYQXTnZp7XD42n+Uy53zNY2tEaQo2DeELWq1MdygR5YeH0Emn/tfDuAqFKPA8iY6+BE2SM+2l+RJotBnNIqACFrDAmmM0XNzOzNYgq9GYyhibZuYeZnW+CwvI20fbfTRbJaEK36uAniauyN2k8eazWJqhz9v14qJfxaR8q2WtmlZC46cYMM1dRNKieXH1FZf68iT5Ooc3YZDZepK0ehH+AG15jlhJVApygJNlDvtmI2mfvlAM1XRQsN1OBeB9PtqkszIWj4VyH1iTMw/Si4dadC7Md0qlmCjRkOVnFKd7Im65oyawbP1iGWUgB9BGJWyp+yOJ0Le4TpbZidHppFfPh4fxIzuOZbrNpNWkravo/WuuiYephsUds45rT9T2QYr/VYza5Bmu5lVvZkioGDXVq71RHgelWhoonsMn/DWi3Nwax271vFxFrXXvAF4gg+xVKiH0ulYraffnpxsCFobQ7OMcSU4QqFQbYhquh5mUplo5v+GsMIxnT9d+U3C6VrB71wrD7+aWarSmOOsvQLPdt4pDIXqylSazEch//vfZCbbnkO+dFt2IfHfktwQL9eokYvURZ4ZJko6TRVwmNk6iDEDmZEVjYwg4tgJlwNhffmE1bdfO+R7uzWg9mg1WbzDnWJhS8TF97+zXm+xWHQ9e1ebKBLX3RDNgct2ctlmhlcQba/jbk9K28dy3aWxyGwijvU/xWz2rMfx2r/FIv8ThLueKY6+A2Z3YbYiZ/tBszbpmwiEvh2shXHPs2eEGIJIAY6+hY8rRZtFl9xLtpFEFirYUDP8CvtLh9NwOzu+yawlsfh1pmSef9MqXALobyyVZjG6Z9CT4bwK+4sB8+FK8GjCeOsK/o7r3WpuAukw83fyx1oK16G1J5Fss1THKJdS81C3lLJjjjsRrXf/0lGsraUHfue+IMzpXQ3OU+0ctjphK/wfEEvufiYxp5/SywHg2wB+iQE5+ncx7hKewnsDnhXotu3VixITJ6aEHZpehRGT1tLfio/i8WtdtQcy6m1kmPj0J0THmG0=</source>
   </file>
-  <file path="Guzzle/Plugin/Token/MacToken.php" generated-path="Guzzle.Plugin.Token.MacToken.html" hash="ffb0adf211a4ac315ef7ab0cf8fd319f" package="Default">
+  <file path="Guzzle/Plugin/Token/MacToken.php" generated-path="Guzzle.Plugin.Token.MacToken.html" hash="9b35a6db0d2ba70951703fba1e53f309" package="Default">
     <docblock line="0">
       <description>Created by Ant-WEB S.L.</description>
-      <long-description>User: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
-Date: 9/10/13
-Time: 10:25
+      <long-description>Developer: Xabier Fernández Rodríguez &lt;jjbier@gmail.com&gt;
+Date: 14/10/13
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.</long-description>
     </docblock>
-    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin\Token" line="15" package="Default">
+    <class final="false" abstract="false" namespace="Ant\Guzzle\Plugin\Token" line="16" package="Ant\Guzzle\Plugin\Token">
       <extends/>
       <implements>\Ant\Guzzle\Plugin\Token\AcessToken</implements>
       <name>MacToken</name>
       <full_name>\Ant\Guzzle\Plugin\Token\MacToken</full_name>
-      <docblock line="15">
-        <description></description>
+      <docblock line="16">
+        <description>Create a token of type  MAC</description>
         <long-description></long-description>
+        <tag name="package" line="16" description="Ant\Guzzle\Plugin\Token"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="17" package="Default">
+      <property static="false" visibility="private" line="24" namespace="Ant\Guzzle\Plugin\Token" package="Ant\Guzzle\Plugin\Token">
+        <name>$config</name>
+        <default></default>
+        <docblock line="24">
+          <description>The collection that configure this Plugin</description>
+          <long-description></long-description>
+          <tag name="var" line="24" description="" type="\Guzzle\Common\Collection" variable="">
+            <type link="Collection.html">\Guzzle\Common\Collection</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="31" package="Ant\Guzzle\Plugin\Token">
         <name>__construct</name>
         <full_name>\Ant\Guzzle\Plugin\Token\MacToken::__construct()</full_name>
-        <docblock line="17">
-          <description></description>
+        <docblock line="31">
+          <description>Create nre instance of MacToken</description>
           <long-description></long-description>
+          <tag name="param" line="31" description="&lt;p&gt;The collection that configure this Plugin&lt;/p&gt;" type="array" variable="$config">
+            <type>array</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$config</name>
           <default></default>
-          <type/>
+          <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="22" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="40" package="Ant\Guzzle\Plugin\Token">
         <name>__toString</name>
         <full_name>\Ant\Guzzle\Plugin\Token\MacToken::__toString()</full_name>
-        <docblock line="22">
-          <description></description>
+        <docblock line="40">
+          <description>The access token as string</description>
           <long-description></long-description>
+          <tag name="return" line="40" description="The value of token" type="string">
+            <type>string</type>
+          </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="30" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="53" package="Ant\Guzzle\Plugin\Token">
         <name>getFormat</name>
         <full_name>\Ant\Guzzle\Plugin\Token\MacToken::getFormat()</full_name>
-        <docblock line="30">
-          <description></description>
+        <docblock line="53">
+          <description>Get the token type</description>
           <long-description></long-description>
+          <tag name="return" line="53" description="Value of token type" type="string">
+            <type>string</type>
+          </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="34" package="Default">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="Ant\Guzzle\Plugin\Token" line="64" package="Ant\Guzzle\Plugin\Token">
         <name>setFormat</name>
         <full_name>\Ant\Guzzle\Plugin\Token\MacToken::setFormat()</full_name>
-        <docblock line="34">
-          <description></description>
+        <docblock line="64">
+          <description>Set the token type</description>
           <long-description></long-description>
+          <tag name="param" line="64" description="&lt;p&gt;set the token type&lt;/p&gt;" type="string" variable="$format">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="64" description="" type="void">
+            <type>void</type>
+          </tag>
         </docblock>
         <argument line="0">
           <name>$format</name>
           <default></default>
-          <type/>
+          <type>string</type>
         </argument>
       </method>
     </class>
-    <source>eJx9kl9u2kAQxt99ihEiskGOCY36UAi0lEJbibSopGofkNCyHptN7LW1uw6CiMP0AD1FLtZZG8ifNt2n8Tezv29m1hdv81XutJpNB5owVMgMhrDcwECa0x+j9zALJoFNfdeoOvCTLQUqGKOS979kiFv4loXq/ndcUHhxfW2z7+KUiSTgWdq3Fz8QsQNvWu2zVvvcClciJaF91nn1mj6tMs4UmBVCVCQJ8CzfKBGvDDAZQiI4So0gZJSplBmRSR/yBBlptwLX5b3J5+Hoy2xkUZFIkDRmYM00hEIbJZaFnWktzIoyQoPOCsWRjEK0o7UcR7IUdc5IpLHnH4vtNsH5NCliIedX2Q3KruM4PGFawyXjpQIipTZSlEYDDDhqXcrOnQN08mJJndNAktuWYbHgmaReCm68OoWRiBtlYVVuT932dtqvktCDfVm3LNg5L2BNNqMJZez9hUsZr1LE0jkFJvLcEw2uf7CK0YzLpXqNRvd4kfaMjK/Ae9oQbbN+gxvo9aF+y5ICG4/MnhkGTxx7tRNd891g+mm6GH2d+CXHP1AejHfHSKEplASCpd4D1oc9Iaj5tcZhL/9ay6PBnm1lT3YvB0P3fwR9JNSr/+6F16qS9rWq6MDc/QG85gEy</source>
+    <source>eJyVVNtOGzEQfc9XjKKgXLQkRe0TEApNA60ELWpQ2wck5OxONgavvbK9iQLiY/oB/Qp+rGOvF5JAaOsXr2Y8Z845Hu/++3ya13qdTg06MNDILCYwXsCRtNs/hh9g1D3tutRHnKFQOepd+MnGHDUco5YPv2SCt/BNJfrhd1rQ5/71tcsephnjohur7MBXE+wu7Lzr7bzp7byliAseKw12ijAphIBY5QvN06kFJhMQPEZpELicKJ0xy5WMIBfIKDbjOPd1p58Hwy+joYOacIEUYxbmzEDCjdV8XDgpc26nlOEGjCp0jNQoQaeoV5MsQ5MzipHYy5Pi9lbg5bkoUi4vL9QNyr1VX4CBdWFQE7CLHAHOjgZByyHh3LB0I5RvGAtmDJyx2IeAZ6QoQ2kNwFGMxpQn72o1oOVbu9WBi6mjLQTGzohSZ6zkhKeFxlJc2SsUVHWHM6ahYjNQWaYkbRVOONXze675zElslLh7zzgEC6R2l2Isk2Qb+VCJWe+cM80yYFqzRYX53zICs2JM00BDIsuyqyuqofstYtsKyG1/8K4so9VwWNsHoW3/SZRL3r/kLoud/+F6aYLc/Mh0XZRGW2gZkr5uxkThfbBLJmzibdXIV7ae8c1YXKaIrKGrkHbSam4ZaEaVlhTtsX8JrXZ777GQHgeyeAqtVcUkoHGDC+gfQMMzbC81W2vYXenYr2+ZetTsnn86vxp+PY08TlShPDW+f/wKnhBY1nqCjSAgdOtRvb3B+BO0/h2XrrsX9brh31fMXi542fElz9YMD7hNer/NDeRGfyVXjnjg1ij/U2D+VdNM8eRV9uaRfcDeMOWhcb+iUOm5/wNdMrjP</source>
   </file>
   <file path="ChateaClient/Client/ApiException.php" generated-path="ChateaClient.Client.ApiException.html" hash="5c4257a82b16e0f32edcff32255cf925" package="Default">
     <docblock line="0">
@@ -5986,7 +5969,9 @@ file that was distributed with this source code.</long-description>
       </package>
     </package>
     <package name="Guzzle" full_name="Ant\Guzzle">
-      <package name="Plugin" full_name="Ant\Guzzle\Plugin"/>
+      <package name="Plugin" full_name="Ant\Guzzle\Plugin">
+        <package name="Token" full_name="Ant\Guzzle\Plugin\Token"/>
+      </package>
     </package>
   </package>
   <package name="Default" full_name="Default"/>

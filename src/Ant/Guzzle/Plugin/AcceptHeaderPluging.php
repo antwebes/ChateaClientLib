@@ -1,26 +1,31 @@
 <?php
 /**
  * Created by Ant-WEB S.L.
- * User: Xabier Fernández Rodríguez <jjbier@gmail.com>
- * Date: 9/10/13
- * Time: 14:46
+ * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 14/10/13
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Ant\Guzzle\Plugin;
 use Guzzle\Common\Event;
 use Guzzle\Common\Collection;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class AcceptHeaderPluging
+ * Class AcceptHeaderPluging put Accept header at Guzzle client
+ *
  * @package Ant\Guzzle\Plugin
  */
 class AcceptHeaderPluging implements EventSubscriberInterface
 {
 
+
+    /**
+     * Creare a instace of AcceptHeaderPluging
+     *
+     * @param array $config The config values, this plugin only accept key accept-header
+     */
     public function __construct($config)
     {
         $this->config = Collection::fromConfig($config, array(

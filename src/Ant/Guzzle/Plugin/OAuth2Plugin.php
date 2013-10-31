@@ -1,15 +1,14 @@
 <?php
-namespace Ant\Guzzle\Plugin;
-
 /**
  * Created by Ant-WEB S.L.
- * User: Xabier Fernández Rodríguez <jjbier@gmail.com>
- * Date: 9/10/13
- * Time: 10:43
+ * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
+ * Date: 14/10/13
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
+namespace Ant\Guzzle\Plugin;
 
 use Guzzle\Common\Event;
 use Guzzle\Common\Collection;
@@ -17,10 +16,25 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Ant\Guzzle\Plugin\Token\BearerToken;
 use Ant\Guzzle\Plugin\Token\MacToken;
 
+/**
+ * Class OAuth2Plugin put Authorization header at Guzzle client
+ *
+ * @package Ant\Guzzle\Plugin
+ */
 class OAuth2Plugin implements EventSubscriberInterface
 {
+    /**
+     * The collection that configure this Plugin
+     *
+     * @var \Guzzle\Common\Collection
+     */
     private $config;
 
+    /**
+     * Creare a instace of OAuth2Plugin
+     *
+     * @param array $config The config values, this plugin accept key token_type and access_token value
+     */
     public function __construct($config)
     {
         $this->config = Collection::fromConfig($config, array(
@@ -32,6 +46,11 @@ class OAuth2Plugin implements EventSubscriberInterface
             ));
     }
 
+    /**
+     * Update de access token value
+     *
+     * @param string $acces_token The token value
+     */
     public function updateAccessToken($acces_token)
     {
         $this->config['access_token'] = $acces_token;
@@ -53,8 +72,6 @@ class OAuth2Plugin implements EventSubscriberInterface
      *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
      *
      * @return array The event names to listen to
-     *
-     * @api
      */
     public static function getSubscribedEvents()
     {

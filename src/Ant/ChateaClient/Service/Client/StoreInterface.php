@@ -9,7 +9,11 @@
 
 namespace Ant\ChateaClient\Service\Client;
 
-
+/**
+ * Define that implement a store usage for a client
+ * 
+ * @package Ant\ChateaClient\Service\Client
+ */
 interface StoreInterface
 {
 
