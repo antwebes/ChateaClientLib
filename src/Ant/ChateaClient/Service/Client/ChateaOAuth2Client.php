@@ -12,6 +12,7 @@ namespace Ant\ChateaClient\Service\Client;
 use Guzzle\Common\Collection;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 use Guzzle\Http\Exception\ServerErrorResponseException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
 
 /**
  * Specifies a client that provides user authentication for ApiChateaClient sites that use OAuth2-based authentication.
