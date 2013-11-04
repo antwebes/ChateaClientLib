@@ -14,8 +14,8 @@ use Ant\ChateaClient\Service\Client\Client;
 use Exception;
 use InvalidArgumentException;
 use Guzzle\Http\Exception\ServerErrorResponseException;
-use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 

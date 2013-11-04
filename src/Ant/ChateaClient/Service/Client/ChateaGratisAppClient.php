@@ -12,6 +12,9 @@ namespace Ant\ChateaClient\Service\Client;
 use Guzzle\Common\Collection;
 use Guzzle\Common\Event;
 use Guzzle\Http\Exception\ServerErrorResponseException;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Exception\BadResponseException;
+use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
