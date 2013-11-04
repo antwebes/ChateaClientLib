@@ -2912,7 +2912,7 @@ class Api implements  ApiInterface
     }
     public function whoami()
     {
-        return $this->showUser($user_id);
+        return $this->me();
     }
 
     /**
