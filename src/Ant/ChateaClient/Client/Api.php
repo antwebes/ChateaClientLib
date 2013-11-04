@@ -2617,7 +2617,7 @@ class Api implements  ApiInterface
      * @examples Show messages sent
      *
      *      $your_api_instance->showThreadsSent(1);
-     *
+     *<code>
      * array(
      *      array(
      *          "id" => 1,
@@ -2628,6 +2628,7 @@ class Api implements  ApiInterface
      *      "subject" => "thread sent 2",
      *      )
      *  );
+     *</code>
      */
     public function showThreadsSent($user_id)
     {
@@ -2658,7 +2659,7 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      * @examples Show messages on thread
-     *
+     *<code>
      *      $your_api_instance->showThreadMessages(1,1);
      *
      * array(
@@ -2672,6 +2673,7 @@ class Api implements  ApiInterface
      *      "created_at" => "2013-08-25T15:31:01+0200",
      *  )
      *);
+     * </code>
      */
     public function showThreadMessages($user_id, $thread_id)
     {
@@ -2710,6 +2712,7 @@ class Api implements  ApiInterface
      *
      * @examples Add one message on thread
      *
+     * <code>
      *      $your_api_instance->showThreadMessages(1,1,'this is entity body');
      *
      * array(
@@ -2717,6 +2720,7 @@ class Api implements  ApiInterface
      *   "body" => "this is entity body",
      *  "created_at" => "2013-10-30T14:00:53+0100"
      * );
+     * </code>
      */
     public function addThreadMessage($user_id, $thread_id, $body)
     {
@@ -2756,11 +2760,12 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      * @examples Delete thread 6
-     *
+     *<code>
      *      $your_api_instance->delThread(6);
      *
      *      //ouput message
      *  Thread deleted
+     *</code>
      */
     public function delThread($user_id, $thread_id)
     {
@@ -2798,7 +2803,7 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      * @examples Show all users, only first
-     *
+     *<code>
      *      $your_api_instance->showUsers();
      *
      *  array(
@@ -2832,6 +2837,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      * );
+     * <code>
      */
     public function showUsers($limit = 1, $offset = 0)
     {
@@ -2863,6 +2869,7 @@ class Api implements  ApiInterface
      *
      * @examples Show user with DI 1
      *
+     * <code>
      *      $your_api_instance->showUser();
      *
      *  array(
@@ -2884,6 +2891,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      * );
+     * <code>
      */
     public function showUser($user_id)
     {
@@ -2914,6 +2922,7 @@ class Api implements  ApiInterface
      *
      * @examples Show all users blocked, only first
      *
+     * <code>
      *      $your_api_instance->showUsersBlocked(1);
      *
      *  array(
@@ -2947,6 +2956,7 @@ class Api implements  ApiInterface
      *          )
      *      )
      * );
+     * <code>
      */
     public function showUsersBlocked($user_id, $limit = 1, $offset = 0)
     {
@@ -2983,11 +2993,12 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      * @examples Blocked one user
-     *
+     *<code>
      *      $your_api_instance->addUserBlocked(1,6);
      *
      *      //output
      *      User blocked
+     * </code>
      */
     public function addUserBlocked($user_id, $user_blocked_id)
     {
@@ -3023,6 +3034,7 @@ class Api implements  ApiInterface
      *
      * @examples Update profile an user
      *
+     * <code>
      *      $your_api_instance->updateUserProfile(1,'about-103156','homosexual'));
      *
      *  array(
@@ -3033,7 +3045,7 @@ class Api implements  ApiInterface
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      *
-     *
+     *</code>
      */
     public function updateUserProfile($user_id, $about= '', $sexualOrientation = '')
     {
@@ -3066,6 +3078,7 @@ class Api implements  ApiInterface
      *
      * @examples Create profile one user
      *
+     * <code>
      *      $your_api_instance->showUserProfile(1);
      *
      *  array(
@@ -3075,6 +3088,7 @@ class Api implements  ApiInterface
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
+     * </code>
      */
     public function showUserProfile($user_id)
     {
@@ -3105,6 +3119,7 @@ class Api implements  ApiInterface
      *
      * @examples Create profile one user
      *
+     * <code>
      *      $your_api_instance->addUserProfile(1,'about-10','bisexual');
      *
      *  array(
@@ -3114,6 +3129,7 @@ class Api implements  ApiInterface
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
+     * <code>
      */
     public function addUserProfile($user_id, $about, $sexualOrientation)
     {
@@ -3154,11 +3170,13 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      *
+     * <code>
      * array(
      *   "reason" => "this user is heterosexual",
      *   "created_at" => "2013-10-30T17:03:29+0100",
      *   "id" => 44,
      * );
+     * </code>
      */
     public function addUserReports($user_reported_id, $reason)
     {
@@ -3192,10 +3210,12 @@ class Api implements  ApiInterface
      *
      * @exampless Unblocked one user
      *
+     * <code>
      *      $your_api_instance->delUserBlocked(1,6);
      *
      *      //output
      *      User unblocked
+     * </code>
      */
     public function delUserBlocked($user_id, $user_blocked_id)
     {

@@ -196,12 +196,12 @@ this responsibility it is class that implement ClientInterface for example Chate
 <h2>Add new Photo Album in user accont</h2>
 <pre>addAlbum(int $user_id, string $title, string $description) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Photo Album
+<th>examples</th>
+<td>Add Photo Album
+<code>
      $your_api_instance->addAlbum(1,'new Album', 'this is me personal photobook');
 array(
  "id" => 2,
@@ -212,7 +212,8 @@ array(
  ),
  "title" => "new Album",
  "description" => "this is me personal photobook"
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -238,26 +239,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with new album data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addAlbumPhoto"></a><div class="element clickable method public method_addAlbumPhoto" data-toggle="collapse" data-target=".method_addAlbumPhoto .collapse">
 <h2>Insert a photo entity into album id</h2>
 <pre>addAlbumPhoto(int $user_id, int $photo_id, int $album_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>photo 1 on album 1
+<th>examples</th>
+<td>Add photo 1 on album 1
+<code>
      $your_api_instance->addAlbumPhoto(1,1,1);
      // ouput message
-     Photo inserted</td>
+     Photo inserted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -283,23 +280,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with the album one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addChanel"></a><div class="element clickable method public method_addChanel" data-toggle="collapse" data-target=".method_addChanel .collapse">
 <h2>Create un new Channel</h2>
 <pre>addChanel(string $name, string $title, string $description, string $channel_type) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>channel name','API - Channel Name',
+<th>examples</th>
+<td><code>
+         $your_api_instance->addChanel('new channel name','API - Channel Name',
                                        'This is channel about loves, friends and others', 'love');
      <h3>Sample Ouput</h3>
 array(
@@ -326,7 +318,8 @@ array(
              "href" =>"https://api.chateagratis.local/api/users/1"
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -357,24 +350,20 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with new channel | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addFriends"></a><div class="element clickable method public method_addFriends" data-toggle="collapse" data-target=".method_addFriends .collapse">
 <h2>Sends a friendship request between two users</h2>
 <pre>addFriends(int $user_id, int $friend_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>a friendship request between user 1 to user 3
-         $your_api_instance->addFriends(1,3);</td>
+<th>examples</th>
+<td>Sends a friendship request between user 1 to user 3
+<code>
+         $your_api_instance->addFriends(1,3);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -397,25 +386,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Massage endorsement , if the request have been sent</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addFriendshipRequest"></a><div class="element clickable method public method_addFriendshipRequest" data-toggle="collapse" data-target=".method_addFriendshipRequest .collapse">
 <h2>Accept request new Friend</h2>
 <pre>addFriendshipRequest(int $user_id, int $user_accept_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>accept like new Friend to user 3
+<th>examples</th>
+<td>User 1 accept like new Friend to user 3
+<code>
          $your_api_instance->showFriendshipsRequest(1,3);
-      Friendship accepted</td>
+      Friendship accepted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -438,23 +423,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message accepted | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addPhoto"></a><div class="element clickable method public method_addPhoto" data-toggle="collapse" data-target=".method_addPhoto .collapse">
 <h2>upload new photo at server api</h2>
 <pre>addPhoto(int $user_id, string $imageFile, string $imageTile) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Photo
+<th>examples</th>
+<td>Add Photo
+<code>
      $your_api_instance->addPhoto(1,'my face in wall', '/home/alex/my_face_wall.png');
  array(
      "id" => 9,
@@ -477,7 +457,8 @@ array(
              "type" => "image/*",
          )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -503,23 +484,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with new album data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addPhotoVote"></a><div class="element clickable method public method_addPhotoVote" data-toggle="collapse" data-target=".method_addPhotoVote .collapse">
 <h2>Add one vote at photo</h2>
 <pre>addPhotoVote(int $user_id, int $photo_id, int $score) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>(
+<th>examples</th>
+<td><code>
+array (
  "score" => 10,
      "photo" => array(
          "id" => 6,
@@ -537,7 +513,8 @@ array(
              "href" => "http://api.chateagratis.local/api/users/1",
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -563,29 +540,25 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with you vote | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addReportPhoto"></a><div class="element clickable method public method_addReportPhoto" data-toggle="collapse" data-target=".method_addReportPhoto .collapse">
 <h2>Report a photo</h2>
 <pre>addReportPhoto(int $photo_id, string $reason) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Photo report
+<th>examples</th>
+<td>Add Photo report
+<code>
      $your_api_instance->addReportPhoto(1,'This photo is not adequate');
 array(
  "reason" => "this is not me photo",
  "created_at" => "2013-10-29T12:13:07+0100",
 "id" => 9,
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -608,28 +581,24 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with report | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addThread"></a><div class="element clickable method public method_addThread" data-toggle="collapse" data-target=".method_addThread .collapse">
 <h2>Create new thread</h2>
 <pre>addThread(int $user_id, string $recipient_name, string $subject, string $body) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>new thread
+<th>examples</th>
+<td>Add new thread
+<code>
      $your_api_instance->addThread(1,'alex2','Subject sample',"<b>this is my body in 1rst message </b>")
  array(
      "id" => 5,
      "subject" => "Subject sample",
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -658,29 +627,25 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with data thread | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addThreadMessage"></a><div class="element clickable method public method_addThreadMessage" data-toggle="collapse" data-target=".method_addThreadMessage .collapse">
 <h2>Add one message on thread</h2>
 <pre>addThreadMessage(int $user_id, int $thread_id, string $body) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>one message on thread
+<th>examples</th>
+<td>Add one message on thread
+<code>
      $your_api_instance->showThreadMessages(1,1,'this is entity body');
 array(
  "id" => 15,
   "body" => "this is entity body",
  "created_at" => "2013-10-30T14:00:53+0100"
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -706,26 +671,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with messages | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addUserBlocked"></a><div class="element clickable method public method_addUserBlocked" data-toggle="collapse" data-target=".method_addUserBlocked .collapse">
 <h2>Blocked one user</h2>
 <pre>addUserBlocked(int $user_id, int $user_blocked_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>one user
+<th>examples</th>
+<td>Blocked one user
+<code>
      $your_api_instance->addUserBlocked(1,6);
      //output
-     User blocked</td>
+     User blocked
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -748,26 +709,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can blocked an user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addUserChannelFan"></a><div class="element clickable method public method_addUserChannelFan" data-toggle="collapse" data-target=".method_addUserChannelFan .collapse">
 <h2>Make channel's  fan one user</h2>
 <pre>addUserChannelFan(int $channel_id, int $user_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>the user 1 fan of channel 1
+<th>examples</th>
+<td>add the user 1 fan of channel 1
+</code>
          $your_api_instance->addUserChannelFan(1,1);
      <h3>The ouput message:</h3>
-         The user is a fan of the channel successfully</td>
+         The user is a fan of the channel successfully
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -790,23 +747,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Massage ok if user is new fan</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addUserProfile"></a><div class="element clickable method public method_addUserProfile" data-toggle="collapse" data-target=".method_addUserProfile .collapse">
 <h2>Add new profile one user</h2>
 <pre>addUserProfile(int $user_id, string $about, string $sexualOrientation) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>profile one user
+<th>examples</th>
+<td>Create profile one user
+<code>
      $your_api_instance->addUserProfile(1,'about-10','bisexual');
  array(
       "id" => 11,
@@ -814,7 +766,8 @@ array(
       "sexual_orientation" => "bisexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
- );</td>
+ );
+<code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -841,12 +794,7 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with profile data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_addUserReports"></a><div class="element clickable method public method_addUserReports" data-toggle="collapse" data-target=".method_addUserReports .collapse">
 <h2>Report a user</h2>
@@ -870,11 +818,13 @@ array(
 <tr>
 <th><code><a href="../classes/Ant.ChateaClient.Client.ApiException.html">\Ant\ChateaClient\Client\ApiException</a></code></th>
 <td>This exception is thrown if server send one error
+<code>
 array(
   "reason" => "this user is heterosexual",
   "created_at" => "2013-10-30T17:03:29+0100",
   "id" => 44,
-);</td>
+);
+</code></td>
 </tr>
 </table>
 <h3>Returns</h3>
@@ -886,13 +836,15 @@ array(
 <h2>Change user password</h2>
 <pre>changePassword(string $current_password, string $new_password, string $repeat_new_password) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>//ouput message
-     Password changed sucessfully</td>
+<th>examples</th>
+<td><code>
+     $your_api_instance->changePassword('current_password','new_password','repeat_new_password');
+     //ouput message
+     Password changed sucessfully
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -918,26 +870,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>message password changed sucessfully if your password have been changed | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delAlbum"></a><div class="element clickable method public method_delAlbum" data-toggle="collapse" data-target=".method_delAlbum .collapse">
 <h2>Delete one album</h2>
 <pre>delAlbum(int $user_id, int $album_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>an abum 1 to user 1
+<th>examples</th>
+<td>Delete an abum 1 to user 1
+<code>
      $your_api_instance->delAlbum(1,1);
      // ouput message
-     Album deleted</td>
+     Album deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -960,24 +908,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can delete the album | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delChannel"></a><div class="element clickable method public method_delChannel" data-toggle="collapse" data-target=".method_delChannel .collapse">
 <h2>Delete channel</h2>
 <pre>delChannel(int $channel_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td><h3>Ouput this message: </h3>
-     Channel deleted</td>
+<th>examples</th>
+<td><code>
+         $your_api_instance->delChannel(96);
+     <h3>Ouput this message: </h3>
+     Channel deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -997,25 +942,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>The message ok, if channel has been deleted</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delFriend"></a><div class="element clickable method public method_delFriend" data-toggle="collapse" data-target=".method_delFriend .collapse">
 <h2>Delete friends between two users</h2>
 <pre>delFriend(int $user_id, int $user_delete_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>delete friendship to user 3
+<th>examples</th>
+<td>User 1 delete friendship to user 3
+<code>
          $your_api_instance->delFriend(1,3);
-     Friendship deleted</td>
+     Friendship deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1038,25 +979,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message delete | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delFriendshipRequest"></a><div class="element clickable method public method_delFriendshipRequest" data-toggle="collapse" data-target=".method_delFriendshipRequest .collapse">
 <h2>Decline a friendship request</h2>
 <pre>delFriendshipRequest(int $user_id, int $user_decline_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>declined like new Friend to user 3
+<th>examples</th>
+<td>User 1 declined like new Friend to user 3
+<code>
          $your_api_instance->delFriendshipRequest(1,3);
-     Friendship declined</td>
+     Friendship declined
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1079,26 +1016,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message declined | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delMe"></a><div class="element clickable method public method_delMe" data-toggle="collapse" data-target=".method_delMe .collapse">
 <h2>Delete my user</h2>
 <pre>delMe() : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>me user
+<th>examples</th>
+<td>Delete me user
+<code>
      $your_api_instance->delMe();
      //ouput message
-     User deleted</td>
+     User deleted
+</code></td>
 </tr></table>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
@@ -1108,25 +1041,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message deleted user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delPhoto"></a><div class="element clickable method public method_delPhoto" data-toggle="collapse" data-target=".method_delPhoto .collapse">
 <h2>Delete a Photo</h2>
 <pre>delPhoto(int $photo_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Photo
+<th>examples</th>
+<td>Delete Photo
+<code>
      $your_api_instance->delPhoto(1);
-      Photo deleted</td>
+      Photo deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1146,25 +1075,21 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can delete the photo | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delPhotoAlbum"></a><div class="element clickable method public method_delPhotoAlbum" data-toggle="collapse" data-target=".method_delPhotoAlbum .collapse">
 <h2>Delete a photo of album</h2>
 <pre>delPhotoAlbum(int $user_id, int $photo_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>an abum 1 to user 1
+<th>examples</th>
+<td>Delete an abum 1 to user 1
+<code>
      $your_api_instance->delAlbum(1,1);
-     Photo deleted of Album</td>
+     Photo deleted of Album
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1187,26 +1112,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can delete photo of album | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delPhotoVote"></a><div class="element clickable method public method_delPhotoVote" data-toggle="collapse" data-target=".method_delPhotoVote .collapse">
 <h2>Delete one vote of one photo</h2>
 <pre>delPhotoVote(int $user_id, int $photo_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>one vote of  photo 6
+<th>examples</th>
+<td>Delete one vote of  photo 6
+<code>
      $your_api_instance->delPhotoVote(1,6);
          //output
-         Vote deleted</td>
+         Vote deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1229,26 +1150,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can delete the vote | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delThread"></a><div class="element clickable method public method_delThread" data-toggle="collapse" data-target=".method_delThread .collapse">
 <h2>Delete one thread ant all messages</h2>
 <pre>delThread(int $user_id, int $thread_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>thread 6
+<th>examples</th>
+<td>Delete thread 6
+<code>
      $your_api_instance->delThread(6);
      //ouput message
- Thread deleted</td>
+ Thread deleted
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1271,12 +1188,7 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Message sucessfully if can delete thread | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_delUserBlocked"></a><div class="element clickable method public method_delUserBlocked" data-toggle="collapse" data-target=".method_delUserBlocked .collapse">
 <h2>UnBlocked one user</h2>
@@ -1285,11 +1197,13 @@ array(
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>examples</th>
+<th>exampless</th>
 <td>Unblocked one user
+<code>
      $your_api_instance->delUserBlocked(1,6);
      //output
-     User unblocked</td>
+     User unblocked
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1318,15 +1232,16 @@ array(
 <h2>Remove channel's  fan one user</h2>
 <pre>delUserChannelFan(int $channel_id, int $user_id) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>the user 1 fan of channel 1
+<th>examples</th>
+<td>remove the user 1 fan of channel 1
+<code>
          $your_api_instance->delUserChannelFan(1,1);
      <h3>The ouput message:</h3>
-         The user has been removed as fan of the channel successfully</td>
+         The user has been removed as fan of the channel successfully
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1349,25 +1264,22 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>Massage ok if user is not fan</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_forgotPassword"></a><div class="element clickable method public method_forgotPassword" data-toggle="collapse" data-target=".method_forgotPassword .collapse">
 <h2>Request reset the user password. The server send email with new password,
 this this request is only once for day.</h2>
 <pre>forgotPassword(string $username_or_email) : string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>$your_api_instance->forgotPassword('you_email@antwebs.es');
-     <h3>Ouput<h3></td>
+<th>examples</th>
+<td>Request reset the user password
+<code>
+     $your_api_instance->forgotPassword('you_user_name');
+     $your_api_instance->forgotPassword('you_email@antwebs.es');
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1387,12 +1299,7 @@ this this request is only once for day.</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>string</code>message ok message if your new password have been sent</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_logout"></a><div class="element clickable method public method_logout" data-toggle="collapse" data-target=".method_logout .collapse">
 <h2>Revokes the access token and logout the user session in server.</h2>
@@ -1400,6 +1307,14 @@ this this request is only once for day.</h2>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>exampless</th>
+<td><code>
+     $your_api_instance->logout()
+     //Sample output
+     Access token revoked
+ </code></td>
+</tr></table>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
 <th><code><a href="../classes/Ant.ChateaClient.Client.ApiException.html">\Ant\ChateaClient\Client\ApiException</a></code></th>
@@ -1414,12 +1329,13 @@ this this request is only once for day.</h2>
 <h2>Get my user</h2>
 <pre>me() </pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>array(
+<th>examples</th>
+<td><code>
+     $your_api_instance->me();
+     array(
          'id' => '1',
          'username' => 'xabier',
          'email' => 'xabier@antweb.es',
@@ -1437,36 +1353,34 @@ this this request is only once for day.</h2>
                  "href" => "http://api.chateagratis.net/api/users/1/blocked",
              )
          )
-     );</td>
+     );
+</code></td>
 </tr></table>
 <h3>Exceptions</h3>
 <table class="table table-bordered"><tr>
 <th><code><a href="../classes/Ant.ChateaClient.Client.ApiException.html">\Ant\ChateaClient\Client\ApiException</a></code></th>
 <td>This exception is thrown if server send one error</td>
 </tr></table>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_register"></a><div class="element clickable method public method_register" data-toggle="collapse" data-target=".method_register .collapse">
 <h2>Register new user at server</h2>
 <pre>register(string $username, string $email, string $new_password, string $repeat_new_password, string $affiliate_host) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>user name','new_password','repeat_new_password','your hosts name');
+<th>examples</th>
+<td>Register new user at server
+<code>
+     $your_api_instance->register('new user name','new_password','repeat_new_password','your hosts name');
      <h3>Ouput<h3>
      array{
          "id"=> 1234,
          "username"=> "new-username",
          "email"=> "newUserName@ant.com"
-     }</td>
+     }
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1500,23 +1414,18 @@ this this request is only once for day.</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with you profile | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showAlbum"></a><div class="element clickable method public method_showAlbum" data-toggle="collapse" data-target=".method_showAlbum .collapse">
 <h2>Show one album of user</h2>
 <pre>showAlbum(int $user_id, int $album_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>an abum 1 to user 1
+<th>examples</th>
+<td>Show an abum 1 to user 1
+<code>
      $your_api_instance->showUserAlbum(1,1);
 array(
  "id" => 1,
@@ -1533,7 +1442,8 @@ array(
          "href" => "http://api.chateagratis.local/api/albums/1/photos",
      )
   )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1556,23 +1466,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with the album one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showAlbums"></a><div class="element clickable method public method_showAlbums" data-toggle="collapse" data-target=".method_showAlbums .collapse">
 <h2>Show all abums one user</h2>
 <pre>showAlbums(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>all abums to user 1, only 1rst
+<th>examples</th>
+<td>Show all abums to user 1, only 1rst
+<code>
      $your_api_instance->showUserAlbums(1);
 array(
      "total" => 1,
@@ -1601,7 +1506,8 @@ array(
              )
          )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1628,23 +1534,19 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all albums one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showChannel"></a><div class="element clickable method public method_showChannel" data-toggle="collapse" data-target=".method_showChannel .collapse">
 <h2>Get channel. Show data channel by id</h2>
 <pre>showChannel(int $channel_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td><h3>Sample Ouput</h3>
+<th>examples</th>
+<td><code>
+         $your_api_instance->showChannel(96);
+         //Sample Ouput
 array(
      "id" =>96
      "name" =>"update channel name",
@@ -1669,7 +1571,8 @@ array(
              "href" =>"https://api.chateagratis.local/api/users/1"
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1689,23 +1592,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with channel data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showChannelFans"></a><div class="element clickable method public method_showChannelFans" data-toggle="collapse" data-target=".method_showChannelFans .collapse">
 <h2>Get fans (users) the channel</h2>
 <pre>showChannelFans(int $channel_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Channels Fans of channel 2, only the first
+<th>examples</th>
+<td>Show Channels Fans of channel 2, only the first
+<code>
          $your_api_instance->showChannelFans(3,1,0);
      <h3>Sample Ouput</h3>
 array(
@@ -1737,7 +1635,8 @@ array(
                   )
           )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1764,23 +1663,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with users that are fans a channel | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showChannels"></a><div class="element clickable method public method_showChannels" data-toggle="collapse" data-target=".method_showChannels .collapse">
 <h2>List all channels register in Server</h2>
 <pre>showChannels(int $limit, int $offset, array $filter) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>first twenty channels what type is love
+<th>examples</th>
+<td>Get first twenty channels what type is love
+<code>
      $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
      <h3>Sample Ouput</h3>
  array(
@@ -1804,7 +1698,8 @@ array(
          "owner" => array(
              "href => http://api.chateagratis.net/api/users/1"
           )
-     );</td>
+     );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1832,23 +1727,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with channels data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showChannelsTypes"></a><div class="element clickable method public method_showChannelsTypes" data-toggle="collapse" data-target=".method_showChannelsTypes .collapse">
 <h2>Get Channles types</h2>
 <pre>showChannelsTypes(int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Channels types, only the first
+<th>examples</th>
+<td>Show Channels types, only the first
+<code>
          $your_api_instance->showChannelsTypes(1,0);
      <h3>Sample Ouput</h3>
 array(
@@ -1870,7 +1760,8 @@ array(
                   )
              )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1894,23 +1785,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with channels types use one channel | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showFriends"></a><div class="element clickable method public method_showFriends" data-toggle="collapse" data-target=".method_showFriends .collapse">
 <h2>Get me friends</h2>
 <pre>showFriends(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>User friends for user id = 1, only the first friend
+<th>examples</th>
+<td>Show User friends for user id = 1, only the first friend
+<code>
          $your_api_instance->showFriends(1,1,0);
  array(
      "total" => 4,
@@ -1942,7 +1828,8 @@ array(
              ),
          ),
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -1969,23 +1856,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with users's are friends one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showFriendshipsPending"></a><div class="element clickable method public method_showFriendshipsPending" data-toggle="collapse" data-target=".method_showFriendshipsPending .collapse">
 <h2>Show list user, that one user will pending have your friendship</h2>
 <pre>showFriendshipsPending(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>a friendship pending by user 1, only the first friendship
+<th>examples</th>
+<td>Show a friendship pending by user 1, only the first friendship
+<code>
          $your_api_instance->showFriendshipsPending(1);
  array(
      "total" => 4,
@@ -2018,7 +1900,8 @@ array(
              )
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2045,23 +1928,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with users's are friends one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showFriendshipsRequest"></a><div class="element clickable method public method_showFriendshipsRequest" data-toggle="collapse" data-target=".method_showFriendshipsRequest .collapse">
 <h2>Show the friendship requests sent by user id, and it pending to be accepted</h2>
 <pre>showFriendshipsRequest(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>the friendship requests sent by user 1, only the first request friendship
+<th>examples</th>
+<td>Show the friendship requests sent by user 1, only the first request friendship
+<code>
          $your_api_instance->showFriendshipsRequest(1,1,0);
  array(
      "total" => 4,
@@ -2094,7 +1972,8 @@ array(
              )
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2121,23 +2000,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with users's are friends one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showPhoto"></a><div class="element clickable method public method_showPhoto" data-toggle="collapse" data-target=".method_showPhoto .collapse">
 <h2>Show Photo</h2>
 <pre>showPhoto(string $photo_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>a photo
+<th>examples</th>
+<td>Show a photo
+<code>
      $your_api_instance->showPhoto(1);
  array(
      "id" => 1,
@@ -2170,7 +2044,8 @@ array(
              "href" => "http://api.chateagratis.net/api/users/1/albums/1",
           ),
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2190,23 +2065,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with photo data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showPhotoAlbum"></a><div class="element clickable method public method_showPhotoAlbum" data-toggle="collapse" data-target=".method_showPhotoAlbum .collapse">
 <h2>List all photos of an album</h2>
 <pre>showPhotoAlbum(string $album_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>first photo of photo album
+<th>examples</th>
+<td>Show first photo of photo album
+<code>
      $your_api_instance->showPhotoAlbum(1);
  array(
      "total" => 6,
@@ -2246,7 +2116,8 @@ array(
              ),
          ),
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2273,23 +2144,17 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with photos an album | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showPhotoVotes"></a><div class="element clickable method public method_showPhotoVotes" data-toggle="collapse" data-target=".method_showPhotoVotes .collapse">
 <h2>Show score I had put to one photo</h2>
 <pre>showPhotoVotes(int $user_id, int $photo_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>score User id 1 had put to 5 photo
+<th>examples</th>
+<td>Show score User id 1 had put to 5 photo
      $your_api_instance->showPhotoVotes(1,5);
  array(
      "score" => 100,
@@ -2332,23 +2197,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with photos an album | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showReport"></a><div class="element clickable method public method_showReport" data-toggle="collapse" data-target=".method_showReport .collapse">
 <h2>Shows the details of a report</h2>
 <pre>showReport(int $report_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>report ID 1
+<th>examples</th>
+<td>Show report ID 1
+<code>
      $your_api_instance->showReport(1);
  array(
      "reason" => "I dislike a lot this guy",
@@ -2366,7 +2226,8 @@ array(
              "href" => "http://api.chateagratis.local/api/users/2",
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2386,23 +2247,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all albums one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showReports"></a><div class="element clickable method public method_showReports" data-toggle="collapse" data-target=".method_showReports .collapse">
 <h2>Show all reports</h2>
 <pre>showReports(int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>all reports, only 1rst
+<th>examples</th>
+<td>Show all reports, only 1rst
+<code>
      $your_api_instance->showReports();
  array(
      "total" => 42,
@@ -2432,7 +2288,8 @@ array(
              )
          )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2456,23 +2313,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all albums one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showThreadMessages"></a><div class="element clickable method public method_showThreadMessages" data-toggle="collapse" data-target=".method_showThreadMessages .collapse">
 <h2>List all message one thread</h2>
 <pre>showThreadMessages(int $user_id, int $thread_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>messages on thread
+<th>examples</th>
+<td>Show messages on thread
+<code>
      $your_api_instance->showThreadMessages(1,1);
 array(
  array(
@@ -2484,7 +2336,8 @@ array(
      "body" => "este es el contenido del msg 2",
      "created_at" => "2013-08-25T15:31:01+0200",
  )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2507,23 +2360,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with messages | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showThreadsInbox"></a><div class="element clickable method public method_showThreadsInbox" data-toggle="collapse" data-target=".method_showThreadsInbox .collapse">
 <h2>Show user messages have in inbox</h2>
 <pre>showThreadsInbox(int $user_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>messages inbox
+<th>examples</th>
+<td>Show messages inbox
+<code>
      $your_api_instance->addThread(1);
 array(
      array(
@@ -2534,7 +2382,8 @@ array(
      "id" => 4,
      "subject" => "hola thread 4",
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2555,24 +2404,19 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with the subject | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showThreadsSent"></a><div class="element clickable method public method_showThreadsSent" data-toggle="collapse" data-target=".method_showThreadsSent .collapse">
 <h2>Show all thread that you sent</h2>
 <pre>showThreadsSent(int $user_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>messages sent
+<th>examples</th>
+<td>Show messages sent
      $your_api_instance->showThreadsSent(1);
+<code>
 array(
      array(
          "id" => 1,
@@ -2582,7 +2426,8 @@ array(
      "id" => 4,
      "subject" => "thread sent 2",
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2603,23 +2448,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with the subject | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUser"></a><div class="element clickable method public method_showUser" data-toggle="collapse" data-target=".method_showUser .collapse">
 <h2>Show user by ID</h2>
 <pre>showUser(int $user_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>user with DI 1
+<th>examples</th>
+<td>Show user with DI 1
+<code>
      $your_api_instance->showUser();
  array(
      "id" => 1,
@@ -2639,7 +2479,8 @@ array(
              "href" => "http://api.chateagratis.local/api/users/1/blocked",
          )
      )
-);</td>
+);
+<code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2659,23 +2500,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with user data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserChannels"></a><div class="element clickable method public method_showUserChannels" data-toggle="collapse" data-target=".method_showUserChannels .collapse">
 <h2>Show channels created for the user</h2>
 <pre>showUserChannels(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Channels created by user id = 1, only the first channel
+<th>examples</th>
+<td>Show Channels created by user id = 1, only the first channel
+<code>
          $your_api_instance->showUserChannels(1,1,0);
  array(
      "total" => 32,
@@ -2711,7 +2547,8 @@ array(
              )
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2738,24 +2575,19 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with channels created one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserChannelsFan"></a><div class="element clickable method public method_showUserChannelsFan" data-toggle="collapse" data-target=".method_showUserChannelsFan .collapse">
 <h2>Show channels favorites one user</h2>
 <pre>showUserChannelsFan(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>Channels favorites for user id = 1, only the first channel
+<th>examples</th>
+<td>Show Channels favorites for user id = 1, only the first channel
          $your_api_instance->showUserChannelsFan(1,1,0);
+<code>
  array(
      "total" => 2,
      "limit" => 1,
@@ -2783,7 +2615,8 @@ array(
              )
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2810,23 +2643,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with channel's is fan one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserPhotoVotes"></a><div class="element clickable method public method_showUserPhotoVotes" data-toggle="collapse" data-target=".method_showUserPhotoVotes .collapse">
 <h2>Show all votes of one user</h2>
 <pre>showUserPhotoVotes(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>votes User id 1 had put to all photos, only first voto
+<th>examples</th>
+<td>Show votes User id 1 had put to all photos, only first voto
+<code>
      $your_api_instance->showUserPhotoVotes(1,1,0);
  array(
      "total" => 3,
@@ -2858,7 +2686,8 @@ array(
              )
          )
      )
-);</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2885,23 +2714,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all votes one user | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserPhotos"></a><div class="element clickable method public method_showUserPhotos" data-toggle="collapse" data-target=".method_showUserPhotos .collapse">
 <h2>Show all photos one user</h2>
 <pre>showUserPhotos(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>photos of user id, only the first
+<th>examples</th>
+<td>Show photos of user id, only the first
+<code>
      $your_api_instance->showUserPhotos(1,1,0);
 array (
   "total" => 40,
@@ -2945,7 +2769,8 @@ array (
          )
      )
  )
- );</td>
+);
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -2972,23 +2797,18 @@ array (
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with photos an album | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserProfile"></a><div class="element clickable method public method_showUserProfile" data-toggle="collapse" data-target=".method_showUserProfile .collapse">
 <h2>Show profile by user ID</h2>
 <pre>showUserProfile(int $user_id) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>profile one user
+<th>examples</th>
+<td>Create profile one user
+<code>
      $your_api_instance->showUserProfile(1);
  array(
       "id" => 11,
@@ -2996,7 +2816,8 @@ array (
       "sexual_orientation" => "bisexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3016,23 +2837,18 @@ array (
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with profile data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUserVisitors"></a><div class="element clickable method public method_showUserVisitors" data-toggle="collapse" data-target=".method_showUserVisitors .collapse">
 <h2>Show count visits on one profile and who visits of one profile</h2>
 <pre>showUserVisitors(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>$your_api_instance->showUserVisitors(1);
+<th>exampless</th>
+<td><code>
+ $your_api_instance->showUserVisitors(1);
  // Sample output
 array(
      array(
@@ -3077,23 +2893,18 @@ array(
 <div class="subelement response">
 <code>array</code><code>string</code>
 </div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUsers"></a><div class="element clickable method public method_showUsers" data-toggle="collapse" data-target=".method_showUsers .collapse">
 <h2>Get all the users</h2>
 <pre>showUsers(int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>all users, only first
+<th>examples</th>
+<td>Show all users, only first
+<code>
      $your_api_instance->showUsers();
  array(
      "total" => 12,
@@ -3125,7 +2936,8 @@ array(
              )
          )
      )
-);</td>
+);
+<code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3149,23 +2961,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all users | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_showUsersBlocked"></a><div class="element clickable method public method_showUsersBlocked" data-toggle="collapse" data-target=".method_showUsersBlocked .collapse">
 <h2>Show user blocked by ID user</h2>
 <pre>showUsersBlocked(int $user_id, int $limit, int $offset) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>all users blocked, only first
+<th>examples</th>
+<td>Show all users blocked, only first
+<code>
      $your_api_instance->showUsersBlocked(1);
  array(
       "total" => 2,
@@ -3197,7 +3004,8 @@ array(
              )
          )
      )
-);</td>
+);
+<code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3224,12 +3032,7 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with all users blocked | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_updateChannel"></a><div class="element clickable method public method_updateChannel" data-toggle="collapse" data-target=".method_updateChannel .collapse">
 <h2>Update a channel</h2>
@@ -3238,8 +3041,9 @@ array(
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>examples</th>
-<td>$your_api_instance->updateChannel(96, 'update channel name','API - Channel title',
+<th>exampless</th>
+<td><code>
+         $your_api_instance->updateChannel(96, 'update channel name','API - Channel title',
                                        'This is channel about loves, friends and others', 'love');
      <h3>Sample Ouput</h3>
 array(
@@ -3266,7 +3070,8 @@ array(
              "href" =>"https://api.chateagratis.local/api/users/1"
          )
      )
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3304,16 +3109,18 @@ array(
 <h2>Update a profile of me user</h2>
 <pre>updateMe(string $username, string $email, string $current_password) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>array(
+<th>examples</th>
+<td><code>
+     $your_api_instance->updateMe('xabier','xabier@antweb.es','mySecretPassword');
+     array(
          'id' => '1',
          'username' => 'xabier',
          'email' => 'xabier@antweb.es',
-         );</td>
+         );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3340,23 +3147,18 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with you profile updated | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_updateUserProfile"></a><div class="element clickable method public method_updateUserProfile" data-toggle="collapse" data-target=".method_updateUserProfile .collapse">
 <h2>Update user  profile</h2>
 <pre>updateUserProfile(int $user_id, string $about, string $sexualOrientation) : array | string</pre>
 <div class="labels"></div>
-<div class="row collapse">
-<div class="span4">
+<div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <table class="table table-bordered"><tr>
-<th>example</th>
-<td>profile an user
+<th>examples</th>
+<td>Update profile an user
+<code>
      $your_api_instance->updateUserProfile(1,'about-103156','homosexual'));
  array(
       "id" => 11,
@@ -3364,7 +3166,8 @@ array(
       "sexual_orientation" => "homosexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
- );</td>
+ );
+</code></td>
 </tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
@@ -3391,12 +3194,7 @@ array(
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with profile data | Message with error in json format</div>
-</div>
-<div class="span4">
-<h3>Examples</h3>
-<pre class="prettyprint linenums"></pre>
-</div>
-</div>
+</div></div>
 </div>
 <a id="method_executeCommand"></a><div class="element clickable method private method_executeCommand" data-toggle="collapse" data-target=".method_executeCommand .collapse">
 <h2>Execute the command in server</h2>
@@ -3435,7 +3233,7 @@ array(
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-10-31T13:12:08+01:00.<br></footer></div>
+            generated on 2013-11-04T08:50:07+01:00.<br></footer></div>
 </div>
 </body>
 </html>
