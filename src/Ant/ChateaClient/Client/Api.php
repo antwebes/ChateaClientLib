@@ -13,6 +13,7 @@ use Ant\ChateaClient\Client\IApi;
 use Ant\ChateaClient\Service\Client\Client;
 use Exception;
 use InvalidArgumentException;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Guzzle\Http\Exception\CurlException;
@@ -67,8 +68,9 @@ class Api implements  ApiInterface
     {
         try {
             return $command->execute();
-        }
-        catch (ClientErrorResponseException $cerEx) {
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch (ClientErrorResponseException $cerEx) {
             throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
         }catch (BadResponseException $brEx) {
             throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);

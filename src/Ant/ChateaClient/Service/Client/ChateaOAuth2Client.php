@@ -11,6 +11,7 @@ namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 
 /**
  * Specifies a client that provides user authentication for ApiChateaClient sites that use OAuth2-based authentication.
@@ -147,6 +148,8 @@ class ChateaOAuth2Client extends Client
 
         try{
             return $command->execute();
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
@@ -197,6 +200,8 @@ class ChateaOAuth2Client extends Client
 
         try{
             return $command->execute();
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
@@ -232,6 +237,8 @@ class ChateaOAuth2Client extends Client
 
         try{
             return $command->execute();
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
@@ -274,6 +281,8 @@ class ChateaOAuth2Client extends Client
 
         try{
             return $command->execute();
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
@@ -314,6 +323,8 @@ class ChateaOAuth2Client extends Client
 
             return $request->send()->getBody(true);
 
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
