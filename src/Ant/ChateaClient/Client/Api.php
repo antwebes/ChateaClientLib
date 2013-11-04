@@ -2857,7 +2857,10 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
-
+    public function who($limit = 1, $offset = 0)
+    {
+        return $this->showUsers();
+    }
     /**
      * Show user by ID
      *
@@ -2905,6 +2908,10 @@ class Api implements  ApiInterface
         $command = $this->client->getCommand('ShowUser', array('id' => $user_id));
 
         return $this->executeCommand($command);
+    }
+    public function whoami()
+    {
+        return $this->showUser($user_id);
     }
 
     /**
