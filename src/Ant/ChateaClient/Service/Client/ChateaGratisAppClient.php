@@ -134,7 +134,13 @@ class ChateaGratisAppClient extends Client
 
         if(!$this->store->getPersistentData('token_expires_at')){
 
-            $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withClientCredentials();
+            $authData = ChateaOAuth2Client::factory(
+                    array('environment'=>$this->getConfig('environment'),
+                          'client_id'=>$this->getConfig('client_id'),
+                          'secret'=>$this->getConfig('secret')
+                    )
+            )->withClientCredentials();
+            
             $this->store->setPersistentData('access_token',$authData['access_token']);
             $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
             $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
@@ -143,7 +149,12 @@ class ChateaGratisAppClient extends Client
 
         }else if($this->store->getPersistentData('token_expires_at') < time()){
 
-            $authData = ChateaOAuth2Client::factory(array('environment'=>$this->getConfig('environment'),'client_id'=>$this->getConfig('client_id'),'secret'=>$this->getConfig('secret')))->withRefreshToken($_SESSION['chatea_client_refresh']);
+            $authData = ChateaOAuth2Client::factory(
+                array('environment'=>$this->getConfig('environment'),
+                      'client_id'=>$this->getConfig('client_id'),
+                      'secret'=>$this->getConfig('secret')
+                )
+            )->withRefreshToken($this->store->getPersistentData('token_refresh'));
 
             $this->store->setPersistentData('access_token',$authData['access_token']);
             $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
