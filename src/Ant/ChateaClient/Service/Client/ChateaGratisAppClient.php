@@ -11,6 +11,7 @@ namespace Ant\ChateaClient\Service\Client;
 
 use Guzzle\Common\Collection;
 use Guzzle\Common\Event;
+use Guzzle\Http\Exception\ServerErrorResponseException;
 use Guzzle\Service\Command\CommandInterface;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 
@@ -180,7 +181,10 @@ class ChateaGratisAppClient extends Client
         $this->store->clearAllPersistentData();
         try{
             return $command->execute();
-        }catch (BadResponseException $ex){
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
+        catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);

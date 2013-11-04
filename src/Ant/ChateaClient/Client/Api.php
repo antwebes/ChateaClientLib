@@ -63,13 +63,14 @@ class Api implements  ApiInterface
      * @return array|string return a collection of data or a message. | Message with error in json format
      *
      * @throws ApiException This exception is thrown if server send one error
+     *
      */
     private function executeCommand(CommandInterface $command)
     {
         try {
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
-            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+            throw new ApiException($ex->getMessage(), 400, $ex);
         }catch (ClientErrorResponseException $cerEx) {
             throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
         }catch (BadResponseException $brEx) {
