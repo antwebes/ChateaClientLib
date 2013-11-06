@@ -232,6 +232,8 @@ class Api implements  ApiInterface
      *
      * @param array $filter Associative array with format filter_name =>value_name
      *
+     * @param array $order Associative array with format order_field => order
+     *
      * @return array|string Associative array with channels data | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
@@ -241,7 +243,7 @@ class Api implements  ApiInterface
      * @examples Get first twenty channels what type is love
      *
      *<code>
-     *      $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
+     *      $your_api_instance->showChannels(25,0, array('channelType'=>'love'), array('name' => 'desc'));
      *
      *      <h3>Sample Ouput</h3>
      *  array(
@@ -268,7 +270,7 @@ class Api implements  ApiInterface
      *      );
      *</code>
      */
-    public function showChannels($limit = 25, $offset = 0, array $filter = null)
+    public function showChannels($limit = 25, $offset = 0, array $filter = null, array $order = null)
     {
 
         if ($limit < 1) {
@@ -279,23 +281,21 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "Api::showChannels() $offset must be a positive number,  min 0 ");
         }
+
         $filterHash = '';
         if($filter !== null){
-
-            foreach ($filter as $key => $value) {
-
-                $filterHash .= $key . '=' . $value;
-
-                if ($value != end($filter)) {
-                    $filterHash .= ',';
-                }
-            }
-            $filterHash;
+            $filterHash = $this->associativeArrayToString($filter);
         }
+
+        $orderHash = '';
+        if($order !== null){
+            $orderHash = $this->associativeArrayToString($order);
+        }
+
         /** @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'GetChannels',
-            array('limit' => $limit, 'offset' => $offset, 'filter' => $filterHash)
+            array('limit' => $limit, 'offset' => $offset, 'filter' => $filterHash, 'order' => $orderHash)
         );
 
         return $this->executeCommand($command);
@@ -3308,5 +3308,32 @@ class Api implements  ApiInterface
             array('id'=>$user_id, 'limit'=>$limit,'offset'=>$offset)
         );
         return $this->executeCommand($command);
+    }
+
+    /**
+     * Converts a associative array to a string representatation in the form of key1=value1[,keyN=valueN ...]
+     *
+     * @param array $data The associative array to convert to string
+     *
+     * @return string
+     *
+     * @examples Convert associative array to string
+     *
+     * <code>
+     * $this->associativeArrayToString(arrary('key1' => 'value1', 'key2' => 'value2'))
+     *
+     * //output
+     * "key1=value1,key2=value2"
+     * </code>
+     */
+    private function associativeArrayToString(array $data)
+    {
+        $parts = array();
+
+        foreach ($data as $key => $value) {
+            $parts[] = $key . '=' . $value;
+        }
+        
+        return implode(',', $parts);
     }
 }

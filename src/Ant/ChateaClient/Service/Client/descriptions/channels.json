@@ -11,6 +11,10 @@
                     "default": "",
                     "description": "filter collection byh criteria"
                 },
+                "order": {
+                    "type": "string",
+                    "location": "query"
+                },
                 "limit": {
                     "type": "integer",
                     "location": "query",
