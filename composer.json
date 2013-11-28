@@ -12,8 +12,7 @@
     "homepage" : "https://github.com/antwebes/ChateaClientLib",
     "license" : "MIT",
     "require": {
-	    "guzzle/guzzle" : "~3.7",
-        "monolog/monolog": "1.6.0"
+	    "guzzle/guzzle" : "~3.7"
     },
     "require-dev": {
         "raulfraile/ladybug": "~1.0"
