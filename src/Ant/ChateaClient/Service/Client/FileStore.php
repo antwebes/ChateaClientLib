@@ -178,6 +178,6 @@ class FileStore implements StoreInterface
      */
     public function clearAllPersistentData ()
     {
-        $filename = $this->config->get('file_directory').__DIR__.$this->config->get('file_name');
+        $filename = $this->config->get('file_directory').DIRECTORY_SEPARATOR.$this->config->get('file_name');
         unlink ($filename);
     }}
