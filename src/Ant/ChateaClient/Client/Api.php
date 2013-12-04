@@ -42,7 +42,7 @@ class Api implements  ApiInterface
      *
      * @var \Ant\ChateaClient\Service\Client\Client
      */
-    private $client;
+    protected $client;
 
     /**
      * Create a new API object
@@ -65,7 +65,7 @@ class Api implements  ApiInterface
      * @throws ApiException This exception is thrown if server send one error
      *
      */
-    private function executeCommand(CommandInterface $command)
+    protected function executeCommand(CommandInterface $command)
     {
         try {
             return $command->execute();
@@ -475,7 +475,7 @@ class Api implements  ApiInterface
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
-                "ApiException::updateChannel channel_id field should be positive integer");
+                "ApiException::delChannel channel_id field should be positive integer");
         }
 
         //@var $command Guzzle\Service\Command\AbstractCommand
@@ -3326,7 +3326,7 @@ class Api implements  ApiInterface
      * "key1=value1,key2=value2"
      * </code>
      */
-    private function associativeArrayToString(array $data)
+    protected function associativeArrayToString(array $data)
     {
         $parts = array();
 
