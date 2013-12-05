@@ -2901,11 +2901,6 @@ class Api implements  ApiInterface
      */
     public function showUser($user_id)
     {
-        if (!is_numeric($user_id) || 0 >= $user_id) {
-            throw new InvalidArgumentException(
-                "showUser user_id field should be positive integer", 404);
-        }
-
         $command = $this->client->getCommand('ShowUser', array('id' => $user_id));
 
         return $this->executeCommand($command);
