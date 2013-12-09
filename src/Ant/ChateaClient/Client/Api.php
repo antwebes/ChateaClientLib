@@ -3323,12 +3323,12 @@ class Api implements  ApiInterface
      */
     protected function associativeArrayToString(array $data)
     {
-        $parts = array();
+
+        $parts = '';
 
         foreach ($data as $key => $value) {
             $parts[] = $key . '=' . $value;
         }
-        
         return implode(',', $parts);
     }
 }
