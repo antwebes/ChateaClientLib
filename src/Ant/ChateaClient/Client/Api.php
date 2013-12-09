@@ -71,8 +71,8 @@ class Api implements  ApiInterface
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 400, $ex);
-        }catch (ClientErrorResponseException $cerEx) {
-            throw new ApiException($cerEx->getResponse()->getBody(), $cerEx->getResponse()->getStatusCode(), $cerEx);
+        }catch (ClientErrorResponseException $ex) {
+            throw new ApiException($ex->getResponse()->getBody(), $ex->getResponse()->getStatusCode(), $ex);
         }catch (BadResponseException $brEx) {
             throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);
         }catch (CurlException $curlEx) {
@@ -661,10 +661,10 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showChannelsTypes($limit = 1, $offset = 0)
+    public function showChannelsTypes($limit = null, $offset = 0)
     {
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showChannelsTypes() limit must be a min 1 ");
         }
