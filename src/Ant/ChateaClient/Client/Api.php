@@ -271,14 +271,14 @@ class Api implements  ApiInterface
      *      );
      *</code>
      */
-    public function showChannels($limit = 25, $offset = 0, array $filter = null, array $order = null)
+    public function showChannels($limit = null, $offset = null, array $filter = null, array $order = null)
     {
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showChannels() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showChannels() $offset must be a positive number,  min 0 ");
         }
@@ -597,18 +597,18 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showChannelFans($channel_id, $limit = 1, $offset = 0)
+    public function showChannelFans($channel_id, $limit = null, $offset = null)
     {
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
                 "ApiException::showChannelFans channel_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showChannelFans() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showChannelFans() $offset must be a positive number,  min 0 ");
         }
@@ -662,14 +662,14 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showChannelsTypes($limit = null, $offset = 0)
+    public function showChannelsTypes($limit = null, $offset = null)
     {
 
         if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showChannelsTypes() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showChannelsTypes() $offset must be a positive number,  min 0 ");
         }
@@ -739,18 +739,18 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function showUserChannels($user_id, $limit= 1, $offset = 0)
+    public function showUserChannels($user_id, $limit= null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "ApiException::showUserChannels user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showUserChannels() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showUserChannels() $offset must be a positive number,  min 0 ");
         }
@@ -812,18 +812,18 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function showUserChannelsFan($user_id, $limit= 1, $offset = 0)
+    public function showUserChannelsFan($user_id, $limit= null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "ApiException::showUserChannelsFan user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showUserChannelsFan() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showUserChannelsFan() $offset must be a positive number,  min 0 ");
         }
@@ -977,18 +977,18 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showFriends($user_id, $limit = 1, $offset = 0)
+    public function showFriends($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showFriends() user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showFriends() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showFriends() $offset must be a positive number,  min 0 ");
         }
@@ -1091,18 +1091,18 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function showFriendshipsPending($user_id, $limit = 1, $offset = 0)
+    public function showFriendshipsPending($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsPending user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!=null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsPending() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset != null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsPending() $offset must be a positive number,  min 0 ");
         }
@@ -1167,18 +1167,18 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function showFriendshipsRequest($user_id, $limit = 1, $offset = 0)
+    public function showFriendshipsRequest($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsRequest user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit != null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsRequest() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsRequest() $offset must be a positive number,  min 0 ");
         }
@@ -1553,18 +1553,18 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showPhotoAlbum($album_id, $limit = 1, $offset = 0)
+    public function showPhotoAlbum($album_id, $limit = null, $offset = null)
     {
         if (!is_numeric($album_id) || 0 >= $album_id) {
             throw new InvalidArgumentException(
                 "Api::showPhotoAlbum album_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsRequest() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showFriendshipsRequest() offset must be a positive number,  min 0 ");
         }
@@ -1889,7 +1889,7 @@ class Api implements  ApiInterface
      *);
      *</code>
      */
-    public function showUserPhotos($user_id, $limit = 1, $offset = 0)
+    public function showUserPhotos($user_id, $limit = null, $offset = null)
     {
 
         if (!is_numeric($user_id) || 0 >= $user_id) {
@@ -1897,11 +1897,11 @@ class Api implements  ApiInterface
                 "Api::ShowUserPhotos user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::ShowUserPhotos() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::ShowUserPhotos() offset must be a positive number,  min 0 ");
         }
@@ -2080,18 +2080,18 @@ class Api implements  ApiInterface
      *</code>
      */
 
-    public function showUserPhotoVotes($user_id, $limit = 1, $offset = 0)
+    public function showUserPhotoVotes($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showUserPhotoVotes user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit != null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::ShowUserPhotos() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::ShowUserPhotos() offset must be a positive number,  min 0 ");
         }
@@ -2191,18 +2191,18 @@ class Api implements  ApiInterface
      * );
      *</code>
      */
-    public function showAlbums($user_id, $limit = 1, $offset = 0)
+    public function showAlbums($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "Api::showUserAlbums user_id field should be positive integer");
         }
 
-        if ($limit < 1) {
+        if ($limit != null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showUserAlbums() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset != null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showUserAlbums() offset must be a positive number,  min 0 ");
         }
@@ -2442,13 +2442,13 @@ class Api implements  ApiInterface
      * );
      * </code>
      */
-    public function showReports($limit = 1, $offset = 0)
+    public function showReports($limit = null, $offset = null)
     {
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showReports() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showReports() offset must be a positive number,  min 0 ");
         }
@@ -2843,14 +2843,14 @@ class Api implements  ApiInterface
      * );
      * <code>
      */
-    public function showUsers($limit = 1, $offset = 0)
+    public function showUsers($limit = null, $offset = null)
     {
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::who() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::who offset must be a positive number,  min 0 ");
         }
@@ -2964,18 +2964,18 @@ class Api implements  ApiInterface
      * );
      * <code>
      */
-    public function showUsersBlocked($user_id, $limit = 1, $offset = 0)
+    public function showUsersBlocked($user_id, $limit = null, $offset = null)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
                 "showUsersBlocked user_id field should be positive integer", 404);
         }
 
-        if ($limit < 1) {
+        if ($limit!= null && $limit < 1) {
             throw new InvalidArgumentException(
                 "Api::showChannels() limit must be a min 1 ");
         }
-        if ($offset < 0) {
+        if ($offset!= null && $offset < 0) {
             throw new InvalidArgumentException(
                 "Api::showChannels() $offset must be a positive number,  min 0 ");
         }
