@@ -142,7 +142,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host)
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $nick = null)
     {
 
         if (!is_string($username) || 0 >= strlen($username)) {
@@ -154,12 +154,13 @@ class Api implements  ApiInterface
         if (!is_string($new_password) || 0 >= strlen($new_password)) {
             throw new InvalidArgumentException("new_password must be a non-empty string");
         }
-
+        if (!is_string($nick) || 0 >= strlen($nick)) {
+            throw new InvalidArgumentException("nickName must be a non-empty string");
+        }
         if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
             throw new InvalidArgumentException(
                 "repeat_new_password must be a non-empty string");
         }
-
         if (strcmp($new_password, $repeat_new_password)) {
             throw new InvalidArgumentException(
                 "the new_password and repeat_new_password is not equals");
@@ -176,6 +177,7 @@ class Api implements  ApiInterface
                         'first' => $new_password,
                         'second' => $repeat_new_password
                     ),
+                    'nick' => $nick,
                     'affiliate'=>$affiliate_host
                 )
             )
