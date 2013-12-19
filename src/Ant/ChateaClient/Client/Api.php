@@ -3203,6 +3203,45 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
+
+    /**
+     * Set a nick to a user
+     *
+     * @param int $user_id The id of the user to set the nick
+     *
+     * @param string $nick Description for report the user
+     *
+     * @return string|string Successfull message | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * <code>
+     * array(
+     *   "nick" => "mysupernick",
+     *   "id" => 44,
+     * );
+     * </code>
+     */
+    public function setUserNick($user_id, $nick)
+    {
+
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "Api::setUserNick user_id field should be positive integer", 404);
+        }
+        if (!is_string($nick) || 0 >= strlen($nick)) {
+            throw new InvalidArgumentException(
+                "APi::setUserNick nick must be a non-empty string", 404);
+        }
+
+        $command = $this->client->getCommand(
+            'SetUserNick',array('id' => $user_id,'nick' => $nick));
+
+        return $this->executeCommand($command);
+    }
+
     /**
      * UnBlocked one user
      *

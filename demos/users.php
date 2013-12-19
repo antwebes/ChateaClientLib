@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'/../../../../vendor/autoload.php';
 
 use Ant\ChateaClient\Service\Client\ChateaGratisClient;
 use Guzzle\Http\Exception\BadResponseException;
@@ -33,6 +33,9 @@ function print_array(array $array )
 }
 
 try{
+
+    echo "<h2>setUserNick user 1</h2>";
+    print_array($api->setUserNick(1, 'minickmolon'));  
 
     /**
      * Show all users
@@ -78,7 +81,7 @@ try{
     print_array($api->addUserReports(3,'this user is heterosexual'));
 
     echo "<h2>showUserVisitors user 1</h2>";
-    print_array($api->showUserVisitors(1));
+    print_array($api->showUserVisitors(1));  
 
     echo "<br/><br/><br/>";
 

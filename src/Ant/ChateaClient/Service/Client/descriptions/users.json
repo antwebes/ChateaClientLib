@@ -163,7 +163,7 @@
         },
         "AddUserReports":{
             "httpMethod": "POST",
-            "uri": "/api/users/{id}/report",
+            "uri": "api/users/{id}/report",
             "summary": "show a report",
             "parameters": {
                 "id": {
@@ -182,6 +182,23 @@
                             "required": true
                         }
                     }
+                }
+            }
+        },
+        "SetUserNick":{
+            "httpMethod": "PUT",
+            "uri": "api/users/{id}/nick",
+            "summary": "set a users nick",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to set the nick",
+                    "required": true
+                },
+                "nick":{
+                    "type": "string",
+                    "required": true,
+                    "location": "json"
                 }
             }
         },
