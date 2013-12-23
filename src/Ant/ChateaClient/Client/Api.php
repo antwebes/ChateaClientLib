@@ -52,7 +52,6 @@ class Api implements  ApiInterface
      */
     public function __construct(Client $client)
     {
-    	ld('construct Api, assign client');
         $this->client = $client;
     }
 
