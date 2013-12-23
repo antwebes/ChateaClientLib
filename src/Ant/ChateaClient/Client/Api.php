@@ -68,9 +68,8 @@ class Api implements  ApiInterface
      */
     protected function executeCommand(CommandInterface $command)
     {
-    	ld('execute command');
         try {
-//             $command->execute();
+             $command->execute();
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 400, $ex);
@@ -147,7 +146,6 @@ class Api implements  ApiInterface
      */
     public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $nick = null)
     {
-		ld('register in Api ( chatea-client-lib)');
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
         }
