@@ -155,9 +155,9 @@ class Api implements  ApiInterface
         if (!is_string($new_password) || 0 >= strlen($new_password)) {
             throw new InvalidArgumentException("new_password must be a non-empty string");
         }
-        if (!is_string($nick) || 0 >= strlen($nick)) {
+        /*if (!is_string($nick) || 0 >= strlen($nick)) {
             throw new InvalidArgumentException("nickName must be a non-empty string");
-        }
+        }*/
         if (!is_string($repeat_new_password) || 0 >= strlen($repeat_new_password)) {
             throw new InvalidArgumentException(
                 "repeat_new_password must be a non-empty string");
