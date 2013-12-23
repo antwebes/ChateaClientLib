@@ -294,7 +294,7 @@ interface ApiInterface
      *          "email"=> "newUserName@ant.com"
      *      }
      */
-    public function register ($username, $email, $new_password, $repeat_new_password, $affiliate_host, $id);
+    public function register ($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip);
 
     /**
      * Delete my user
