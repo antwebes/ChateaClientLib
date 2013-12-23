@@ -68,7 +68,6 @@ class Api implements  ApiInterface
     protected function executeCommand(CommandInterface $command)
     {
         try {
-             $command->execute();
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 400, $ex);
