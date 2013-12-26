@@ -68,7 +68,6 @@ class Api implements  ApiInterface
     protected function executeCommand(CommandInterface $command)
     {
         try {
-            $command->execute();
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
             throw new ApiException($ex->getMessage(), 400, $ex);
@@ -143,9 +142,8 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $nick = null)
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $nick = null)
     {
-
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
         }
@@ -179,7 +177,8 @@ class Api implements  ApiInterface
                         'second' => $repeat_new_password
                     ),
                     'nick' => $nick,
-                    'affiliate'=>$affiliate_host
+                    'affiliate'=>$affiliate_host,
+                	'ip'=> $ip
                 )
             )
         );
