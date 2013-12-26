@@ -2845,7 +2845,7 @@ class Api implements  ApiInterface
      * );
      * <code>
      */
-    public function showUsers($limit = null, $offset = null)
+    public function showUsers($limit = null, $offset = null, $filter = null, $order = null)
     {
 
         if ($limit!= null && $limit < 1) {
@@ -2857,7 +2857,7 @@ class Api implements  ApiInterface
                 "Api::who offset must be a positive number,  min 0 ");
         }
 
-        $command = $this->client->getCommand('Who', array('limit' => $limit,'offset'=>$offset));
+        $command = $this->client->getCommand('Who', array('limit' => $limit,'offset'=>$offset, 'filter' => $filter, 'order' => $order));
 
         return $this->executeCommand($command);
     }

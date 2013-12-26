@@ -41,6 +41,18 @@
                     "description": "User to retrieve by ID",
                     "required": true
                 },
+                "filter": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false,
+                    "description": "filters to aply to the list"
+                },
+                "order": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false,
+                    "description": "order of list criteria"
+                },
                 "limit": {
                     "type": "integer",
                     "location": "query",
