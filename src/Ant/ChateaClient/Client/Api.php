@@ -142,7 +142,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $nick = null)
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -176,7 +176,6 @@ class Api implements  ApiInterface
                         'first' => $new_password,
                         'second' => $repeat_new_password
                     ),
-                    'nick' => $nick,
                     'affiliate'=>$affiliate_host,
                 	'ip'=> $ip
                 )
@@ -3110,6 +3109,7 @@ class Api implements  ApiInterface
     }
 
     /**
+     * @todo comprobaciones para gender and youWant
      * Add new profile one user
      *
      * @param int $user_id User to retrieve by ID
@@ -3138,7 +3138,7 @@ class Api implements  ApiInterface
      *  );
      * <code>
      */
-    public function addUserProfile($user_id, $about, $sexualOrientation)
+    public function addUserProfile($user_id, $about, $sexualOrientation, $gender, $youWant, $birthday)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -3157,7 +3157,7 @@ class Api implements  ApiInterface
             'AddUserProfile',
             array(
                 'id' => $user_id,
-                'social_profile' => array('about' => $about, 'sexualOrientation' => $sexualOrientation)
+                'social_profile' => array('about' => $about, 'sexualOrientation' => $sexualOrientation, 'gender' => $gender, 'youWant' => $youWant, 'birthday' => $birthday)
             )
         );
 

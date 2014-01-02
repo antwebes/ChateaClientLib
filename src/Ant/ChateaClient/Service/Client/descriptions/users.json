@@ -116,7 +116,7 @@
         "AddUserProfile": {
             "httpMethod": "POST",
             "uri": "api/users/{id}/profiles",
-            "summary": "show a profile",
+            "summary": "create a profile",
             "parameters": {
                 "id": {
                     "location": "uri",

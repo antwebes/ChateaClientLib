@@ -338,7 +338,7 @@ interface ApiInterface
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      */
-    public function addUserProfile ($user_id, $about, $sexualOrientation);
+    public function addUserProfile ($user_id, $about, $sexualOrientation, $gender, $youWant, $birthday);
 
     /**
      * Delete friends between two users
