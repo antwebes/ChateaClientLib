@@ -437,7 +437,6 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "ApiException::updateChannel name field needs to be a non-empty string");
         }
-
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand(
             'UpdateChannel',
@@ -2903,7 +2902,6 @@ class Api implements  ApiInterface
     public function showUser($user_id)
     {
         $command = $this->client->getCommand('ShowUser', array('id' => $user_id));
-
         return $this->executeCommand($command);
     }
     public function whoami()
