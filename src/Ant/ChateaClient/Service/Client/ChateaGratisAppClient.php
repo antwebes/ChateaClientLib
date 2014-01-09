@@ -63,9 +63,9 @@ class ChateaGratisAppClient extends Client
             'version'=>'',
             'subdomain'=>'api',
             'service-description-name' => Client::NAME_SERVICE_API,
-            'store' => 'Ant\ChateaClient\Service\Client\FileStore'
+            'store' => null
         );
-
+        
         $required = array(
             'base_url',
             'Accept',
@@ -94,9 +94,10 @@ class ChateaGratisAppClient extends Client
             $config->get('subdomain'),
             $config
         );
-
-        $store = $config->get('store');
-        $client->store = new $store();
+        if($config->get('store') == null){
+            $config->set('store',new \Ant\ChateaClient\Service\Client\FileStore());
+        }
+        $client->store = $config->get('store');
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
 
         return $client;
