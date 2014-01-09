@@ -17,7 +17,7 @@ use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
-
+use Ant\ChateaClient\Service\Client\FileStore;
 /**
  * Specifies a client that provides service to run command at api server
  * This client can get self credentials, and save in store. This version do not encrypted credentials.
@@ -56,50 +56,32 @@ class ChateaGratisAppClient extends Client
     public static function factory($config = array()){
         // Provide a hash of default client configuration options
         $default = array(
-            'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
             'Accept'=>'application/json',
             'environment'=>'prod',
-            'scheme' => 'https',
-            'version'=>'',
-            'subdomain'=>'api',
             'service-description-name' => Client::NAME_SERVICE_API,
-            'store' => null
+            'store' => new FileStore(),
+            'ssl'=>false
         );
-        
+
         $required = array(
             'base_url',
-            'Accept',
-            'scheme',
-            'environment',
-            'subdomain',
             'client_id',
             'secret',
-            'store'
         );
 
         // Merge in default settings and validate the config
         $config = Collection::fromConfig($config, $default, $required);
 
-        if($config['environment'] == 'dev' ){
-
-            $config['base_url'] = $config['base_url'] . '/app_dev.php';
-            $config['scheme'] = 'http';
+        if($config['environment'] == 'dev' && $config['ssl'] ==  false ){
             $config['ssl.certificate_authority'] = 'system';
             $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
         }
 
         // Create a new ChateaGratis client
-        $client = new self($config->get('base_url'),
-            $config->get('scheme'),
-            $config->get('subdomain'),
-            $config
-        );
-        if($config->get('store') == null){
-            $config->set('store',new \Ant\ChateaClient\Service\Client\FileStore());
-        }
+        $client = new self($config->get('base_url'),$config);
+
         $client->store = $config->get('store');
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
-
         return $client;
     }
     /**
@@ -140,9 +122,12 @@ class ChateaGratisAppClient extends Client
         if(!$this->store->getPersistentData('token_expires_at')){
 
             $authData = ChateaOAuth2Client::factory(
-                    array('environment'=>$this->getConfig('environment'),
+                    array('base_url'=>$this->getConfig('base_url'),
+                          'Accept'=>$this->getConfig('Accept'),
+                          'environment'=>$this->getConfig('environment'),
                           'client_id'=>$this->getConfig('client_id'),
                           'secret'=>$this->getConfig('secret')
+
                     )
             )->withClientCredentials();
             
@@ -155,9 +140,12 @@ class ChateaGratisAppClient extends Client
         }else if($this->store->getPersistentData('token_expires_at') < time()){
 
             $authData = ChateaOAuth2Client::factory(
-                array('environment'=>$this->getConfig('environment'),
+                array('base_url'=>$this->getConfig('base_url'),
+                      'Accept'=>$this->getConfig('Accept'),
+                      'environment'=>$this->getConfig('environment'),
                       'client_id'=>$this->getConfig('client_id'),
                       'secret'=>$this->getConfig('secret')
+
                 )
             )->withRefreshToken($this->store->getPersistentData('token_refresh'));
 

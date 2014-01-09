@@ -343,13 +343,13 @@ class Api implements  ApiInterface
      *      ),
      *      "_links" => array(
      *          "self" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96"
      *          ),
      *          "fans" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96/fans"
      *          ),
      *          "owner" => array(
-     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *              "href" =>"https://api.chatsfree.net/api/users/1"
      *          )
      *      )
      *  );
@@ -415,13 +415,13 @@ class Api implements  ApiInterface
      *      ),
      *      "_links" => array(
      *          "self" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96"
      *          ),
      *          "fans" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96/fans"
      *          ),
      *          "owner" => array(
-     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *              "href" =>"https://api.chatsfree.net/api/users/1"
      *          )
      *      )
      *  );
@@ -517,13 +517,13 @@ class Api implements  ApiInterface
      *      ),
      *      "_links" => array(
      *          "self" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96"
      *          ),
      *          "fans" => array(
-     *              "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+     *              "href" =>"https://api.chatsfree.net/api/channels/96/fans"
      *          ),
      *          "owner" => array(
-     *              "href" =>"https://api.chateagratis.local/api/users/1"
+     *              "href" =>"https://api.chatsfree.net/api/users/1"
      *          )
      *      )
      *  );
@@ -1996,10 +1996,10 @@ class Api implements  ApiInterface
      *              "href" => "http://api.chateagratis.net/api/users/1/photos/6/votes",
      *          ),
      *          "photo" => array(
-     *              "href" => "http://api.chateagratis.local/api/photos/6",
+     *              "href" => "http://api.chatsfree.net/api/photos/6",
      *          ),
      *          "participant" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1",
+     *              "href" => "http://api.chatsfree.net/api/users/1",
      *          )
      *      )
      *  );
@@ -2052,7 +2052,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1/votes",
+     *              "href" => "http://api.chatsfree.net/api/users/1/votes",
      *          )
      *      ),
      *      "resources" => array(
@@ -2065,13 +2065,13 @@ class Api implements  ApiInterface
      *              ),
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1/photos/2/votes",
+     *                      "href" => "http://api.chatsfree.net/api/users/1/photos/2/votes",
      *                  ),
      *                  "photo" => array(
-     *                      "href" => "http://api.chateagratis.local/api/photos/2",
+     *                      "href" => "http://api.chatsfree.net/api/photos/2",
      *                  ),
      *                  "participant" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1",
+     *                      "href" => "http://api.chatsfree.net/api/users/1",
      *                  )
      *              )
      *          )
@@ -2167,7 +2167,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1/albums",
+     *              "href" => "http://api.chatsfree.net/api/users/1/albums",
      *          )
      *      ),
      *      "resources" => array(
@@ -2177,13 +2177,13 @@ class Api implements  ApiInterface
      *              "description" => "default album",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1/albums/1",
+     *                      "href" => "http://api.chatsfree.net/api/users/1/albums/1",
      *              ),
      *                  "participant" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1",
+     *                      "href" => "http://api.chatsfree.net/api/users/1",
      *                ),
      *                  "photos" => array(
-     *                      "href" => "http://api.chateagratis.local/api/albums/1/photos",
+     *                      "href" => "http://api.chatsfree.net/api/albums/1/photos",
      *                  )
      *              )
      *          )
@@ -2236,13 +2236,13 @@ class Api implements  ApiInterface
      *  "description" => "default album",
      *  "_links" => array(
      *      "self" => array(
-     *          "href" => "http://api.chateagratis.local/api/users/1/albums/1",
+     *          "href" => "http://api.chatsfree.net/api/users/1/albums/1",
      *      ),
      *      "participant" => array(
-     *          "href" => "http://api.chateagratis.local/api/users/1",
+     *          "href" => "http://api.chatsfree.net/api/users/1",
      *      ),
      *      "photos" => array(
-     *          "href" => "http://api.chateagratis.local/api/albums/1/photos",
+     *          "href" => "http://api.chatsfree.net/api/albums/1/photos",
      *      )
      *   )
      * );
@@ -2417,7 +2417,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/reports",
+     *              "href" => "http://api.chatsfree.net/api/reports",
      *          )
      *      ),
      *      "resources" => array(
@@ -2428,13 +2428,13 @@ class Api implements  ApiInterface
      *              "id" => 1,
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/api/reports/1",
+     *                      "href" => "http://api.chatsfree.net/api/reports/1",
      *                  ),
      *                  "reporter" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1",
+     *                      "href" => "http://api.chatsfree.net/api/users/1",
      *                  ),
      *                  "resource" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/2",
+     *                      "href" => "http://api.chatsfree.net/api/users/2",
      *                  )
      *              )
      *          )
@@ -2482,13 +2482,13 @@ class Api implements  ApiInterface
      *      "id" => 1,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/reports/1",
+     *              "href" => "http://api.chatsfree.net/api/reports/1",
      *          ),
      *          "reporter" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1",
+     *              "href" => "http://api.chatsfree.net/api/users/1",
      *          ),
      *          "resource" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/2",
+     *              "href" => "http://api.chatsfree.net/api/users/2",
      *          )
      *      )
      *  );
@@ -2816,7 +2816,7 @@ class Api implements  ApiInterface
      *      "offset" => 0,
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/users",
+     *              "href" => "http://api.chatsfree.net/api/users",
      *              )
      *      ),
      *      "resources" => array(
@@ -2826,16 +2826,16 @@ class Api implements  ApiInterface
      *              "email" => "alex@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1",
+     *                      "href" => "http://api.chatsfree.net/api/users/1",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1/channels",
+     *                      "href" => "http://api.chatsfree.net/api/users/1/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
+     *                      "href" => "http://api.chatsfree.net/api/users/1/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/1/blocked",
+     *                      "href" => "http://api.chatsfree.net/api/users/1/blocked",
      *                  )
      *              )
      *          )
@@ -2885,16 +2885,16 @@ class Api implements  ApiInterface
      *      "email" => "alex@chateagratis.net",
      *      "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1",
+     *              "href" => "http://api.chatsfree.net/api/users/1",
      *          ),
      *          "channels" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1/channels",
+     *              "href" => "http://api.chatsfree.net/api/users/1/channels",
      *          ),
      *          "channels_fan" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
+     *              "href" => "http://api.chatsfree.net/api/users/1/channelsFan",
      *          ),
      *          "blocked_users" => array(
-     *              "href" => "http://api.chateagratis.local/api/users/1/blocked",
+     *              "href" => "http://api.chatsfree.net/api/users/1/blocked",
      *          )
      *      )
      * );
@@ -2937,7 +2937,7 @@ class Api implements  ApiInterface
      *       "offset" => 0,
      *       "_links" => array(
      *          "self" => array(
-     *              "href" => "http://api.chateagratis.local/api/users",
+     *              "href" => "http://api.chatsfree.net/api/users",
      *          )
      *       ),
      *       "resources" => array(
@@ -2947,16 +2947,16 @@ class Api implements  ApiInterface
      *              "email" => "alex2@chateagratis.net",
      *              "_links" => array(
      *                  "self" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/2",
+     *                      "href" => "http://api.chatsfree.net/api/users/2",
      *                  ),
      *                  "channels" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/2/channels",
+     *                      "href" => "http://api.chatsfree.net/api/users/2/channels",
      *                  ),
      *                  "channels_fan" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/2/channelsFan",
+     *                      "href" => "http://api.chatsfree.net/api/users/2/channelsFan",
      *                  ),
      *                  "blocked_users" => array(
-     *                      "href" => "http://api.chateagratis.local/api/users/2/blocked",
+     *                      "href" => "http://api.chatsfree.net/api/users/2/blocked",
      *                  )
      *              )
      *          )

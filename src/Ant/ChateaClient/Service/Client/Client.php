@@ -28,49 +28,17 @@ class Client extends BaseClient
     const NAME_SERVICE_AUTH = 'api-auth-services';
 
     /**
-     * API scheme (aka. http/https), defaults: "https"
-     *
-     * @var string The server schema
-     */
-    protected $scheme;
-    /**
-     * API subdomain endpoint, defaults: "api"
-     *
-     * @var string the subdominian
-     */
-    protected $subdomain;
-    /**
-     * The version server api.
-     *
-     * @var string The version server api.
-     */
-    protected $version;
-
-    /**
      * Client constructor
      *
      * @param string $baseUrl Base URL of the web service
      *
-     * @param string $scheme API scheme (aka. http/https), defaults: "https"
-     *
-     * @param string $subdomain API subdomain endpoint, defaults: "api"
-     *
      * @param array|Collection $config  Configuration settings
      *
      */
-    public function __construct($baseUrl, $scheme, $subdomain, $config = null)
+    public function __construct($baseUrl, $config = null)
     {
 
-        $this->scheme = $scheme;
-        $this->subdomain = $subdomain;
-        $this->version = array_key_exists('version',$config)?$config['version']:'';
-
-        $baseUrl = $this->parseUrl($baseUrl,array($scheme,$subdomain));
-        if (is_string($this->version) && 0 >= strlen($this->version)) {
-            $baseUrl.='/'.$this->version.'/';
-        }
         parent::__construct($baseUrl, $config);
-
 
         if($config['service-description-name']){
             $this->setDescription(ServiceDescription::factory(__DIR__.'/descriptions/'.$config['service-description-name'].'.json'));
@@ -90,7 +58,7 @@ class Client extends BaseClient
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
      */
-    private function parseUrl($uri, array $params = null)
+    protected function parseUrl($uri, array $params = null)
     {
         if (empty($params)) {
             return $uri;

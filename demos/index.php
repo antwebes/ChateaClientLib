@@ -24,7 +24,7 @@
         }
     });
     // Sends your custom header
-    $.ajax({ url: 'http://api.chateagratis.local/app_dev.php/channel/1&access_token=access-token-demo&callback=?'});
+    $.ajax({ url: 'http://api.chatsfree.net/app_dev.php/channel/1&access_token=access-token-demo&callback=?'});
 */
 </script>
     <h2> Samples use this library</h2>

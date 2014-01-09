@@ -272,13 +272,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );</td>
@@ -483,13 +483,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/6/votes",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/photos/6/votes",
          ),
          "photo" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/photos/6",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/photos/6",
          ),
          "participant" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
          )
      )
  );</td>
@@ -754,7 +754,7 @@ array(
 </div>
 <a id="method_addUserProfile"></a><div class="element clickable method public method_addUserProfile" data-toggle="collapse" data-target=".method_addUserProfile .collapse">
 <h2>Add new profile one user</h2>
-<pre>addUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation) : array | string</pre>
+<pre>addUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation, $gender, $youWant, $birthday) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -782,6 +782,9 @@ array(
 <h4>$sexualOrientation</h4>
 <code>string</code><p>Choice between <heterosexual|bisexual|otro></p>
 </div>
+<div class="subelement argument"><h4>$gender</h4></div>
+<div class="subelement argument"><h4>$youWant</h4></div>
+<div class="subelement argument"><h4>$birthday</h4></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1414,7 +1417,7 @@ this this request is only once for day.</h2>
 </div>
 <a id="method_register"></a><div class="element clickable method public method_register" data-toggle="collapse" data-target=".method_register .collapse">
 <h2>Register new user at server</h2>
-<pre>register(string $username, string $email, string $new_password, string $repeat_new_password, string $affiliate_host) : array | string</pre>
+<pre>register(string $username, string $email, string $new_password, string $repeat_new_password, string $affiliate_host, $ip) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -1447,6 +1450,7 @@ this this request is only once for day.</h2>
 <code>string</code><p>The name of your server, where you make send request.
                                    You don't use protocols (http:// or ftp ) or subdomains only use primary name</p>
 </div>
+<div class="subelement argument"><h4>$ip</h4></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1485,13 +1489,13 @@ array(
  "description" => "default album",
  "_links" => array(
      "self" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+         "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/albums/1",
      ),
      "participant" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+         "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
      ),
      "photos" => array(
-         "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+         "href" => "http://api.chatsfree.net/app_dev.php/api/albums/1/photos",
      )
   )
 );</td>
@@ -1541,7 +1545,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/albums",
          )
      ),
      "resources" => array(
@@ -1551,13 +1555,13 @@ array(
              "description" => "default album",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/albums/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/albums/1",
              ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
                ),
                  "photos" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/albums/1/photos",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/albums/1/photos",
                  )
              )
          )
@@ -1621,13 +1625,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );</td>
@@ -2318,13 +2322,13 @@ array(
      "id" => 1,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/reports/1",
          ),
          "reporter" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
          ),
          "resource" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/2",
          )
      )
  );</td>
@@ -2371,7 +2375,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/reports",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/reports",
          )
      ),
      "resources" => array(
@@ -2382,13 +2386,13 @@ array(
              "id" => 1,
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/reports/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/reports/1",
                  ),
                  "reporter" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
                  ),
                  "resource" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/2",
                  )
              )
          )
@@ -2588,16 +2592,16 @@ array(
      "email" => "alex@chateagratis.net",
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
          ),
          "channels" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/channels",
          ),
          "channels_fan" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/channelsFan",
          ),
          "blocked_users" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/blocked",
          )
      )
 );</td>
@@ -2795,7 +2799,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/votes",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/votes",
          )
      ),
      "resources" => array(
@@ -2808,13 +2812,13 @@ array(
              ),
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/photos/2/votes",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/photos/2/votes",
                  ),
                  "photo" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/photos/2",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/photos/2",
                  ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
                  )
              )
          )
@@ -3050,7 +3054,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users",
              )
      ),
      "resources" => array(
@@ -3060,16 +3064,16 @@ array(
              "email" => "alex@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channels",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/channelsFan",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/1/blocked",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/1/blocked",
                  )
              )
          )
@@ -3122,7 +3126,7 @@ array(
       "offset" => 0,
       "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/app_dev.php/api/users",
+             "href" => "http://api.chatsfree.net/app_dev.php/api/users",
          )
       ),
       "resources" => array(
@@ -3132,16 +3136,16 @@ array(
              "email" => "alex2@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/2",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channels",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/2/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/channelsFan",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/2/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/app_dev.php/api/users/2/blocked",
+                     "href" => "http://api.chatsfree.net/app_dev.php/api/users/2/blocked",
                  )
              )
          )
@@ -3207,13 +3211,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );</td>
@@ -3361,7 +3365,7 @@ array(
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-11-04T08:50:07+01:00.<br></footer></div>
+            generated on 2014-01-09T18:48:12+01:00.<br></footer></div>
 </div>
 </body>
 </html>

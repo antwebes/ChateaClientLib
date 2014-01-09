@@ -71,7 +71,8 @@
 <li class="method public "><a href="#method_addThreadMessage" title="addThreadMessage() :: Add one message on thread"><span class="description">Add one message on thread</span><pre>addThreadMessage()</pre></a></li>
 <li class="method public "><a href="#method_addUserBlocked" title="addUserBlocked() :: Blocked one user"><span class="description">Blocked one user</span><pre>addUserBlocked()</pre></a></li>
 <li class="method public "><a href="#method_addUserChannelFan" title="addUserChannelFan() :: Make channel's  fan one user"><span class="description">Make channel's  fan one user</span><pre>addUserChannelFan()</pre></a></li>
-<li class="method public "><a href="#method_addUserProfile" title="addUserProfile() :: Add new profile one user"><span class="description">Add new profile one user</span><pre>addUserProfile()</pre></a></li>
+<li class="method public "><a href="#method_addUserProfile" title="addUserProfile() :: "><span class="description">addUserProfile()
+        </span><pre>addUserProfile()</pre></a></li>
 <li class="method public "><a href="#method_addUserReports" title="addUserReports() :: Report a user"><span class="description">Report a user</span><pre>addUserReports()</pre></a></li>
 <li class="method public "><a href="#method_changePassword" title="changePassword() :: Change user password"><span class="description">Change user password</span><pre>changePassword()</pre></a></li>
 <li class="method public "><a href="#method_delAlbum" title="delAlbum() :: Delete one album"><span class="description">Delete one album</span><pre>delAlbum()</pre></a></li>
@@ -91,6 +92,7 @@ this this request is only once for day.</span><pre>forgotPassword()</pre></a></l
 <li class="method public "><a href="#method_logout" title="logout() :: Revokes the access token and logout the user session in server."><span class="description">Revokes the access token and logout the user session in server.</span><pre>logout()</pre></a></li>
 <li class="method public "><a href="#method_me" title="me() :: Get my user"><span class="description">Get my user</span><pre>me()</pre></a></li>
 <li class="method public "><a href="#method_register" title="register() :: Register new user at server"><span class="description">Register new user at server</span><pre>register()</pre></a></li>
+<li class="method public "><a href="#method_setUserNick" title="setUserNick() :: Set a nick to a user"><span class="description">Set a nick to a user</span><pre>setUserNick()</pre></a></li>
 <li class="method public "><a href="#method_showAlbum" title="showAlbum() :: Show one album of user"><span class="description">Show one album of user</span><pre>showAlbum()</pre></a></li>
 <li class="method public "><a href="#method_showAlbums" title="showAlbums() :: Show all abums one user"><span class="description">Show all abums one user</span><pre>showAlbums()</pre></a></li>
 <li class="method public "><a href="#method_showChannel" title="showChannel() :: Get channel. Show data channel by id"><span class="description">Get channel. Show data channel by id</span><pre>showChannel()</pre></a></li>
@@ -120,17 +122,24 @@ this this request is only once for day.</span><pre>forgotPassword()</pre></a></l
 <li class="method public "><a href="#method_updateChannel" title="updateChannel() :: Update a channel"><span class="description">Update a channel</span><pre>updateChannel()</pre></a></li>
 <li class="method public "><a href="#method_updateMe" title="updateMe() :: Update a profile of me user"><span class="description">Update a profile of me user</span><pre>updateMe()</pre></a></li>
 <li class="method public "><a href="#method_updateUserProfile" title="updateUserProfile() :: Update user  profile"><span class="description">Update user  profile</span><pre>updateUserProfile()</pre></a></li>
+<li class="method public "><a href="#method_who" title="who() :: "><span class="description">who()
+        </span><pre>who()</pre></a></li>
+<li class="method public "><a href="#method_whoami" title="whoami() :: "><span class="description">whoami()
+        </span><pre>whoami()</pre></a></li>
 </ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_executeCommand" title="executeCommand() :: Execute the command in server"><span class="description">Execute the command in server</span><pre>executeCommand()</pre></a></li></ul>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_associativeArrayToString" title="associativeArrayToString() :: Converts a associative array to a string representatation in the form of key1=value1[,keyN=valueN ."><span class="description">Converts a associative array to a string representatation in the form of key1=value1[,keyN=valueN .</span><pre>associativeArrayToString()</pre></a></li>
+<li class="method protected "><a href="#method_executeCommand" title="executeCommand() :: Execute the command in server"><span class="description">Execute the command in server</span><pre>executeCommand()</pre></a></li>
+</ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_client" title="$client() :: Http Client"><span class="description"></span><pre>$client</pre></a></li></ul>
+<li class="nav-header protected">» Protected
+                    <ul><li class="property protected "><a href="#property_client" title="$client() :: Http Client"><span class="description"></span><pre>$client</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -309,13 +318,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );
@@ -507,10 +516,10 @@ array (
              "href" => "http://api.chateagratis.net/api/users/1/photos/6/votes",
          ),
          "photo" => array(
-             "href" => "http://api.chateagratis.local/api/photos/6",
+             "href" => "http://api.chatsfree.net/api/photos/6",
          ),
          "participant" => array(
-             "href" => "http://api.chateagratis.local/api/users/1",
+             "href" => "http://api.chatsfree.net/api/users/1",
          )
      )
  );
@@ -750,12 +759,19 @@ array(
 </div></div>
 </div>
 <a id="method_addUserProfile"></a><div class="element clickable method public method_addUserProfile" data-toggle="collapse" data-target=".method_addUserProfile .collapse">
-<h2>Add new profile one user</h2>
-<pre>addUserProfile(int $user_id, string $about, string $sexualOrientation) : array | string</pre>
+<h2>addUserProfile()
+        </h2>
+<pre>addUserProfile(int $user_id, string $about, string $sexualOrientation, $gender, $youWant, $birthday) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
+<th>todo</th>
+<td>comprobaciones para gender and youWant
+Add new profile one user</td>
+</tr>
+<tr>
 <th>examples</th>
 <td>Create profile one user
 <code>
@@ -768,7 +784,8 @@ array(
       "publicated_at" => "2013-10-30T16:43:51+0100",
  );
 <code></td>
-</tr></table>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$user_id</h4>
@@ -780,6 +797,9 @@ array(
 <h4>$sexualOrientation</h4>
 <code>string</code><p>Choice between <heterosexual|bisexual|otro></p>
 </div>
+<div class="subelement argument"><h4>$gender</h4></div>
+<div class="subelement argument"><h4>$youWant</h4></div>
+<div class="subelement argument"><h4>$birthday</h4></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1365,7 +1385,7 @@ this this request is only once for day.</h2>
 </div>
 <a id="method_register"></a><div class="element clickable method public method_register" data-toggle="collapse" data-target=".method_register .collapse">
 <h2>Register new user at server</h2>
-<pre>register(string $username, string $email, string $new_password, string $repeat_new_password, string $affiliate_host) : array | string</pre>
+<pre>register(string $username, string $email, string $new_password, string $repeat_new_password, string $affiliate_host, $ip) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -1400,6 +1420,7 @@ this this request is only once for day.</h2>
 <code>string</code><p>The name of your server, where you make send request.
          You don't use protocols (http:// or ftp ) or subdomains only use primary name</p>
 </div>
+<div class="subelement argument"><h4>$ip</h4></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -1414,6 +1435,41 @@ this this request is only once for day.</h2>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>array</code><code>string</code>Associative array with you profile | Message with error in json format</div>
+</div></div>
+</div>
+<a id="method_setUserNick"></a><div class="element clickable method public method_setUserNick" data-toggle="collapse" data-target=".method_setUserNick .collapse">
+<h2>Set a nick to a user</h2>
+<pre>setUserNick(int $user_id, string $nick) : string | string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$user_id</h4>
+<code>int</code><p>The id of the user to set the nick</p></div>
+<div class="subelement argument">
+<h4>$nick</h4>
+<code>string</code><p>Description for report the user</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="InvalidArgumentException.html">\InvalidArgumentException</a></code></th>
+<td>This exception is thrown if any parameter has errors</td>
+</tr>
+<tr>
+<th><code><a href="../classes/Ant.ChateaClient.Client.ApiException.html">\Ant\ChateaClient\Client\ApiException</a></code></th>
+<td>This exception is thrown if server send one error
+<code>
+array(
+  "nick" => "mysupernick",
+  "id" => 44,
+);
+</code></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>string</code>Successfull message | Message with error in json format</div>
 </div></div>
 </div>
 <a id="method_showAlbum"></a><div class="element clickable method public method_showAlbum" data-toggle="collapse" data-target=".method_showAlbum .collapse">
@@ -1433,13 +1489,13 @@ array(
  "description" => "default album",
  "_links" => array(
      "self" => array(
-         "href" => "http://api.chateagratis.local/api/users/1/albums/1",
+         "href" => "http://api.chatsfree.net/api/users/1/albums/1",
      ),
      "participant" => array(
-         "href" => "http://api.chateagratis.local/api/users/1",
+         "href" => "http://api.chatsfree.net/api/users/1",
      ),
      "photos" => array(
-         "href" => "http://api.chateagratis.local/api/albums/1/photos",
+         "href" => "http://api.chatsfree.net/api/albums/1/photos",
      )
   )
 );
@@ -1485,7 +1541,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/users/1/albums",
+             "href" => "http://api.chatsfree.net/api/users/1/albums",
          )
      ),
      "resources" => array(
@@ -1495,13 +1551,13 @@ array(
              "description" => "default album",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1/albums/1",
+                     "href" => "http://api.chatsfree.net/api/users/1/albums/1",
              ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1",
+                     "href" => "http://api.chatsfree.net/api/users/1",
                ),
                  "photos" => array(
-                     "href" => "http://api.chateagratis.local/api/albums/1/photos",
+                     "href" => "http://api.chatsfree.net/api/albums/1/photos",
                  )
              )
          )
@@ -1562,13 +1618,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );
@@ -1667,7 +1723,7 @@ array(
 </div>
 <a id="method_showChannels"></a><div class="element clickable method public method_showChannels" data-toggle="collapse" data-target=".method_showChannels .collapse">
 <h2>List all channels register in Server</h2>
-<pre>showChannels(int $limit, int $offset, array $filter) : array | string</pre>
+<pre>showChannels(int $limit, int $offset, array $filter, array $order) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -1675,7 +1731,7 @@ array(
 <th>examples</th>
 <td>Get first twenty channels what type is love
 <code>
-     $your_api_instance->showChannels(25,0, array('channelType'=>'love'));
+     $your_api_instance->showChannels(25,0, array('channelType'=>'love'), array('name' => 'desc'));
      <h3>Sample Ouput</h3>
  array(
      "id"=>11,
@@ -1712,6 +1768,10 @@ array(
 <div class="subelement argument">
 <h4>$filter</h4>
 <code>array</code><p>Associative array with format filter_name =>value_name</p>
+</div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>array</code><p>Associative array with format order_field => order</p>
 </div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
@@ -2217,13 +2277,13 @@ array(
      "id" => 1,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/reports/1",
+             "href" => "http://api.chatsfree.net/api/reports/1",
          ),
          "reporter" => array(
-             "href" => "http://api.chateagratis.local/api/users/1",
+             "href" => "http://api.chatsfree.net/api/users/1",
          ),
          "resource" => array(
-             "href" => "http://api.chateagratis.local/api/users/2",
+             "href" => "http://api.chatsfree.net/api/users/2",
          )
      )
  );
@@ -2266,7 +2326,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/reports",
+             "href" => "http://api.chatsfree.net/api/reports",
          )
      ),
      "resources" => array(
@@ -2277,13 +2337,13 @@ array(
              "id" => 1,
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/api/reports/1",
+                     "href" => "http://api.chatsfree.net/api/reports/1",
                  ),
                  "reporter" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1",
+                     "href" => "http://api.chatsfree.net/api/users/1",
                  ),
                  "resource" => array(
-                     "href" => "http://api.chateagratis.local/api/users/2",
+                     "href" => "http://api.chatsfree.net/api/users/2",
                  )
              )
          )
@@ -2467,16 +2527,16 @@ array(
      "email" => "alex@chateagratis.net",
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/users/1",
+             "href" => "http://api.chatsfree.net/api/users/1",
          ),
          "channels" => array(
-             "href" => "http://api.chateagratis.local/api/users/1/channels",
+             "href" => "http://api.chatsfree.net/api/users/1/channels",
          ),
          "channels_fan" => array(
-             "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
+             "href" => "http://api.chatsfree.net/api/users/1/channelsFan",
          ),
          "blocked_users" => array(
-             "href" => "http://api.chateagratis.local/api/users/1/blocked",
+             "href" => "http://api.chatsfree.net/api/users/1/blocked",
          )
      )
 );
@@ -2662,7 +2722,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/users/1/votes",
+             "href" => "http://api.chatsfree.net/api/users/1/votes",
          )
      ),
      "resources" => array(
@@ -2675,13 +2735,13 @@ array(
              ),
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1/photos/2/votes",
+                     "href" => "http://api.chatsfree.net/api/users/1/photos/2/votes",
                  ),
                  "photo" => array(
-                     "href" => "http://api.chateagratis.local/api/photos/2",
+                     "href" => "http://api.chatsfree.net/api/photos/2",
                  ),
                  "participant" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1",
+                     "href" => "http://api.chatsfree.net/api/users/1",
                  )
              )
          )
@@ -2897,7 +2957,7 @@ array(
 </div>
 <a id="method_showUsers"></a><div class="element clickable method public method_showUsers" data-toggle="collapse" data-target=".method_showUsers .collapse">
 <h2>Get all the users</h2>
-<pre>showUsers(int $limit, int $offset) : array | string</pre>
+<pre>showUsers(int $limit, int $offset, $filters, $order) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -2912,7 +2972,7 @@ array(
      "offset" => 0,
      "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/users",
+             "href" => "http://api.chatsfree.net/api/users",
              )
      ),
      "resources" => array(
@@ -2922,16 +2982,16 @@ array(
              "email" => "alex@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1",
+                     "href" => "http://api.chatsfree.net/api/users/1",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1/channels",
+                     "href" => "http://api.chatsfree.net/api/users/1/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1/channelsFan",
+                     "href" => "http://api.chatsfree.net/api/users/1/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/api/users/1/blocked",
+                     "href" => "http://api.chatsfree.net/api/users/1/blocked",
                  )
              )
          )
@@ -2947,6 +3007,8 @@ array(
 <h4>$offset</h4>
 <code>int</code><p>The distance (displacement) from the start of a data</p>
 </div>
+<div class="subelement argument"><h4>$filters</h4></div>
+<div class="subelement argument"><h4>$order</h4></div>
 <h3>Exceptions</h3>
 <table class="table table-bordered">
 <tr>
@@ -2980,7 +3042,7 @@ array(
       "offset" => 0,
       "_links" => array(
          "self" => array(
-             "href" => "http://api.chateagratis.local/api/users",
+             "href" => "http://api.chatsfree.net/api/users",
          )
       ),
       "resources" => array(
@@ -2990,16 +3052,16 @@ array(
              "email" => "alex2@chateagratis.net",
              "_links" => array(
                  "self" => array(
-                     "href" => "http://api.chateagratis.local/api/users/2",
+                     "href" => "http://api.chatsfree.net/api/users/2",
                  ),
                  "channels" => array(
-                     "href" => "http://api.chateagratis.local/api/users/2/channels",
+                     "href" => "http://api.chatsfree.net/api/users/2/channels",
                  ),
                  "channels_fan" => array(
-                     "href" => "http://api.chateagratis.local/api/users/2/channelsFan",
+                     "href" => "http://api.chatsfree.net/api/users/2/channelsFan",
                  ),
                  "blocked_users" => array(
-                     "href" => "http://api.chateagratis.local/api/users/2/blocked",
+                     "href" => "http://api.chatsfree.net/api/users/2/blocked",
                  )
              )
          )
@@ -3061,13 +3123,13 @@ array(
      ),
      "_links" => array(
          "self" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96"
+             "href" =>"https://api.chatsfree.net/api/channels/96"
          ),
          "fans" => array(
-             "href" =>"https://api.chateagratis.local/api/channels/96/fans"
+             "href" =>"https://api.chatsfree.net/api/channels/96/fans"
          ),
          "owner" => array(
-             "href" =>"https://api.chateagratis.local/api/users/1"
+             "href" =>"https://api.chatsfree.net/api/users/1"
          )
      )
  );
@@ -3196,7 +3258,49 @@ array(
 <code>array</code><code>string</code>Associative array with profile data | Message with error in json format</div>
 </div></div>
 </div>
-<a id="method_executeCommand"></a><div class="element clickable method private method_executeCommand" data-toggle="collapse" data-target=".method_executeCommand .collapse">
+<a id="method_who"></a><div class="element clickable method public method_who" data-toggle="collapse" data-target=".method_who .collapse">
+<h2>who()
+        </h2>
+<pre>who($limit, $offset) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$limit</h4></div>
+<div class="subelement argument"><h4>$offset</h4></div>
+</div></div>
+</div>
+<a id="method_whoami"></a><div class="element clickable method public method_whoami" data-toggle="collapse" data-target=".method_whoami .collapse">
+<h2>whoami()
+        </h2>
+<pre>whoami() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_associativeArrayToString"></a><div class="element clickable method protected method_associativeArrayToString" data-toggle="collapse" data-target=".method_associativeArrayToString .collapse">
+<h2>Converts a associative array to a string representatation in the form of key1=value1[,keyN=valueN .</h2>
+<pre>associativeArrayToString(array $data) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description">..]</div>
+<table class="table table-bordered"><tr>
+<th>examples</th>
+<td>Convert associative array to string
+<code>
+$this->associativeArrayToString(arrary('key1' => 'value1', 'key2' => 'value2'))
+//output
+"key1=value1,key2=value2"
+</code></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>array</code><p>The associative array to convert to string</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_executeCommand"></a><div class="element clickable method protected method_executeCommand" data-toggle="collapse" data-target=".method_executeCommand .collapse">
 <h2>Execute the command in server</h2>
 <pre>executeCommand(\Guzzle\Service\Command\CommandInterface $command) : array | string</pre>
 <div class="labels"></div>
@@ -3219,7 +3323,7 @@ array(
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_client"> </a><div class="element clickable property private property_client" data-toggle="collapse" data-target=".property_client .collapse">
+<a id="property_client"> </a><div class="element clickable property protected property_client" data-toggle="collapse" data-target=".property_client .collapse">
 <h2>Http Client</h2>
 <pre>$client : <a href="../classes/Ant.ChateaClient.Service.Client.Client.html">\Ant\ChateaClient\Service\Client\Client</a></pre>
 <div class="labels"></div>
@@ -3233,7 +3337,7 @@ array(
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.1.0
 </a> and<br>
-            generated on 2013-11-04T08:50:07+01:00.<br></footer></div>
+            generated on 2014-01-09T18:48:12+01:00.<br></footer></div>
 </div>
 </body>
 </html>

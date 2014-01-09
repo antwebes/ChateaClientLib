@@ -50,40 +50,30 @@ class ChateaOAuth2Client extends Client
     {
         // Provide a hash of default client configuration options
         $default = array(
-            'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
             'Accept'=>'application/json',
             'environment'=>'prod',
-            'scheme' => 'https',
-            'version'=>'',
-            'subdomain'=>'api',
-            'service-description-name' => Client::NAME_SERVICE_AUTH
+            'service-description-name' => Client::NAME_SERVICE_AUTH,
+            'ssl'=>false
         );
         $required = array(
             'base_url',
-            'scheme',
-            'subdomain',
             'Accept',
             'environment',
             'client_id',
-            'secret'
+            'secret',
+            'ssl'
         );
 
         // Merge in default settings and validate the config
         $config = Collection::fromConfig($config, $default, $required);
 
-        if($config['environment'] == 'dev' ){
-            $config['base_url'] = $config['base_url'] . '/app_dev.php';
-            $config['scheme'] = 'http';
+        if($config['environment'] == 'dev' && $config['ssl'] ==  false ){
             $config['ssl.certificate_authority'] = 'system';
             $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
         }
 
-
         // Create a new ChateaOAuth2 client
-        $client = new ChateaOAuth2Client ($config->get('base_url'),
-            $config->get('scheme'),
-            $config->get('subdomain'),
-            $config
+        $client = new ChateaOAuth2Client ($config->get('base_url'),$config
         );
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
         return $client;
