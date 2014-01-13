@@ -45,6 +45,14 @@
                                 "type": "string",
                                 "required": true
                         }
+                    },
+                    "ip":{
+                        "location": "json",
+                        "type": "string"
+                    },
+                    "city":{
+                        "location": "json",
+                        "type": "string"
                     }
                 }
             }

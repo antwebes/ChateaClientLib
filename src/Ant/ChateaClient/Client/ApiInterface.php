@@ -276,6 +276,10 @@ interface ApiInterface
      * @param string $affiliate_host      The name of your server, where you make send request.
      *                                    You don't use protocols (http:// or ftp ) or subdomains only use primary name
      *
+     * @param string $ip                  the client ip
+     *
+     * @param string $city                the client city
+     *
      * @return array|string Associative array with you profile | Message with error in json format
      *
      * @throws InvalidArgumentException This exception is thrown if any parameter has errors
@@ -294,7 +298,7 @@ interface ApiInterface
      *          "email"=> "newUserName@ant.com"
      *      }
      */
-    public function register ($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip);
+    public function register ($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip,$city);
 
     /**
      * Delete my user
