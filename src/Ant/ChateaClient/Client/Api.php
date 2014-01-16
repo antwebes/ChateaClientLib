@@ -181,9 +181,9 @@ class Api implements  ApiInterface
                         'second' => $repeat_new_password
                     ),
                     'affiliate'=>$affiliate_host,
-                	'ip'=> $ip,
-                    'city'=>$city
-                )
+                	'ip'=> $ip
+                ),
+                'city'=>$city
             )
         );
 
