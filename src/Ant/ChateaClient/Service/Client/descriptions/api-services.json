@@ -45,13 +45,21 @@
                                 "type": "string",
                                 "required": true
                         }
+                    },
+                    "ip":{
+                        "location": "json",
+                        "type": "string"
+                    },
+                    "city":{
+                        "location": "json",
+                        "type": "string"
                     }
                 }
             }
         },
         "RequestResetPassword":{
             "httpMethod": "POST",
-            "uri": "api/resetting/send-email",
+            "uri": "resetting/send-email",
             "summary": "Request reset user password, in the request is mandatory send username or email",
             "parameters": {
                 "username": {

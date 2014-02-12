@@ -44,43 +44,32 @@ class ChateaGratisClient extends Client
     {
         // Provide a hash of default client configuration options
         $default = array(
-                'base_url'=>'{scheme}://{subdomain}.chateagratis.local',
                 'token_format'=>'Bearer',
                 'Accept'=>'application/json',
                 'environment'=>'prod',
-                'scheme' => 'https',
-                'version'=>'',
-                'subdomain'=>'api',
-                'service-description-name' => Client::NAME_SERVICE_API
+                'service-description-name' => Client::NAME_SERVICE_API,
+                'ssl'=>false
                 );
 
         $required = array(
             'base_url',
-            'scheme',
-            'subdomain',
             'token_format',
             'access_token',
             'Accept',
             'environment',
+            'ssl'
         );
 
         // Merge in default settings and validate the config
         $config = Collection::fromConfig($config, $default, $required);
 
-        if($config['environment'] == 'dev' ){
-
-            $config['base_url'] = $config['base_url'] . '/app_dev.php';
-            $config['scheme'] = 'http';
+        if($config['environment'] == 'dev' && $config['ssl'] ==  false ){
             $config['ssl.certificate_authority'] = 'system';
             $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
         }
 
         // Create a new ChateaGratis client
-        $client = new self($config->get('base_url'),
-                           $config->get('scheme'),
-                           $config->get('subdomain'),
-                           $config
-        );
+        $client = new self($config->get('base_url'),$config);
 
         // Ensure that the Oauth2Plugin is attached to the client
         $client->addSubscriber(new OAuth2Plugin($config->toArray()));
