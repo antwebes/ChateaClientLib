@@ -536,11 +536,6 @@ class Api implements  ApiInterface
      */
     public function showChannel($channel_id)
     {
-        if (!is_numeric($channel_id) || 0 >= $channel_id) {
-            throw new InvalidArgumentException(
-                "ShowChannel channel_id field should be positive integer");
-        }
-
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('GetChannel', array('id' => $channel_id));
 
