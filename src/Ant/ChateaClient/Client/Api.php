@@ -9,7 +9,6 @@
  */
 namespace Ant\ChateaClient\Client;
 
-use Ant\ChateaClient\Client\IApi;
 use Ant\ChateaClient\Service\Client\Client;
 use Exception;
 use InvalidArgumentException;
@@ -70,14 +69,19 @@ class Api implements  ApiInterface
         try {
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
+//         	ldd($ex);
             throw new ApiException($ex->getMessage(), 400, $ex);
         }catch (ClientErrorResponseException $ex) {
+//         	ldd($ex);
             throw new ApiException($ex->getResponse()->getBody(), $ex->getResponse()->getStatusCode(), $ex);
         }catch (BadResponseException $brEx) {
+//         	ldd($ex);
             throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);
         }catch (CurlException $curlEx) {
+//         	ldd($ex);
             throw new ApiException($curlEx->getMessage(), $curlEx->getCode(), $curlEx);
         }catch (Exception $ex){
+//         	ldd($ex);
             throw new ApiException($ex->getMessage(), $ex->getCode(), $ex);
         }
     }
@@ -309,7 +313,7 @@ class Api implements  ApiInterface
 
     /**
      * Create un new Channel
-     *
+     * @todo este método está obsoleto, no recibe ni envía parámetros correctos
      * @param string $name The name of channel this is unique
      *
      * @param string $title The title of channel
