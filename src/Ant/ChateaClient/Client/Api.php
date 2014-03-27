@@ -185,12 +185,12 @@ class Api implements  ApiInterface
                         'second' => $repeat_new_password
                     ),
                     'affiliate'=>$affiliate_host,
-                	'ip'=> $ip
+                	'ip'=> $ip,
                 ),
-                'city'=>$city
+            	'city'=>$city
+            		
             )
         );
-
         return $this->executeCommand($command);
     }
 
