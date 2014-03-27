@@ -120,41 +120,13 @@ class ChateaGratisAppClient extends Client
     {
 
         if(!$this->store->getPersistentData('token_expires_at')){
-
-            $authData = ChateaOAuth2Client::factory(
-                    array('base_url'=>$this->getConfig('base_url'),
-                          'Accept'=>$this->getConfig('Accept'),
-                          'environment'=>$this->getConfig('environment'),
-                          'client_id'=>$this->getConfig('client_id'),
-                          'secret'=>$this->getConfig('secret')
-
-                    )
-            )->withClientCredentials();
-            
-            $this->store->setPersistentData('access_token',$authData['access_token']);
-            $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
-            $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
-
-            return $authData['access_token'];
-
+            return $this->getAccessTokenWithClientCredentials();
         }else if($this->store->getPersistentData('token_expires_at') < time()){
-
-            $authData = ChateaOAuth2Client::factory(
-                array('base_url'=>$this->getConfig('base_url'),
-                      'Accept'=>$this->getConfig('Accept'),
-                      'environment'=>$this->getConfig('environment'),
-                      'client_id'=>$this->getConfig('client_id'),
-                      'secret'=>$this->getConfig('secret')
-
-                )
-            )->withRefreshToken($this->store->getPersistentData('token_refresh'));
-
-            $this->store->setPersistentData('access_token',$authData['access_token']);
-            $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
-            $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
-
-            return $authData['access_token'];
-
+            try{
+                return $this->getAccessTokenWithRefreshToken();    
+            }catch(\Ant\ChateaClient\Service\Client\AuthenticationException $e){
+                return $this->getAccessTokenWithClientCredentials();
+            }
         }else{
             return $this->store->getPersistentData('access_token');
         }
@@ -183,5 +155,46 @@ class ChateaGratisAppClient extends Client
         }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
+    }
+
+    private function getAccessTokenWithClientCredentials()
+    {
+        $authData = ChateaOAuth2Client::factory(
+                    array('base_url'=>$this->getConfig('base_url'),
+                          'Accept'=>$this->getConfig('Accept'),
+                          'environment'=>$this->getConfig('environment'),
+                          'client_id'=>$this->getConfig('client_id'),
+                          'secret'=>$this->getConfig('secret')
+
+                    )
+            )->withClientCredentials();
+            
+        $this->persistAuthData($authData);
+
+        return $authData['access_token'];
+    }
+
+    private function getAccessTokenWithRefreshToken()
+    {
+        $authData = ChateaOAuth2Client::factory(
+                    array('base_url'=>$this->getConfig('base_url'),
+                          'Accept'=>$this->getConfig('Accept'),
+                          'environment'=>$this->getConfig('environment'),
+                          'client_id'=>$this->getConfig('client_id'),
+                          'secret'=>$this->getConfig('secret')
+
+                    )
+                )->withRefreshToken($this->store->getPersistentData('token_refresh'));
+
+        $this->persistAuthData($authData);
+
+        return $authData['access_token'];
+    }
+
+    private function persistAuthData($authData)
+    {
+        $this->store->setPersistentData('access_token',$authData['access_token']);
+        $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
+        $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
     }
 }
