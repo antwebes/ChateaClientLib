@@ -69,7 +69,7 @@ class Api implements  ApiInterface
         try {
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
-        	ldd($ex);
+//         	ldd($ex);
             throw new ApiException($ex->getMessage(), 400, $ex);
         }catch (ClientErrorResponseException $ex) {
 //         	ldd($ex);
