@@ -38,6 +38,11 @@ class ChateaGratisAppClient extends Client
     private $store ;
 
     /**
+     * @var ChateaOAuth2Client client to authenticate
+     */
+    private $chateaOAuth2Client;
+
+    /**
      * Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
      * This client can get self credentials, and save in store. This version do not encrypted credentials.
      *
@@ -77,9 +82,11 @@ class ChateaGratisAppClient extends Client
             $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
         }
 
+
         // Create a new ChateaGratis client
         $client = new self($config->get('base_url'),$config);
 
+        $client->chateaOAuth2Client = $config->get('OAuth2Client');
         $client->store = $config->get('store');
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
         return $client;
@@ -159,15 +166,7 @@ class ChateaGratisAppClient extends Client
 
     private function getAccessTokenWithClientCredentials()
     {
-        $authData = ChateaOAuth2Client::factory(
-                    array('base_url'=>$this->getConfig('base_url'),
-                          'Accept'=>$this->getConfig('Accept'),
-                          'environment'=>$this->getConfig('environment'),
-                          'client_id'=>$this->getConfig('client_id'),
-                          'secret'=>$this->getConfig('secret')
-
-                    )
-            )->withClientCredentials();
+        $authData = $this->chateaOAuth2Client->withClientCredentials();
             
         $this->persistAuthData($authData);
 
@@ -176,15 +175,7 @@ class ChateaGratisAppClient extends Client
 
     private function getAccessTokenWithRefreshToken()
     {
-        $authData = ChateaOAuth2Client::factory(
-                    array('base_url'=>$this->getConfig('base_url'),
-                          'Accept'=>$this->getConfig('Accept'),
-                          'environment'=>$this->getConfig('environment'),
-                          'client_id'=>$this->getConfig('client_id'),
-                          'secret'=>$this->getConfig('secret')
-
-                    )
-                )->withRefreshToken($this->store->getPersistentData('token_refresh'));
+        $authData = $this->chateaOAuth2Client->withRefreshToken($this->store->getPersistentData('token_refresh'));
 
         $this->persistAuthData($authData);
 
