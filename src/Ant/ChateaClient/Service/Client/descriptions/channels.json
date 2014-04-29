@@ -129,7 +129,7 @@
             }
         },
         "IncrementChannelVisits":{
-            "httpMethod": "PATCH",
+            "httpMethod": "PUT",
             "uri": "api/channels/{id}/visits",
             "summary": "Increment visits of a channel by id",
             "parameters": {
