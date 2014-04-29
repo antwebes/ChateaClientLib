@@ -460,6 +460,40 @@ class Api implements  ApiInterface
     }
 
     /**
+     * Increment visits of a channel
+     *
+     * @param int $channel_id Channel to update by ID
+     *
+     * @return string The message ok, if channel has been updated
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @examples
+     *
+     * <code>
+     *          $your_api_instance->incrementChannelVisits(96);
+     *
+     *      <h3>Ouput this message: </h3>
+     *
+     *      Channel updated
+     * </code>
+     */
+    public function incrementChannelVisits($channel_id)
+    {
+        if (!is_numeric($channel_id) || 0 >= $channel_id) {
+            throw new InvalidArgumentException(
+                "ApiException::incrementChannelVisits channel_id field should be positive integer");
+        }
+
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('IncrementChannelVisits', array("id" => $channel_id));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
      * Delete channel
      *
      * @param int $channel_id Channel to update by ID
@@ -477,7 +511,7 @@ class Api implements  ApiInterface
      *
      *      <h3>Ouput this message: </h3>
      *
-     *      Channel deleted
+     *      Channel visits incremented
      * </code>
      */
     public function delChannel($channel_id)
