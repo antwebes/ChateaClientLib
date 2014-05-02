@@ -9,6 +9,7 @@
  */
 namespace Ant\ChateaClient\Client;
 
+use Ant\ChateaClient\Service\Client\AuthenticationException;
 use Ant\ChateaClient\Service\Client\Client;
 use Exception;
 use InvalidArgumentException;
@@ -18,6 +19,8 @@ use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 
+use Ant\ChateaClient\Client\Exception\ServerDownException;
+use Ant\ChateaClient\Client\Exception\UnauthorizedException;
 /**
  * This class represent the chateagratis API's, this is single abstraction
  * for all API methods.
@@ -69,19 +72,17 @@ class Api implements  ApiInterface
         try {
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
-//         	ldd($ex);
-            throw new ApiException($ex->getMessage(), 400, $ex);
+            throw new ApiException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
         }catch (ClientErrorResponseException $ex) {
-//         	ldd($ex);
+            if($ex->getResponse()->getStatusCode() == '401'){
+                throw new UnauthorizedException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
+            }
+            throw new ApiException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
+        }catch (BadResponseException $ex) {
             throw new ApiException($ex->getResponse()->getBody(), $ex->getResponse()->getStatusCode(), $ex);
-        }catch (BadResponseException $brEx) {
-//         	ldd($ex);
-            throw new ApiException($brEx->getResponse()->getBody(), $brEx->getResponse()->getStatusCode(), $brEx);
-        }catch (CurlException $curlEx) {
-//         	ldd($ex);
-            throw new ApiException($curlEx->getMessage(), $curlEx->getCode(), $curlEx);
+        }catch (CurlException $ex) {
+            throw new ServerDownException($ex->getMessage(), $ex->getCode(), $ex);
         }catch (Exception $ex){
-//         	ldd($ex);
             throw new ApiException($ex->getMessage(), $ex->getCode(), $ex);
         }
     }

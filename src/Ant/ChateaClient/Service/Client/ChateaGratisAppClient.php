@@ -18,6 +18,9 @@ use Guzzle\Http\Exception\CurlException;
 use Guzzle\Service\Command\CommandInterface;
 use Ant\Guzzle\Plugin\AcceptHeaderPluging;
 use Ant\ChateaClient\Service\Client\FileStore;
+use Ant\ChateaClient\Service\Client\AuthenticationException;
+use Ant\ChateaClient\Client\Exception\UnauthorizedException;
+
 /**
  * Specifies a client that provides service to run command at api server
  * This client can get self credentials, and save in store. This version do not encrypted credentials.
@@ -125,13 +128,14 @@ class ChateaGratisAppClient extends Client
      */
     private function prepareAccessToken()
     {
-
+        // if not exits data in the store
         if(!$this->store->getPersistentData('token_expires_at')){
             return $this->getAccessTokenWithClientCredentials();
+         // if access token expires.
         }else if($this->store->getPersistentData('token_expires_at') < time()){
             try{
                 return $this->getAccessTokenWithRefreshToken();    
-            }catch(\Ant\ChateaClient\Service\Client\AuthenticationException $e){
+            }catch(AuthenticationException $e){
                 return $this->getAccessTokenWithClientCredentials();
             }
         }else{
@@ -154,10 +158,11 @@ class ChateaGratisAppClient extends Client
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
-        }
-        catch (BadResponseException $ex){
+        }catch (BadResponseException $ex){
+            ldd("S");
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
+
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
@@ -187,5 +192,27 @@ class ChateaGratisAppClient extends Client
         $this->store->setPersistentData('access_token',$authData['access_token']);
         $this->store->setPersistentData('token_refresh',$authData['refresh_token']);
         $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
+    }
+
+    public function execute($command)
+    {
+        try{
+            return parent::execute($command);
+
+        }catch (ClientErrorResponseException $ex){
+            if($ex->getResponse()->getStatusCode() == '401'){
+                try{
+                    //pido una vez mas el token y si no exception
+                    $this->store->clearAllPersistentData();
+                    $this->getAccessTokenWithClientCredentials();
+                }catch (\Exception $e){
+
+                    throw $e;
+                }
+            }
+        }catch (\Exception $e){
+            throw $e;
+        }
+
     }
 }

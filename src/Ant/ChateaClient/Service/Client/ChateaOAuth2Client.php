@@ -229,11 +229,11 @@ class ChateaOAuth2Client extends Client
         try{
             return $command->execute();
         }catch (ServerErrorResponseException $ex){
-            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+            throw new AuthenticationException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
         }catch (BadResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
-            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+            throw new AuthenticationException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
         }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
