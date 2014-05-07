@@ -159,10 +159,8 @@ class ChateaGratisAppClient extends Client
         }catch (ServerErrorResponseException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch (BadResponseException $ex){
-            ldd("S");
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(ClientErrorResponseException $ex){
-
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }catch(CurlException $ex){
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
@@ -194,25 +192,27 @@ class ChateaGratisAppClient extends Client
         $this->store->setPersistentData('token_expires_at',$authData['expires_in'] + time());
     }
 
-    public function execute($command)
-    {
-        try{
-            return parent::execute($command);
-
-        }catch (ClientErrorResponseException $ex){
-            if($ex->getResponse()->getStatusCode() == '401'){
-                try{
-                    //pido una vez mas el token y si no exception
-                    $this->store->clearAllPersistentData();
-                    $this->getAccessTokenWithClientCredentials();
-                }catch (\Exception $e){
-
-                    throw $e;
-                }
-            }
-        }catch (\Exception $e){
-            throw $e;
-        }
-
-    }
+//    public function execute($command)
+//    {
+//        try{
+//            return parent::execute($command);
+//
+//        }catch (ClientErrorResponseException $ex){
+//            if($ex->getResponse()->getStatusCode() == '401'){
+//                try{
+//                    //pido una vez mas el token y si no exception
+//                    $this->store->clearAllPersistentData();
+//                    $this->getAccessTokenWithClientCredentials();
+//                }catch (\Exception $e){
+//
+//                    throw $e;
+//                }
+//            }else{
+//                throw $ex;
+//            }
+//        }catch (\Exception $e){
+//            throw $e;
+//        }
+//
+//    }
 }
