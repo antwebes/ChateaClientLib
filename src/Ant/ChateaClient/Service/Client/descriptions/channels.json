@@ -16,7 +16,6 @@
                     "location": "query"
                 },
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of elemnts return at collection"
@@ -194,7 +193,6 @@
                     "required": true
                 },
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of elemnts return at collection"
@@ -218,7 +216,6 @@
                     "required": true
                 },
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of elemnts return at collection"
@@ -367,7 +364,6 @@
                 },
                 "limit": {
                     "location": "json",
-                    "type": "integer",
                     "description": "number of elements for page"
                 },
                 "_links": {
@@ -405,7 +401,6 @@
                 },
                 "limit": {
                     "location": "json",
-                    "type": "integer",
                     "description": "number of elements for page"
                 },
                 "_links": {
