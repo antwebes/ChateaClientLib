@@ -6,7 +6,6 @@
             "summary": "List all users",
             "parameters": {
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of position at collection"
@@ -54,7 +53,6 @@
                     "required": true
                 },
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of position at collection"
@@ -225,7 +223,6 @@
                     "required": true
                 },
                 "limit": {
-                    "type": "integer",
                     "location": "query",
                     "default": 25,
                     "description": "number of position at collection"
