@@ -3181,14 +3181,6 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "addUserProfile user_id field should be positive integer", 404);
         }
-        if (!is_string($about) || 0 >= strlen($about)) {
-            throw new InvalidArgumentException(
-                "about must be a non-empty string", 404);
-        }
-        if (!is_string($sexualOrientation) || 0 >= strlen($sexualOrientation)) {
-            throw new InvalidArgumentException(
-                "sexualOrientation must be a non-empty string", 404);
-        }
 
         $command = $this->client->getCommand(
             'AddUserProfile',

@@ -129,13 +129,11 @@
                         "about": {
                             "location": "json",
                             "type": "string",
-                            "required": true,
                             "description": "the about in profile"
                         },
                         "sexualOrientation": {
                             "location": "json",
                             "type": "string",
-                            "required": true,
                             "description": "The sexualOrientation"
                         }
                     }
