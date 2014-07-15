@@ -1,0 +1,16 @@
+{
+    "operations": {
+        "getCity": {
+            "httpMethod": "GET",
+            "uri": "geo/cities/{id}",
+            "summary": "Show a city by id",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "ID to search a city",
+                    "required": true
+                }
+            }
+        }
+    }
+}

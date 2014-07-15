@@ -3374,6 +3374,50 @@ class Api implements  ApiInterface
         );
         return $this->executeCommand($command);
     }
+    
+    /**
+     * Get city. Show data city by id
+     *
+     * @param int $city_id Id to retrieve a city
+     *
+     * @return array|string Associative array with city data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @examples
+     *
+     * <code>
+     *          $your_api_instance->getCity(1366);
+     *          //Sample Ouput
+     *
+     * {
+     * "name": "Percival",
+     * "postal_code": "51648",
+     * "region_code": "IA",
+     * "country": {
+     *     "country_code": "US",
+     *     "name": "United States",
+     *     "has_cities": true,
+     *     "city_default": 0
+     *  },
+     *  "latitude": 41,
+     *  "longitude": -96,
+     *  "metro_code": "652",
+     *  "area_code": "712",
+     *  "id": 1366,
+     *  "country_code": "US"
+     *  }
+     * </code>
+     */
+    public function getCity($city_id)
+    {
+    	//@var $command Guzzle\Service\Command\AbstractCommand
+    	$command = $this->client->getCommand('getCity', array('id' => $city_id));
+    
+    	return $this->executeCommand($command);
+    }
 
     /**
      * Converts a associative array to a string representatation in the form of key1=value1[,keyN=valueN ...]

@@ -81,7 +81,8 @@
         "friendship.json",
         "photo.json",
         "reports.json",
-        "thread.json"
+        "thread.json",
+        "city.json"
     ]
 
 }
