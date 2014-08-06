@@ -48,7 +48,11 @@
                         "ip":{
                         	"location": "json",
                         	"type": "string"
-                    	}
+                    	},
+                        "language":{
+                            "location": "json",
+                            "type": "string"
+                        }
                     }
                 },
                 "city":{
