@@ -651,9 +651,8 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "Api::showChannelFans() $offset must be a positive number,  min 0 ");
         }
-
         //@var $command Guzzle\Service\Command\AbstractCommand
-        $command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id,'limit'=>$limit,'offset'=>$offset));
+        $command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id,'limit'=>(int) $limit,'offset'=>$offset));
 
         return $this->executeCommand($command);
     }
