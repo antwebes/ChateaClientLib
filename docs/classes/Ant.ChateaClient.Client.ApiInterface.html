@@ -754,7 +754,7 @@ array(
 </div>
 <a id="method_addUserProfile"></a><div class="element clickable method public method_addUserProfile" data-toggle="collapse" data-target=".method_addUserProfile .collapse">
 <h2>Add new profile one user</h2>
-<pre>addUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation, $gender, $youWant, $birthday) : array | string</pre>
+<pre>addUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $seeking, $gender, $youWant, $birthday) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -766,7 +766,7 @@ array(
  array(
       "id" => 11,
       "about" => "about-10",
-      "sexual_orientation" => "bisexual",
+      "seeking" => "bisexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
  );</td>
@@ -779,7 +779,7 @@ array(
 <h4>$about</h4>
 <code>string</code><p>Short description  your profile</p></div>
 <div class="subelement argument">
-<h4>$sexualOrientation</h4>
+<h4>$seeking</h4>
 <code>string</code><p>Choice between <heterosexual|bisexual|otro></p>
 </div>
 <div class="subelement argument"><h4>$gender</h4></div>
@@ -2958,7 +2958,7 @@ array (
  array(
       "id" => 11,
       "about" => "about-10",
-      "sexual_orientation" => "bisexual",
+      "seeking" => "bisexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
  );</td>
@@ -3308,7 +3308,7 @@ array(
 </div>
 <a id="method_updateUserProfile"></a><div class="element clickable method public method_updateUserProfile" data-toggle="collapse" data-target=".method_updateUserProfile .collapse">
 <h2>Update user  profile</h2>
-<pre>updateUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $sexualOrientation) : array | string</pre>
+<pre>updateUserProfile(\Ant\ChateaClient\Client\number $user_id, string $about, string $seeking) : array | string</pre>
 <div class="labels"></div>
 <div class="row collapse">
 <div class="span4">
@@ -3320,7 +3320,7 @@ array(
  array(
       "id" => 11,
       "about" => "about-10",
-      "sexual_orientation" => "homosexual",
+      "seeking" => "homosexual",
       "count_visits" => 0,
       "publicated_at" => "2013-10-30T16:43:51+0100",
  );</td>
@@ -3333,7 +3333,7 @@ array(
 <h4>$about</h4>
 <code>string</code><p>Short description  your profile</p></div>
 <div class="subelement argument">
-<h4>$sexualOrientation</h4>
+<h4>$seeking</h4>
 <code>string</code><p>Choice between <heterosexual|bisexual|otro></p>
 </div>
 <h3>Exceptions</h3>

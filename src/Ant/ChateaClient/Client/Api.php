@@ -3067,7 +3067,7 @@ class Api implements  ApiInterface
      *
      * @param string $about Short description  your profile
      *
-     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     * @param string $seeking Choice between <heterosexual|bisexual|otro>
      *
      * @return array|string Associative array with profile data | Message with error in json format
      *
@@ -3083,14 +3083,14 @@ class Api implements  ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "homosexual",
+     *       "seeking" => "homosexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      *
      *</code>
      */
-    public function updateUserProfile($user_id, $about= '', $sexualOrientation = '')
+    public function updateUserProfile($user_id, $about= '', $seeking = '')
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -3101,7 +3101,7 @@ class Api implements  ApiInterface
             'UpdateUserProfile',
             array(
                 'id' => $user_id,
-                'social_profile' => array('about' => $about, 'sexualOrientation' => $sexualOrientation)
+                'social_profile' => array('about' => $about, 'seeking' => $seeking)
             )
         );
 
@@ -3127,7 +3127,7 @@ class Api implements  ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "bisexual",
+     *       "seeking" => "bisexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
@@ -3153,7 +3153,7 @@ class Api implements  ApiInterface
      *
      * @param string $about Short description  your profile
      *
-     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     * @param string $seeking Choice between <heterosexual|bisexual|otro>
      *
      * @return array|string Associative array with profile data | Message with error in json format
      *
@@ -3169,13 +3169,13 @@ class Api implements  ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "bisexual",
+     *       "seeking" => "bisexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      * <code>
      */
-    public function addUserProfile($user_id, $about, $sexualOrientation, $gender, $youWant, $birthday)
+    public function addUserProfile($user_id, $about, $seeking, $gender, $youWant, $birthday)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -3186,7 +3186,7 @@ class Api implements  ApiInterface
             'AddUserProfile',
             array(
                 'id' => $user_id,
-                'social_profile' => array('about' => $about, 'sexualOrientation' => $sexualOrientation, 'gender' => $gender, 'youWant' => $youWant, 'birthday' => $birthday)
+                'social_profile' => array('about' => $about, 'seeking' => $seeking, 'gender' => $gender, 'youWant' => $youWant, 'birthday' => $birthday)
             )
         );
 
