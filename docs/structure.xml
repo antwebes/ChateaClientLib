@@ -347,7 +347,7 @@ file that was distributed with this source code.</long-description>
           <tag name="param" line="341" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
           </tag>
-          <tag name="param" line="341" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$sexualOrientation">
+          <tag name="param" line="341" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$seeking">
             <type>string</type>
           </tag>
           <tag name="return" line="341" description="Associative array with profile data | Message with error in json format" type="array|string">
@@ -360,7 +360,7 @@ file that was distributed with this source code.</long-description>
           <tag name="throws" line="341" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="341" description="profile one user&#10;     $your_api_instance-&gt;addUserProfile(1,'about-10','bisexual');&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
+          <tag name="example" line="341" description="profile one user&#10;     $your_api_instance-&gt;addUserProfile(1,'about-10','bisexual');&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -373,7 +373,7 @@ file that was distributed with this source code.</long-description>
           <type>string</type>
         </argument>
         <argument line="0">
-          <name>$sexualOrientation</name>
+          <name>$seeking</name>
           <default></default>
           <type>string</type>
         </argument>
@@ -1846,7 +1846,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="1771" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="1771" description="profile one user&#10;     $your_api_instance-&gt;showUserProfile(1);&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
+          <tag name="example" line="1771" description="profile one user&#10;     $your_api_instance-&gt;showUserProfile(1);&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -2029,7 +2029,7 @@ this this request is only once for day.</description>
           <tag name="param" line="1963" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
           </tag>
-          <tag name="param" line="1963" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$sexualOrientation">
+          <tag name="param" line="1963" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$seeking">
             <type>string</type>
           </tag>
           <tag name="return" line="1963" description="Associative array with profile data | Message with error in json format" type="array|string">
@@ -2042,7 +2042,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="1963" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="example" line="1963" description="profile an user&#10;     $your_api_instance-&gt;updateUserProfile(1,'about-103156','homosexual'));&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;homosexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
+          <tag name="example" line="1963" description="profile an user&#10;     $your_api_instance-&gt;updateUserProfile(1,'about-103156','homosexual'));&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;homosexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -2055,7 +2055,7 @@ this this request is only once for day.</description>
           <type>string</type>
         </argument>
         <argument line="0">
-          <name>$sexualOrientation</name>
+          <name>$seeking</name>
           <default>''</default>
           <type>string</type>
         </argument>
@@ -4497,7 +4497,7 @@ this this request is only once for day.</description>
           <tag name="param" line="3056" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
           </tag>
-          <tag name="param" line="3056" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$sexualOrientation">
+          <tag name="param" line="3056" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$seeking">
             <type>string</type>
           </tag>
           <tag name="return" line="3056" description="Associative array with profile data | Message with error in json format" type="array|string">
@@ -4510,7 +4510,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="3056" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="examples" line="3056" description="Update profile an user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;updateUserProfile(1,'about-103156','homosexual'));&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;homosexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;/code&gt;"/>
+          <tag name="examples" line="3056" description="Update profile an user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;updateUserProfile(1,'about-103156','homosexual'));&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;homosexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;/code&gt;"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -4523,7 +4523,7 @@ this this request is only once for day.</description>
           <type>string</type>
         </argument>
         <argument line="0">
-          <name>$sexualOrientation</name>
+          <name>$seeking</name>
           <default>''</default>
           <type>string</type>
         </argument>
@@ -4547,7 +4547,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="3099" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="examples" line="3099" description="Create profile one user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;showUserProfile(1);&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;/code&gt;"/>
+          <tag name="examples" line="3099" description="Create profile one user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;showUserProfile(1);&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;/code&gt;"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -4568,7 +4568,7 @@ this this request is only once for day.</description>
           <tag name="param" line="3141" description="&lt;p&gt;Short description  your profile&lt;/p&gt;" type="string" variable="$about">
             <type>string</type>
           </tag>
-          <tag name="param" line="3141" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$sexualOrientation">
+          <tag name="param" line="3141" description="&lt;p&gt;Choice between &lt;heterosexual|bisexual|otro&gt;&lt;/p&gt;&#10;" type="string" variable="$seeking">
             <type>string</type>
           </tag>
           <tag name="return" line="3141" description="Associative array with profile data | Message with error in json format" type="array|string">
@@ -4581,7 +4581,7 @@ this this request is only once for day.</description>
           <tag name="throws" line="3141" description="This exception is thrown if server send one error" type="\Ant\ChateaClient\Client\ApiException">
             <type link="ApiException.html">\Ant\ChateaClient\Client\ApiException</type>
           </tag>
-          <tag name="examples" line="3141" description="Create profile one user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;addUserProfile(1,'about-10','bisexual');&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;sexual_orientation&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;code&gt;"/>
+          <tag name="examples" line="3141" description="Create profile one user&#10;&lt;code&gt;&#10;     $your_api_instance-&gt;addUserProfile(1,'about-10','bisexual');&#10; array(&#10;      &quot;id&quot; =&gt; 11,&#10;      &quot;about&quot; =&gt; &quot;about-10&quot;,&#10;      &quot;seeking&quot; =&gt; &quot;bisexual&quot;,&#10;      &quot;count_visits&quot; =&gt; 0,&#10;      &quot;publicated_at&quot; =&gt; &quot;2013-10-30T16:43:51+0100&quot;,&#10; );&#10;&lt;code&gt;"/>
         </docblock>
         <argument line="0">
           <name>$user_id</name>
@@ -4594,7 +4594,7 @@ this this request is only once for day.</description>
           <type>string</type>
         </argument>
         <argument line="0">
-          <name>$sexualOrientation</name>
+          <name>$seeking</name>
           <default></default>
           <type>string</type>
         </argument>

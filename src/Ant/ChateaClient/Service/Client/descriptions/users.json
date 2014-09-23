@@ -131,10 +131,10 @@
                             "type": "string",
                             "description": "the about in profile"
                         },
-                        "sexualOrientation": {
+                        "seeking": {
                             "location": "json",
                             "type": "string",
-                            "description": "The sexualOrientation"
+                            "description": "The seeking"
                         }
                     }
                 }
@@ -160,10 +160,10 @@
                             "type": "string",
                             "description": "the about in profile"
                         },
-                        "sexualOrientation": {
+                        "seeking": {
                             "location": "json",
                             "type": "string",
-                            "description": "The sexualOrientation"
+                            "description": "The seeking"
                         }
                     }
                 }

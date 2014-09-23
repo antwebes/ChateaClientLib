@@ -322,7 +322,7 @@ interface ApiInterface
      *
      * @param string $about             Short description  your profile
      *
-     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     * @param string $seeking Choice between <heterosexual|bisexual|otro>
      *
      * @return array|string Associative array with profile data | Message with error in json format
      *
@@ -337,12 +337,12 @@ interface ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "bisexual",
+     *       "seeking" => "bisexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      */
-    public function addUserProfile ($user_id, $about, $sexualOrientation, $gender, $youWant, $birthday);
+    public function addUserProfile ($user_id, $about, $seeking, $gender, $youWant, $birthday);
 
     /**
      * Delete friends between two users
@@ -1767,7 +1767,7 @@ interface ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "bisexual",
+     *       "seeking" => "bisexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
@@ -1942,7 +1942,7 @@ interface ApiInterface
      *
      * @param string $about             Short description  your profile
      *
-     * @param string $sexualOrientation Choice between <heterosexual|bisexual|otro>
+     * @param string $seeking Choice between <heterosexual|bisexual|otro>
      *
      * @return array|string Associative array with profile data | Message with error in json format
      *
@@ -1957,14 +1957,14 @@ interface ApiInterface
      *  array(
      *       "id" => 11,
      *       "about" => "about-10",
-     *       "sexual_orientation" => "homosexual",
+     *       "seeking" => "homosexual",
      *       "count_visits" => 0,
      *       "publicated_at" => "2013-10-30T16:43:51+0100",
      *  );
      *
      *
      */
-    public function updateUserProfile ($user_id, $about = '', $sexualOrientation = '');
+    public function updateUserProfile ($user_id, $about = '', $seeking = '');
 
     /**
      * Delete one album
