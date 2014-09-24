@@ -3453,4 +3453,12 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
+
+    public function searchChannelByName($channelName)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('searchChannelByName', array('channelName' => $channelName));
+
+        return $this->executeCommand($command);
+    }
 }
