@@ -3445,4 +3445,12 @@ class Api implements  ApiInterface
         }
         return implode(',', $parts);
     }
+
+    public function searchUserByName($partial)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('searchUserByName', array('username_partial' => $partial));
+
+        return $this->executeCommand($command);
+    }
 }
