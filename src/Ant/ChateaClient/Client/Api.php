@@ -3461,4 +3461,12 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
+
+
+    public function getRealtimeMedia()
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('RealtimeMedia');
+        return $this->executeCommand($command);
+    }
 }
