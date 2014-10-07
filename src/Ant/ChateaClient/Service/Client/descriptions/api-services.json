@@ -86,7 +86,8 @@
         "photo.json",
         "reports.json",
         "thread.json",
-        "city.json"
+        "city.json",
+        "realtime.json"
     ]
 
 }

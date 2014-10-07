@@ -232,6 +232,18 @@
                     "description": "number of position at collection"
                 }
             }
+        },
+        "searchUserByName":{
+            "httpMethod": "GET",
+            "uri": "/api/users/{username_partial}/search",
+            "summary": "Finds and displays a user (use Like in name with format Like '%username%' )",
+            "parameters": {
+                "username_partial": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
         }
     }
 }

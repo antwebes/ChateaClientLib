@@ -3445,4 +3445,28 @@ class Api implements  ApiInterface
         }
         return implode(',', $parts);
     }
+
+    public function searchUserByName($partial)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('searchUserByName', array('username_partial' => $partial));
+
+        return $this->executeCommand($command);
+    }
+
+    public function searchChannelByName($channelName)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('searchChannelByName', array('channelName' => $channelName));
+
+        return $this->executeCommand($command);
+    }
+
+
+    public function getRealtimeMedia()
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('RealtimeMedia');
+        return $this->executeCommand($command);
+    }
 }

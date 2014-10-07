@@ -262,6 +262,18 @@
                     "required": true
                 }
             }
+        },
+        "searchChannelByName":{
+            "httpMethod": "GET",
+            "uri": "/api/channels/{channelName}/search",
+            "summary": "Finds and displays a channle (use Like in name with format Like '%chanelName%' )",
+            "parameters": {
+                "channelName": {
+                    "location": "uri",
+                    "type": "string",
+                    "required": true
+                }
+            }
         }
     },
     "models": {
