@@ -244,6 +244,27 @@
                     "required": true
                 }
             }
+        },
+        "showUserChannelIsModerator":{
+            "httpMethod": "GET",
+            "uri": "/api/users/{id}/moderated",
+            "summary": "Return the channels that one user is moderator",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": "integer",
+                    "required": true
+                },
+                "limit": {
+                    "location": "query",
+                    "description": "number of position at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "description": "number of position at collection"
+                }
+            }
         }
     }
 }

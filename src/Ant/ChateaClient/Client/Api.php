@@ -3476,4 +3476,18 @@ class Api implements  ApiInterface
         $command = $this->client->getCommand('RealtimeMedia');
         return $this->executeCommand($command);
     }
+
+    public function showUserChannelIsModerator($userId, $limit = null, $offset = null)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand(
+            'showUserChannelIsModerator',
+            array('id'=>$userId,
+                'limit'=>$limit,
+                'offset'=>$offset
+            )
+        );
+
+        return $this->executeCommand($command);
+    }
 }
