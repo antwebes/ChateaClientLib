@@ -245,7 +245,7 @@
                 }
             }
         },
-        "showUserChannelIsModerator":{
+        "getChannelsModerated":{
             "httpMethod": "GET",
             "uri": "/api/users/{id}/moderated",
             "summary": "Return the channels that one user is moderator",

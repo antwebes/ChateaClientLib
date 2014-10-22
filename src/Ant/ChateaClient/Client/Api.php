@@ -3477,11 +3477,11 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
 
-    public function showUserChannelIsModerator($userId, $limit = null, $offset = null)
+    public function getChannelsModerated($userId, $limit = null, $offset = null)
     {
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand(
-            'showUserChannelIsModerator',
+            'getChannelsModerated',
             array('id'=>$userId,
                 'limit'=>$limit,
                 'offset'=>$offset
