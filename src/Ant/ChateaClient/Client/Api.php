@@ -151,7 +151,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $city, $language=null)
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $city, $language=null, $facebookId = null)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -187,7 +187,8 @@ class Api implements  ApiInterface
                     ),
                     'affiliate'=>$affiliate_host,
                 	'ip'=> $ip,
-                    'language' => $language
+                    'language' => $language,
+                    'facebookId' => $facebookId
                 ),
             	'city'=>$city
             		
