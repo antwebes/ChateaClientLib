@@ -56,6 +56,11 @@
                         "facebookId":{
                             "location": "json",
                             "type": "string"
+                        },
+                        "enabled": {
+                            "location": "json",
+                            "type": "string",
+                            "required": false
                         }
                     }
                 },
