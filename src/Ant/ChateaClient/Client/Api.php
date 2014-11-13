@@ -3490,4 +3490,17 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
+    
+    public function getPhotos(array $filters = null)
+    {
+    	$filterHash = '';
+    	if($filters !== null){
+    		$filterHash = $this->associativeArrayToString($filters);
+    	}
+    	 
+    	/* @var $command \Guzzle\Service\Command\AbstractCommand */
+    	$command = $this->client->getCommand('getPhotos',array('filters' => $filterHash));
+    
+    	return $this->executeCommand($command);
+    }
 }

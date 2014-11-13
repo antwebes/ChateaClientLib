@@ -329,6 +329,19 @@
                     "location": "uri"
                 }
             }
+        },
+        "getPhotos": {
+            "httpMethod": "GET",
+            "uri": "api/photos",
+            "summary": "List all photos with filters",
+            "parameters": {
+                "filters": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false,
+                    "description": "filters to aply to the list"
+                }
+            }
         }
     }
 }
