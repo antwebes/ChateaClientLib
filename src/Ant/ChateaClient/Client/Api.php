@@ -638,6 +638,16 @@ class Api implements  ApiInterface
      */
     public function showChannelFans($channel_id, $limit = null, $offset = null, $filters=null)
     {
+    	$parameters = array();
+    	$parameters['id'] = $channel_id;
+    	
+    	if ($offset){
+    		$parameters['offset'] = $offset;
+    	}
+    	if ($filters){
+    		$parameters['filters'] = $filters;
+    	}
+    	
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
                 "ApiException::showChannelFans channel_id field should be positive integer");
@@ -651,14 +661,14 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "Api::showChannelFans() $offset must be a positive number,  min 0 ");
         }
-        if (is_null($limit))
+        
+        
+        if (!is_null($limit))
         {
-        	//@var $command Guzzle\Service\Command\AbstractCommand
-        	$command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id,'offset'=>$offset));
-        }else{
-        	//@var $command Guzzle\Service\Command\AbstractCommand
-        	$command = $this->client->getCommand('GetChannelFans', array("id" => $channel_id,'limit'=>(int) $limit,'offset'=>$offset));
+        	$parameters['limit'] = (int) $limit;        	
         }
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('GetChannelFans', $parameters);
         
 
         return $this->executeCommand($command);

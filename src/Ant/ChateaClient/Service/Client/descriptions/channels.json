@@ -160,6 +160,11 @@
                     "location": "query",
                     "default": 0,
                     "description": "number of position at collection"
+                },
+                "filters": {
+                    "type": "string",
+                    "location": "query",
+                    "description": "filter collection by criteria"
                 }
             }
         },
