@@ -151,7 +151,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $city, $language=null)
+    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $city, $language=null, $facebookId = null, $enabled = false)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -174,9 +174,7 @@ class Api implements  ApiInterface
                 "the new_password and repeat_new_password is not equals");
         }
 
-        $command = $this->client->getCommand(
-            "Register",
-            array(
+        $userData = array(
                 'user_registration' =>
                 array(
                     'email' => $email,
@@ -186,12 +184,20 @@ class Api implements  ApiInterface
                         'second' => $repeat_new_password
                     ),
                     'affiliate'=>$affiliate_host,
-                	'ip'=> $ip,
-                    'language' => $language
+                    'ip'=> $ip,
+                    'language' => $language,
+                    'facebookId' => $facebookId,
                 ),
-            	'city'=>$city
-            		
-            )
+                'city'=>$city
+            );
+
+        if($enabled){
+            $userData['user_registration']['enabled'] = '1';
+        }
+
+        $command = $this->client->getCommand(
+            "Register",
+            $userData
         );
         return $this->executeCommand($command);
     }
