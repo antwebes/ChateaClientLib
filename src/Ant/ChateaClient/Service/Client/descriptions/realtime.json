@@ -2,7 +2,7 @@
     "operations": {
         "RealtimeMedia": {
             "httpMethod": "GET",
-            "uri": "/api/realtime/media",
+            "uri": "api/realtime/media",
             "summary": "Find user with webcam, profile, sex ..."
         }
     }
