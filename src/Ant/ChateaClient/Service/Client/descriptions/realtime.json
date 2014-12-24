@@ -4,6 +4,23 @@
             "httpMethod": "GET",
             "uri": "api/realtime/media",
             "summary": "Find user with webcam, profile, sex ..."
+        },
+        "RealtimeChangeAvatar": {
+            "httpMethod": "PATCH",
+            "uri": "api/realtime/users/{nick}/avatar",
+            "summary": "Change the avatar of a nick",
+            "parameters": {
+                "nick": {
+                    "location": "uri",
+                    "description": "Nick to change the avatar",
+                    "required": true
+                },
+                "id": {
+                    "location": "json",
+                    "description": "Id of the avatar to put",
+                    "required": true
+                }
+            }
         }
     }
 }

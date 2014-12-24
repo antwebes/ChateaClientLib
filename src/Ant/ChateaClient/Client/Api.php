@@ -3493,6 +3493,27 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
 
+    /**
+     * Change the avatar of a nick
+     * @param $nick
+     * @param $idAvatar
+     */
+    public function changeAvatar($nick, $id_avatar)
+    {
+        if (!is_numeric($id_avatar) || 0 >= $id_avatar) {
+            throw new InvalidArgumentException(
+                "RealtimeChangeAvatar id_avatar field should be positive integer", 404);
+        }
+
+        if (empty($nick)) {
+            throw new InvalidArgumentException(
+                "RealtimeChangeAvatar nick field should not be empty", 404);
+        }
+
+        $command = $this->client->getCommand('RealtimeChangeAvatar', array('nick' => $nick, 'id' => $id_avatar));
+        return $this->executeCommand($command);
+    }
+
     public function getChannelsModerated($userId, $limit = null, $offset = null)
     {
         //@var $command Guzzle\Service\Command\AbstractCommand
