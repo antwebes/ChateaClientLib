@@ -124,7 +124,7 @@ class Api implements  ApiInterface
      *
      * @param string $repeat_new_password Repeat the password
      *
-     * @param string $affiliate_host The name of your server, where you make send request.
+     * @param string $client_id The name of your server, where you make send request.
      *          You don't use protocols (http:// or ftp ) or subdomains only use primary name
      *
      * @param string $ip                  the client ip
@@ -151,7 +151,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $affiliate_host, $ip, $city, $language=null, $facebookId = null, $enabled = false)
+    public function register($username, $email, $new_password, $repeat_new_password, $client_id, $ip, $city, $language=null, $facebookId = null, $enabled = false)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -183,7 +183,7 @@ class Api implements  ApiInterface
                         'first' => $new_password,
                         'second' => $repeat_new_password
                     ),
-                    'affiliate'=>$affiliate_host,
+                    'client'=>$client_id,
                     'ip'=> $ip,
                     'language' => $language,
                     'facebookId' => $facebookId,

@@ -40,7 +40,7 @@
                                 }
                             }
                         },
-                        "affiliate":{
+                        "client":{
                                 "location": "json",
                                 "type": "string",
                                 "required": true
