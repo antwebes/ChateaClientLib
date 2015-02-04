@@ -534,6 +534,58 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
+    
+    /**
+     * Get channel. Show data channel by slug
+     *
+     * @param int $slug  Channel to retrieve by SLUG
+     *
+     * @return array|string Associative array with channel data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @examples
+     *
+     * <code>
+     *          $your_api_instance->showChannel(update-channel-name);
+     *          //Sample Ouput
+     *
+     * array(
+     *      "id" =>96
+     *      "name" =>"update channel name",
+     *      "slug" =>"update-channel-name",
+     *      "title" =>"API - Channel title",
+     *      "description" =>"This is channel about loves, friends and others",
+     *      "owner" => array(
+     *              "id" =>1
+     *              "username" =>"alex"
+     *      ),
+     *      "channel_type" => array(
+     *          "name" =>"love"
+     *      ),
+     *      "_links" => array(
+     *          "self" => array(
+     *              "href" =>"https://api.chatsfree.net/api/channels/96"
+     *          ),
+     *          "fans" => array(
+     *              "href" =>"https://api.chatsfree.net/api/channels/96/fans"
+     *          ),
+     *          "owner" => array(
+     *              "href" =>"https://api.chatsfree.net/api/users/1"
+     *          )
+     *      )
+     *  );
+     * </code>
+     */
+    public function findBySlug($slug)
+    {
+    	//@var $command Guzzle\Service\Command\AbstractCommand
+    	$command = $this->client->getCommand('FindBySlug', array('slug' => $slug));
+    
+    	return $this->executeCommand($command);
+    }
 
     /**
      * Get channel. Show data channel by id

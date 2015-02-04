@@ -28,6 +28,18 @@
                 }
             }
         },
+		"FindBySlug": {
+            "httpMethod": "GET",
+            "uri": "api/channels/{slug}/slug",
+            "summary": "Show a channel by slug",
+            "parameters": {
+                "slug": {
+                    "location": "uri",
+                    "description": "Channel to retrieve by SLUG",
+                    "required": true
+                }
+            }
+        },
         "GetChannel": {
             "httpMethod": "GET",
             "uri": "api/channels/{id}",
