@@ -57,33 +57,26 @@
             "uri": "api/channels",
             "summary": "Creates a new Channel",
             "parameters": {
-                "channel": {
-                    "type": "object",
-                    "required": true,
+                "name": {
                     "location": "json",
-                    "properties": {
-                        "name": {
-                            "location": "json",
-                            "type": "string",
-                            "required": true,
-                            "description": "the name of channel"
-                        },
-                        "title": {
-                            "location": "json",
-                            "type": "string",
-                            "description": "The title of channel"
-                        },
-                        "description": {
-                            "location": "json",
-                            "type": "string",
-                            "description": "The description of channel"
-                        },
-                        "channel_type":{
-                            "location": "json",
-                            "type": "string",
-                            "description": "The type of channel"
-                        }
-                    }
+                    "type": "string",
+                    "required": true,
+                    "description": "the name of channel"
+                },
+                "irc_channel": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "The title of channel"
+                },
+                "description": {
+                    "location": "json",
+                    "type": "string",
+                    "description": "The description of channel"
+                },
+                "channel_type":{
+                    "location": "json",
+                    "type": "string",
+                    "description": "The type of channel"
                 }
             }
         },

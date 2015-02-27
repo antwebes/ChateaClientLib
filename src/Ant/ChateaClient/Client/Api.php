@@ -372,7 +372,7 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function addChanel($name, $title = '', $description = '', $channel_type = '')
+    public function addChanel($name, $irc_channel = '', $description = '', $channel_type = '')
     {
         if (!is_string($name) || 0 >= strlen($name)) {
             throw new InvalidArgumentException("addChanel name field needs to be a non-empty string");
@@ -381,9 +381,12 @@ class Api implements  ApiInterface
         /** @var $command \Guzzle\Service\Command\AbstractCommand */
         $command = $this->client->getCommand(
             'AddChannel',
-            array('channel' =>
-                array("name" => $name,
-                      "title" => $title, "description" => $description,'channel_type'=>$channel_type))
+            array(
+                "name" => $name,
+                "irc_channel" => $irc_channel,
+                "description" => $description,
+                'channel_type'=>$channel_type
+            )
         );
 
         return $this->executeCommand($command);
