@@ -372,7 +372,7 @@ class Api implements  ApiInterface
      *  );
      *</code>
      */
-    public function addChanel($name, $irc_channel = '', $description = '', $channel_type = '')
+    public function addChanel($name, $irc_channel = '', $description = '', $channel_type = '', $language = '')
     {
         if (!is_string($name) || 0 >= strlen($name)) {
             throw new InvalidArgumentException("addChanel name field needs to be a non-empty string");
@@ -385,7 +385,8 @@ class Api implements  ApiInterface
                 "name" => $name,
                 "irc_channel" => $irc_channel,
                 "description" => $description,
-                'channel_type'=>$channel_type
+                'channel_type'=>$channel_type,
+                'language' => $language
             )
         );
 
