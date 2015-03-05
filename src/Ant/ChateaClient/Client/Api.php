@@ -187,8 +187,9 @@ class Api implements  ApiInterface
                     'ip'=> $ip,
                     'language' => $language,
                     'facebookId' => $facebookId,
+                    'city'=>$city
                 ),
-                'city'=>$city
+
             );
 
         if($enabled){

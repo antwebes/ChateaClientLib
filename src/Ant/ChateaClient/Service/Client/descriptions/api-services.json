@@ -61,13 +61,14 @@
                             "location": "json",
                             "type": "string",
                             "required": false
+                        },
+                        "city":{
+                            "location": "json",
+                            "type": "string"
                         }
                     }
-                },
-                "city":{
-                	"location": "json",
-                	"type": "string"
-				}
+                }
+
             }
         },
         "RequestResetPassword":{
