@@ -187,9 +187,8 @@ class Api implements  ApiInterface
                     'ip'=> $ip,
                     'language' => $language,
                     'facebookId' => $facebookId,
-                    'city'=>$city
                 ),
-
+                'city'=>$city
             );
 
         if($enabled){
@@ -1499,12 +1498,8 @@ class Api implements  ApiInterface
      *          );
      * </code>
      */
-    public function updateMe($username, $email, $current_password)
+    public function updateMe($email, $current_password)
     {
-        if (!is_string($username) || 0 >= strlen($username)) {
-            throw new InvalidArgumentException(
-                "ApiException::updateProfile username field needs to be a non-empty string");
-        }
         if (!is_string($email) || 0 >= strlen($email)) {
             throw new InvalidArgumentException(
                 "ApiException::updateProfile email field needs to be a non-empty string");
@@ -1518,7 +1513,6 @@ class Api implements  ApiInterface
             'UpdateAccount',
             array(
                 'profile' => array(
-                    'username' => $username,
                     'email' => $email,
                     'current_password' => $current_password
                 )

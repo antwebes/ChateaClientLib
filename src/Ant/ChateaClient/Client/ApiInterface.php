@@ -1586,7 +1586,7 @@ interface ApiInterface
      *          'email' => 'xabier@antweb.es',
      *          );
      */
-    public function updateMe ($username, $email, $current_password);
+    public function updateMe ($email, $current_password);
 
     /**
      * Show one album of user
