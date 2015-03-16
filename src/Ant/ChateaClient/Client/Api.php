@@ -1493,8 +1493,8 @@ class Api implements  ApiInterface
      *
      *      array(
      *          'id' => '1',
-     *          'username' => 'xabier',
      *          'email' => 'xabier@antweb.es',
+     *          'current_password' => 'apassword'
      *          );
      * </code>
      */
@@ -1504,6 +1504,7 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "ApiException::updateProfile email field needs to be a non-empty string");
         }
+
         if (!is_string($current_password) || 0 >= strlen($current_password)) {
             throw new InvalidArgumentException(
                 "ApiException::updateProfile current_password field needs to be a non-empty string");
@@ -1582,10 +1583,10 @@ class Api implements  ApiInterface
                 "ApiException::changePassword() repeat_new_password must be a non-empty string");
         }
 
-        if (strcmp($new_password, $repeat_new_password)) {
+        /*if (strcmp($new_password, $repeat_new_password)) {
             throw new InvalidArgumentException(
                 "ApiException::changePassword() the new_password and repeat_new_password isn't equals");
-        }
+        }*/
 
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand(

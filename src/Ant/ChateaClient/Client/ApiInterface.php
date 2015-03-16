@@ -1578,15 +1578,14 @@ interface ApiInterface
      *
      * @example
      *
-     *      $your_api_instance->updateMe('xabier','xabier@antweb.es','mySecretPassword');
+     *      $your_api_instance->updateMe('xabier@antweb.es','mySecretPassword');
      *
      *      array(
-     *          'id' => '1',
-     *          'username' => 'xabier',
      *          'email' => 'xabier@antweb.es',
+     *          'current_password' => 'currPass'
      *          );
      */
-    public function updateMe ($email, $current_password);
+    public function updateMe($email, $current_password);
 
     /**
      * Show one album of user
