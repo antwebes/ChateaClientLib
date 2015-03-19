@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by Ant-WEB S.L.
- * Developer: Xabier Fernández Rodríguez <jjbier@gmail.com>
- * Date: 14/10/13
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+
 namespace Ant\ChateaClient\Client;
 
 use Ant\ChateaClient\Service\Client\AuthenticationException;
@@ -21,6 +14,8 @@ use Guzzle\Service\Command\CommandInterface;
 
 use Ant\ChateaClient\Client\Exception\ServerDownException;
 use Ant\ChateaClient\Client\Exception\UnauthorizedException;
+use Ant\ChateaClient\Client\ApiException;
+
 /**
  * This class represent the chateagratis API's, this is single abstraction
  * for all API methods.
