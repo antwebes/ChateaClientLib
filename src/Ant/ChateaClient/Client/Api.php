@@ -3160,7 +3160,7 @@ class Api implements  ApiInterface
      *
      *</code>
      */
-    public function updateUserProfile($user_id, $about= '', $seeking = '')
+    public function updateUserProfile($user_id, $about= '', $seeking = '', $gender = '', $youWant = '', $birthday = '')
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -3171,7 +3171,7 @@ class Api implements  ApiInterface
             'UpdateUserProfile',
             array(
                 'id' => $user_id,
-                'social_profile' => array('about' => $about, 'seeking' => $seeking)
+                'social_profile' => array('about' => $about, 'seeking' => $seeking, 'gender' => $gender, 'youWant' => $youWant, 'birthday' => $birthday)
             )
         );
 

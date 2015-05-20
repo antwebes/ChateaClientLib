@@ -164,6 +164,21 @@
                             "location": "json",
                             "type": "string",
                             "description": "The seeking"
+                        },
+                        "gender": {
+                            "location": "json",
+                            "type": "string",
+                            "description": "Your gender"
+                        },
+                        "youWant": {
+                            "location": "json",
+                            "type": "string",
+                            "description": "What you're looking for"
+                        },
+                        "birthday":  {
+                            "location": "json",
+                            "type": "string",
+                            "description": "Your birthday"
                         }
                     }
                 }
