@@ -3013,6 +3013,26 @@ class Api implements  ApiInterface
         $command = $this->client->getCommand('ShowUser', array('id' => $user_id));
         return $this->executeCommand($command);
     }
+
+    /**
+     * Get visitor of a user by ID
+     *
+     * @param int $user_id User to retrieve visits by ID
+     *
+     * @param int $limit
+     *
+     * @return array|string Associative array with user data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
+    public function getVisitorsOfUser($user_id, $limit)
+    {
+        $command = $this->client->getCommand('VisitorsOfUser', array('id' => $user_id, 'limit' => $limit));
+        return $this->executeCommand($command);
+    }
+
     public function whoami()
     {
         return $this->me();

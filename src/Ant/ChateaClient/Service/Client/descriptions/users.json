@@ -42,6 +42,23 @@
                 }
             }
         },
+        "VisitorsOfUser": {
+            "httpMethod": "GET",
+            "uri": "api/users/{id}/visitors",
+            "summary": "Show visitors a user by id",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "User to retrieve by ID",
+                    "required": true
+                },
+                "limit": {
+                    "location": "query",
+                    "description": "Limits of user to retreive",
+                    "required": true
+                }
+            }
+        },
         "showUsersBlocked": {
             "httpMethod": "GET",
             "uri": "api/users/{id}/blocked",
