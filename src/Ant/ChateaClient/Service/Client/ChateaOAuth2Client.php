@@ -238,6 +238,45 @@ class ChateaOAuth2Client extends Client
             throw new AuthenticationException($ex->getMessage(), 400, $ex);
         }
     }
+
+    /**
+     * Enables the apps to get service credentials as well as service credential
+     * authentication settings for use on the apps side of communication.
+     *
+     * @return array|string Associative array with guest credentials | Message with error in json format
+     *
+     * @throws AuthenticationException This exception is thrown if you do not credentials or you cannot use this method
+     *
+     * @example Get client credentials
+     *
+     *      $clientInstande->withClientCredentials();
+     *
+     *  array("access_token"    => access-token-demo,
+     *        "expires_in"      => 3600,
+     *        "token_type"      => bearer,
+     *        "scope"           => password,
+     *        "refresh_token"   => refresh-token-demo
+     *  );
+     */
+    public function withGuestCredentials()
+    {
+        $command = $this->getCommand('withGuestCredentials',
+            array('client_id'=>$this->getClientId(),'client_secret'=>$this->getSecret())
+        );
+
+        try{
+            return $command->execute();
+        }catch (ServerErrorResponseException $ex){
+            throw new AuthenticationException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
+        }catch (BadResponseException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }catch(ClientErrorResponseException $ex){
+            throw new AuthenticationException($ex->getResponse()->getBody(true), $ex->getResponse()->getStatusCode(), $ex);
+        }catch(CurlException $ex){
+            throw new AuthenticationException($ex->getMessage(), 400, $ex);
+        }
+    }
+
     /**
      *  After the client has been authorized for access, they can use a refresh token to get a new access token.
      *

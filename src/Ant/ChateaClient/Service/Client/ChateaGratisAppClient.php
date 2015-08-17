@@ -46,6 +46,11 @@ class ChateaGratisAppClient extends Client
     private $chateaOAuth2Client;
 
     /**
+     * @var should the client authenticate as guest or with client credentials
+     */
+    private $authenticateAsGuest;
+
+    /**
      * Build new class ChateaOAuth2Client, this provides commands to run at ApiChateaServer
      * This client can get self credentials, and save in store. This version do not encrypted credentials.
      *
@@ -85,10 +90,10 @@ class ChateaGratisAppClient extends Client
             $config['curl.options'] = array(CURLOPT_SSL_VERIFYHOST=>false,CURLOPT_SSL_VERIFYPEER=>false);
         }
 
-
         // Create a new ChateaGratis client
         $client = new self($config->get('base_url'),$config);
 
+        $client->authenticateAsGuest = isset($config['as_guest']) ? $config['as_guest'] : false;
         $client->chateaOAuth2Client = $config->get('OAuth2Client');
         $client->store = $config->get('store');
         $client->addSubscriber(new AcceptHeaderPluging($config->toArray()));
@@ -169,8 +174,12 @@ class ChateaGratisAppClient extends Client
 
     private function getAccessTokenWithClientCredentials()
     {
-        $authData = $this->chateaOAuth2Client->withClientCredentials();
-            
+        if($this->authenticateAsGuest){
+            $authData = $this->chateaOAuth2Client->withGuestCredentials();
+        }else{
+            $authData = $this->chateaOAuth2Client->withClientCredentials();
+        }
+
         $this->persistAuthData($authData);
 
         return $authData['access_token'];
