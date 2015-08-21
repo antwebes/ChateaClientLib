@@ -1814,6 +1814,37 @@ class Api implements  ApiInterface
     }
 
     /**
+     * Report a Photo
+     *
+     * @param int $photo_id The photo id you like to report
+     * @param sting $reason
+     *
+     * @return string Message sucessfully if can report the photo | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     */
+    public function reportPhoto($photo_id, $reason)
+    {
+
+        if (!is_numeric($photo_id) || 0 >= $photo_id) {
+            throw new InvalidArgumentException(
+                "Api::reportPhoto photo_id field should be positive integer");
+        }
+
+        if (trim($reason) == '') {
+            throw new InvalidArgumentException(
+                "Api::reportPhoto reason field should not be empty");
+        }
+
+        /** @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('ReportPhoto',array('photo_id' => $photo_id, 'report' => array('reason' => $reason)));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
      * Add new Photo Album in user accont
      *
      * @param int $user_id The user ID

@@ -72,6 +72,30 @@
                 }
             }
         },
+        "ReportPhoto": {
+          "httpMethod": "POST",
+          "uri": "api/photos/{photo_id}/report",
+          "summary": "Report a photo",
+          "parameters": {
+            "photo_id": {
+              "type": "integer",
+              "required": true,
+              "location": "uri"
+            },
+            "report": {
+              "type": "object",
+              "required": true,
+              "location": "json",
+              "parameters": {
+                "reason": {
+                  "type": "string",
+                  "required": true,
+                  "location": "json"
+                }
+              }
+            }
+          }
+        },
         "AddAlbum": {
             "httpMethod": "POST",
             "uri": "api/users/{id}/albums",
