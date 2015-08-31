@@ -14,3 +14,7 @@ To get the diff between two versions, go to https://github.com/antwebes/ChateaCl
  * 0.1.3 (2015-07-08)
 
   * Added getVisitorsOfUser method
+  
+  * 0.1.4 (2015-08-31)
+
+  * Added reportPhoto method
