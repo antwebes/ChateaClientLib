@@ -55,7 +55,7 @@
                 "limit": {
                     "location": "query",
                     "description": "Limits of user to retreive",
-                    "required": true
+                    "required": false
                 }
             }
         },

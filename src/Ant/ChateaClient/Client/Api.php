@@ -3058,7 +3058,7 @@ class Api implements  ApiInterface
      *
      * @throws ApiException This exception is thrown if server send one error
      */
-    public function getVisitorsOfUser($user_id, $limit)
+    public function getVisitorsOfUser($user_id, $limit = null)
     {
         $command = $this->client->getCommand('VisitorsOfUser', array('id' => $user_id, 'limit' => $limit));
         return $this->executeCommand($command);
