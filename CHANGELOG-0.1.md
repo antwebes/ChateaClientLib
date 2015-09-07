@@ -11,10 +11,14 @@ To get the diff between two versions, go to https://github.com/antwebes/ChateaCl
 
  * Added gender, youwant, birthday to profile update 
 
- * 0.1.3 (2015-07-08)
+* 0.1.3 (2015-07-08)
 
-  * Added getVisitorsOfUser method
+ * Added getVisitorsOfUser method
   
-  * 0.1.4 (2015-08-31)
+* 0.1.4 (2015-08-31)
 
-  * Added reportPhoto method
+ * Added reportPhoto method
+  
+* 0.1.5 (2015-09-07)
+
+ * Make parm limit in method getVisitorsOfUser call optional 
