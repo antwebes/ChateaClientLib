@@ -201,6 +201,23 @@
                 }
             }
         },
+        "UpdateUserCity": {
+          "httpMethod": "PUT",
+          "uri": "api/users/{id}/city",
+          "summary": "update city of a user",
+          "parameters": {
+            "id": {
+              "location": "uri",
+              "description": "User to update city by ID",
+              "required": true
+            },
+            "city_id": {
+              "location": "json",
+              "description": "City by id",
+              "required": true
+            }
+          }
+        },
         "AddUserReports":{
             "httpMethod": "POST",
             "uri": "api/users/{id}/report",
