@@ -3230,6 +3230,50 @@ class Api implements  ApiInterface
     }
 
     /**
+     * Update user  city
+     *
+     * @param int $user_id User to retrieve by ID
+     *
+     * @param int $city_id City to retrieve by ID
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @examples Update city of an user
+     *
+     * <code>
+     *      $your_api_instance->updateUserCity(1,1234));
+     *
+     *  array(
+     *       "id" => 11,
+     *       "about" => "about-10",
+     *       "seeking" => "homosexual",
+     *       "count_visits" => 0,
+     *       "publicated_at" => "2013-10-30T16:43:51+0100",
+     *  );
+     *
+     *</code>
+     */
+    public function updateUserCity($user_id, $city_id)
+    {
+        if (!is_numeric($user_id) || 0 >= $user_id) {
+            throw new InvalidArgumentException(
+                "addUserProfile user_id field should be positive integer", 404);
+        }
+
+        $command = $this->client->getCommand(
+            'UpdateUserCity',
+            array(
+                'id' => $user_id,
+                'city_id' => $city_id
+            )
+        );
+
+        return $this->executeCommand($command);
+    }
+
+    /**
      * Show profile by user ID
      *
      * @param int $user_id User to retrieve by ID
