@@ -3624,6 +3624,11 @@ class Api implements  ApiInterface
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('searchChannelByName', array('channelName' => $channelName));
 
+
+
+
+
+
         return $this->executeCommand($command);
     }
 
@@ -3670,10 +3675,10 @@ class Api implements  ApiInterface
         return $this->executeCommand($command);
     }
     
-    public function getPhotos($filters = null)
+    public function getPhotos($filters = null, $order = null, $limit = null, $offset = null)
     {
     	/* @var $command \Guzzle\Service\Command\AbstractCommand */
-    	$command = $this->client->getCommand('getPhotos',array('filters' => $filters));
+    	$command = $this->client->getCommand('getPhotos',array('filters' => $filters, 'order' => $order, 'limit' => $limit, 'offset' => $offset));
     
     	return $this->executeCommand($command);
     }

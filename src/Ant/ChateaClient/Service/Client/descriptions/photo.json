@@ -359,11 +359,28 @@
             "uri": "api/photos",
             "summary": "List all photos with filters",
             "parameters": {
+                "limit": {
+                    "location": "query",
+                    "default": 25,
+                    "description": "number of position at collection"
+                },
+                "offset": {
+                    "type": "integer",
+                    "location": "query",
+                    "default": 0,
+                    "description": "number of position at collection"
+                },
                 "filters": {
                     "type": "string",
                     "location": "query",
                     "required": false,
                     "description": "filters to aply to the list"
+                },
+                "order": {
+                    "type": "string",
+                    "location": "query",
+                    "required": false,
+                    "description": "order to aply to the list"
                 }
             }
         }
