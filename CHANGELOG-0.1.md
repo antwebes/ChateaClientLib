@@ -27,3 +27,6 @@ To get the diff between two versions, go to https://github.com/antwebes/ChateaCl
  
  * Method update city user
  * Added support to authenticate as guest 
+ 
+* 0.1.7 (2015-11-13)
+ * Added limit and offset to getPhotos
