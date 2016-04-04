@@ -1,0 +1,16 @@
+{
+    "operations": {
+        "GetCountry": {
+            "httpMethod": "GET",
+            "uri": "geo/countries/{countryCode}",
+            "summary": "Show a country by id",
+            "parameters": {
+                "countryCode": {
+                    "location": "uri",
+                    "description": "Country to search a country",
+                    "required": true
+                }
+            }
+        }
+    }
+}

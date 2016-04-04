@@ -146,7 +146,7 @@ class Api implements  ApiInterface
      *      }
      * </code>
      */
-    public function register($username, $email, $new_password, $repeat_new_password, $client_id, $ip, $city, $language=null, $facebookId = null, $enabled = false)
+    public function register($username, $email, $new_password, $repeat_new_password, $client_id, $ip, $country, $city, $language=null, $facebookId = null, $enabled = false)
     {
         if (!is_string($username) || 0 >= strlen($username)) {
             throw new InvalidArgumentException("username must be a non-empty string");
@@ -170,7 +170,7 @@ class Api implements  ApiInterface
         }
 
         $userData = array(
-                'user_registration' =>
+            'user_registration' =>
                 array(
                     'email' => $email,
                     'username' => $username,
@@ -182,9 +182,10 @@ class Api implements  ApiInterface
                     'ip'=> $ip,
                     'language' => $language,
                     'facebookId' => $facebookId,
-                    'city'=>$city
+                    'country' => $country,
+                    'city' => $city
                 ),
-            );
+        );
 
         if($enabled){
             $userData['user_registration']['enabled'] = '1';
@@ -212,11 +213,11 @@ class Api implements  ApiInterface
      *
      * @examples Request reset the user password
      *
-     * <code>         
+     * <code>
      *      $your_api_instance->forgotPassword('you_user_name');
      *      $your_api_instance->forgotPassword('you_email@antwebs.es');
      *
-     * </code>     
+     * </code>
      *
      */
     public function forgotPassword($username_or_email)
@@ -533,7 +534,7 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
-    
+
     /**
      * Get channel. Show data channel by slug
      *
@@ -580,10 +581,10 @@ class Api implements  ApiInterface
      */
     public function findBySlug($slug)
     {
-    	//@var $command Guzzle\Service\Command\AbstractCommand
-    	$command = $this->client->getCommand('FindBySlug', array('slug' => $slug));
-    
-    	return $this->executeCommand($command);
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('FindBySlug', array('slug' => $slug));
+
+        return $this->executeCommand($command);
     }
 
     /**
@@ -695,16 +696,16 @@ class Api implements  ApiInterface
      */
     public function showChannelFans($channel_id, $limit = null, $offset = null, $filters=null)
     {
-    	$parameters = array();
-    	$parameters['id'] = $channel_id;
-    	
-    	if ($offset){
-    		$parameters['offset'] = $offset;
-    	}
-    	if ($filters){
-    		$parameters['filters'] = $filters;
-    	}
-    	
+        $parameters = array();
+        $parameters['id'] = $channel_id;
+
+        if ($offset){
+            $parameters['offset'] = $offset;
+        }
+        if ($filters){
+            $parameters['filters'] = $filters;
+        }
+
         if (!is_numeric($channel_id) || 0 >= $channel_id) {
             throw new InvalidArgumentException(
                 "ApiException::showChannelFans channel_id field should be positive integer");
@@ -718,15 +719,15 @@ class Api implements  ApiInterface
             throw new InvalidArgumentException(
                 "Api::showChannelFans() $offset must be a positive number,  min 0 ");
         }
-        
-        
+
+
         if (!is_null($limit))
         {
-        	$parameters['limit'] = (int) $limit;        	
+            $parameters['limit'] = (int) $limit;
         }
         //@var $command Guzzle\Service\Command\AbstractCommand
         $command = $this->client->getCommand('GetChannelFans', $parameters);
-        
+
 
         return $this->executeCommand($command);
     }
@@ -3539,7 +3540,7 @@ class Api implements  ApiInterface
         );
         return $this->executeCommand($command);
     }
-    
+
     /**
      * Get city. Show data city by id
      *
@@ -3578,10 +3579,44 @@ class Api implements  ApiInterface
      */
     public function getCity($city_id)
     {
-    	//@var $command Guzzle\Service\Command\AbstractCommand
-    	$command = $this->client->getCommand('getCity', array('id' => $city_id));
-    
-    	return $this->executeCommand($command);
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('getCity', array('id' => $city_id));
+
+        return $this->executeCommand($command);
+    }
+
+    /**
+     * Get country. Show data country by country_code
+     *
+     * @param int $country_cod to retrieve a country
+     *
+     * @return array|string Associative array with code data | Message with error in json format
+     *
+     * @throws InvalidArgumentException This exception is thrown if any parameter has errors
+     *
+     * @throws ApiException This exception is thrown if server send one error
+     *
+     * @examples
+     *
+     * <code>
+     *          $your_api_instance->getCountry('US);
+     *          //Sample Ouput
+     *
+     * {
+     *     "id": 1234,
+     *     "country_code": "US",
+     *     "name": "United States",
+     *     "has_cities": true,
+     *     "city_default": 0
+     * }
+     * </code>
+     */
+    public function getCountry($country_code)
+    {
+        //@var $command Guzzle\Service\Command\AbstractCommand
+        $command = $this->client->getCommand('GetCountry', array('countryCode' => $country_code));
+
+        return $this->executeCommand($command);
     }
 
     /**
@@ -3674,12 +3709,12 @@ class Api implements  ApiInterface
 
         return $this->executeCommand($command);
     }
-    
+
     public function getPhotos($filters = null, $order = null, $limit = null, $offset = null)
     {
-    	/* @var $command \Guzzle\Service\Command\AbstractCommand */
-    	$command = $this->client->getCommand('getPhotos',array('filters' => $filters, 'order' => $order, 'limit' => $limit, 'offset' => $offset));
-    
-    	return $this->executeCommand($command);
+        /* @var $command \Guzzle\Service\Command\AbstractCommand */
+        $command = $this->client->getCommand('getPhotos',array('filters' => $filters, 'order' => $order, 'limit' => $limit, 'offset' => $offset));
+
+        return $this->executeCommand($command);
     }
 }
