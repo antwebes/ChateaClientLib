@@ -3256,7 +3256,7 @@ class Api implements  ApiInterface
      *
      *</code>
      */
-    public function updateUserCity($user_id, $city_id)
+    public function updateUserCity($user_id, $country_id, $city_id)
     {
         if (!is_numeric($user_id) || 0 >= $user_id) {
             throw new InvalidArgumentException(
@@ -3267,6 +3267,7 @@ class Api implements  ApiInterface
             'UpdateUserCity',
             array(
                 'id' => $user_id,
+                'country_id' => $country_id,
                 'city_id' => $city_id
             )
         );
