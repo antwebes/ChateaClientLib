@@ -3638,13 +3638,13 @@ class Api implements  ApiInterface
      */
     protected function associativeArrayToString(array $data)
     {
-
-        $parts = '';
+        $parts = [];
 
         foreach ($data as $key => $value) {
-            $parts[] = $key . '=' . $value;
+            array_push($parts, $key . '=' . $value);
         }
         return implode(',', $parts);
+
     }
 
     public function searchUserByName($partial)
